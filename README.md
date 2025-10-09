@@ -52,16 +52,17 @@ The topics covered are:
 
 **Course Instructors**      
 
-- [Trevor Lawley](), Wellcome Sanger Institute, UK
-- [Yan Shao](), Wellcome Sanger Institute, UK
-- [Caroline Tigoi](), KEMRI-Wellcome Trust Research Programme, Kenya
-- [James Njunge](), KEMRI-Wellcome Trust Research Programme, Kenya
-- [Bonface Gichuki](), Wellcome Sanger Institute, UK
-- [Kelvin Sibuta](), Wellcome Sanger Institute, UK
-- [Jay Berkeley](), KEMRI-Wellcome Trust Research Programme, Kenya
-- [Anne Amulele (Vuruku)](), KEMRI-Wellcome Trust Research Programme, Kenya
-- [Jolynne Mokaya](), Wellcome Sanger Institute, UK
+- [Trevor Lawley](https://www.sanger.ac.uk/group/lawley-lab/), Wellcome Sanger Institute, UK
+- [Yan Shao](https://www.sanger.ac.uk/person/shao-yan/), Wellcome Sanger Institute, UK
+- [Caroline Tigoi](https://chainnetwork.org/people/caroline_tigoi/), KEMRI-Wellcome Trust Research Programme, Kenya
+- [James Njunge](https://kemri-wellcome.org/bioscience-team/?tab=file&user_id=43), KEMRI-Wellcome Trust Research Programme, Kenya
+- [Bonface Gichuki](https://www.linkedin.com/in/bonface-gichuki-65518b357/), Wellcome Sanger Institute, UK
+- [Kelvin Sibuta](https://www.infectiousdisease.cam.ac.uk/staff/kelvin-sibuta), Wellcome Sanger Institute, UK
+- [Jay Berkeley](https://chainnetwork.org/people/jay-berkley/), KEMRI-Wellcome Trust Research Programme, Kenya
+- [Anne Amulele (Vuruku)](https://www.linkedin.com/in/anne-amulele-b210311a5/), KEMRI-Wellcome Trust Research Programme, Kenya
+- [Jolynne Mokaya](https://www.linkedin.com/in/jolynne-mokaya/), Wellcome Sanger Institute, UK
 - [Cecilia Kyanya](), Wellcome Sanger Institute, UK
+- [Luicer Olubayo](https://www.wits.ac.za/people/academic-a-z-listing/o/luicerolubayowitsacza), Sydney Brenner Institute of Molecular Biosciences (SBIMB), University of Witwatersrand
 
 **Wellcome Connecting Science Team**
 
