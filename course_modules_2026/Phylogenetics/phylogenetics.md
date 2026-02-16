@@ -1,5 +1,7 @@
 # Building Phylogenetic Trees
 
+![Image of a DNA](images/DNA.png)
+
 ## Learning Objectives
 
 - Understand phylogenetic concepts
