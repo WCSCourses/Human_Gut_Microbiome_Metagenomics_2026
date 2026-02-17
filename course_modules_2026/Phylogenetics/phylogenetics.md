@@ -59,7 +59,7 @@ Common tree inference approaches include:
 These are the simplest and fastest phylogenetic methods, they are often a useful way to have a quick look at your data before running more robust phylogenetic methods.
 It starts by generating a matrix of pairwise distances (distance matrix) between all samples and then infer a phylogenetic relationship using UPGMA or Neigbour-joining.
 
-### Parsimony methods
+#### Parsimony methods
 Maximum parsimony method assume that the best phylogenetic tree requires the fewest number of mutations to explain the data.
 
 Maximum parsimony is simple method and is very fast to run. However, because its always the shortest tree, compared to the hypothetical “true” tree it will often underestimate the actual evolutionary change that may have occurred.
