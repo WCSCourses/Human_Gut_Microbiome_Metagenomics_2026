@@ -5,7 +5,52 @@ format: html
 ---
 
 # Module 5: Functional prediction and annotation from shotgun metagenomic data
-Provide participants with the knowledge and practical skills to predict functional potential from shotgun metagenomic data. Participants will learn how to infer functional capacity and genome-resolved metabolic potential using complementary approaches based on quality controlled reads and metagenome-assembled genomes.
+
+## Introduction
+
+Functional prediction and annotation from shotgun metagenomic data are essential because they shift microbiome research from describing which organisms are present to understanding what biological functions they are capable of performing. While taxonomic profiling identifies community composition, functional profiling reveals the metabolic pathways, gene families, and biochemical processes encoded within the microbiome. In many systems, function is more informative than taxonomy: different microbial species can perform similar metabolic roles, and it is these functions—such as short-chain fatty acid production, vitamin biosynthesis, nitrogen fixation, or antimicrobial resistance—that directly influence host health, disease progression, and ecosystem dynamics.
+
+By reconstructing functional capacity from DNA sequence data, researchers can generate mechanistic hypotheses about how microbial communities impact their environment or host. Functional annotation enables the identification of metabolic pathways linked to clinical phenotypes, environmental processes, or pathogen virulence, and provides a foundation for integrating multi-omics data such as transcriptomics, proteomics, and metabolomics. When combined with genome-resolved approaches (e.g., annotation of metagenome-assembled genomes), functional prediction also allows us to determine which specific organisms encode particular traits, enabling deeper ecological and translational insights.
+
+![Functional prediction and annotation mindmap]("images/Functional Annotation Mind Map.png")
+
+## Goal of this module: 
+
+This module aims to provide participants with the knowledge and practical skills to predict functional potential from shotgun metagenomic data. Participants will learn how to infer functional capacity and genome-resolved metabolic potential using complementary approaches based on quality controlled reads and metagenome-assembled genomes.
+
+## Learning outcomes
+
+By the end of this module, participants will be able to
+
+* Explain the principles of functional prediction from shotgun metagenomic data, including the distinction between community-level functional capacity and genome-resolved metabolic potential.
+
+* Apply computational tools (e.g., HUMAnN and Prokka) to quality-controlled metagenomic reads and metagenome-assembled genomes (MAGs) in order to generate functional annotation outputs.
+
+* Interpret and compare community-level functional profiles and genome-resolved annotations to infer biologically meaningful insights about metabolic potential within microbial communities.
+
+## HUMAnN
+HUMAnN (The HMP Unified Metabolic Analysis Network) is a bioinformatics tool used to profile the functional potential of microbial communities from shotgun metagenomic sequencing data. It takes quality-controlled DNA reads as input and maps them to reference databases to identify gene families and reconstruct metabolic pathways. In simple terms, HUMAnN helps determine what biological functions are encoded within a microbiome.
+
+The software quantifies the relative abundance of genes and pathways across samples, producing tables that can be used for statistical analysis and comparison. It can also generate stratified outputs that link specific functions to contributing microbial taxa. This allows researchers to move beyond identifying which organisms are present and instead understand what metabolic activities the community is capable of performing.
+
+### References: 
+Website: [https://huttenhower.sph.harvard.edu/humann/](https://huttenhower.sph.harvard.edu/humann/)
+
+Publication:
+Abubucker S., et al. (2012) Metabolic Reconstruction for Metagenomic Data and Its Application to the Human Microbiome. PLoS Computational Biology (this earlier work describes the original HUMAnN approach for functional profiling from metagenomes). [https://journals.plos.org/ploscompbiol/article?id=10.1371%2Fjournal.pcbi.1002358](https://journals.plos.org/ploscompbiol/article?id=10.1371%2Fjournal.pcbi.1002358)
+
+## Prokka
+Prokka is a rapid genome annotation tool designed for the functional annotation of prokaryotic genomes, including bacterial and archaeal isolates and metagenome-assembled genomes (MAGs). It takes assembled genome sequences (FASTA files) as input and predicts coding sequences (CDS), rRNA and tRNA genes, and other genomic features. Prokka assigns putative functions to genes by comparing them against curated reference databases, producing standardized annotation files suitable for downstream analysis.
+
+By annotating MAGs, Prokka enables genome-resolved interpretation of metabolic potential, allowing researchers to determine which specific organism encodes particular genes or pathways. This complements community-level functional profiling tools such as HUMAnN by linking function directly to reconstructed genomes. The output files (e.g., GFF, GBK, TSV, FAA) can be used for pathway analysis, comparative genomics, and integration with other functional databases.
+
+### References: 
+Prokka GitHub repository (software and documentation):
+[https://github.com/tseemann/prokka](https://github.com/tseemann/prokka)
+
+Publication:
+Seemann T. (2014). Prokka: rapid prokaryotic genome annotation. Bioinformatics, 30(14), 2068–2069.
+[https://doi.org/10.1093/bioinformatics/btu153](https://doi.org/10.1093/bioinformatics/btu153)
 
 ## When to use either HUMAnN or Prokka/Bakta 
 
