@@ -115,7 +115,7 @@ Functional outputs represent **community-level functional capacity** infered fro
 # Exercise 
 The next part will explain how to run HUMAnN on one sample.
 
-If you are interested in learning how to run HUMAnN on multiple samples, please go to [Running_HUMAnN_on_an_HPC_using _Nextflow.md](Running_HUMAnN_on_an_HPC_using _Nextflow.md).
+If you are interested in learning how to run HUMAnN on multiple samples, please go to [Running_HUMAnN_on_an_HPC_using _Nextflow.md](Running_HUMAnN_on_an_HPC_using_Nextflow.md).
 
 # Running the pipeline on one sample(live demo)
 
