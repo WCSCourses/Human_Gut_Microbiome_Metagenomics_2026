@@ -235,7 +235,7 @@ The resulting file contains the number of constant A, C, G, and T sites, which w
 
 There are several methods for inferring phylogenetic trees from sequence alignments. Regardless of the method, the goal is to construct a tree that represents the evolutionary relationships between species or genetic sequences.
 
-In this course, we will use **IQ-TREE**, which implements maximum likelihood methods for tree inference. **IQ-TREE** supports a wide range of sequence evolution models, allowing researchers to tailor analyses to their data and research questions. Additionally, it includes **ModelFinder**, which can automatically identify the most appropriate substitution model while accounting for model complexity.
+In this course, we will use <span style="color:#7B61FF;">IQ-TREE</span>, which implements maximum likelihood methods for tree inference. **IQ-TREE** supports a wide range of sequence evolution models, allowing researchers to tailor analyses to their data and research questions. Additionally, it includes **ModelFinder**, which can automatically identify the most appropriate substitution model while accounting for model complexity.
 
 We will run IQ-TREE on the output from snp-sites, i.e., using the variable sites extracted from the core genome alignment:
 
