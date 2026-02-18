@@ -1,9 +1,3 @@
----
-title: "Module 5: Functional prediction and annotation"
-author: "Luicer"
-format: html
----
-
 # Module 5: Functional prediction and annotation from shotgun metagenomic data
 
 ## Introduction
@@ -12,7 +6,7 @@ Functional prediction and annotation from shotgun metagenomic data are essential
 
 By reconstructing functional capacity from DNA sequence data, researchers can generate mechanistic hypotheses about how microbial communities impact their environment or host. Functional annotation enables the identification of metabolic pathways linked to clinical phenotypes, environmental processes, or pathogen virulence, and provides a foundation for integrating multi-omics data such as transcriptomics, proteomics, and metabolomics. When combined with genome-resolved approaches (e.g., annotation of metagenome-assembled genomes), functional prediction also allows us to determine which specific organisms encode particular traits, enabling deeper ecological and translational insights.
 
-![Functional prediction and annotation mindmap]("images/Functional Annotation Mind Map.png")
+![Functional prediction and annotation mindmap](images/Functional_Annotation_Mind_Map.png)
 
 ## Goal of this module: 
 
