@@ -46,7 +46,7 @@ Publication:
 Seemann T. (2014). Prokka: rapid prokaryotic genome annotation. Bioinformatics, 30(14), 2068–2069.
 [https://doi.org/10.1093/bioinformatics/btu153](https://doi.org/10.1093/bioinformatics/btu153)
 
-## When to use either HUMAnN or Prokka/Bakta 
+## When to use either HUMAnN or Prokka
 
 Use HUMAnN when:
 - You want quantitative community-level comparisons
