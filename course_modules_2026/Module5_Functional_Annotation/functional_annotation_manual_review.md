@@ -66,6 +66,21 @@ Both are necessary for robust microbiome functional interpretation.
 | HUMAnN3 | Short reads | Relative abundance of pathways | Community-level functional capacity |
 | Prokka on MAGs | Genome FASTA | Annotated genes & CDS | Genome-resolved functional potential |
 
+## Useful concepts
+
+* **MetaPhlAn (Metagenomic Phylogenetic Analysis)**
+A computational tool used to profile the composition of microbial communities from metagenomic sequencing data using clade-specific marker genes.
+
+* **ChocoPhlAn**
+A reference database used by HUMAnN that contains annotated microbial genomes and gene sequences, enabling species-level functional profiling of metagenomic samples.
+
+* **UniRef (UniProt Reference Clusters)**
+A set of clustered protein sequence databases (UniRef100, UniRef90, UniRef50) that group similar sequences together to reduce redundancy and improve computational efficiency in sequence analysis.
+
+* **Gene families**
+Groups of genes that share a common evolutionary origin and have similar sequences and often similar biological functions.
+
+
 # Part I — Community-level functional profiling (HUMAnN3)
 ## Overview
 
@@ -88,13 +103,6 @@ HUMAnN3 (Community-level function)
 Normalize & Merge
 ```
 ---
-
-# 1. Scientific background
-
-Shotgun metagenomic sequencing generates millions of short DNA reads per sample. While taxonomic profiling tells us *who is present*, functional profiling answers:
-
-> **What can this microbial community do?**
-
 HUMAnN3 (The HMP Unified Metabolic Analysis Network) reconstructs:
 
 - Gene families (e.g., UniRef)
@@ -102,14 +110,6 @@ HUMAnN3 (The HMP Unified Metabolic Analysis Network) reconstructs:
 - Stratified functional contributions by taxa
 
 Functional outputs represent **community-level functional capacity** infered from reads, not genome completeness and they tell you “What functions are abundant in this microbial community?”
-
-## What you will do
-1. Set up your environment and HUMAnN databases  
-2. Run HUMAnN3 on QC’d FASTQ files using Nextflow (Slurm)  
-3. Normalize gene families and pathway abundance tables to relative abundance  
-4. Merge per-sample outputs into cohort-level tables  
-5. Run basic sanity checks and prepare for downstream analysis
-
 ---
 
 # Exercise 
