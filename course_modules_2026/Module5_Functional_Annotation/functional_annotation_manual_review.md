@@ -118,19 +118,39 @@ The next part will explain how to run HUMAnN on one sample.
 If you are interested in learning how to run HUMAnN on multiple samples, please go to [Running_HUMAnN_on_an_HPC_using _Nextflow.md](Running_HUMAnN_on_an_HPC_using_Nextflow.md).
 
 # Running the pipeline on one sample(live demo)
+Download and HuMAnN pipeline from biobakery as indicated in [Running_HUMAnN_on_an_HPC_using _Nextflow.md](Running_HUMAnN_on_an_HPC_using_Nextflow.md). Ensure the databases are updated and the paths for the databases are set correctly. Also remember to activate your mamba environment before running the HuMAnN pipeline. 
+
+### Create a clean folder for this module and place the pipeline files inside it
+```bash
+mkdir -p module_humann
+cd module_humann
+mkdir -p humann_output
+```
+> **Recommended layout and make the dir's:**
+```text
+demo/qc_cleaned_reads/  # INPUT_DIR points here (contains cleaned from Module 1 *fastq.gz)
+module_humann/
+  humann_output/     # OUTPUT_DIR points here (created during run)
+```
+
+### Create/activate a dedicated conda/mamba environment
+```bash
+mamba create -n phlan3 -c conda-forge -c bioconda -c biobakery metaphlan=3.0 humann=3.9
+mamba activate phlan3
+```
 
 ## Step 1 — Choose one FASTQ file
 
 Example:
 ```bash
-mkdir -p humann_output/Sample1
-qc_cleaned_reads/Sample1.fastq.gz
+mkdir -p /humann_output/Sample1
+qc_cleaned_reads/Sample1_cleaned.fastq.gz
 ```
 
 ## Step 2 — Run HUMAnN directly
 ```bash
 humann \
-  --input qc_cleaned_reads/Sample1.fastq.gz \
+  --input /demo/qc_cleaned_reads/Sample1_cleaned.fastq.gz \
   --output humann_output/Sample1 \
   --threads 8 \
   --resume
