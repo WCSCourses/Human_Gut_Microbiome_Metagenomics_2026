@@ -17,7 +17,7 @@
 ---
 ## Phylogenetic Tree Inference
 ---
-
+To determine how best to proceed with phylogenetic construction, it is important to understand the characteristics of the bacteria species you are working with i.e. understand the genetic diversity in your bacteria and whether or not it recombines. Approach used to build a tree for TB genomes will differ from the methods you would use to build a tree for Escherichia coli or Campylobacter.
 ### Tree Topology
 
 A phylogenetic tree is a graph representing evolutionary history and shared ancestry. It depicts the lines of evolutionary descent of different species, lineages or genes from a common ancestor. A phylogenetic tree is made of nodes and edges, with one edge connecting two nodes.
@@ -28,6 +28,7 @@ The topology describes how taxa are connected, independent of branch lengths.
 - **Branches** - Represent evolutionary relationships or the amount of change along lineages.
 - **Terminal nodes** - Are nodes in the tree connected to only one edge and are usually associated with the data, such as a genome sequence. A node can represent an extinct species or a sampled pathogen.
 - **Internal nodes** - Represent the most recent common ancestors of groups of terminal nodes, and do not directly correspond to the observed data. They are hypothetical ancestors inferred from the observed genome sequences at the tips of the tree.
+- **clade** - Is a set of all terminal nodes descending from the same ancestor. Each branch and internal node is associated with a clade. If trees have the same clade we say that they have the same topology. If trees have the same clades and same branch lengths, the two trees represent the same evolutionary history.
 
 ### Applications of Phylogenetic Trees
 
@@ -57,7 +58,7 @@ Common tree inference approaches include:
 
 #### Distance-based methods
 These are the simplest and fastest phylogenetic methods, they are often a useful way to have a quick look at your data before running more robust phylogenetic methods.
-It starts by generating a matrix of pairwise distances (distance matrix) between all samples and then infer a phylogenetic relationship using UPGMA or Neigbour-joining.
+It starts by generating a matrix of pairwise distances (distance matrix) between all samples in a multiple sequence alignment and then infer a phylogenetic relationship using UPGMA or Neigbour-joining.
 
 #### Parsimony methods
 Maximum parsimony method assume that the best phylogenetic tree requires the fewest number of mutations to explain the data.
@@ -65,10 +66,10 @@ Maximum parsimony method assume that the best phylogenetic tree requires the few
 Maximum parsimony is simple method and is very fast to run. However, because its always the shortest tree, compared to the hypothetical “true” tree it will often underestimate the actual evolutionary change that may have occurred.
 
 #### Maximum likelihood methods
-Maximum likelihood is the most commonly used phylogentic method in bacterial genomics. It evaluates alternative tree topologies using probabilistic models of sequence evolution.
-Compared with maximum parsimony, it offers greater statistical flexibility by permitting variation in evolutionary rates across different lineages and sites. However, this improved modelling approach comes with substantial computational demands than distance-based and Parsimony approaches.  
+Maximum likelihood is the most commonly used phylogentic method in bacterial genomics. It evaluates alternative tree topologies using probabilistic models of genome evolution.
+Compared with maximum parsimony, it offers greater statistical flexibility by permitting varying rates of evolution across different lineages and sites. However, this improved modelling approach comes with substantial computational demands than distance-based and Parsimony approaches.  
 
-Common nucleotide substitution models include **Jukes-Cantor** model (JC69), which assumes only a single mutation rate across all nucleotides, and **Hasegawa-Kishino-Yano** model (HKY85), which assumes different mutation rates and accounts for unequal base frequencies. More complex models such as **General time reversible (GTR)** allow different substitution rates for each nucleotide pair.
+Common nucleotide substitution models include **Jukes-Cantor** model (JC69), which assumes only a single mutation rate across all nucleotides, and **Hasegawa-Kishino-Yano** model (HKY85), which assumes different mutation rates and accounts for unequal base frequencies. The simplest models to use such as **General time reversible (GTR)** allow different substitution rates for each nucleotide pair.
 
 Additional assumptions can also be incorperated into substitution models. A proportion of sites may be specified as constant sites (invariant sites), meaning they are assumed not to undergo mutation. Rate heterogeneity among the remaining sites can be modeled using a gamma distribution, typically discretised into four categories (+G4).
 
@@ -78,7 +79,7 @@ Maximum likelihood software commonly used to infer phylogenetics include **[Fast
 
 ### Assessing Tree Uncertainty (Bootstrap)
 
-Bootstrap analysis evaluates confidence in tree branches by sampling a large number (say, 1000) of bootstap alignments. Each of this alignment has the same size as the original alignment, and is obtained by sampling with replacement the columns of the original alignment; in each bootstrap alignment some of the columns of the original alignment will usually be absent, and some other columns would be represented multiple times. We then infer a bootstrap tree from each bootstrap alignment. Because the bootstrap alignments differ from each other and from the original alignment, the bootstrap trees might differ between each other and from the original tree. The **bootstrap support** of a branch in the original tree is the proportion of times in which this branch is present in the bootstrap trees.
+Bootstrap analysis evaluates confidence in a tree or individual 6tree branches by sampling a large number (say, 1000) of bootstap alignments. Each of this alignment has the same size as the original alignment, and is obtained by sampling with replacement the columns of the original alignment; in each bootstrap alignment some of the columns of the original alignment will usually be absent, and some other columns would be represented multiple times. We then infer a bootstrap tree from each bootstrap alignment. Because the bootstrap alignments differ from each other and from the original alignment, the bootstrap trees might differ between each other and from the original tree. The **bootstrap support** of a branch in the original tree is the proportion of times in which this branch is present in the bootstrap trees.
 
 ---
 
@@ -99,6 +100,54 @@ The two most commonly used multiple sequence alignments in bacterial genomics ar
 ---
 ## Building a phylogenetic tree
 ---
+### Marker gene based phylogenetic construction
+In this section, you will learn how to:
+- identify marker genes
+- generate multiple sequence alignment
+- Build a phylogenetic tree
+
+```bash
+# load modules
+mamba activate gtdbtk
+mamba activate fasttreemp
+```
+
+#### Identify Marker Genes
+GTDB-Tk identifies conserved marker genes that are shared across bacteria.
+
+```bash
+gtdbtk gtdbtk identify --genome_dir . -x fa --cpus 24 --out_dir gtdbtk_identify_outdir
+```
+
+#### Align Marker genes
+This step aligns marker genes across all genomes
+
+```bash
+gtdbtk gtdbtk align --identify_dir ./gtdbtk_identify_outdir --skip_trimming --skip_gtdb_refs --out_dir gtdbtk_align_outdir --cpus 24
+```
+
+This code aligns marker genes and produces a multiple sequence alignment
+#### Unzip the alignment file before building the tree
+
+```bash
+# change directory
+cd gtdbtk_align_outdir/align/
+
+# unzip
+gunzip *.gz
+```
+
+#### Build the phylogenetic tree
+
+The code below builds a phylogenetic tree using maximum likelihood methods and outputs a tree file in newick format
+
+```bash
+fasttree \
+FastTreeMP \
+-wag \
+-out gtdbtk_fullalign_bacteria.nwk \
+gtdbtk_align_outdir/align/gtdbtk.bac120.user_msa.fasta
+```
 
 ### Core gene based Phylogenetic tree construction
 #### Annotate all .fa files with prokka/Bakta using bsub.py commands
