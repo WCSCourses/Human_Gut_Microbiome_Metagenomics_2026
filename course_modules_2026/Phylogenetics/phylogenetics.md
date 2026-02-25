@@ -120,13 +120,12 @@ gtdbtk gtdbtk identify --genome_dir . -x fa --cpus 24 --out_dir gtdbtk_identify_
 ```
 
 #### Align Marker genes
-This step aligns marker genes across all genomes
+This step aligns marker genes across all genomes and produces a multiple sequence alignment
 
 ```bash
 gtdbtk gtdbtk align --identify_dir ./gtdbtk_identify_outdir --skip_trimming --skip_gtdb_refs --out_dir gtdbtk_align_outdir --cpus 24
 ```
 
-This code aligns marker genes and produces a multiple sequence alignment
 #### Unzip the alignment file before building the tree
 
 ```bash
