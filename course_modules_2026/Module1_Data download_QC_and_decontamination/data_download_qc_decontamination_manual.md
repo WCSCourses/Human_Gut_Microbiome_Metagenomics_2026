@@ -187,17 +187,11 @@ If not removed, these artefacts can:
 -	Inflate diversity estimates
 -	Reduce assembly quality
 
-We use fastp for trimming and filtering.
+We will use TrimGalore for trimming and filtering. Another software that you can explore in your own time is Fastp for trimming.
 
-### Step 1 — Run fastp
+### Step 1 — Run TrimGalore
 ```bash
-fastp \
-  -i sample_1.fastq.gz \
-  -I sample_2.fastq.gz \
-  -o sample_clean_1.fastq.gz \
-  -O sample_clean_2.fastq.gz \
-  --detect_adapter_for_pe \
-  --thread 8
+trim_galore --paired sample_1.fastq.gz sample_2.fastq.gz
   ```
 
   What this does:
