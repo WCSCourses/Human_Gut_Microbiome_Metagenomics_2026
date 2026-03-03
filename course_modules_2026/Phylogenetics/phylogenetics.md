@@ -106,6 +106,7 @@ In this section, you will learn how to:
 - generate multiple sequence alignment
 - Build a phylogenetic tree
 
+
 ```bash
 # load modules
 mamba activate gtdbtk
@@ -234,7 +235,7 @@ s3  C T T A G C A G A T
       ↑         ↑   ↑
 ```
 
-For the purposes of phylogenetic tree construction, we use only the variable sites to assess the relationship between sequences. Therefore we can simplify our alignment by extract only the variable positions:
+For the purposes of phylogenetic tree construction, we use only the variable sites to assess the relationship between sequences. Therefore we can simplify our alignment by extracting only the variable positions:
 
 ```text
 s1  G T G
