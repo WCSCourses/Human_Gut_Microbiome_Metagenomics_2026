@@ -368,7 +368,7 @@ The read_qc module performs read trimming and host decontamination in an automat
 ![readqc_module](images/readqc_module.png)
 
 To run the preprocessing using the metaWRAP pipeline, see there:
-[qc_and_decontam_with_metaWRAP.md](qc_and_decontam_with_metaWRAP.md).
+[Module1_QC_metaWRAP.md](Module1_QC_metaWRAP.md).
 
 
 > **Important reference:** 
