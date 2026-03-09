@@ -179,6 +179,7 @@ Run the downloader:
 # Part III — Initial quality control
 The major preprocessing steps in shotgun metagenomic analysis are illustrated below. 
 ![preprocessing](images/preprocessing.png)
+
 Several software tools can be combined to evaluate sequencing quality, trim technical artefacts, and remove host contamination prior to downstream analysis.
 
 In this standalone workflow, we use:
@@ -366,7 +367,7 @@ Each module in metaWRAP can be run independently, allowing researchers to incorp
 The read_qc module performs read trimming and host decontamination in an automated pipeline.
 ![readqc_module](images/readqc_module.png)
 
-To learn how to run the preprocessing pipeline using metaWRAP, see there:
+To run the preprocessing using the metaWRAP pipeline, see there:
 [qc_and_decontam_with_metaWRAP.md](qc_and_decontam_with_metaWRAP.md).
 
 
