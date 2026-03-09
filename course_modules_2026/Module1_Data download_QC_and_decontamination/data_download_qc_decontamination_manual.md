@@ -87,26 +87,17 @@ Different sequencing platforms produce different error profiles:
 > **Important paper:**
 Salter SJ. BMC Biology (2014) — Reagent contamination impacts microbiome studies.
 
-# Part II — Downloading Data from ENA
+# Part II — Downloading data from ENA
 The International Nucleotide Sequence Database Collaboration (INSDC) comprises three synchronized global archives:
 
 - National Center for Biotechnology Information (NCBI) (USA)
 - European Nucleotide Archive (ENA) (UK) 
 - DNA Data Bank of Japan (DDBJ).
 
- For this training we will download data from ENA.
- We use ENADownloader.
- ## Step 1 — Load module
- ```bash
- module load enadownloader/v2.3.5-4ac05c8f
- ```
-
- ## Step 2 — Download study-level data
- ENA allows pulling one sample ID or a list of sample IDs
+We can download the metagenomic data from the database one sample at a time using  ftp or wget or through SRA toolkit or ENADownloader for a list of samples.  For this training we will download data from ENA.
  
- To download fastq files, you can use SRA toolkit, ftp or wget.
-
- For a single file use 
+ ## Step 1a — Live demo on how to download metagenomic raw data 
+ To download single fastq read files
  ```bash
  cd /path_to_your_folder
  wget -c ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR305/019/SRR30598619/SRR30598619_1.fastq.gz
@@ -114,37 +105,62 @@ The International Nucleotide Sequence Database Collaboration (INSDC) comprises t
  ```
  -c allows resume if the download is interrupted.
 
- Alternatively if you have a long list of samples and you already have the project ID, then 
 
-  Create a file with all the accession IDs and save as .txt:
+Place the raw sequencing reads into a new folder
+```bash
+mkdir RAW_READS
+mv *fastq.gz RAW_READS
+
+ls RAW_READS
+	SRR30598619_1.fastq.gz
+	SRR30598619_2.fastq.gz
+	SRR30598621_1.fastq.gz
+	SRR30598621_2.fastq.gz
+	SRR30598622_1.fastq.gz
+	SRR30598622_2.fastq.gz
+```
+
+ 
+
+ ## Step 1b — Downloading metagenomic data using tools (ENA downloader/SRA toolkit)
+ Alternatively you can use downloaders such as ENA or SRA toolkit if you have a long list of samples and you already have the project ID, then 
+  Create a file with all the accession IDs [SRR30598619, SRR30598621, SRR30598622] and save as .txt:
  ```text
  study_accession_list.txt
  ```
  This file contains the study ID accession number (e.g., PRJNAxxxxx).
-
- Example content:
-
+ Load the already downloaded module to enable downloading of all the samples in the list using ENA.
+ ```bash
+ module load enadownloader/v2.3.5-4ac05c8f
+ ```
  Run:
  ```bash
  enadownloader -t study -i study_accession_list.txt -o ena_fastqs -d
 ```
  This generates:
  ```text
- ena_fastqs/
-  SRRxxxxx_1.fastq.gz
-  SRRxxxxx_2.fastq.gz
+run_accession_list.txt
+SRR30598619
+SRR30598621
+SRR30598622
 ```
+
+
 # Part III — Initial quality control
+In microbiome studies majority of the steps taken in preprocessing are as shown in the schematic below. 
+![preprocessing](images/preprocessing.png)
+There are several softwares that can be used for checking the quality and cleaning your reads off contamination and deduplicating for further downstream analysis 
 
 We use:
 - fastqc
 - multiqc
-- fastp
+- Trimmomatic
 
 ## Step 1 — Run FastQC
+FastQC is a quality control tool for high throughput sequence data. It provides a detailed analysis of sequence quality and other metrics that can be used to identify potential problems in the data.
 ```bash
-fastqc *_1.fastq.gz *_2.fastq.gz
-fastqc data/demo -o data/
+mkdir -p QC/fastqc_raw
+fastqc RAW_READS/*.fastq.gz -o QC/fastqc_raw
 ```
 FastQC evaluates:
 - Per-base sequence quality
@@ -153,10 +169,14 @@ FastQC evaluates:
 - GC content
 - Sequence duplication levels
 
+The output is a html file and an example is as shown below
+![preqc_report](images/preqc_report.png)
 
 ## Step 2 — Combine reports using MultiQC
+You can combine all the html reports into one large html report using mutliqc to be able to visualize all samples simultanoeusly.
 ```bash
-multiqc .
+mkdir -p QC/multiqc_raw
+multiqc QC/fastqc_raw -o QC/multiqc_raw
 ```
 This produces:
 - multiqc_report.html (allows cross-sample comparison)
@@ -170,95 +190,160 @@ MultiQC allows cross-sample comparison and identification of:
 # Part IV - Correcting identified problems
 Once quality issues are detected, the next step is to correct them.
 
-Quality correction typically involves two major processes:
-	1.	Adapter trimming and quality filtering
+Pre-processing typically involves two key operations:
+	1.	Read trimming for adapter and quality filtering
 	2.	Host DNA removal
 
-These steps transform raw sequencing reads into biologically interpretable datasets suitable for downstream analysis.
+These steps convert raw sequencing reads into high-quality microbial reads suitable for downstream analysis such as taxonomic profiling, functional annotation, and genome assembly.
 
-## 1. Adapter Trimming and Quality Filtering
-Sequencing reads often contain:
-- Adapter remnants from library preparation
--	Low-quality bases (typically toward the 3′ end)
--	Very short reads that align unreliably
+In this section we perform these steps manually using standalone tools. Later in the module we will show how the same tasks can be executed using the metaWRAP read_qc pipeline, which automates these steps.
+___
 
-If not removed, these artefacts can:
--	Cause false alignments
--	Inflate diversity estimates
--	Reduce assembly quality
 
-We will use TrimGalore for trimming and filtering. Another software that you can explore in your own time is Fastp for trimming.
+## 1. Adapter trimming and quality filtering
+During library preparation, short synthetic sequences called adapters are attached to DNA fragments so they can bind to the sequencing flow cell.
+
+Sometimes these adapters remain in the final sequencing reads. In addition, sequencing quality often declines toward the 3′ end of reads, producing low-confidence bases.
+
+Typical issues include:
+- Adapter contamination
+- Low-quality bases
+- Short fragments
+- PCR artefacts
+
+If not removed, these issues can:
+- introduce false alignments
+- inflate microbial diversity estimates
+- reduce assembly quality
+- bias downstream taxonomic and functional analyses
+
+To correct these issues we perform read trimming and filtering.
+___
+
 
 ### Step 1 — Run TrimGalore
+TrimGalore is a wrapper around Cutadapt and FastQC that performs adapter removal and quality trimming.
 ```bash
-trim_galore --paired sample_1.fastq.gz sample_2.fastq.gz
+trim_galore --paired SRR30598619_1.fastq.gz SRR30598619_2.fastq.gz
   ```
-
-  What this does:
+What TrimGalore does
 - Detects and removes adapter sequences
 - Trims low-quality bases
-- Filters short reads
-- Generates an HTML quality report
+- Removes very short reads
+- Produces trimmed paired-end reads
 
-Output files:
-	•	sample_clean_1.fastq.gz
-	•	sample_clean_2.fastq.gz
-	•	fastp.html
-	•	fastp.jsonWhy trimming matters
 
-Why trimming matters
-Removing low-quality bases:
-	•	Improves mapping accuracy
-	•	Reduces false variant calls
-	•	Enhances taxonomic classification
-	•	Improves assembly continuity
+Output files
+Typical outputs include:
+```text
+SRR30598619_1_val_1.fq.gz
+SRR30598619_2_val_2.fq.gz
+SRR30598619_1_trimming_report.txt
+SRR30598619_2_trimming_report.txt
+```
+
+These trimmed reads will be used for host removal.
+#### Why trimming matters
+Trimming improves the reliability of downstream analyses because it:
+- increases mapping accuracy
+- reduces false taxonomic assignments
+- improves metagenome assembly
+- removes technical artefacts from sequencing
 
   
-## 2. Post-Trimming Quality Validation
-Quality correction must always be validated.
+## 2. Post-trimming quality validation
+Quality correction should always be verified.
 
-Re-run FastQC on trimmed reads:
+Re-run FastQC on the trimmed reads:
 ```bash
-fastqc sample_clean_1.fastq.gz sample_clean_2.fastq.gz
+fastqc SRR30598619_1_val_1.fq.gz SRR30598619_2_val_2.fq.gz
 multiqc .
 ```
-Compare:
-	•	Per-base quality distribution (should improve)
-	•	Adapter content (should be removed)
-	•	Overrepresented sequences (should decrease)
+![postqc_report](images/postqc_report.png)
+Compare the pre-QC and post-QC reports:
+Expected improvements:
+- improved per-base quality scores
+- reduced adapter contamination
+- fewer overrepresented sequences
 
-This confirms that trimming was successful.
+This confirms that trimming successfully improved the data quality.
 
 ## 3. Host DNA Removal
-In host-associated microbiome studies (e.g., gut microbiome), host DNA contamination is common.
+In host-associated microbiome studies such as gut microbiome sequencing, a fraction of reads may originate from the host.
 
-If not removed:
-	•	Human genes may appear in functional profiles
-	•	Host reads may dominate assemblies
-	•	Sensitive genomic information may remain in datasets
+For example:
+- human intestinal cells
+- host mitochondrial DNA
+- epithelial tissue contamination
 
-We use kneaddata, which internally uses Bowtie2 to align and remove host reads.
+If host reads are not removed:
+- host genes may appear in functional profiles
+- microbial assembly may become inefficient
+- privacy risks may arise in human datasets
 
-### Step 2 — Run kneaddata
+Therefore host reads must be filtered before downstream analysis.
+
+metaWRAP performs host filtering using BMTagger.
+Here we demonstrate the same principle using Bowtie2, which aligns sequencing reads to the host reference genome.
+
+### Step 2 — Build the host genome index
+If you do not already have an index for the host genome, build one using Bowtie2.
+Example using the human genome:
 ``` bash
-kneaddata \
-  --input sample_clean_1.fastq.gz \
-  --input sample_clean_2.fastq.gz \
-  --reference-db /path/to/human_genome \
-  --output kneaddata_output \
-  --threads 8
+bowtie2-build hg38.fa hg38_index
   ```
-Output:
-	•	Cleaned microbial reads
-	•	Host reads (separated)
-	•	Log and summary report
+This step generates several index files required for alignment.
 
-What kneaddata does internally
-	1.	Aligns reads against the host reference genome
-	2.	Removes aligned reads
-	3.	Retains unaligned (microbial) reads
+### Step 3 — Align reads to the host genome
+Next, align trimmed reads to the host genome and keep only unmapped reads.
+```bash
+bowtie2 \
+  -x hg38_index \
+  -1 SRR30598619_1_val_1.fq.gz \
+  -2 SRR30598619_2_val_2.fq.gz \
+  --very-sensitive \
+  --threads 8 \
+  --un-conc-gz SRR30598619_dehosted.fastq.gz \
+  -S host_alignment.sam
+  ```
+What this command does
+	•	aligns reads against the host genome
+	•	writes host-aligned reads to the SAM file
+	•	writes unaligned paired reads to:
 
-## 4. Validate Host Removal
+```code
+SRR30598619_dehosted.1.fastq.gz
+SRR30598619_dehosted.2.fastq.gz
+```
+These files contain the clean microbial reads used in downstream analysis.
+
+## 4. Validate host removal
+After host filtering, inspect the Bowtie2 summary printed to the terminal.
+
+Example output:
+```code
+95% reads aligned to host
+5% reads retained
+````
+Key questions to ask:
+	•	Was host contamination expected?
+	•	Was the proportion unusually high?
+	•	Do enough reads remain for microbial analysis?
+
+If very high host contamination (>50–80%) is observed, this may indicate:
+	•	low microbial biomass
+	•	poor DNA extraction
+	•	sample handling issues
+
+Running FastQC again on the dehosted reads can confirm final data quality.
+
+These cleaned reads can then be used for:
+	•	taxonomic profiling
+	•	functional annotation
+	•	metagenome assembly
+	•	metagenome-assembled genome (MAG) reconstruction
+
+
 After host filtering:
 	•	Inspect kneaddata summary reports
 	•	Confirm proportion of reads removed
@@ -270,4 +355,25 @@ Questions to ask:
 	•	Does removal significantly reduce total reads?
 
 If >50% reads are host-derived, sample quality or extraction protocol may need review.
+___
+In large metagenomic projects with hundreds of samples, performing these steps manually becomes inefficient.
+# Using a workflow:
+Workflow systems such as metaWRAP automate the preprocessing stage through the read_qc module, which performs trimming and host decontamination in a single pipeline.
+
+The next section demonstrates how to perform the same preprocessing steps using metaWRAP.
+
+
+
+MetaWRAP aims to be an easy-to-use metagenomic wrapper suite that accomplishes the core tasks of metagenomic analysis from start to finish: read quality control, assembly, visualization, taxonomic profiling, extracting draft genomes (binning), and functional annotation. Additionally, metaWRAP takes bin extraction and analysis to the next level (see module overview below). While there is no single best approach for processing metagenomic data, metaWRAP is meant to be a fast and simple approach before you delve deeper into parameterization of your analysis. MetaWRAP can be applied to a variety of environments, including gut, water, and soil microbiomes (see metaWRAP paper for benchmarks). Each individual module of metaWRAP is a standalone program, which means you can use only the modules you are interested in for your data.
+
+![metaWRAP](images/metaWRAP.png)
+
+
+ If you are interested in learning how to run the QC and decontamination in on one sample or multiple samples using a pipeline please go to [qc_and_decontam_with_metaWRAP.md](qc_and_decontam_with_metaWRAP.md).
+
+Here is a schematic representation of the read_qc module specifically from metaWRAP
+![readqc_module](images/readqc_module.png)
+
+The resulting multiple sets of cleaned reads after host removal can then be used in further downstream analysis including he assembly to generate metagenomic assembled genomes (MAGS), taxonomic assignment and functional annotation.
+
 
