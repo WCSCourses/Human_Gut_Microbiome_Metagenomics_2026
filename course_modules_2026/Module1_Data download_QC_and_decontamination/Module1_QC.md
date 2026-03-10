@@ -2,8 +2,7 @@
 # Module 1: Data Download, Quality Control and Decontamination
 ---
 ## Module leads
-Boniface Gichuki
-Luicer Anne Ingasia Olubayo
+Boniface Gichuki and Luicer Anne Ingasia Olubayo
 
 ---
 # Introduction
@@ -23,7 +22,7 @@ In this module, participants will learn how to download shotgun metagenomic data
 ## Goal of this module
 The goal of this module is to prepare raw shotgun metagenomic sequencing reads for downstream microbiome analysis by performing quality control, read trimming, and host decontamination. This is because poor-quality or contaminated reads can lead to inaccurate taxonomic and functional profiles, contaminant-driven genome assemblies, and misleading biological conclusions. Quality control is therefore essential before any downstream metagenomic analysis.
 
-## Learning Outcomes
+## Learning outcomes
 
 By the end of this module, participants will be able to:
 1.	Download shotgun metagenomic sequencing data from ENA.
@@ -277,7 +276,7 @@ Example post-QC report:
 ![postqc_report](images/postqc_report.png)
 
 
-## 3. Host DNA Removal
+## 3. Host DNA removal
 In host-associated microbiome datasets, a proportion of sequencing reads may originate from host cells rather than microbes. Removing host DNA is therefore necessary to ensure that downstream analyses focus on microbial sequences.
 
 In the metaWRAP pipeline, host filtering is performed using BMTagger, an alignment-based tool designed to identify and remove host-derived reads. Here we demonstrate the same principle using Bowtie2, which aligns reads to a host reference genome and retains only unmapped reads.
