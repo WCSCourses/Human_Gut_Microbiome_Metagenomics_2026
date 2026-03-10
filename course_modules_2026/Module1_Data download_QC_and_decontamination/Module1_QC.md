@@ -1,6 +1,11 @@
 
 # Module 1: Data Download, Quality Control and Decontamination
 ---
+## Module leads
+Boniface Gichuki
+Luicer Anne Ingasia Olubayo
+
+---
 # Introduction
 
 Quality control and decontamination are foundational pre-processing steps in metagenomic analysis because every downstream result depends on the integrity of the raw sequencing data. Before interpreting microbial community structure, functional potential, or reconstructing genomes, researchers must ensure that sequencing reads accurately represent the biological sample rather than technical artefacts.
@@ -169,11 +174,11 @@ Load the ENA downloader module:
  ```
 Run the downloader:
  ```bash
- enadownloader -t run -i run_accession_list.txt -o ena_fastqs -d
+ enadownloader -t run -i run_accession_list.txt -o RAW_READS -d
 ```
  This generates:
  ```code
- ena_fastqs/
+RAW_READS/
      ├── SRR30598619_1.fastq.gz
      ├── SRR30598619_2.fastq.gz
      ├── SRR30598621_1.fastq.gz
@@ -181,6 +186,9 @@ Run the downloader:
      ├── SRR30598622_1.fastq.gz
      └── SRR30598622_2.fastq.gz
 ```
+
+The downloaded FASTQ files are written directly to the `RAW_READS` directory, which serves as the starting point for downstream quality control.
+
 ---
 
 # Part III — Initial quality control
