@@ -184,17 +184,10 @@ Run the downloader:
 ---
 
 # Part III — Initial quality control
+In this section, we apply the tools introduced earlier to perform the key preprocessing steps required before downstream metagenomic analysis.
+
 The major preprocessing steps in shotgun metagenomic analysis are illustrated below. 
 ![preprocessing](images/preprocessing.png)
-
-Several software tools can be combined to evaluate sequencing quality, trim technical artefacts, and remove host contamination prior to downstream analysis.
-
-In this standalone workflow, we use:
-- FastQC for per-sample quality assessment
-- MultiQC for summarizing quality reports across samples
-- TrimGalore for adapter trimming and quality filtering
-- Bowtie2 for host read removal
-
 
 ## Step 1 — Run FastQC
 FastQC provides an overview of sequencing quality metrics.
