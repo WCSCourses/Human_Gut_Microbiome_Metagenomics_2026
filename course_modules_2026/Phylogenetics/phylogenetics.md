@@ -1,6 +1,6 @@
 # Building Phylogenetic Trees
 
-![Image of a DNA](images/DNA.png)
+![Image of a DNA](images/know_your_bug.png)
 
 ## Learning Objectives
 
