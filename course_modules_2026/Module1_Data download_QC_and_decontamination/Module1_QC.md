@@ -2,10 +2,15 @@
 # Module 1: Data Download, Quality Control and Decontamination
 ---
 ## Module leads
-Boniface Gichuki and Luicer Anne Ingasia Olubayo
+
+Boniface Gichuki   
+Luicer Anne Ingasia Olubayo
 
 ---
 # Introduction
+After library preparation and sequencing, the resulting raw reads enter the metagenomic bioinformatics workflow, where computational analyses transform large volumes of sequencing data into interpretable biological insights. The schematic below illustrates the overall metagenomic bioinformatics workflow that will be explored throughout this training.
+
+![overview](images/overview.png)
 
 Quality control and decontamination are foundational pre-processing steps in metagenomic analysis because every downstream result depends on the integrity of the raw sequencing data. Before interpreting microbial community structure, functional potential, or reconstructing genomes, researchers must ensure that sequencing reads accurately represent the biological sample rather than technical artefacts.
 

@@ -1,5 +1,11 @@
 # Module 5: Functional prediction and annotation from shotgun metagenomic data
+---
+## Module leads
 
+Boniface Gichuki   
+Luicer Anne Ingasia Olubayo
+
+---
 ## Introduction
 
 Functional prediction and annotation from shotgun metagenomic data are essential because they shift microbiome research from describing which organisms are present to understanding what biological functions they are capable of performing. While taxonomic profiling identifies community composition, functional profiling reveals the metabolic pathways, gene families, and biochemical processes encoded within the microbiome. In many systems, function is more informative than taxonomy: different microbial species can perform similar metabolic roles, and it is these functions—such as short-chain fatty acid production, vitamin biosynthesis, nitrogen fixation, or antimicrobial resistance—that directly influence host health, disease progression, and ecosystem dynamics.
@@ -140,18 +146,23 @@ mamba activate phlan3
 ```
 
 ## Step 1 — Choose one FASTQ file
-
+First combine or otherwise prepare the paired reads into the required input format.
 Example:
 ```bash
-mkdir -p /humann_output/Sample1
-qc_cleaned_reads/Sample1_cleaned.fastq.gz
+mkdir -p /humann_output/SRR30598619
+
+mkdir -p /humann_combined
+cd humann_combined
+cat DEHOSTED_READS/SRR30598619_dehosted.1.fastq.gz \
+    DEHOSTED_READS/SRR30598619_dehosted.2.fastq.gz \
+    > /humann_combined/SRR30598619_combined.fastq.gz
 ```
 
 ## Step 2 — Run HUMAnN directly
 ```bash
 humann \
-  --input /demo/qc_cleaned_reads/Sample1_cleaned.fastq.gz \
-  --output humann_output/Sample1 \
+  --input /humann_combined/SRR30598619_combined.fastq.gz \
+  --output /humann_output/SRR30598619 \
   --threads 8 \
   --resume
 ```

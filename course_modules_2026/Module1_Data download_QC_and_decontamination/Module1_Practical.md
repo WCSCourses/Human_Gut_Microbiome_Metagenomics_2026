@@ -82,9 +82,11 @@ multiqc QC/fastqc_raw -o QC/multiqc_raw
 ```
 Open the report:
 ```bash
-QC/multiqc_raw/multiqc_report.html
+xdg-open QC/multiqc_raw/multiqc_report.html
 ```
+OR
 
+Download multiqc_report.html to your local machine and open it in a web browser.
 ---
 ### Questions
 1. What is the average per-base quality score across the reads?

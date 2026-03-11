@@ -6,7 +6,7 @@ Note: This pipeline is only a guide. None of metaWRAP's modules are dependant of
 Note: you will need the bmtagger hg38 index to remove the human reads - see the metaWRAP database installation instructions. You may also use another host genome to filter against with the `-x` option. Alternatively, use the `--skip-bmtagger` flag of of the ReadQC module to only do the read trimming.
 
 Individually process each sample
-```
+```text
 mkdir READ_QC
 metawrap read_qc -1 RAW_READS/SRR30598619_1.fastq -2 RAW_READS/SRR30598619_2.fastq -t 24 -o READ_QC/SRR30598619
 metawrap read_qc -1 RAW_READS/SRR30598621_1.fastq -2 RAW_READS/SRR30598621_2.fastq -t 24 -o READ_QC/SRR30598621
@@ -14,7 +14,7 @@ metawrap read_qc -1 RAW_READS/SRR30598622_1.fastq -2 RAW_READS/SRR30598622_2.fas
 ```
 
 Alternatively, process all samples at the same time with a parallel for loop (especially if you have many samples):
-```
+```bash
 for F in RAW_READS/*_1.fastq; do 
 	R=${F%_*}_2.fastq
 	BASE=${F##*/}
@@ -29,7 +29,7 @@ Or as a one-liner: `for F in RAW_READS/*_1.fastq; do R=${F%_*}_2.fastq; BASE=${F
 Lets have a glance at one of the output folders: `ls READ_QC/SRR30598622`
 
 These are html reports of the read quality before and after QC:
-```
+```text
 post-QC_report
 pre-QC_report
 ```
@@ -41,13 +41,13 @@ Final QC'ed reads:
 
 
 These are the final trimmed and de-contaminated reads:
-```
+```text
 final_pure_reads_1.fastq
 final_pure_reads_2.fastq
 ```
 
 Move over the final QC'ed reads into a new folder
-```
+```text
 mkdir CLEAN_READS
 for i in READ_QC/*; do 
 	b=${i#*/}

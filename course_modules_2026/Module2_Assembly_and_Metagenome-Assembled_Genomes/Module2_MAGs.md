@@ -2,7 +2,8 @@
 
 ---
 ## Module leads
-Boniface Gichuki and Luicer Anne Ingasia Olubayo
+Boniface Gichuki   
+Luicer Anne Ingasia Olubayo
 
 ----
 # Introduction
@@ -221,7 +222,7 @@ The following software must be installed:
 ---
 # Input data
 
-he workflow begins with **quality-controlled, dehosted paired-end reads** generated in **Module 1**.
+The workflow begins with **quality-controlled, dehosted paired-end reads** generated in **Module 1**.
 
 For consistency with Module 1, we will continue using the example sample **SRR30598619**.
 

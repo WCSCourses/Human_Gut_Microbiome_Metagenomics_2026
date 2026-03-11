@@ -46,7 +46,7 @@ MAG_practical/
 For this exercise we will use **quality-controlled paired-end reads** generated during **Module 1**.
 
 ## Exercise 1 – Inspect the Assembly
-FFirst, we examine the assembly output.
+First, we examine the assembly output.
 
 Navigate to the assembly directory:
 
