@@ -1,6 +1,6 @@
 # Building Phylogenetic Trees
 
-![Image of a DNA](images/know_your_bug.png)
+![Image of know your bug](images/know_your_bug.png)
 
 ## Learning Objectives
 
@@ -18,6 +18,9 @@
 ## Phylogenetic Tree Inference
 ---
 To determine how best to proceed with phylogenetic construction, it is important to understand the characteristics of the bacteria species you are working with i.e. understand the genetic diversity in your bacteria and whether or not it recombines. Approach used to build a tree for TB genomes will differ from the methods you would use to build a tree for Escherichia coli or Campylobacter.
+
+![Example of newick tree format](images/Newick.png)
+
 ### Tree Topology
 
 A phylogenetic tree is a graph representing evolutionary history and shared ancestry. It depicts the lines of evolutionary descent of different species, lineages or genes from a common ancestor. A phylogenetic tree is made of nodes and edges, with one edge connecting two nodes.
@@ -63,6 +66,8 @@ It starts by generating a matrix of pairwise distances (distance matrix) between
 #### Parsimony methods
 Maximum parsimony method assume that the best phylogenetic tree requires the fewest number of mutations to explain the data.
 
+![Example of maximum parsimony tree](images/max_parsimony.png)
+
 Maximum parsimony is simple method and is very fast to run. However, because its always the shortest tree, compared to the hypothetical “true” tree it will often underestimate the actual evolutionary change that may have occurred.
 
 #### Maximum likelihood methods
@@ -70,6 +75,8 @@ Maximum likelihood is the most commonly used phylogentic method in bacterial gen
 Compared with maximum parsimony, it offers greater statistical flexibility by permitting varying rates of evolution across different lineages and sites. However, this improved modelling approach comes with substantial computational demands than distance-based and Parsimony approaches.  
 
 Common nucleotide substitution models include **Jukes-Cantor** model (JC69), which assumes only a single mutation rate across all nucleotides, and **Hasegawa-Kishino-Yano** model (HKY85), which assumes different mutation rates and accounts for unequal base frequencies. The simplest models to use such as **General time reversible (GTR)** allow different substitution rates for each nucleotide pair.
+
+![Example of maximum likelihood tree](images/phylo_ml.png)
 
 Additional assumptions can also be incorperated into substitution models. A proportion of sites may be specified as constant sites (invariant sites), meaning they are assumed not to undergo mutation. Rate heterogeneity among the remaining sites can be modeled using a gamma distribution, typically discretised into four categories (+G4).
 
