@@ -1,11 +1,5 @@
 # Building Phylogenetic Trees
 
-## Know your bug
-
-Understanding the genetic diversity, genome plasticity, and recombination patterns of the organism being studied is an important first step before performing genomic analyses. These factors influence the methods that should be applied. For instance, phylogenetic reconstruction approaches suitable for Mycobacterium tuberculosis may differ from those used for Escherichia coli. To support this decision-making process, a flowchart outlining recommended strategies based on dataset composition is provided. 
-
-![Image of know your bug](images/know_your_bug.png)
-
 ## Learning Objectives
 
 - Understand common methods of phylogenetic tree inference
@@ -18,14 +12,20 @@ Understanding the genetic diversity, genome plasticity, and recombination patter
 - [Building a Phylogenetic Tree](#building-a-phylogenetic-tree)
 - [Summary](#summary)
 
+
+Understanding the genetic diversity, genome plasticity, and recombination patterns of the organism under study is an essential first step before conducting genomic analyses, as these factors influence the choice of analytical methods. In particular, phylogenetic reconstruction strategies vary depending on the evolutionary characteristics of the species. For example, approaches used to infer phylogenetic relationships in Mycobacterium tuberculosis—a largely clonal organism—differ from those applied to more recombinogenic bacteria such as Escherichia coli or Campylobacter. To guide the selection of appropriate methods for phylogenetic analysis, a flowchart outlining recommended strategies based on dataset composition is provided.
+
+## Know your bug
+![Image of know your bug](images/know_your_bug.png)
+
 ---
 ## Phylogenetic Tree Inference
 ---
-To determine how best to proceed with phylogenetic construction, it is important to understand the characteristics of the bacteria species you are working with i.e. understand the genetic diversity in your bacteria and whether or not it recombines. Approach used to build a tree for TB genomes will differ from the methods you would use to build a tree for Escherichia coli or Campylobacter.
 
 ![Example of newick tree format](images/Newick.png)
 
 For instance, the terminal nodes of this tree - A, B, C and D - represent sampled organisms. The internal nodes - E and F - are inferred from the data. In this case, there is also a multifurcation: nodes A, B and E all coalesce to the base of the tree. This can happen due to poor resolution in the data.
+
 ---
 ### Tree Topology
 
