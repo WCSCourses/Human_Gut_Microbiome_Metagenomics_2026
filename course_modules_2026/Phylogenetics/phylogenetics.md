@@ -7,11 +7,14 @@
 - Describe key steps in creating a phylogenetic tree.
 
 ## Contents
+- [Introduction](#introduction)
 - [Phylogenetic Tree Inference](#phylogenetic-tree-inference)
 - [Multiple Sequence Alignments](#multiple-sequence-alignments)
 - [Building a Phylogenetic Tree](#building-a-phylogenetic-tree)
 - [Summary](#summary)
 
+
+## Introduction
 
 Understanding the genetic diversity, genome plasticity, and recombination patterns of the organism under study is an essential first step before conducting genomic analyses, as these factors influence the choice of analytical methods. In particular, phylogenetic reconstruction strategies vary depending on the evolutionary characteristics of the species. For example, approaches used to infer phylogenetic relationships in Mycobacterium tuberculosis, a largely clonal organism, differ from those applied to more recombinogenic bacteria such as Escherichia coli or Campylobacter. To guide the selection of appropriate methods for phylogenetic analysis, a flowchart outlining recommended strategies based on dataset composition is provided.
 
