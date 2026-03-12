@@ -72,10 +72,23 @@ SRR30598619_2.fastq.gz
 ---
 ---
 ## Exercise 3 — Evaluate raw sequencing quality
-Run FastQC on the raw reads.
+Run FastQC on the raw reads using fastQC and simultaneously using metaWRAP pipeline.
+
+Using stand alone software
 ```bash
-fastqc RAW_READS/*.fastq.gz -o QC/fastqc_raw
+fastqc RAW_READS/SRR30598619_1.fastq.gz RAW_READS/SRR30598619_2.fastq.gz -o QC/fastqc_raw
 ```
+
+Using metaWRAP pipeline:
+```bash
+metawrap read_qc \
+-1 RAW_READS/SRR30598619_1.fastq \
+-2 RAW_READS/SRR30598619_2.fastq \
+-t 24 \
+-o READ_QC/SRR30598619 \
+-x hg38
+```
+
 Generate a summary report using MultiQC.
 ```bash
 multiqc QC/fastqc_raw -o QC/multiqc_raw

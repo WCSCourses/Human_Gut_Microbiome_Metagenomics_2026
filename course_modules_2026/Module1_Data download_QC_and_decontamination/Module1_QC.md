@@ -380,7 +380,18 @@ Each module in metaWRAP can be run independently, allowing researchers to incorp
 The read_qc module performs read trimming and host decontamination in an automated pipeline.
 ![readqc_module](images/readqc_module.png)
 
-To run the preprocessing using the metaWRAP pipeline, refer to:
+To run the preprocessing using the metaWRAP pipeline
+
+```bash
+metawrap read_qc \
+-1 SRR30598619_1.fastq \
+-2 SRR30598619_2.fastq \
+-t 24 \
+-o READ_QC/SRR30598619 \
+-x hg38
+```
+
+For more details on the metaWRAP qc modules refer to:
 [Module1_QC_metaWRAP.md](Module1_QC_metaWRAP.md).
 
 
