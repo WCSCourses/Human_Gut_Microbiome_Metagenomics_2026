@@ -1,5 +1,9 @@
 # Building Phylogenetic Trees
 
+## Know your bug
+
+Understanding the genetic diversity, genome plasticity, and recombination patterns of the organism being studied is an important first step before performing genomic analyses. These factors influence the methods that should be applied. For instance, phylogenetic reconstruction approaches suitable for Mycobacterium tuberculosis may differ from those used for Escherichia coli. To support this decision-making process, a flowchart outlining recommended strategies based on dataset composition is provided. 
+
 ![Image of know your bug](images/know_your_bug.png)
 
 ## Learning Objectives
@@ -21,6 +25,8 @@ To determine how best to proceed with phylogenetic construction, it is important
 
 ![Example of newick tree format](images/Newick.png)
 
+For instance, the terminal nodes of this tree - A, B, C and D - represent sampled organisms. The internal nodes - E and F - are inferred from the data. In this case, there is also a multifurcation: nodes A, B and E all coalesce to the base of the tree. This can happen due to poor resolution in the data.
+---
 ### Tree Topology
 
 A phylogenetic tree is a graph representing evolutionary history and shared ancestry. It depicts the lines of evolutionary descent of different species, lineages or genes from a common ancestor. A phylogenetic tree is made of nodes and edges, with one edge connecting two nodes.
@@ -73,6 +79,8 @@ Maximum parsimony method assume that the best phylogenetic tree requires the few
 
 ![Example of maximum parsimony tree](images/max_parsimony.png)
 
+For example, the tree topology on the left only requires one mutation to explain the data, whereas the tree on the right would require two mutations. Therefore, the maximum parsimony tree would be the one on the left.
+---
 Maximum parsimony is simple method and is very fast to run. However, because its always the shortest tree, compared to the hypothetical “true” tree it will often underestimate the actual evolutionary change that may have occurred.
 
 #### Maximum likelihood methods
