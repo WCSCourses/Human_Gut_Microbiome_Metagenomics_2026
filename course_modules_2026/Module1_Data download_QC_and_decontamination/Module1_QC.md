@@ -384,8 +384,8 @@ To run the preprocessing using the metaWRAP pipeline
 
 ```bash
 metawrap read_qc \
--1 SRR30598619_1.fastq \
--2 SRR30598619_2.fastq \
+-1 SRR30598619_1.fastq.gz \
+-2 SRR30598619_2.fastq.gz \
 -t 24 \
 -o READ_QC/SRR30598619 \
 -x hg38
