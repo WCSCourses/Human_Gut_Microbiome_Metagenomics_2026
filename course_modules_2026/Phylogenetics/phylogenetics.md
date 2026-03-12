@@ -80,6 +80,7 @@ Maximum parsimony method assume that the best phylogenetic tree requires the few
 ![Example of maximum parsimony tree](images/max_parsimony.png)
 
 For example, the tree topology on the left only requires one mutation to explain the data, whereas the tree on the right would require two mutations. Therefore, the maximum parsimony tree would be the one on the left.
+
 ---
 Maximum parsimony is simple method and is very fast to run. However, because its always the shortest tree, compared to the hypothetical “true” tree it will often underestimate the actual evolutionary change that may have occurred.
 
