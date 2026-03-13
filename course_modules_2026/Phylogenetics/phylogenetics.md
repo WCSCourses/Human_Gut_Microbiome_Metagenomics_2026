@@ -70,13 +70,16 @@ Common tree inference approaches include:
 - Bayesian inference  
 
 #### Distance-based methods
-These are the simplest and fastest phylogenetic methods, they are often a useful way to have a quick look at your data before running more robust phylogenetic methods.
+These are the simplest and fastest phylogenetic methods, they are often a useful way to have a quick look at your data before running more robust phylogenetic methods. Here we infer the evolutionary distances from a multiple sequence alignment. For example, if one nucleotide substitution is observed across 16 informative alignment positions (excluding columns containing gaps or ambiguous bases such as N), the estimated evolutionary distance between the sequences would be approximately 1/16.
 
 ![Example of maximum distance-based tree](images/distance_alignment.png)
 
 It starts by generating a matrix of pairwise distances (distance matrix) between all samples in a multiple sequence alignment and then infer a phylogenetic relationship using UPGMA or Neigbour-joining.
 
 ![Example of maximum distance-based tree](images/phylo_matrix.png)
+
+Distance matrix to Neighbour-Joining tree
+---
 
 #### Parsimony methods
 Maximum parsimony method assume that the best phylogenetic tree requires the fewest number of mutations to explain the data.
