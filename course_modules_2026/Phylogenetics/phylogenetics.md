@@ -25,11 +25,6 @@ Understanding the genetic diversity, genome plasticity, and recombination patter
 ## Phylogenetic Tree Inference
 ---
 
-![Example of newick tree format](images/Newick.png)
-
-For instance, the terminal nodes of this tree - A, B, C and D - represent sampled organisms. The internal nodes - E and F - are inferred from the data. In this case, there is also a multifurcation: nodes A, B and E all coalesce to the base of the tree. This can happen due to poor resolution in the data.
-
----
 ### Tree Topology
 
 A phylogenetic tree is a graph representing evolutionary history and shared ancestry. It depicts the lines of evolutionary descent of different species, lineages or genes from a common ancestor. A phylogenetic tree is made of nodes and edges, with one edge connecting two nodes.
@@ -41,6 +36,12 @@ The topology describes how taxa are connected, independent of branch lengths.
 - **Terminal nodes** - Are nodes in the tree connected to only one edge and are usually associated with the data, such as a genome sequence. A node can represent an extinct species or a sampled pathogen.
 - **Internal nodes** - Represent the most recent common ancestors of groups of terminal nodes, and do not directly correspond to the observed data. They are hypothetical ancestors inferred from the observed genome sequences at the tips of the tree.
 - **clade** - Is a set of all terminal nodes descending from the same ancestor. Each branch and internal node is associated with a clade. If trees have the same clade we say that they have the same topology. If trees have the same clades and same branch lengths, the two trees represent the same evolutionary history.
+
+![Example of newick tree format](images/Newick.png)
+
+For instance, the terminal nodes of this tree - A, B, C and D - represent sampled organisms. The internal nodes - E and F - are inferred from the data. In this case, there is also a multifurcation: nodes A, B and E all coalesce to the base of the tree. This can happen due to poor resolution in the data.
+
+---
 
 ### Applications of Phylogenetic Trees
 
