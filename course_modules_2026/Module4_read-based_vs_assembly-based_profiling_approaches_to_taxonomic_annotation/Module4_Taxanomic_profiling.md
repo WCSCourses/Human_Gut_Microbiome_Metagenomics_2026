@@ -57,11 +57,12 @@ In practice, different computational tools are designed for each type of input d
 - **Read-based taxonomic profiling**
 - **Genome-level taxonomic classification**
 
+
 ### Read-based taxonomic profiling
 
 Read-based taxonomic profilers classify sequencing reads by comparing them to reference databases. These tools estimate the composition of microbial communities without requiring genome assembly.
 
-Several computational strategies are commonly used.
+Several computational approaches are commonly used to classify sequencing reads.
 
 ---
 
@@ -84,6 +85,8 @@ Examples include:
 
 ---
 
+> **Important reference:** Truong DT, Franzosa EA, Tickle TL, Scholz M, Weingart G, Pasolli E, Tett A, Huttenhower C, Segata N. MetaPhlAn2 for enhanced metagenomic taxonomic profiling. Nat Methods. 2015. https://doi.org/10.1038/nmeth.3589
+
 #### 2. k-mer–based classifiers
 
 These tools classify reads by matching short subsequences (*k-mers*) to reference genome databases.
@@ -94,6 +97,7 @@ Examples include:
 |------|-------------|
 | **Kraken2** | Uses exact k-mer matches and a Lowest Common Ancestor (LCA) algorithm for classification |
 | **Bracken** | Improves species-level abundance estimation from Kraken results |
+| **Sylph** | A sketch-based metagenomic profiler that uses genome sketches to rapidly estimate species composition and genomic similarity from sequencing reads |
 | **Phanta** | Fast k-mer-based profiler for sensitive taxonomic assignment |
 | **Centrifuge** | Uses compressed indexing for efficient classification with lower memory requirements |
 
@@ -102,6 +106,8 @@ Examples include:
 - Extremely fast classification  
 - Suitable for large metagenomic datasets  
 - Sensitive detection of many taxa  
+
+> **Important reference:** Wood DE, Salzberg SL. Kraken: ultrafast metagenomic sequence classification using exact alignments. Genome Biol. 2014 https://doi.org/10.1186/gb-2014-15-3-r46 & Shaw, J., Yu, Y.W. Rapid species-level metagenome profiling and containment estimation with sylph. Nat Biotechnol 43, 1348–1359 (2025). https://doi.org/10.1038/s41587-024-02412-y
 
 ---
 
@@ -123,6 +129,20 @@ Examples include:
 - Useful for detecting evolutionarily distant organisms  
 
 ---
+#### 4. Read-based strain-level analysis
+
+Some read-based tools analyze metagenomic reads after they have been mapped to reference genomes or metagenome-assembled genomes (MAGs). These approaches allow investigation of **microbial populations at the strain level** rather than only identifying which species are present.
+
+Examples include:
+
+| Tool | Description |
+|------|-------------|
+| **inStrain** | Analyzes mapped metagenomic reads to measure nucleotide variation and characterize microbial populations at the strain level |
+
+Such tools are commonly used after taxonomic profiling to investigate **within-species diversity and population structure** in microbial communities.
+
+> **Important reference:** Olm, M.R., Crits-Christoph, A., Bouma-Gregson, K. et al. inStrain profiles population microdiversity from metagenomic data and sensitively detects shared microbial strains. Nat Biotechnol (2021). https://doi-org.eux.idm.oclc.org/10.1038/s41587-020-00797-0
+---
 
 ### Genome-level taxonomic classification tools
 
@@ -134,7 +154,7 @@ Examples include:
 
 | Tool | Description |
 |------|-------------|
-| **GTDB-Tk** | Uses conserved marker genes to place genomes within the Genome Taxonomy Database |
+| **GTDB-Tk** | Classifies genomes using conserved marker genes and places them within the Genome Taxonomy Database |
 | **metaWRAP classify_bins** | Assigns taxonomy to MAGs reconstructed during binning workflows |
 
 Genome-level classification is particularly useful for:
@@ -143,13 +163,14 @@ Genome-level classification is particularly useful for:
 - placing novel organisms within the microbial tree of life  
 - linking taxonomy with genome-resolved metabolic potential  
 
+> **Important reference:** Tran Q, Phan V. Assembling Reads Improves Taxonomic Classification of Species. Genes (Basel). 2020 Aug 17;11(8):946. doi: 10.3390/genes11080946. 
 ---
 
 ## Summary of taxonomic annotation approaches
 
 | Approach | Input data | Example tools | Typical purpose |
 |----------|-----------|---------------|----------------|
-| **Read-based profiling** | Sequencing reads | MetaPhlAn, Kraken2, Bracken, Centrifuge | Rapid community composition profiling |
+| **Read-based profiling** | Sequencing reads | MetaPhlAn, Kraken2, Sylph, inStrain | Rapid microbial community profiling |
 | **Genome-based classification** | Assembled genomes / MAGs | GTDB-Tk, metaWRAP classify_bins | Genome-level taxonomy assignment |
 
 
@@ -162,19 +183,26 @@ Genome-level classification is particularly useful for:
 > **Tools used in this module**
 
 **metaWRAP** – modular pipeline used for genome-resolved metagenomic analysis  
-**Kraken** – k-mer–based read-level taxonomic classifier used within metaWRAP  
+**Sylph** – k-mer–based read-level taxonomic classifier 
 **Krona** – interactive visualization tool for taxonomic classification results  
 
 metaWRAP provides wrappers for several tools that allow taxonomic annotation within the pipeline.
 
 ---
 
-## Part II — Read-based classification using metaWRAP
+## Part II — Read-based taxonomic classification using Sylph
 
-metaWRAP includes a module called **kraken**, which performs read-level taxonomic classification using the Kraken classifier.
+In this section we demonstrate **read-based taxonomic profiling using Sylph**, a modern sketch-based metagenomic profiler.
 
-The module generates both classification outputs and interactive Krona visualizations.
+Sylph estimates microbial community composition by comparing sequencing reads against a database of **sketched reference genomes**. By using genome sketches rather than full k-mer databases, Sylph enables **very fast taxonomic profiling with low memory requirements**, making it well suited for large metagenomic datasets.
 
+Sylph can estimate:
+
+- microbial taxonomic composition
+- approximate relative abundance
+- genomic similarity between reads and reference genomes
+
+---
 
 #### Input data
 
@@ -185,37 +213,44 @@ Example input files:
 DEHOSTED_READS/SRR30598619_dehosted.1.fastq.gz
 DEHOSTED_READS/SRR30598619_dehosted.2.fastq.gz
 ```
-### Step 1 — Run metaWRAP Kraken module
+
+Sylph requires a **sketch database of reference genomes** that has been prepared in advance.
+Example database file:
+```text
+reference_db/gtdb_sylph_db.sylph
+```
+
+### Step 1 — Run Sylph taxonomic profiling
 ```bash
-metawrap kraken \
-    -o kraken_output \
-    -t 16 \
-    -1 DEHOSTED_READS/SRR30598619_dehosted.1.fastq.gz \
-    -2 DEHOSTED_READS/SRR30598619_dehosted.2.fastq.gz
+sylph profile \
+    reference_db/gtdb_sylph_db.sylph \
+    DEHOSTED_READS/SRR30598619_dehosted.1.fastq.gz \
+    DEHOSTED_READS/SRR30598619_dehosted.2.fastq.gz \
+    > sylph_profile.tsv
 ```
 
 ##### Parameter explanation
-- `-o` output directory
-- `-t` number of threads
-- `-1` forward reads
-- `-2` reverse reads
+- `profile` – runs taxonomic profiling
+- `reference_db/gtdb_sylph_db.sylph` – sketch database of reference genomes
+- `*.fastq.gz` – sequencing reads to classify
+- `>` – writes results to an output file
+
 
 #### Output
-The module produces a directory containing classification results and visualization files.
+The command produces a tab-separated output file containing taxonomic assignments and abundance estimates.
 
 Example:
-```text
-kraken_output/
-    kraken_output.txt
-    krona.html
-```
+![sylph_output](images/sylph_output.png)
 
-The **krona.html** file provides an interactive visualization of the taxonomic composition of the sample.
 
-> ##### Interpreting Kraken results
-The Kraken output reports the number of reads assigned to different taxonomic levels.
+> ##### Interpreting Sylph results
+Sylph results can be used to:
+- identify dominant microbial taxa present in a sample
+- estimate microbial relative abundance
+- compare similarity between sequencing reads and reference genomes
+- rapidly profile microbial communities in large datasets
 
-These classifications can be used to estimate the relative abundance of taxa present in the microbial community.
+Because Sylph uses genome sketches, it can perform fast taxonomic profiling even for very large metagenomic datasets.
 
 ## Part III — Assembly-based taxonomic annotation
 Assembly-based classification assigns taxonomy to **reconstructed genomes (MAGs)** generated in **Module 2**.
@@ -275,10 +310,11 @@ In this module we introduced the two major strategies used for taxonomic profili
 1.	Read-based classification of sequencing reads
 2.	Assembly-based classification of reconstructed genomes
 
-Using the metaWRAP pipeline, we demonstrated how to:
-- perform read-level taxonomic classification using metaWRAP kraken
-- assign taxonomy to MAGs using metaWRAP classify_bins
+Using the tools demonstrated in this module, we showed how to:
+	•	perform read-level taxonomic classification using Sylph
+	•	assign taxonomy to reconstructed genomes using metaWRAP classify_bins
 
-We also introduced several standalone tools frequently used in metagenomic research, including MetaPhlAn, Kraken2, Bracken, and GTDB-Tk.
+We also introduced several standalone tools frequently used in metagenomic research, including MetaPhlAn, Kraken2, inStrain, and GTDB-Tk.
 
 Together, these methods enable researchers to characterize microbial communities and link taxonomic identity with genomic and functional information.
+
