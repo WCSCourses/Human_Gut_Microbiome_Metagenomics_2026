@@ -2,7 +2,7 @@
 ## AMR Gene Profiling in Human Gut Microbiome MAGs
 
 
-# 👩🏽‍🏫 Module Lead
+# 👩🏽‍🏫 Module Leads
 
 Rahma Golicha   
 Caroline Tigoi  
@@ -40,8 +40,8 @@ https://github.com/arpcard/rgi/blob/master/docs/rgi_main.rst
 
 By the end of this session, participants will be able to:
 
-- Create a clean Conda environment
-- Install RGI and dependencies (BLAST, DIAMOND, Prodigal)
+- Create a clean Conda environment (This has already been done for you)
+- Install RGI and dependencies (BLAST, DIAMOND, Prodigal) (This has already been done for you)
 - Load the CARD database locally
 - Run RGI on MAGs
 - Merge multiple RGI outputs
@@ -70,68 +70,6 @@ Participants should have:
 
 ---
 
-# 🛠️ Activity 1 — Environment Setup
-
-## 1️⃣ Initialize Conda
-
-#Download and Initialize conda
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-/scratch/home/train6/miniconda3/bin/conda init bash
-
-
-```bash
-conda init bash
-source ~/.bashrc
-```
-
----
-
-## 2️⃣ Install Mamba (Faster Package Manager)
-
-```bash
-conda install -n base -c conda-forge mamba
-mamba --version
-```
-
----
-
-## 3️⃣ Create a Clean Environment
-
-```bash
-conda create -n rgi_env
-conda activate rgi_env
-```
-
----
-
-## 4️⃣ Configure Channels
-
-```bash
-conda config --add channels defaults
-conda config --add channels bioconda
-conda config --add channels conda-forge
-conda config --set channel_priority strict
-```
-
----
-
-## 5️⃣ Install RGI
-
-```bash
-mamba install rgi
-rgi main --version
-```
-
----
-
-# 🗂️ Activity 2 — Download and Load CARD Database
-
-## Download CARD
-
-```bash
-wget https://card.mcmaster.ca/latest/data
-tar -xvf data
-```
 
 ## Load Database into RGI
 
