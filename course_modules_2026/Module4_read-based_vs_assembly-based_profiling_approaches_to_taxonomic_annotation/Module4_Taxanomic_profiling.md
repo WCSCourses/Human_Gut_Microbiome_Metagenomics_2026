@@ -2,7 +2,7 @@
 ---
 
 ## Module leads
-Boniface Gichuki      
+Bonface Gichuki      
 Luicer Anne Ingasia Olubayo
 
 ---
@@ -16,7 +16,7 @@ Taxonomic profiling in metagenomics is generally performed using two complementa
 1. **Read-based taxonomic profiling**
 2. **Assembly-based taxonomic annotation**
 
-Read-based approaches classify sequencing reads directly against microbial reference databases to estimate microbial community composition. Assembly-based approaches instead assign taxonomy to reconstructed genomic sequences such as contigs or **metagenome-assembled genomes (MAGs)**.
+Read-based approaches classify sequencing reads directly against reference databases to estimate microbial community composition. Assembly-based approaches instead assign taxonomy to reconstructed genomic sequences such as contigs or **metagenome-assembled genomes (MAGs)**.
 
 Both strategies are widely used in microbiome research and provide complementary insights into microbial communities.
 
@@ -131,7 +131,7 @@ Examples include:
 ---
 #### 4. Read-based strain-level analysis
 
-Some read-based tools analyze metagenomic reads after they have been mapped to reference genomes or metagenome-assembled genomes (MAGs). These approaches allow investigation of **microbial populations at the strain level** rather than only identifying which species are present.
+Some read-based tools analyze metagenomic reads after they have been mapped to reference genomes or metagenome-assembled genomes (MAGs). These approaches allow investigation of **microbial populations at the strain (or subspecies) level** rather than only identifying which species are present.
 
 Examples include:
 
@@ -160,10 +160,11 @@ Examples include:
 Genome-level classification is particularly useful for:
 
 - identifying reconstructed microbial genomes  
-- placing novel organisms within the microbial tree of life  
+- placing novel (or newly identified) organisms within the microbial tree of life  
 - linking taxonomy with genome-resolved metabolic potential  
 
-> **Important reference:** Tran Q, Phan V. Assembling Reads Improves Taxonomic Classification of Species. Genes (Basel). 2020 Aug 17;11(8):946. doi: 10.3390/genes11080946. 
+> **Important reference:** Tran Q, Phan V. Assembling Reads Improves Taxonomic Classification of Species. Genes (Basel). 2020 Aug 17;11(8):946. doi: 10.3390/genes11080946.
+& Chaumeil, P. A., Mussig, A. J., Hugenholtz, P. & Parks, D. H. GTDB-Tk v2: memory friendly classification with the genome taxonomy database. Bioinformatics 38, 5315-5316 (2022). https://doi.org/10.1093/bioinformatics/btac672
 ---
 
 ## Summary of taxonomic annotation approaches
@@ -199,7 +200,7 @@ Sylph estimates microbial community composition by comparing sequencing reads ag
 Sylph can estimate:
 
 - microbial taxonomic composition
-- approximate relative abundance
+- approximate relative abundance (including for very low abundant microbial species)
 - genomic similarity between reads and reference genomes
 
 ---
@@ -210,34 +211,48 @@ This module uses the **quality-controlled, dehosted reads generated in Module 1*
 
 Example input files:
 ```text
-DEHOSTED_READS/SRR30598619_dehosted.1.fastq.gz
-DEHOSTED_READS/SRR30598619_dehosted.2.fastq.gz
+CLEANED_READS/SRR30598619_clean_1.fastq.gz
+CLEANED_READS/SRR30598619_clean_2.fastq.gz
 ```
 
 Sylph requires a **sketch database of reference genomes** that has been prepared in advance.
+More details on how to build sketch databases can be found here (https://github.com/bluenote-1577/sylph/wiki/Pre%E2%80%90built-databases)
+
 Example database file:
 ```text
-reference_db/gtdb_sylph_db.sylph
+reference_db/gtdb-r220-c200-dbv1.syldb
 ```
 
-### Step 1 — Run Sylph taxonomic profiling
+### Step 1 — Download pre-sketched GTDB r220 database
+wget http://faust.compbio.cs.cmu.edu/sylph-stuff/gtdb-r220-c200-dbv1.syldb
+
+### Step 2 — Run Sylph profiling (profiling with GTDB-r220)
 ```bash
 sylph profile \
-    reference_db/gtdb_sylph_db.sylph \
-    DEHOSTED_READS/SRR30598619_dehosted.1.fastq.gz \
-    DEHOSTED_READS/SRR30598619_dehosted.2.fastq.gz \
+    reference_db/gtdb-r220-c200-dbv1.syldb \
+    CLEANED_READS/SRR30598619_clean_1.fastq.gz \
+    CLEANED_READS/SRR30598619_clean_2.fastq.gz \
     > sylph_profile.tsv
 ```
 
+sylph_profile.tsv contain no taxonomic information. 
+
+### Step 3 — Run Sylph taxonomic profiling (Get taxonomic profile)
+sylph-tax taxprof \
+	sylph_profile.tsv \
+	> SRR30598619_clean_1.fastq.gz.sylphmpa
+	
+### Step 3 — Examine the output
+The command produces a *.sylphmpa file similar to what MetaPhlAn outputs. Each taxonomic rank has an associated taxonomic or sequence abundance.
+head -n 20 SRR30598619_clean_1.fastq.gz.sylphmpa 
+
+
 ##### Parameter explanation
-- `profile` – runs taxonomic profiling
-- `reference_db/gtdb_sylph_db.sylph` – sketch database of reference genomes
+- `profile` – computes k-mer–based similarity / abundance profiles, useful for comparing genomes or samples; it does not assign taxonomy.
+- `taxprof (or sylph-tax taxprof)` - performs taxonomic assignment, giving you which organisms are present and their abundances.
+- `reference_db/gtdb-r220-c200-dbv1.syldb` – sketch database of reference genomes in GTDB release 220 (GTDB r220)
 - `*.fastq.gz` – sequencing reads to classify
 - `>` – writes results to an output file
-
-
-#### Output
-The command produces a tab-separated output file containing taxonomic assignments and abundance estimates.
 
 Example:
 ![sylph_output](images/sylph_output.png)
