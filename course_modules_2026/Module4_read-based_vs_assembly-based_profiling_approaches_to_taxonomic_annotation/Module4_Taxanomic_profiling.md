@@ -238,21 +238,25 @@ sylph profile \
 sylph_profile.tsv contain no taxonomic information. 
 
 ### Step 3 — Run Sylph taxonomic profiling (Get taxonomic profile)
+```bash
 sylph-tax taxprof \
 	sylph_profile.tsv \
 	> SRR30598619_clean_1.fastq.gz.sylphmpa
-	
+```
+
 ### Step 3 — Examine the output
 The command produces a *.sylphmpa file similar to what MetaPhlAn outputs. Each taxonomic rank has an associated taxonomic or sequence abundance.
 head -n 20 SRR30598619_clean_1.fastq.gz.sylphmpa 
 
 
 ##### Parameter explanation
+```bash
 - `profile` – computes k-mer–based similarity / abundance profiles, useful for comparing genomes or samples; it does not assign taxonomy.
 - `taxprof (or sylph-tax taxprof)` - performs taxonomic assignment, giving you which organisms are present and their abundances.
 - `reference_db/gtdb-r220-c200-dbv1.syldb` – sketch database of reference genomes in GTDB release 220 (GTDB r220)
 - `*.fastq.gz` – sequencing reads to classify
 - `>` – writes results to an output file
+```
 
 Example:
 ![sylph_output](images/sylph_output.png)
