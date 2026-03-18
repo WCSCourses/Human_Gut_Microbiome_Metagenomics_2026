@@ -3,13 +3,13 @@
 
 # Exercise overview
 
-In this practical exercise, participants will perform quality control and decontamination of shotgun metagenomic sequencing reads. Using publicly available datasets, participants will download sequencing data, evaluate sequencing quality, trim technical artefacts, remove host contamination, and generate a set of cleaned microbial reads suitable for downstream metagenomic analysis.
+In this practical exercise, participants will perform quality control and decontamination of shotgun metagenomic sequencing reads. Using publicly available datasets, participants will download sequencing data, evaluate sequencing quality, trim technical artefacts, remove human reads, and generate a set of cleaned microbial reads suitable for downstream metagenomic analysis.
 
 This exercise demonstrates the importance of preprocessing in ensuring accurate taxonomic and functional profiling.
 
 ---
 # Dataset
-Participants will use publicly available human gut microbiome datasets from the European Nucleotide Archive (ENA).
+Participants will use publicly available human gut microbiome datasets downloaded from the European Nucleotide Archive (ENA).
 
 Run accession numbers:
 ```text
@@ -28,8 +28,8 @@ Create a structured directory layout to organize the analysis.
 mkdir -p RAW_READS \
          QC/fastqc_raw QC/multiqc_raw \
          QC/fastqc_trimmed QC/multiqc_trimmed \
-         QC/fastqc_dehosted QC/multiqc_dehosted \
-         TRIMMED_READS DEHOSTED_READS HOST_REMOVAL
+         QC/fastqc_cleaned QC/multiqc_cleaned \
+         TRIMMED_READS CLEANED_READS HOST_REMOVAL
 ```
 Check the directory structure:
 ```bash
@@ -45,7 +45,7 @@ Expected structure:
       │   ├── fastqc_trimmed/
       │   └── multiqc_trimmed/
       ├── TRIMMED_READS/
-      ├── DEHOSTED_READS/
+      ├── CLEANED_READS/
       └── HOST_REMOVAL/
 ```
 ---
@@ -109,7 +109,7 @@ Download multiqc_report.html to your local machine and open it in a web browser.
 5.	Are there any warnings or failures reported by FastQC?
 ---
 ## Exercise 4 — Perform read trimming
-Trim adapters and low-quality bases using TrimGalore.
+Trim adapters and low-quality bases using TrimGalore!.
 ```bash
 trim_galore --paired \
 RAW_READS/SRR30598619_1.fastq.gz \
@@ -154,8 +154,8 @@ Open the new report and compare with the raw data report.
 3.	Are there still any warnings in the FastQC report?
 ---
 ---
-## Exercise 6 — Remove host DNA contamination and evaluate the reads
-Build the Bowtie2 index for the host genome.
+## Exercise 6 — Remove host DNA contamination (human reads) and evaluate the reads
+Build the Bowtie2 index for the human reference genome.
 ```bash
 bowtie2-build hg38.fa hg38_index
 ```
@@ -168,15 +168,15 @@ bowtie2 \
 -2 TRIMMED_READS/SRR30598619_2_val_2.fq.gz \
 --very-sensitive \
 --threads 8 \
---un-conc-gz DEHOSTED_READS/SRR30598619_dehosted.fastq.gz \
+--un-conc-gz CLEANED_READS/SRR30598619_clean.fastq.gz \
 -S HOST_REMOVAL/SRR30598619_host_alignment.sam
 ```
 Expected Output
 At the end of this exercise participants should obtain:
 ```text
-DEHOSTED_READS/
-   SRR30598619_dehosted.1.fastq.gz
-   SRR30598619_dehosted.2.fastq.gz
+CLEANED_READS/
+   SRR30598619_clean_1.fastq.gz
+   SRR30598619_clean_1.fastq.gz
    ```
    
 Inspect the Bowtie2 alignment summary printed in the terminal.
