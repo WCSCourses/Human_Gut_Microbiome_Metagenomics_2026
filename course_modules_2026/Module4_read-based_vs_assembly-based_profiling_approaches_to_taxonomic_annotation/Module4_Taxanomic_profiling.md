@@ -16,7 +16,7 @@ Taxonomic profiling in metagenomics is generally performed using two complementa
 1. **Read-based taxonomic profiling**
 2. **Assembly-based taxonomic annotation**
 
-Read-based approaches classify sequencing reads directly against reference databases to estimate microbial community composition. Assembly-based approaches instead assign taxonomy to reconstructed genomic sequences such as contigs or **metagenome-assembled genomes (MAGs)**.
+Read-based approaches classify sequencing reads directly against microbial reference databases to estimate microbial community composition. Assembly-based approaches instead assign taxonomy to reconstructed genomic sequences such as contigs or **metagenome-assembled genomes (MAGs)**.
 
 Both strategies are widely used in microbiome research and provide complementary insights into microbial communities.
 
