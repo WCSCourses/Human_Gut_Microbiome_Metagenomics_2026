@@ -53,10 +53,13 @@ Navigate to the assembly directory:
 ```bash
 cd assembly
 ```
-Check the number of contigs:
+Check the number of contigs (FASTA sequences):
 
 ```bash
 grep -c ">" final_assembly.fasta
+or
+grep ">" final_assembly.fasta | wc -l
+
 ```
 This command counts the number of contigs produced during assembly.
 
@@ -65,7 +68,7 @@ To view the first few contigs:
 ```bash
 head final_assembly.fasta
 ```
-#### Questions:
+#### Questions
 1. How many contigs were produced?
 2. Are all contigs the same length?
 
@@ -125,7 +128,7 @@ These genomes represent the best-quality bins after combining results from multi
 ---
 
 ## Exercise 4 – Evaluate MAG Quality
-Next, inspect the MAG quality statistics.
+Next, inspect the MAG quality statistics (estimated with CheckM).
 
 ```bash
 cat metawrap_bins.stats
@@ -180,4 +183,4 @@ In this exercise you:
 - examined refined metagenome-assembled genomes  
 - interpreted MAG completeness and contamination metrics  
 
-These steps illustrate how genome-resolved metagenomics reconstructs microbial genomes directly from environmental sequencing data.
+These steps illustrate how genome-resolved metagenomics reconstructs microbial genomes directly from shotgun sequencing data.
