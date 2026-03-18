@@ -224,7 +224,9 @@ reference_db/gtdb-r220-c200-dbv1.syldb
 ```
 
 ### Step 1 — Download pre-sketched GTDB r220 database
+```text
 wget http://faust.compbio.cs.cmu.edu/sylph-stuff/gtdb-r220-c200-dbv1.syldb
+```
 
 ### Step 2 — Run Sylph profiling (profiling with GTDB-r220)
 ```bash
