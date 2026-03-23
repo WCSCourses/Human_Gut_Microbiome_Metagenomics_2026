@@ -156,11 +156,23 @@ Each FASTA file represents a single MAG (assembled genome bin).
 
 Place MAG FASTA files in a directory, for example:
 
-### Run RGI on a Single MAG
+### Run RGI on the first MAG
 
 ```bash
 rgi main \
   --input_sequence module3/cleaned_fasta/cleaned_SRR30598619_bin.3.orig_filtered_kept_contigs.fa \
+  --output_file module5b/output \
+  --local \
+  --clean \
+  --include_nudge \
+  --num_threads 8
+```
+
+### Run RGI on the second MAG 
+
+```bash
+rgi main \
+  --input_sequence module3/cleaned_fasta/cleaned_SRR30598619_bin.8.orig_filtered_kept_contigs.fa \
   --output_file module5b/output \
   --local \
   --clean \
@@ -175,10 +187,7 @@ rgi main \
 ### 📂 Location:
 Outputs are saved in the same directory as the input unless specified.
 
-Example:
-Clean_Mags/
-
-Each genome produces:
+Each ```rgi main``` command run for each genome produces:
 
 - `*.txt` → Tabular AMR predictions  
 - `*.json` → Structured results for visualization 
@@ -188,7 +197,9 @@ Each genome produces:
 - `mag3_test_amr_out.txt` ✅ (MAIN file for analysis)
 - `mag3_test_amr_out.json` (optional visualization)
 
-
+- `mag8_test_amr_out.txt` ✅ (MAIN file for analysis)
+- `mag8_test_amr_out.json` (optional visualization)
+- 
 The `.txt` file includes:
 
 - ORF_ID → predicted gene
@@ -201,7 +212,10 @@ The `.txt` file includes:
 
 
 ### Goal:
-Combine into a single table with MAG identifiers.
+If you have more MAGs, combine into a single table with MAG identifiers.
+
+Create a bash script in the module5b directory.
+
 
 ###Command
 
@@ -209,11 +223,11 @@ Combine into a single table with MAG identifiers.
 out_file="combined_rgi_results.tsv"
 
 # Extract header
-header=$(head -n1 mag1_amr_out.txt)
+header=$(head -n1 module5b/output/mag3_test_amr_out.txt)
 echo -e "MAG_ID\t$header" > $out_file
 
 # Loop through all output files
-for f in *_amr_out.txt; do
+for f in output/*_amr_out.txt; do
     mag_id=$(basename "$f" _amr_out.txt)
     tail -n +2 "$f" | awk -v id="$mag_id" 'BEGIN{OFS="\t"} {print id, $0}'
 done >> $out_file
