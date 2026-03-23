@@ -133,7 +133,7 @@ wget https://card.mcmaster.ca/latest/data
 tar -xvf data
 ```
 
-## Load Database into RGI
+## Load Database into RGI. This is quite slow.
 
 ```bash
 rgi load --card_json card.json --local
