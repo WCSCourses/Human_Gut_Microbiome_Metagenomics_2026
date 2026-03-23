@@ -126,7 +126,7 @@ rgi main --version
 
 # 🗂️ Exercise 2 — Download and Load CARD Database
 
-## Download CARD
+## Download CARD. You can skip this in the classroom. Move to loading the database into RGI.
 
 ```bash
 wget https://card.mcmaster.ca/latest/data
