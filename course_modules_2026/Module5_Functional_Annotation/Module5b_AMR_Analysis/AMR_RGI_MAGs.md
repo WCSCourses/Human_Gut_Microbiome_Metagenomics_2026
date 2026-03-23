@@ -144,28 +144,24 @@ rgi database --version
 
 # 🧬 Exercise 3 — Run RGI on Human Gut MAGs
 ## 📥 Input Data
-Participants will use pre-generated Metagenome-Assembled Genomes (MAGs) in FASTA format.
+Participants will use pre-generated Metagenome-Assembled Genomes (MAGs) in FASTA format. 
+The MAGs are stored in Module3/MAGS/cleaned_fasta.
 
 Example files:
 
-Clean_Mags/
-- cleaned_SRR30598619_bin.3.orig_filtered_kept_contigs.fa
-- cleaned_SRR30598619_bin.8.orig_filtered_kept_contigs.fa
+Module3/MAGS/cleaned_fasta/cleaned_SRR30598619_bin.3.orig_filtered_kept_contigs.fa
+Module3/MAGS/cleaned_fasta/cleaned_SRR30598619_bin.8.orig_filtered_kept_contigs.fa
 
 Each FASTA file represents a single MAG (assembled genome bin).
 
 Place MAG FASTA files in a directory, for example:
 
-```
-Clean_Mags/
-```
-
 ### Run RGI on a Single MAG
 
 ```bash
 rgi main \
-  --input_sequence Clean_Mags/mag1.fa \
-  --output_file Clean_Mags/mag1_amr_out \
+  --input_sequence cleaned_fasta/mag1.fa \
+  --output_file cleaned_fasta/mag1_amr_out \
   --local \
   --clean \
   --include_nudge \
