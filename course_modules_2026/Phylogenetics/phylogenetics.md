@@ -167,7 +167,9 @@ gunzip *.gz
 
 #### Build the phylogenetic tree
 
-The code below builds a phylogenetic tree using maximum likelihood methods and outputs a tree file in newick format
+The code below builds a phylogenetic tree using maximum likelihood methods and outputs a tree file in newick format.
+
+We will NOT run this command in the classroom, because it takes a long time to run.
 
 ```bash
 fasttree \
@@ -176,6 +178,41 @@ FastTreeMP \
 -out gtdbtk_fullalign_bacteria.nwk \
 gtdbtk_align_outdir/align/gtdbtk.bac120.user_msa.fasta
 ```
+You can go to Phylogenetics/gtdb_phylogenetic_tree and inspect the output file gtdbtk_fullalign_bacteria.nwk. This file can be loaded into iTOL https://itol.embl.de/ for annotation and visualisation. 
+
+Questions for participants: 
+
+1. ...
+2. ...
+3. ...
+
+#  How to upload metadata to iTOL and visualise that. 
+
+#  How to export from iTOL to local computer so you can include in publication
+
+# run prokka on one MAG only and investigate the GFF result. 
+
+Example command using MAG cleaned_SRR30598619_bin.20.orig_filtered_kept_contigs.fa
+
+```
+prokka \
+  --centre X \
+  --compliant \
+  --kingdom Bacteria \
+  --outdir cleaned_SRR30598619_bin.20.orig_filtered_kept_contigs_prokka \
+  --prefix cleaned_SRR30598619_bin.20.orig_filtered_kept_contigs \
+  ./cleaned_SRR30598619_bin.20.orig_filtered_kept_contigs.fa
+ ``` 
+
+# Show the panaroo command with one genus or species
+
+# Inspect the output of panaroo : a core gene alignment
+
+# run snp-sites
+
+# run iqtree and look at the results. 
+
+
 
 ### Core gene based Phylogenetic tree construction
 #### Annotate all .fa files with prokka/Bakta using bsub.py commands
