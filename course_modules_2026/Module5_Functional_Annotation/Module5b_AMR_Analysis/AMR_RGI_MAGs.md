@@ -160,8 +160,8 @@ Place MAG FASTA files in a directory, for example:
 
 ```bash
 rgi main \
-  --input_sequence cleaned_fasta/mag1.fa \
-  --output_file cleaned_fasta/mag1_amr_out \
+  --input_sequence module3/cleaned_fasta/cleaned_SRR30598619_bin.3.orig_filtered_kept_contigs.fa \
+  --output_file module5b/output \
   --local \
   --clean \
   --include_nudge \
