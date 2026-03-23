@@ -69,7 +69,8 @@ Participants should have:
 
 ---
 
-# 🛠️ Activity 1 — Environment Setup
+# 🛠️ Exercise 1 — Environment Setup
+You can skip the Environment Setup in the classroom. The environment has been already setup for you.
 
 ## 1️⃣ Initialize Conda
 
