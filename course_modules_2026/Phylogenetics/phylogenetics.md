@@ -180,24 +180,112 @@ gtdbtk_align_outdir/align/gtdbtk.bac120.user_msa.fasta
 ```
 You can go to Phylogenetics/gtdb_phylogenetic_tree and inspect the output file gtdbtk_fullalign_bacteria.nwk. This file can be loaded into iTOL https://itol.embl.de/ for annotation and visualisation. 
 
-Questions for participants: 
-
-1. ...
-2. ...
-3. ...
-
-#  How to upload metadata to iTOL and visualise that. 
-
-#  How to export from iTOL to local computer so you can include in publication
-
-# run prokka on one MAG only and investigate the GFF result. 
-
-
 ### Rooting a phylogenetic tree
 Rooting a phylogenetic tree is essential for interpreting evolutionary relationships and providing temporal context to species diversification. While an unrooted tree shows only relationships without direction, a rooted tree represents the evolutionary history of the taxa.
 
 The most common method to root a tree is to include an **outgroup**—a taxon known to be more distantly related to the other sequences in the analysis. Alternatively, a reference genome can be used as an outgroup for all members of a species to establish the root.
 
+
+## Tree Visualisation Using iTOL
+
+Visualise `gtdbtk_fullalign_bacteria.nwk` in iToL and add metadata
+
+This guide describes how to colour phylogenetic trees in iTOL (Interactive Tree of Life) using metadata.
+
+You will:
+
+- Extract phylum information from GTDB metadata
+- Assign colours to each phylum
+- Format the data for iTOL annotation
+- Upload the annotation file to iTOL
+
+#### Step 1: Extract Phylum Information from GTDB Metadata
+
+- Open your GTDB metadata file in Excel.
+- Insert a new empty column next to the classification column.
+- Click on the first cell of the classification column and extract only the phylum-level classification from the taxonomy string to the first cell of the new column.
+
+Example format:
+
+```text
+d__Bacteria;p__Firmicutes;c__...
+```
+→ Extract:
+
+```text
+p__Firmicutes
+```
+
+With the cursor in the new cell with the phylumn name, go to the Data tab in Excel and click Flash Fill to automatically populate the column
+
+#### Step 2: Prepare a Clean Book for iTOL
+Open a new sheet (e.g., Book2).
+Copy the sample column and newly created Phylum column into Book2
+
+#### Step 3: Assign Colours to Each Phylum
+
+In the phylum column:
+
+Use Find and Replace and Replace each phylum name with a hex colour code
+
+Example:
+
+```text
+p__Firmicutes → #1f77b4
+p__Proteobacteria → #ff7f0e
+p__Actinobacteriota → #2ca02c
+```
+
+To ensure consistency Each phylum must map to one unique colour
+
+#### Step 4: Format the iTOL Annotation File
+Open your existing iTOL dataset text file (e.g., species_category.txt).
+
+Locate the line below:
+
+```text
+Actual data follows after the "DATA" keyword    #
+```
+copy the two columns (sample and color codes) from excel and paste everything below "DATA" with your formatted data.
+
+#### Step 5: Format Your Data Correctly
+
+Your data must follow iTOL formatting rules. A typical structure is:
+
+```text
+genome_id    #hexcode
+```
+Example:
+
+```text
+cleaned_SRR30598619_bin.20.orig_filtered_kept_contigs #984ea3
+cleaned_SRR30598619_bin.21.orig_filtered_kept_contigs #984ea3
+```
+⚠️ Important:
+
+Columns must be separated by consistent spacing
+Avoid extra spaces or missing values
+Ensure genome IDs match the tree tip labels exactly
+
+#### Step 6: Upload to iTOL
+- Open your tree in iTOL
+- Drag and drop the .txt annotation file onto the tree
+- The tree will automatically apply colouring based on your dataset
+
+## Exporting the tree to your local computer
+
+Once your tree has been fully annotated, adjust any export settings if needed (e.g., resolution, labels, scaling) and click “Export” option in the top menu and select your preferred output format to download the file to your local machine.
+
+The output formats include:
+- SVG (Scalable Vector Graphics)
+- PDF (Portable Document Format)
+- EPS (Encapsulated PostScript)
+- PNG (Portable Network Graphics)
+- Newick tree
+- phyloXML
+- NEXUS tree
+- Colors and styles annotation
+- Collapsed nodes list
 ---
 ## Summary
 ---
