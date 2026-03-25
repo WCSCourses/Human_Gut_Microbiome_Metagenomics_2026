@@ -156,8 +156,8 @@ mkdir -p /humann_output/SRR30598619
 
 mkdir -p /humann_combined
 cd humann_combined
-cat DEHOSTED_READS/SRR30598619_dehosted.1.fastq.gz \
-    DEHOSTED_READS/SRR30598619_dehosted.2.fastq.gz \
+cat CLEANED_READS/SRR30598619_clean_1.fastq.gz \
+    CLEANED_READS/SRR30598619_clean_2.fastq.gz \
     > /humann_combined/SRR30598619_combined.fastq.gz
 ```
 
