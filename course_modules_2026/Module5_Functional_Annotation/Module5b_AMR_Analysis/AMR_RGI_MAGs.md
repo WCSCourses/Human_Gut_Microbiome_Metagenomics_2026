@@ -250,6 +250,7 @@ Ask:
 - Do certain taxa carry higher AMR burden?
 
 ---
+#Note: AMR analysis has already been performed on all MAGs for you; participants can access the results in course_data_2026/module5b/output/Complete_all_mags_Amr_Analysis.xlsx.
 
 # 📈 Downstream Analysis In R-Studio
 
