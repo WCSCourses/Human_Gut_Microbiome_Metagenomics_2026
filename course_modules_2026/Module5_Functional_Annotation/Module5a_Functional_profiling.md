@@ -353,49 +353,9 @@ process corrects for differences in sequencing depth and underlying gene
 abundances, ensuring that observed differences reflect true biological
 variation rather than technical bias.
 
-Create: path_normalize_rel_ab.sh
-
-``` bash
-#!/bin/bash
-
-INPUT_DIR="/path/to/humann_output/"        # EDIT THIS
-OUTPUT_DIR="/path/to/path_normalize/"      # EDIT THIS
-
-mkdir -p "$OUTPUT_DIR"
-
-find "$INPUT_DIR" -type f -name "*_pathabundance.tsv" | while read SAMPLE_FILE; do
-    
-    BASENAME=$(basename "$SAMPLE_FILE")
-    OUTPUT_FILE="$OUTPUT_DIR/${BASENAME%.tsv}_relab.tsv"
-
-    echo "Normalizing pathway abundances: $BASENAME"
-
-    humann_renorm_table \
-        --input "$SAMPLE_FILE" \
-        --output "$OUTPUT_FILE" \
-        --units relab
-
-    if [ $? -eq 0 ]; then
-        echo "✅ Successfully processed: $BASENAME"
-    else
-        echo "❌ Failed to process: $BASENAME"
-    fi
-done
-```
-
-Make executable:
-
-``` bash
-chmod +x path_normalize_rel_ab.sh 
-```
-
-Run:
-
-``` bash
-./path_normalize_rel_ab.sh
-```
-
-------------------------------------------------------------------------
+You can refer to the script located at
+[Module5a/scripts/path_normalize_rel_ab.sh](https://github.com/WCSCourses/Human_Gut_Microbiome_Metagenomics_2026/blob/main/course_data_2026/Module5a/scripts/path_normalize_rel_ab.sh)
+to see an example of how Pathway abundance data can be normalised.
 
 # Merging gene families and pathway abundance across samples
 
