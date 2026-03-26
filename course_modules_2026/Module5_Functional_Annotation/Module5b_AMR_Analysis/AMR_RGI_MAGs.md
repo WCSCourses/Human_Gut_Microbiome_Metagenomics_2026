@@ -6,7 +6,7 @@
 Rahma Golicha   
 Caroline Tigoi  
 
-## 📌 Module Overview
+## Module Overview
 
 This module introduces **Antimicrobial Resistance Gene (ARG) profiling** using the **Resistance Gene Identifier (RGI)** tool in metagenomic mode (`rgi main`).
 
@@ -33,7 +33,7 @@ https://github.com/arpcard/rgi/blob/master/docs/rgi_main.rst
 
 ---
 
-# 🎯 Learning Outcomes
+# Learning Outcomes
 
 By the end of this session, participants will be able to:
 
@@ -46,7 +46,7 @@ By the end of this session, participants will be able to:
 
 ---
 
-# 🧠 Where This Fits in Gut Metagenomics
+# Where This Fits in Gut Metagenomics
 
 ```
 QC → Assembly → Binning → MAG refinement → AMR profiling → Ecological interpretation
