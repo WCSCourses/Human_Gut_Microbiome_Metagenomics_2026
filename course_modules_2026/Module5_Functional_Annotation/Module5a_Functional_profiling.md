@@ -359,7 +359,19 @@ to see an example of how Pathway abundance data can be normalised.
 
 # Merging gene families and pathway abundance across samples
 
-## Merge gene families
+Merging gene family and pathway abundances across samples is important
+because it creates a single, consistent dataset that can be compared and
+analysed collectively.
+
+It allows you to identify patterns, differences, and trends across
+samples (e.g. between conditions or groups), perform statistical
+analyses, and generate visualisations. Without merging, each sample
+remains isolated, making meaningful comparisons and downstream analysis
+difficult.
+
+***Below are example commands showing how to merge the files.***
+
+#### Merge gene families
 
 ``` bash
 humann_join_tables \
@@ -368,7 +380,7 @@ humann_join_tables \
   --file_name genefamilies
 ```
 
-## Merge pathway abundance
+#### Merge pathway abundance
 
 ``` bash
 humann_join_tables \
