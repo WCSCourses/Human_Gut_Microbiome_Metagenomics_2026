@@ -1,12 +1,10 @@
-# 🧬 Module 5b 
+# Module 5b 
 ## AMR Gene Profiling in Human Gut Microbiome MAGs
 
-# 👩🏽‍🏫 Module Lead
+#Module Lead
 
 Rahma Golicha   
 Caroline Tigoi  
-
-
 
 ## 📌 Module Overview
 
@@ -69,7 +67,7 @@ Participants should have:
 
 ---
 
-# 🛠️ Exercise 1 — Environment Setup
+# Exercise 1 — Environment Setup
 You can skip the Environment Setup in the classroom. The environment has been already setup for you.
 
 ## 1️⃣ Initialize Conda
@@ -124,7 +122,7 @@ rgi main --version
 
 ---
 
-# 🗂️ Exercise 2 — Download and Load CARD Database
+# Exercise 2 — Download and Load CARD Database
 
 ## Download CARD. You can skip this in the classroom. Move to loading the database into RGI.
 
@@ -143,7 +141,7 @@ rgi database --version
 ---
 
 # 🧬 Exercise 3 — Run RGI on Human Gut MAGs
-## 📥 Input Data
+## Input Data
 Participants will use pre-generated Metagenome-Assembled Genomes (MAGs) in FASTA format. 
 The MAGs are stored in Module3/MAGS/cleaned_fasta.
 
@@ -182,7 +180,7 @@ rgi main \
 
 ---
 
-# 📊 Exercise 4 — Understanding Output Files
+# Exercise 4 — Understanding Output Files
 
 ### 📂 Location:
 Outputs are saved in the same directory as the input unless specified.
@@ -262,7 +260,7 @@ Analysis can be performed:
 - On the HPC (if R is installed), OR
 - Locally in RStudio after downloading results
 
-### 📥 Input for R:
+### Input for R:
 
 - `combined_rgi_results.tsv`
 
@@ -279,7 +277,7 @@ This merged file contains:
 
 ---
 
-# 🧪 Optional: Visualize JSON Output
+# Optional: Visualize JSON Output
 
 Upload `.json` files to the CARD website for interactive visualization: https://card.mcmaster.ca/analyze/rgi 
 
