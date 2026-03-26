@@ -204,11 +204,18 @@ please go to
 
 # Running the pipeline on one sample.
 
+***Due to time constraints, this step will not be run during the class.
+Instead, we will examine and discuss its outputs.***
+
 Download and HuMAnN pipeline from biobakery as indicated in
 [Module5a_Supplementary1_HUMAnN_on_Nextflow.md](Module5a_Supplementary1_HUMAnN_on_Nextflow.md)
-. Ensure the databases are updated and the paths for the databases are
-set correctly. Also remember to activate your mamba environment before
-running the HuMAnN pipeline.
+.
+
+Ensure the databases are updated and the paths for the databases are set
+correctly.
+
+Also remember to activate your mamba environment before running the
+HuMAnN pipeline.
 
 ### Create a clean folder for this module and place the pipeline files inside it
 
