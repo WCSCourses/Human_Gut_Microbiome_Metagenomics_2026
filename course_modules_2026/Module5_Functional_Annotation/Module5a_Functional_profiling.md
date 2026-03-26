@@ -433,6 +433,9 @@ rowMeans(data \> 0) \>= 0.10 rowMeans(data) \>= 1e-05
 
 # Part II — Genome-Resolved Functional Annotation (Prokka on MAGs)
 
+***Due to time constraints, this part will not be run during the class.
+Instead, we will examine and discuss its outputs.***
+
 ## Overview
 
 In Part II, we will annotate **Metagenome-Assembled Genomes (MAGs)**
@@ -478,27 +481,26 @@ MAGs allow us to:
 
 # 2. Input Requirements
 
-You will need:
+The files needed in this tutorial are stored here:
+<https://github.com/WCSCourses/Human_Gut_Microbiome_Metagenomics_2026/tree/main/course_data_2026/Module2/MAG_practical>
 
--   MAG FASTA files\
+They are:
 
-``` text
-  Example:
-    MAG1.fa
-    MAG2.fa
-    MAG3.fa
-```
+-   MAG FASTA files
 
 These should be:
 
 -   Binned
 -   Quality controlled
--   Preferably with completeness \> 70% and contamination \< 10% from
+-   Preferably with completeness \> 90% and contamination \< 5% from
     module 2.
 
 ------------------------------------------------------------------------
 
 # 3. Install Prokka
+
+***You do not need to do this step during the class. Prokka has already
+been installed for you.***
 
 If using conda/mamba:
 
@@ -515,26 +517,57 @@ prokka --version
 
 # 4. Running Prokka on a Single MAG
 
+The input for this command can be found on your work computer and also
+at
+<https://github.com/WCSCourses/Human_Gut_Microbiome_Metagenomics_2026/tree/main/course_data_2026/Module2/MAG_practical/assembly>
+
 Basic command:
 
 ``` bash
-prokka MAG1.fa --outdir MAG1_annotation --prefix MAG1
+prokka Module2/MAG_practical/assembly/SRR30598619_final_assembly.fa --outdir MAG1_annotation --prefix MAG1
 ```
 
-What this does: - Predicts coding sequences (CDS) - Identifies rRNA and
-tRNA genes - Assigns functional annotations using internal databases -
-Produces multiple output files
+What this does:
+
+\- Predicts coding sequences (CDS)
+
+\- Identifies rRNA and tRNA genes
+
+\- Assigns functional annotations using internal databases
+
+\- Produces multiple output files
 
 # 5. Understanding Prokka Outputs
 
-Inside: MAG1_annotation/ You will see: - .gff Annotation file
-(recommended master file) - .gbk GenBank format - .faa Predicted protein
-sequences - .ffn Nucleotide sequences of genes - .tsv Tab-delimited
-annotation summary #Important output - .txt Summary statistics
+Please check the outputs for one sample
+([SRR30598619](https://github.com/WCSCourses/Human_Gut_Microbiome_Metagenomics_2026/tree/main/course_data_2026/Module5a/prokka_annotation_SRR30598619){.uri})
+here:
+<https://github.com/WCSCourses/Human_Gut_Microbiome_Metagenomics_2026/tree/main/course_data_2026/Module5a/prokka_annotation_SRR30598619>
+
+Inside: MAG1_annotation/ you will see:
+
+\- .gff Annotation file (recommended master file)
+
+\- .gbk GenBank format
+
+\- .faa Predicted protein sequences
+
+\- .ffn Nucleotide sequences of genes
+
+\- .tsv Tab-delimited annotation summary #Important output
+
+\- .txt Summary statistics
 
 Check the .tsv file output is typically used for downstream functional
-exploration and contains - Locus tags - Gene names - Product
-descriptions - Database hits
+exploration and contains
+
+\- Locus tags
+
+\- Gene names
+
+\- Product descriptions
+
+\- Database hits
 
 ``` bash
 head MAG1_annotation/MAG1.tsv
@@ -542,59 +575,27 @@ head MAG1_annotation/MAG1.tsv
 
 # 6. Running Prokka on multiple MAGs
 
-Create a simple loop script:
+***Due to time constraints, this part will not be run during the class.
+Instead, we will examine and discuss its outputs.***
 
-``` bash
-nano run_prokka.sh
-```
+Check the
+[run_prokka.sh](https://github.com/WCSCourses/Human_Gut_Microbiome_Metagenomics_2026/blob/main/course_data_2026/Module5a/scripts/run_prokka.sh)
+script.
 
-copy this into that
-
-``` bash
-#!/bin/bash
-
-INPUT_DIR="/path/to/MAGs/"          # EDIT THIS
-OUTPUT_DIR="/path/to/prokka_output/" # EDIT THIS
-
-mkdir -p "$OUTPUT_DIR"
-
-for MAG in "$INPUT_DIR"/*.fa; do
-    
-    BASENAME=$(basename "$MAG" .fa)
-    
-    echo "Annotating $BASENAME"
-    
-    prokka "$MAG" \
-        --outdir "$OUTPUT_DIR/$BASENAME" \
-        --prefix "$BASENAME"
-
-done
-
-echo "All MAGs annotated."
-```
-
-save and exit
-
-Make executable:
-
-``` bash
-chmod +x run_prokka.sh
-```
-
-Run:
-
-``` bash
-./run_prokka.sh
-```
+The ***.gff*** files for the samples presented in this course can be
+inspected here:
+<https://github.com/WCSCourses/Human_Gut_Microbiome_Metagenomics_2026/tree/main/course_data_2026/Module5a/prokka_annotation>
 
 ------------------------------------------------------------------------
 
 # 7. Interpreting Genome-Resolved functional potential
 
-After annotation, you can: \> **Search for specific genes:**
+After annotation, you can:
+
+S**earch for specific genes:**
 
 ``` bash
-grep -i "butyrate" MAG1_annotation/MAG1.tsv
+grep -i "16s" MAG1_annotation/MAG1.tsv
 ```
 
 > **Count total predicted genes:**
@@ -613,9 +614,13 @@ less MAG1_annotation/MAG1.faa
 
 # 8. Summary
 
-Using Prokka on MAGs provides: - Genome-resolved functional annotation -
-Organism-specific metabolic potential - Complementary insight to HUMAnN3
-community-level profiling
+Using Prokka on MAGs provides:
+
+\- Genome-resolved functional annotation
+
+\- Organism-specific metabolic potential
+
+\- Complementary insight to HUMAnN3 community-level profiling
 
 > **After Prokka, you may:**
 
