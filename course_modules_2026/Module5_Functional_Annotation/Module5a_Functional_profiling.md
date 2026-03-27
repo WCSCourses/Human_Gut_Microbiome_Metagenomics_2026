@@ -545,7 +545,7 @@ prokka \
   --kingdom Bacteria \
   --outdir ./cleaned_SRR30598619_bin.20.orig_filtered_kept_contigs_prokka \
   --prefix cleaned_SRR30598619_bin.20.orig_filtered_kept_contigs \
-  /Module3/MAGs/cleaned_fasta/cleaned_SRR30598619_bin.20.orig_filtered_kept_contigs.fa
+  Module3/MAGs/cleaned_fasta/cleaned_SRR30598619_bin.20.orig_filtered_kept_contigs.fa
 ```
 
 What this does:
@@ -566,6 +566,7 @@ here:
 <https://github.com/WCSCourses/Human_Gut_Microbiome_Metagenomics_2026/tree/main/course_data_2026/Module5a/prokka_annotation_SRR30598619>
 
 Inside: cleaned_SRR30598619_bin.20.orig_filtered_kept_contigs_prokka/ you will see 12 files:
+``` bash
 cleaned_SRR30598619_bin.20.orig_filtered_kept_contigs.gff (Annotation file (recommended master file))
 cleaned_SRR30598619_bin.20.orig_filtered_kept_contigs.faa (Predicted protein sequences)
 cleaned_SRR30598619_bin.20.orig_filtered_kept_contigs.gbk (GenBank format)
@@ -578,7 +579,7 @@ cleaned_SRR30598619_bin.20.orig_filtered_kept_contigs.fsa
 cleaned_SRR30598619_bin.20.orig_filtered_kept_contigs.log
 cleaned_SRR30598619_bin.20.orig_filtered_kept_contigs.sqn
 cleaned_SRR30598619_bin.20.orig_filtered_kept_contigs.tbl
-
+```
 Check the .tsv file output is typically used for downstream functional
 exploration and contains
 
