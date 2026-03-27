@@ -560,9 +560,7 @@ What this does:
 
 # 5. Understanding Prokka Outputs
 
-Please check the outputs for each high quality MAG from one sample (SRR30598619)
-((https://github.com/WCSCourses/Human_Gut_Microbiome_Metagenomics_2026/tree/main/course_data_2026/Module5a/prokka_annotation_SRR30598619){.uri})
-here:
+Please check the outputs for each high quality MAG from one sample (SRR30598619) here:
 <https://github.com/WCSCourses/Human_Gut_Microbiome_Metagenomics_2026/tree/main/course_data_2026/Module5a/prokka_annotation_SRR30598619>
 
 Inside: cleaned_SRR30598619_bin.20.orig_filtered_kept_contigs_prokka/ you will see 12 files:
