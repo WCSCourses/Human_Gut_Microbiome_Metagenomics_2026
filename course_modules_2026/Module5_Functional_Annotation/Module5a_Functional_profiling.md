@@ -194,7 +194,7 @@ Functional outputs represent **community-level functional capacity** infered fro
 # Exercise
 
 ***Due to time constraints, this step will not be run during the class.
-Instead, we will examine how to normalise and merge outputs from humann3 and discuss its outputs.***
+Instead, we will examine how to normalise and merge outputs from humann3.***
 
 The next part will explain how to run HUMAnN on one sample.
 
