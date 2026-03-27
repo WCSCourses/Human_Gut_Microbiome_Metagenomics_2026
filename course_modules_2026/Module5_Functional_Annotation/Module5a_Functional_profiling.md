@@ -17,7 +17,7 @@ pathways, gene families, and biochemical processes encoded within the
 microbiome. In many systems, function is more informative than taxonomy:
 different microbial species can perform similar metabolic roles, and it
 is these functions—such as short-chain fatty acid production, vitamin
-biosynthesis, nitrogen fixation, or antimicrobial resistance—that
+biosynthesis, iron metabolism, nitrogen fixation, or antimicrobial resistance—that
 directly influence host health, disease progression, and ecosystem
 dynamics.
 
@@ -93,7 +93,7 @@ approach for functional profiling from metagenomes).
 
 Prokka is a rapid genome annotation tool designed for the functional
 annotation of prokaryotic genomes, including bacterial and archaeal
-isolates and metagenome-assembled genomes (MAGs). It takes assembled
+isolate genomes and metagenome-assembled genomes (MAGs). It takes assembled
 genome sequences (FASTA files) as input and predicts coding sequences
 (CDS), rRNA and tRNA genes, and other genomic features. Prokka assigns
 putative functions to genes by comparing them against curated reference
@@ -104,8 +104,8 @@ By annotating MAGs, Prokka enables genome-resolved interpretation of
 metabolic potential, allowing researchers to determine which specific
 organism encodes particular genes or pathways. This complements
 community-level functional profiling tools such as HUMAnN by linking
-function directly to reconstructed genomes. The output files (e.g., GFF,
-GBK, TSV, FAA) can be used for pathway analysis, comparative genomics,
+function directly to reconstructed genomes. The output files (e.g., FAA, GFF,
+GBK, TSV) can be used for pathway analysis, comparative genomics,
 and integration with other functional databases.
 
 ### References:
@@ -121,11 +121,11 @@ annotation. Bioinformatics, 30(14), 2068–2069.
 
 Use HUMAnN when: - You want quantitative community-level comparisons -
 You are performing statistical modelling - You are linking function to
-host phenotypes
+host phenotypes.
 
 Use Prokka (MAGs) when: - You want to know which organism encodes a
 pathway - You want to assess pathway completeness - You want
-genome-resolved interpretation
+genome-resolved interpretation.
 
 Both are necessary for robust microbiome functional interpretation. \##
 Functional capacity vs functional potential
@@ -194,7 +194,7 @@ Functional outputs represent **community-level functional capacity** infered fro
 # Exercise
 
 ***Due to time constraints, this step will not be run during the class.
-Instead, we will examine and discuss its outputs.***
+Instead, we will examine how to normalise and merge outputs from humann3 and discuss its outputs.***
 
 The next part will explain how to run HUMAnN on one sample.
 
@@ -396,6 +396,15 @@ humann_join_tables \
   --file_name pathabundance
 ```
 
+#### Merge pathway coverage
+
+``` bash
+humann_join_tables \
+  --input /path/to/humann_output/ \
+  --output merged_pathcoverage.tsv \
+  --file_name pathcoverage
+```
+
 # Sanity Checks
 
 ## In R:
@@ -531,7 +540,13 @@ at
 Basic command:
 
 ``` bash
-prokka Module2/MAG_practical/assembly/SRR30598619_final_assembly.fa --outdir MAG1_annotation --prefix MAG1
+prokka \
+  --centre X \
+  --compliant \
+  --kingdom Bacteria \
+  --outdir ./cleaned_SRR30598619_bin.20.orig_filtered_kept_contigs_prokka \
+  --prefix cleaned_SRR30598619_bin.20.orig_filtered_kept_contigs \
+  /Module3/MAGs/cleaned_fasta/cleaned_SRR30598619_bin.20.orig_filtered_kept_contigs.fa
 ```
 
 What this does:
@@ -546,24 +561,24 @@ What this does:
 
 # 5. Understanding Prokka Outputs
 
-Please check the outputs for one sample
+Please check the outputs for each high quality MAG from one sample
 ([SRR30598619](https://github.com/WCSCourses/Human_Gut_Microbiome_Metagenomics_2026/tree/main/course_data_2026/Module5a/prokka_annotation_SRR30598619){.uri})
 here:
 <https://github.com/WCSCourses/Human_Gut_Microbiome_Metagenomics_2026/tree/main/course_data_2026/Module5a/prokka_annotation_SRR30598619>
 
-Inside: MAG1_annotation/ you will see:
-
-\- .gff Annotation file (recommended master file)
-
-\- .gbk GenBank format
-
-\- .faa Predicted protein sequences
-
-\- .ffn Nucleotide sequences of genes
-
-\- .tsv Tab-delimited annotation summary #Important output
-
-\- .txt Summary statistics
+Inside: cleaned_SRR30598619_bin.20.orig_filtered_kept_contigs_prokka/ you will see 12 files:
+cleaned_SRR30598619_bin.20.orig_filtered_kept_contigs.gff (Annotation file (recommended master file))
+cleaned_SRR30598619_bin.20.orig_filtered_kept_contigs.faa (Predicted protein sequences)
+cleaned_SRR30598619_bin.20.orig_filtered_kept_contigs.gbk (GenBank format)
+cleaned_SRR30598619_bin.20.orig_filtered_kept_contigs.ffn (Nucleotide sequences of genes)
+cleaned_SRR30598619_bin.20.orig_filtered_kept_contigs.tsv (Tab-delimited annotation summary #Important output)
+cleaned_SRR30598619_bin.20.orig_filtered_kept_contigs.txt (Summary statistics)
+cleaned_SRR30598619_bin.20.orig_filtered_kept_contigs.fna
+cleaned_SRR30598619_bin.20.orig_filtered_kept_contigs.err 
+cleaned_SRR30598619_bin.20.orig_filtered_kept_contigs.fsa
+cleaned_SRR30598619_bin.20.orig_filtered_kept_contigs.log
+cleaned_SRR30598619_bin.20.orig_filtered_kept_contigs.sqn
+cleaned_SRR30598619_bin.20.orig_filtered_kept_contigs.tbl
 
 Check the .tsv file output is typically used for downstream functional
 exploration and contains
@@ -577,7 +592,7 @@ exploration and contains
 \- Database hits
 
 ``` bash
-head MAG1_annotation/MAG1.tsv
+head cleaned_SRR30598619_bin.20.orig_filtered_kept_contigs_prokka/cleaned_SRR30598619_bin.20.orig_filtered_kept_contigs.tsv
 ```
 
 # 6. Running Prokka on multiple MAGs
@@ -602,19 +617,19 @@ After annotation, you can:
 S**earch for specific genes:**
 
 ``` bash
-grep -i "16s" MAG1_annotation/MAG1.tsv
+grep -i "coaA" cleaned_SRR30598619_bin.20.orig_filtered_kept_contigs_prokka/cleaned_SRR30598619_bin.20.orig_filtered_kept_contigs.tsv
 ```
 
 > **Count total predicted genes:**
 
 ``` bash
-grep -c "CDS" MAG1_annotation/MAG1.gff
+grep -c "CDS" cleaned_SRR30598619_bin.20.orig_filtered_kept_contigs_prokka/cleaned_SRR30598619_bin.20.orig_filtered_kept_contigs.gff
 ```
 
 > **Extract protein sequences:**
 
 ``` bash
-less MAG1_annotation/MAG1.faa
+less cleaned_SRR30598619_bin.20.orig_filtered_kept_contigs_prokka/cleaned_SRR30598619_bin.20.orig_filtered_kept_contigs.faa
 ```
 
 ------------------------------------------------------------------------
@@ -632,8 +647,8 @@ Using Prokka on MAGs provides:
 > **After Prokka, you may:**
 
 ``` text
-- Map proteins to KEGG orthologs (KO)
-- Use eggNOG-mapper for expanded annotation
+- Map proteins (.faa file) to KEGG orthologs (KO)
+- Use eggNOG-mapper for expanded annotation (.faa file)
 - Assess pathway completeness manually
 - Integrate with HUMAnN stratified outputs
 ```
