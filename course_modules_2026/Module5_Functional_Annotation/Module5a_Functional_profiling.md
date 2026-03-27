@@ -324,7 +324,6 @@ taxa.
 
 -   0–1 confidence score \*\***Do not normalize coverage files
     (\*\_pathcoverage.tsv).**\*\*
--   
 
 ------------------------------------------------------------------------
 
