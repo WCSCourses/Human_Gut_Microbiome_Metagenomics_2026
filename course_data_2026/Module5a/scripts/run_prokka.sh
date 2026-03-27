@@ -12,6 +12,9 @@ for MAG in "$INPUT_DIR"/*.fa; do
     echo "Annotating $BASENAME"
     
     prokka "$MAG" \
+        --centre X \
+        --compliant \
+        --kingdom Bacteria \
         --outdir "$OUTPUT_DIR/$BASENAME" \
         --prefix "$BASENAME"
 
