@@ -187,8 +187,12 @@ The most common method to root a tree is to include an **outgroup**—a taxon kn
 
 
 ## Tree Visualisation Using iTOL
+There are many programs that can be used to visualise phylogenetic trees. Some of the popular programs include FigTree the R library ggtree. For this course, we’re going to use the web-based tool iTOL as it allows users to interactively manipulate the tree and add metadata.
 
-Visualise `gtdbtk_fullalign_bacteria.nwk` in iToL and add metadata
+In order to use this platform you will first need to create an account using this link: https://itol.embl.de/ (or sign-in through your existing Google account).
+
+
+## Preparing Annotation file
 
 This guide describes how to colour phylogenetic trees in iTOL (Interactive Tree of Life) using metadata.
 
@@ -267,10 +271,29 @@ Columns must be separated by consistent spacing
 Avoid extra spaces or missing values
 Ensure genome IDs match the tree tip labels exactly
 
-#### Step 6: Upload to iTOL
-- Open your tree in iTOL
-- Drag and drop the .txt annotation file onto the tree
-- The tree will automatically apply colouring based on your dataset
+## Uploading tree files and metadata
+Once you’ve logged into iTOL, you can upload `gtdbtk_fullalign_bacteria.nwk` tree file and annotate it with the metadata 
+
+1. Click on the UPLOAD link in the bottom-right corner of the page:
+
+![upload icon](images/upload.png)
+
+2. Browse Files to upload the tree:
+
+![browse files](images/browse.png)
+
+3. This will open a file browser, where you can select the tree file and metadata from your local machine. Go to the gtdb_phylogenetic_tree directory where you have the tree and the species_category file. Click and select the `gtdbtk_fullalign_bacteria.nwk` file. Click Open on the dialogue window after you have selected the file.
+
+![open files](images/open.png)
+
+4. The tip labels are still the European Nuclotide Accessions we used to download the FASTQ files. Let’s change the tip labels to the phylum names using `species_category` annotation file.
+
+![add annotation files](images/species_category.png)
+
+5. From the rooted tree, we can see we have distinct clades within the tree. These are major clades we identified in our dataset. 
+Visualise `gtdbtk_fullalign_bacteria.nwk` in iToL and add metadata
+
+![tree file](images/tree.pdf)
 
 ## Exporting the tree to your local computer
 
@@ -286,6 +309,7 @@ The output formats include:
 - NEXUS tree
 - Colors and styles annotation
 - Collapsed nodes list
+
 ---
 ## Summary
 ---
