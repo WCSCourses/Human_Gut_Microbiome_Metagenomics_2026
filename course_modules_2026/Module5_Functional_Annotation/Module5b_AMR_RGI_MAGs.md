@@ -55,7 +55,7 @@ This module focuses on the **AMR profiling step**.
 
 ---
 
-# 🖥️ Requirements
+# Requirements
 
 Participants should have:
 
@@ -75,7 +75,6 @@ You can skip the Environment Setup in the classroom. The environment has been al
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 /scratch/home/train6/miniconda3/bin/conda init bash
 
-
 ```bash
 conda init bash
 source ~/.bashrc
@@ -89,16 +88,13 @@ source ~/.bashrc
 conda install -n base -c conda-forge mamba
 mamba --version
 ```
-
 ---
-
 ## 3️⃣ Create a Clean Environment
 
 ```bash
 conda create -n rgi_env
 conda activate rgi_env
 ```
-
 ---
 
 ## 4️⃣ Configure Channels
@@ -109,7 +105,6 @@ conda config --add channels bioconda
 conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
-
 ---
 
 ## 5️⃣ Install RGI
@@ -118,9 +113,7 @@ conda config --set channel_priority strict
 mamba install rgi
 rgi main --version
 ```
-
 ---
-
 # Exercise 2 — Download and Load CARD Database
 
 ## Download CARD. You can skip this in the classroom. Move to loading the database into RGI.
@@ -129,17 +122,14 @@ rgi main --version
 wget https://card.mcmaster.ca/latest/data
 tar -xvf data
 ```
-
 ## Load Database into RGI. This is quite slow.
 
 ```bash
 rgi load --card_json card.json --local
 rgi database --version
 ```
-
 ---
-
-# 🧬 Exercise 3 — Run RGI on Human Gut MAGs
+# Exercise 3 — Run RGI on Human Gut MAGs
 ## Input Data
 Participants will use pre-generated Metagenome-Assembled Genomes (MAGs) in FASTA format. 
 The MAGs are stored in Module3/MAGS/cleaned_fasta.
@@ -164,7 +154,6 @@ rgi main \
   --include_nudge \
   --num_threads 8
 ```
-
 ### Run RGI on the second MAG 
 
 ```bash
@@ -176,12 +165,11 @@ rgi main \
   --include_nudge \
   --num_threads 8
 ```
-
 ---
 
 # Exercise 4 — Understanding Output Files
 
-### 📂 Location:
+### location:
 Outputs are saved in the same directory as the input unless specified.
 
 Each ```rgi main``` command run for each genome produces:
@@ -252,6 +240,40 @@ Ask:
 ---
 #Note: AMR analysis has already been performed on all MAGs for you; participants can access the results in course_data_2026/module5b/output/Complete_all_mags_Amr_Analysis.xlsx.
 
+# Generating a Heatmap from RGI Results
+
+rgi heatmap can be used to visualise AMR profiles across samples using pre-computed RGI JSON outputs. The tool generates heatmaps in both PNG and EPS formats.
+
+In this example, AMR genes are grouped by drug class, and samples are clustered based on resistome similarity (refer to https://github.com/arpcard/rgi/blob/master/docs/rgi_main.rst).
+
+Run the following command:
+```bash
+rgi heatmap \
+  --input /data/microbiome_course2026/course_data_2026/Module5b/output \
+  --output rgi_heatmap \
+  -cat drug_class \
+  -clus samples
+```
+Output:
+rgi_heatmap-2.png
+rgi_heatmap-2.eps
+rgi_heatmap-2.csv (underlying matrix)
+
+###Downloading the Heatmap to Your Local Computer
+
+To copy the generated PNG file from the cluster to your local machine, run the following command from your local terminal:
+```bash
+scp train6@keklf-cls04:/scratch/home/train6/module5b/output/rgi_heatmap-2.png /path/to/your/localpc/
+```
+Replace /path/to/your/localpc/ with the destination directory on your computer.
+
+###Notes
+
+Ensure that the input directory contains only valid RGI JSON output files.
+
+The .csv file can be used for custom visualisation in R (e.g., using ggplot2 or pheatmap).
+
+
 # 📈 Downstream Analysis In R-Studio
 
 
@@ -283,7 +305,7 @@ Upload `.json` files to the CARD website for interactive visualization: https://
 
 ---
 
-# 📚 References
+# References
 
 - CARD Database  
 - RGI documentation  
