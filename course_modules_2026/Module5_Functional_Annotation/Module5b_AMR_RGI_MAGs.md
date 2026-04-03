@@ -92,12 +92,12 @@ mamba --version
 ## 3️⃣ Create a Clean Environment
 
 ```bash
-conda create -n rgi_env
+conda create -n rgi_env (This has been done for you, proceed to activating the rgi_env)
 conda activate rgi_env
 ```
 ---
 
-## 4️⃣ Configure Channels
+## 4️⃣ Configure Channels (You can skip this, this has been done)
 
 ```bash
 conda config --add channels defaults
@@ -107,7 +107,7 @@ conda config --set channel_priority strict
 ```
 ---
 
-## 5️⃣ Install RGI
+## 5️⃣ Install RGI (RGI  Has alraedy been Installed. You can Skip this)
 
 ```bash
 mamba install rgi
