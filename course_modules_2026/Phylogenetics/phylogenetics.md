@@ -187,89 +187,89 @@ The most common method to root a tree is to include an **outgroup**—a taxon kn
 
 
 ## Tree Visualisation Using iTOL
-There are many programs that can be used to visualise phylogenetic trees. Some of the popular programs include FigTree the R library ggtree. For this course, we’re going to use the web-based tool iTOL as it allows users to interactively manipulate the tree and add metadata.
+Several tools are available for visualising phylogenetic trees, including FigTree and the R package ggtree. In this course, we will use Interactive Tree of Life (iTOL) because it provides an intuitive web interface for exploring trees and integrating metadata.
 
-In order to use this platform you will first need to create an account using this link: https://itol.embl.de/ (or sign-in through your existing Google account).
+To get started create an account at: https://itol.embl.de/ (or sign-in using your Google account).
 
 
 ## Preparing Annotation file
 
-This guide describes how to colour phylogenetic trees in iTOL (Interactive Tree of Life) using metadata.
+This guide outlines how to colour a phylogenetic tree in iTOL using phylum-level metadata.
 
 You will:
 
 - Extract phylum information from GTDB metadata
-- Assign colours to each phylum
-- Format the data for iTOL annotation
-- Upload the annotation file to iTOL
+- Assign a unique colour to each phylum
+- Format the data for iTOL
+- Upload the annotation file
 
 #### Step 1: Extract Phylum Information from GTDB Metadata
 
-- Open your GTDB metadata file in Excel.
+- Open your GTDB metadata file in excel
+
+```
+/Human_Gut_Microbiome_Metagenomics_2026/course_data_2026/Phylogenetics/gtdb_phylogenetic_tree/Bednarski_2025_qcmags_hqMAGs_report_and_metadata.xlsx
+```
+
 - Insert a new empty column next to the classification column.
-- Click on the first cell of the classification column and extract only the phylum-level classification from the taxonomy string to the first cell of the new column.
 
-Example format:
+![insert new column](images/newcol.png)
 
-```text
-d__Bacteria;p__Firmicutes;c__...
-```
-→ Extract:
+- Extract the phylum-level taxonomy from the classification string into the new column (e.g. values starting with p__)
 
-```text
-p__Firmicutes
-```
+![insert phylum column](images/phylum.png)
 
-With the cursor in the new cell with the phylumn name, go to the Data tab in Excel and click Flash Fill to automatically populate the column
+With the cursor in the new cell with the phylum name, go to the Data tab in excel and click Flash-fill to automatically populate the remaining rows
 
-#### Step 2: Prepare a Clean Book for iTOL
+![Flash-fill](images/Flash-fill.png)
+
+#### Step 2: Create a Clean Working Sheet
 Open a new sheet (e.g., Book2).
-Copy the sample column and newly created Phylum column into Book2
+Copy the sample column and newly created phylum column into Book2
+
+![New book](images/Book2.png)
 
 #### Step 3: Assign Colours to Each Phylum
 
-In the phylum column:
+- Replace each phylum name with a hex colour code using Find and Replace.
 
-Use Find and Replace and Replace each phylum name with a hex colour code
+![hexcodes](images/hex.png)
 
-Example:
+- Combine sample IDs and colour codes into a single column using
 
-```text
-p__Firmicutes → #1f77b4
-p__Proteobacteria → #ff7f0e
-p__Actinobacteriota → #2ca02c
-```
+ ``` 
+ =A2&" "&C2 
+ ``` 
 
-To ensure consistency Each phylum must map to one unique colour
+![hexcodes](images/coding.png)
 
 #### Step 4: Format the iTOL Annotation File
-Open your existing iTOL dataset text file (e.g., species_category.txt).
+ - Open the iTOL annotation file
 
-Locate the line below:
+```
+/Human_Gut_Microbiome_Metagenomics_2026/course_data_2026/Phylogenetics/gtdb_phylogenetic_tree/species_category.txt
+```
+- Locate the line:
 
-```text
+```
 Actual data follows after the "DATA" keyword    #
 ```
-copy the two columns (sample and color codes) from excel and paste everything below "DATA" with your formatted data.
+
+- Paste the formatted data (sample + colour) directly below this line and save the file using ``` CTRL + S ``` option or ``` CMD + S ``` option
 
 #### Step 5: Format Your Data Correctly
 
 Your data must follow iTOL formatting rules. A typical structure is:
 
-```text
-genome_id    #hexcode
 ```
-Example:
-
-```text
 cleaned_SRR30598619_bin.20.orig_filtered_kept_contigs #984ea3
 cleaned_SRR30598619_bin.21.orig_filtered_kept_contigs #984ea3
 ```
 ⚠️ Important:
 
-Columns must be separated by consistent spacing
-Avoid extra spaces or missing values
-Ensure genome IDs match the tree tip labels exactly
+- Ensure sample IDs match exactly between the tree and annotation file
+- Use consistent formatting (no extra spaces or hidden characters)
+- Save the file as plain text before uploading to iTOL
 
 ## Uploading tree files and metadata
 Once you’ve logged into iTOL, you can upload `gtdbtk_fullalign_bacteria.nwk` tree file and annotate it with the metadata 
@@ -299,16 +299,11 @@ Visualise `gtdbtk_fullalign_bacteria.nwk` in iToL and add metadata
 
 Once your tree has been fully annotated, adjust any export settings if needed (e.g., resolution, labels, scaling) and click “Export” option in the top menu and select your preferred output format to download the file to your local machine.
 
+![export files](images/export.png)
+
 The output formats include:
-- SVG (Scalable Vector Graphics)
-- PDF (Portable Document Format)
-- EPS (Encapsulated PostScript)
-- PNG (Portable Network Graphics)
-- Newick tree
-- phyloXML
-- NEXUS tree
-- Colors and styles annotation
-- Collapsed nodes list
+
+![tree format](images/tree_format.png)
 
 ---
 ## Summary
