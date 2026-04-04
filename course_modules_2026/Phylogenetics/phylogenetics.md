@@ -235,7 +235,7 @@ Copy the sample column and newly created phylum column into Book2
 
 ![hexcodes](images/hex.png)
 
-- Combine sample IDs and colour codes into a single column using
+- Combine sample IDs and colour codes into a single column using the formula below and double-click the cursor ``` +```  to populate the remaining rows
 
  ``` 
  =A2&" "&C2 
