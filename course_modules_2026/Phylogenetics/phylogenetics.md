@@ -286,7 +286,7 @@ Once you’ve logged into iTOL, you can upload `gtdbtk_fullalign_bacteria.nwk` t
 
 ![open files](images/open.png)
 
-4. The tip labels are still the European Nuclotide Accessions we used to download the FASTQ files. Let’s change the tip labels to the phylum names using `species_category` annotation file.
+4. The tip labels are still the European Nuclotide Accessions we used to download the FASTQ files. Let’s change the tip labels to the phylum names using `species_category.txt` annotation file.
 
 ![add annotation files](images/species_category.png)
 
@@ -301,7 +301,7 @@ Once your tree has been fully annotated, adjust any export settings if needed (e
 
 ![export files](images/export.png)
 
-The output formats include:
+You can export the tree in Vector, Bitmap or Text format:
 
 ![tree format](images/tree_format.png)
 
