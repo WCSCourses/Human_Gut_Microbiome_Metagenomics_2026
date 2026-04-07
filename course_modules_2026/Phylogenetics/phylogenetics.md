@@ -41,6 +41,14 @@ The topology describes how taxa are connected, independent of branch lengths.
 ![ultrametric tree](images/ultrametric_tree.png)
 
 - **Terminal nodes** - Are nodes in the tree connected to only one edge and are usually associated with the data that we have, such as a genome sequence. A node can represent an extinct species or a sampled pathogen. it's also called **tips** or **leaves**.
+
+![Example of newick tree format](images/Newick.png)
+
+- For instance, the terminal nodes of this tree - A, B, C and D - represent sampled organisms. The internal nodes - E and F - are inferred from the data.  In this case, there is also a multifurcation: nodes A, B and E all coalesce to the base of the tree. This can happen due to poor resolution in the data. A well resolved tree only contain a binary split. You can trick different softwares to interpret these kind of multifurcating trees to make them think that they're bifurcating trees.
+- It is assumed that a given ancestor can diverge into two descendants but in practice, due to oversampling and undersampling, phylogenies can show three or more  descendants derived from the same ancestor.
+
+![multifurcated tree](images/multifurcated_tree.png)
+
 - **Internal nodes** - represent the most recent common ancestors of groups of terminal nodes. They are not directly observed but are inferred from the genome sequences at the tips of the tree. As a result, any ancestral states reconstructed from a phylogeny are hypothetical. While we cannot directly verify these ancestors, statistical and computational methods allow us to estimate them and assess the confidence of these inferences.
 - **root** - The root represents the most recent common ancestor of all samples in the tree. However, phylogenetic trees inferred using time-reversible models are inherently unrooted, meaning they do not specify a direction of evolution. Rooting is therefore a necessary step to interpret evolutionary relationships and generate hypotheses.
 
@@ -61,7 +69,7 @@ The topology describes how taxa are connected, independent of branch lengths.
 
 ## Exercise 1
 - Root this tree by making it ultrametric (a tree in which every species or sample has the same distance to the root)
-- All tips must have the same distance from the root (assumes all the data was collected in the present day) i.e. same divergence time from the ancestral state(root)
+- Hint: All tips must have the same distance from the root (assumes all the data was collected in the present day) i.e. same divergence time from the ancestral state(root)
 
 ![First exercise](images/exercise1.png)
 
@@ -87,15 +95,6 @@ For example the groupings in these trees are the same, therefore they have the s
 - Which of these trees have the same topology?
 
 ![exercise two](images/exercise2.png)
-
-
-![Example of newick tree format](images/Newick.png)
-
-For instance, the terminal nodes of this tree - A, B, C and D - represent sampled organisms. The internal nodes - E and F - are inferred from the data.  In this case, there is also a multifurcation: nodes A, B and E all coalesce to the base of the tree. This can happen due to poor resolution in the data. A well resolved tree only contain a binary split. You can trick different softwares to interpret these kind of multifurcating trees to make them think that they're bifurcating trees
-
-It is assumed that a given ancestor can diverge into two descendants but in practice, due to oversampling and undersampling, phylogenies can show three or more  descendants derived from the same ancestor.
-
-![multifurcated tree](images/multifurcated_tree.png)
 
 ## Phenomenon impacting phylogenetic reconstruction
 
