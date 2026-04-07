@@ -67,7 +67,7 @@ The package enables calculation of alpha diversity (within-sample diversity) and
 In simple terms, phyloseq helps answer the question: who is there, and how do communities differ?. 
 
 ### References:
-Website: https://joey711.github.io/phyloseq/
+GitHub: https://joey711.github.io/phyloseq/
 
 Publication: McMurdie P.J. & Holmes S. (2013) phyloseq: An R Package for Reproducible Interactive Analysis and Graphics of Microbiome Census Data. PLoS ONE. https://doi.org/10.1371/journal.pone.0061217
 
@@ -120,7 +120,7 @@ and integration with other functional databases.
 
 ### References:
 
-Prokka GitHub repository (software and documentation):
+GitHub (software and documentation):
 <https://github.com/tseemann/prokka>
 
 Publication: Seemann T. (2014). Prokka: rapid prokaryotic genome
