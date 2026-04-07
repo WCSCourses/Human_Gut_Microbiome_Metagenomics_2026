@@ -58,7 +58,7 @@ By the end of this module, participants will be able to
 
 -   Integrate and interpret taxonomic, functional, and genome-resolved results to derive biologically meaningful insights into microbial communities
 
-**Phyloseq**
+## Phyloseq
 
 Phyloseq is an R package designed for the analysis and visualization of microbiome data. It integrates taxonomic abundance tables, sample metadata, and phylogenetic information into a unified framework, making it easier to explore and interpret microbial community structure.
 
@@ -127,7 +127,7 @@ Publication: Seemann T. (2014). Prokka: rapid prokaryotic genome
 annotation. Bioinformatics, 30(14), 2068–2069.
 <https://doi.org/10.1093/bioinformatics/btu153>
 
-**MaAsLin2**
+## MaAsLin2
 
 MaAsLin2 (Multivariable Association with Linear Models 2) is a statistical framework used to identify associations between microbial features (such as taxa or functional pathways) and metadata variables. It is commonly applied to microbiome data to detect differentially abundant features across experimental conditions.
 
