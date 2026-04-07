@@ -387,7 +387,7 @@ You can export the tree in Vector, Bitmap or Text format:
 - A phylogeny represents an evolutionary history of a gene, collection of genes, genome.
 - The Newick format is used for input and output by phylogenetic software.
 - Beware of: hybridization, within-species recombination, lateral gene transfer, gene duplication and losses, and incomplete lineage sorting.
-- When reconstructing phylogenetic tree remember your initial question/purpose of reconstructing that tree e.g. if you wanna detect evolutionary pressure on specific genes, then you need to take some considerations before and after running the tree. If your purpose is to assess migration patterns or phylogeography, specific considerations need to be taken.
+- The approach to reconstructing a phylogenetic tree should be guided by your underlying research question. For example, if the goal is to detect evolutionary pressures on specific genes, careful consideration must be given to sequence selection, alignment quality, and appropriate evolutionary models before and after tree inference.
 - Tree inference methods include **neighbor-joining**, **maximum parsimony**, and **maximum likelihood**. The first two methods are simpler and computationally faster but do not fully capture important features of sequence evolution.
 - **Maximum likelihood** methods are recommended because they incorporate relevant parameters such as varying substitution rates, invariant sites, and rate heterogeneity across the sequence.
 - Regardless of the method used, phylogenetic inference requires a **multiple sequence alignment** as input. To reduce the computational burden of analyzing whole-genome alignments, we can extract only the **variable sites** using the snp-sites software.
