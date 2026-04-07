@@ -181,8 +181,6 @@ Genome-level classification is particularly useful for:
 
 ## Key tools used in this module
 
-> **Tools used in this module**
-
 **metaWRAP** – modular pipeline used for genome-resolved metagenomic analysis.  
 **Sylph** – k-mer–based read-level taxonomic classifier.
 **Krona** – interactive visualization tool for taxonomic classification results.  
