@@ -3,21 +3,24 @@
 ## Learning Objectives
 
 - Understand common methods of phylogenetic tree inference
-- Use IQ-TREE and FastTree for phylogenetic tree inference from alignment data.
+- Use FastTree for phylogenetic tree inference from alignment data.
 - Describe key steps in creating a phylogenetic tree.
+- Visualise the tree in iTOL
 
 ## Contents
-- [Introduction](#introduction)
+- [Introduction to phylogenetics](#introduction to phylogenetics)
 - [Phylogenetic Tree Inference](#phylogenetic-tree-inference)
 - [Multiple Sequence Alignments](#multiple-sequence-alignments)
 - [Building a Phylogenetic Tree](#building-a-phylogenetic-tree)
 - [Summary](#summary)
 
 
-## Introduction
+## Introduction to phylogenetics
+If we take molecular data coming from sequencing projects we see our organisms have specific sequence. During this time the organims are evolving and mutations are accumulating in these organisms. These mutations are inherited from one generation to another and the accumulation of mutations essentially leads to speciation events (i.e. branching leading to infection of multiple hosts). One problem is that we don't really see what is happening in the intermediate steps. we don't really know what was the ancestor of each of these species.
+
+**Sequence evolution**: mutations alter the genomes being passed on from generation to generation.
 
 Understanding the genetic diversity, genome plasticity, and recombination patterns of the organism under study is an essential first step before conducting genomic analyses, as these factors influence the choice of analytical methods. In particular, phylogenetic reconstruction strategies vary depending on the evolutionary characteristics of the species. For example, approaches used to infer phylogenetic relationships in Mycobacterium tuberculosis, a largely clonal organism, differ from those applied to more recombinogenic bacteria such as Escherichia coli or Campylobacter. To guide the selection of appropriate methods for phylogenetic analysis, a flowchart outlining recommended strategies based on dataset composition is provided.
-
 
 ![Image of know your bug](images/know_your_bug.png)
 
@@ -25,21 +28,81 @@ Understanding the genetic diversity, genome plasticity, and recombination patter
 ## Phylogenetic Tree Inference
 ---
 
-### Tree Topology
+### What is a phylogenetic tree?
 
 A phylogenetic tree is a graph representing evolutionary history and shared ancestry. It depicts the lines of evolutionary descent of different species, lineages or genes from a common ancestor. A phylogenetic tree is made of nodes and edges, with one edge connecting two nodes.
 The topology describes how taxa are connected, independent of branch lengths.
 
 ### Terminologies
 - **Leaves** (tips) - Represent actual observed data
-- **Branches** - Represent evolutionary relationships or the amount of change along lineages.
-- **Terminal nodes** - Are nodes in the tree connected to only one edge and are usually associated with the data, such as a genome sequence. A node can represent an extinct species or a sampled pathogen.
-- **Internal nodes** - Represent the most recent common ancestors of groups of terminal nodes, and do not directly correspond to the observed data. They are hypothetical ancestors inferred from the observed genome sequences at the tips of the tree.
-- **clade** - Is a set of all terminal nodes descending from the same ancestor. Each branch and internal node is associated with a clade. If trees have the same clade we say that they have the same topology. If trees have the same clades and same branch lengths, the two trees represent the same evolutionary history.
+- **Branches** - In a tree, branches can represent multiple meanings. in order to fully understand the meaning of the tree you need to understand how the tree was built. A branch can mean the divergence time between current species and its hypothetical ancestor (i.e. if you know when the samples were collected, it is possible to reconstruct a timed tree where the nodes are placed in their corresponding times), it can also mean the number of substitutions per site or number of changes between the hypothetical ancestors and the current sampled organism.
+- More often than not, samples are collected at the same time, and it might be assumed that their divergence time from their common ancestor is the same. An **ultrametric tree** shows exactly that, where the distance between the root and the tips is the same for all samples.
+
+![ultrametric tree](images/ultrametric_tree.png)
+
+- **Terminal nodes** - Are nodes in the tree connected to only one edge and are usually associated with the data that we have, such as a genome sequence. A node can represent an extinct species or a sampled pathogen. it's also called **tips** or **leaves**.
+- **Internal nodes** - represent the most recent common ancestors of groups of terminal nodes. They are not directly observed but are inferred from the genome sequences at the tips of the tree. As a result, any ancestral states reconstructed from a phylogeny are hypothetical. While we cannot directly verify these ancestors, statistical and computational methods allow us to estimate them and assess the confidence of these inferences.
+- **root** - The root represents the most recent common ancestor of all samples in the tree. However, phylogenetic trees inferred using time-reversible models are inherently unrooted, meaning they do not specify a direction of evolution. Rooting is therefore a necessary step to interpret evolutionary relationships and generate hypotheses.
+
+ Several approaches can be used to place the root:
+
+ - **Midpoint rooting**: assumes a constant rate of evolution across lineages and places the root at the midpoint of the longest path, producing an **ultrametric tree**.
+ - **Outgroup rooting**: uses a distantly related taxon to define the direction of evolution.
+ - **Time-based rooting**: incorporates sampling dates or molecular clock models.
+ - **Arbitrary rooting**: placing the root at a chosen position when no clear method is available.
+
+- Overall, the placement of the root determines the direction of evolution and can affect the inferred relationships among lineages, although the overall grouping of taxa (clades) remains unchanged.
+
+![time-rooted tree](images/time-rooted_tree.png)
+
+ - Root placement is non-trivial, and several advanced methods have been developed to infer it more reliably. One example is **[RootDigger](https://link.springer.com/article/10.1186/s12859-021-03956-5)**, which was applied in studies of SARS-CoV-2 evolution. This approach uses maximum likelihood to evaluate different root positions under **non-reversible substitution Markov models**, which allow inference of evolutionary direction without requiring an outgroup. It assesses model fit across possible root placements to identify the most likely position, while accounting for variation in evolutionary rates across lineages.
+
+![root digger](images/root_digger.png)
+
+## Exercise 1
+- Root this tree by making it ultrametric (a tree in which every species or sample has the same distance to the root)
+- All tips must have the same distance from the root (assumes all the data was collected in the present day) i.e. same divergence time from the ancestral state(root)
+
+![First exercise](images/exercise1.png)
+
+
+## Tree topology
+
+- **A clade** - Is a set of all sequences/species (terminal nodes) descending from a node/ancestor.
+
+![clade definition](images/clade_definition.png)
+
+```S1``` is a clade because it descends from itself. ```S3```, ```S4``` and ```S5``` represent a clade because they share a common ancestor.
+
+- Each branch and each node in a rooted tree correspond to one clade. 
+- If two trees have the same clade, we say that they have the same topology. 
+- If two trees have the same topology and branch lengths, they are the same.
+
+For example the groupings in these trees are the same, therefore they have the same topology and the same length, thus, it is a single tree.
+
+![same topology](images/same_topology.png)
+
+## Exercise 2
+
+- Which of these trees have the same topology?
+
+![exercise two](images/exercise2.png)
+
 
 ![Example of newick tree format](images/Newick.png)
 
-For instance, the terminal nodes of this tree - A, B, C and D - represent sampled organisms. The internal nodes - E and F - are inferred from the data. In this case, there is also a multifurcation: nodes A, B and E all coalesce to the base of the tree. This can happen due to poor resolution in the data.
+For instance, the terminal nodes of this tree - A, B, C and D - represent sampled organisms. The internal nodes - E and F - are inferred from the data.  In this case, there is also a multifurcation: nodes A, B and E all coalesce to the base of the tree. This can happen due to poor resolution in the data. A well resolved tree only contain a binary split. You can trick different softwares to interpret these kind of multifurcating trees to make them think that they're bifurcating trees
+
+It is assumed that a given ancestor can diverge into two descendants but in practice, due to oversampling and undersampling, phylogenies can show three or more  descendants derived from the same ancestor.
+
+![multifurcated tree](images/multifurcated_tree.png)
+
+## Phenomenon impacting phylogenetic reconstruction
+
+- **Within-species recombination**: Recombination can cause different genomic regions (loci) to have distinct evolutionary histories, resulting in conflicting phylogenetic signals. This may produce unusually short or long branches. In bacterial genomes, recombination can be accounted for using tools such as ClonalFrameML or Gubbins.
+- **Hybridization (or introgression)**: When reconstructing species trees from multiple genes, different genes may support conflicting relationships due to hybridization or gene flow between lineages. This leads to discordance between gene trees and the overall species tree.
+- **Incomplete lineage sorting (ILS)**: During rapid speciation, ancestral genetic variation may persist across multiple descendant lineages. As a result, some gene trees may not reflect the true species relationships, retaining ancestral polymorphisms despite species divergence.
+- **Horizontal gene transfer, gene duplication, and gene loss**: The movement of genes between organisms, along with gene gain and loss events, can obscure true evolutionary relationships and complicate phylogenetic inference.
 
 ---
 
@@ -50,15 +113,26 @@ Phylogenetic trees are widely used to:
 - Understand evolutionary relationships  
 - Identify transmission clusters  
 - Investigate population structure  
-- Track spread of infectious diseases
+- Track spread of infectious disease (Genomic surveillance)
 
 ### Newick Format
 
-Phylogenetic trees are commonly stored in **Newick format**, which represents tree structure in text format using parentheses. the two child nodes of the same internal node are separated by a ",". At the end of a Newick tree there is always a ";".
+- The **Newick format** represents phylogenetic trees as a text format using parentheses. The two child nodes of the same internal node are separated by a ",". At the end of a Newick tree there is always a ";".
+- This is usual format for input/output in phylogenetic software
 
 For Example,the newick format of a rooted tree relating to two samples "S1" and "S2" with distances from the root respectively of 0.01 and 0.02, is **(S1:0.01,S2:0.02);**
 
 If we add a third sample "S3" as an outgroup, the tree will look like **((S1:0.01,S2:0.02):0.03,S3:0.04);**
+
+## Exercise 3
+
+- What tree does the following Newick string represent?
+((S1:0.4,(S2:0.1, S3:0.1):0.2):0.2,(S4:0.1,S5:0.1):0.3);
+
+1. Try to manually draw this tree
+Hint: try to read the innermost parentheses, those are your primary groupings.
+
+![Exercise 3](images/answer.png)
 
 ### Methods for Inferring Trees
 
@@ -135,7 +209,7 @@ In this section, you will learn how to:
 - Build a phylogenetic tree
 
 
-```bash
+```
 # load modules
 mamba activate gtdbtk
 mamba activate fasttreemp
@@ -144,20 +218,20 @@ mamba activate fasttreemp
 #### Identify Marker Genes
 GTDB-Tk identifies conserved marker genes that are shared across bacteria.
 
-```bash
+```
 gtdbtk identify --genome_dir . -x fa --cpus 24 --out_dir gtdbtk_identify_outdir
 ```
 
 #### Align Marker genes
 This step aligns marker genes across all genomes and produces a multiple sequence alignment
 
-```bash
+```
 gtdbtk align --identify_dir ./gtdbtk_identify_outdir --skip_trimming --skip_gtdb_refs --out_dir gtdbtk_align_outdir --cpus 24
 ```
 
 #### Unzip the alignment file before building the tree
 
-```bash
+```
 # change directory
 cd gtdbtk_align_outdir/align/
 
@@ -308,7 +382,12 @@ You can export the tree in Vector, Bitmap or Text format:
 ---
 ## Summary
 ---
-
+- A phylogeny is made of topology and branch lengths.
+- Phylogenetic trees can be rooted or unrooted; binary or with multi furcations; ultrametric and/or timed.
+- A phylogeny represents an evolutionary history of a gene, collection of genes, genome.
+- The Newick format is used for input and output by phylogenetic software.
+- Beware of: hybridization, within-species recombination, lateral gene transfer, gene duplication and losses, and incomplete lineage sorting.
+- When reconstructing phylogenetic tree remember your initial question/purpose of reconstructing that tree e.g. if you wanna detect evolutionary pressure on specific genes, then you need to take some considerations before and after running the tree. If your purpose is to assess migration patterns or phylogeography, specific considerations need to be taken.
 - Tree inference methods include **neighbor-joining**, **maximum parsimony**, and **maximum likelihood**. The first two methods are simpler and computationally faster but do not fully capture important features of sequence evolution.
 - **Maximum likelihood** methods are recommended because they incorporate relevant parameters such as varying substitution rates, invariant sites, and rate heterogeneity across the sequence.
 - Regardless of the method used, phylogenetic inference requires a **multiple sequence alignment** as input. To reduce the computational burden of analyzing whole-genome alignments, we can extract only the **variable sites** using the snp-sites software.
