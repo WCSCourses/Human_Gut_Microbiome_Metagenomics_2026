@@ -129,7 +129,7 @@ annotation. Bioinformatics, 30(14), 2068–2069.
 
 ## MaAsLin3
 
-MaAsLin3 (Multivariable Association with Linear Models 3) is an advanced statistical framework for identifying associations between microbial features (such as taxa, genes, or pathways) and metadata variables. It is widely used in microbiome studies to detect differentially abundant features across experimental conditions.
+MaAsLin3 (Multivariable Association with Linear Models 3) is an advanced statistical framework for identifying associations between microbial features (such as taxa, genes, or pathways) and metadata variables. It is widely used in microbiome studies to detect differentially abundant features across experimental conditions or phenotypes.
 
 The method refines and extends generalized multivariable linear models for meta-omic association discovery. It is specifically designed to address key challenges in microbiome data, including sparsity and compositionality, and can model both feature abundance and feature prevalence simultaneously.
 
