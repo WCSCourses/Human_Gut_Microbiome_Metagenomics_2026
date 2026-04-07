@@ -58,6 +58,19 @@ By the end of this module, participants will be able to
 
 -   Integrate and interpret taxonomic, functional, and genome-resolved results to derive biologically meaningful insights into microbial communities
 
+**Phyloseq**
+
+Phyloseq is an R package designed for the analysis and visualization of microbiome data. It integrates taxonomic abundance tables, sample metadata, and phylogenetic information into a unified framework, making it easier to explore and interpret microbial community structure.
+
+The package enables calculation of alpha diversity (within-sample diversity) and beta diversity (between-sample differences), as well as ordination methods such as PCA, PCoA, and NMDS. These analyses help researchers understand how microbial communities vary across samples and conditions.
+
+In simple terms, phyloseq helps answer the question: who is there, and how do communities differ?. 
+
+### References:
+Website: https://joey711.github.io/phyloseq/
+
+Publication: McMurdie P.J. & Holmes S. (2013) phyloseq: An R Package for Reproducible Interactive Analysis and Graphics of Microbiome Census Data. PLoS ONE. https://doi.org/10.1371/journal.pone.0061217
+
 ## HUMAnN
 
 HUMAnN (The HMP Unified Metabolic Analysis Network) is a bioinformatics
@@ -113,6 +126,20 @@ Prokka GitHub repository (software and documentation):
 Publication: Seemann T. (2014). Prokka: rapid prokaryotic genome
 annotation. Bioinformatics, 30(14), 2068–2069.
 <https://doi.org/10.1093/bioinformatics/btu153>
+
+**MaAsLin2**
+
+MaAsLin2 (Multivariable Association with Linear Models 2) is a statistical framework used to identify associations between microbial features (such as taxa or functional pathways) and metadata variables. It is commonly applied to microbiome data to detect differentially abundant features across experimental conditions.
+
+The tool fits generalized linear models while accounting for multiple covariates, enabling robust analysis of complex datasets. It supports normalization, transformation, and multiple testing correction, helping to control for confounding factors and reduce false discoveries.
+
+In simple terms, MaAsLin2 helps answer the question: which microbes or functions are significantly associated with a condition or phenotype?. 
+
+### References:
+Website: https://huttenhower.sph.harvard.edu/maaslin/
+
+Publication: Mallick H. et al. (2021) Multivariable Association Discovery in Population-scale Meta-omics Studies. PLoS Computational Biology. https://doi.org/10.1371/journal.pcbi.1009442
+
 
 ## When to use either HUMAnN or Prokka
 
