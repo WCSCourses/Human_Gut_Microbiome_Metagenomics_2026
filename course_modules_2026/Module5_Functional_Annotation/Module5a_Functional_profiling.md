@@ -6,7 +6,7 @@ editor_options:
     wrap: 72
 ---
 
-## Introduction
+## Introduction 
 
 Functional prediction and annotation from shotgun metagenomic data are
 essential because they shift microbiome research from describing which
@@ -38,28 +38,25 @@ mindmap](images/Functional_Annotation_Mind_Map.png)
 
 ## Goal of this module:
 
-This module aims to provide participants with the knowledge and
-practical skills to predict functional potential from shotgun
-metagenomic data. Participants will learn how to infer functional
-capacity and genome-resolved metabolic potential using complementary
-approaches based on quality controlled reads and metagenome-assembled
-genomes.
+This module aims to provide participants with the knowledge and practical skills to characterize 
+microbiome community composition and infer their functional potential from shotgun metagenomic data. 
+Participants will learn how to assess community-level structure, functional capacity, and genome-resolved 
+metabolic potential using complementary approaches based on quality-controlled reads and metagenome-assembled genomes (MAGs).
 
 ## Learning outcomes
 
 By the end of this module, participants will be able to
 
--   Explain the principles of functional prediction from shotgun
-    metagenomic data, including the distinction between community-level
-    functional capacity and genome-resolved metabolic potential.
+-   Explain the principles underlying microbiome analysis from shotgun metagenomics data
+    including the distinction between taxonomic composition, community-level functional capacity and genome-resolved metabolic potential.
 
--   Apply computational tools (e.g., HUMAnN and Prokka) to
-    quality-controlled metagenomic reads and metagenome-assembled
-    genomes (MAGs) in order to generate functional annotation outputs.
+-   Perform alpha and beta diversity analyses using phyloseq to characterise microbial community structure.
+  
+-   Apply computational tools (e.g., HUMAnN and Prokka) to quality-controlled metagenomic reads and MAGs to generate functional annotation outputs.
 
--   Interpret and compare community-level functional profiles and
-    genome-resolved annotations to infer biologically meaningful
-    insights about metabolic potential within microbial communities.
+-   Conduct differential abundance analysis of taxa and functional features using statistical tools such as MaAsLin2.
+
+-   Integrate and interpret taxonomic, functional, and genome-resolved results to derive biologically meaningful insights into microbial communities
 
 ## HUMAnN
 
