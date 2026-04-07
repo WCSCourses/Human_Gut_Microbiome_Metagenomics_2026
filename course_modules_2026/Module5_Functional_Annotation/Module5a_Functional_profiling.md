@@ -67,7 +67,7 @@ The package enables calculation of alpha diversity (within-sample diversity) and
 In simple terms, phyloseq helps answer the question: who is there, and how do communities differ?. 
 
 ### References:
-GitHub: https://joey711.github.io/phyloseq/
+GitHub: <https://joey711.github.io/phyloseq/>
 
 Publication: McMurdie P.J. & Holmes S. (2013) phyloseq: An R Package for Reproducible Interactive Analysis and Graphics of Microbiome Census Data. PLoS ONE. https://doi.org/10.1371/journal.pone.0061217
 
@@ -120,8 +120,7 @@ and integration with other functional databases.
 
 ### References:
 
-GitHub (software and documentation):
-<https://github.com/tseemann/prokka>
+GitHub: <https://github.com/tseemann/prokka>
 
 Publication: Seemann T. (2014). Prokka: rapid prokaryotic genome
 annotation. Bioinformatics, 30(14), 2068–2069.
@@ -138,9 +137,9 @@ MaAsLin3 supports complex study designs (e.g., multiple covariates, repeated mea
 In simple terms, MaAsLin3 helps answer the question: which microbes or functions are significantly associated with a condition or phenotype, and in what direction?
 
 ### References
-Website: https://huttenhower.sph.harvard.edu/maaslin/
+Website: https://huttenhower.sph.harvard.edu/maaslin/>
 
-GitHub: https://github.com/biobakery/Maaslin3
+GitHub: <https://github.com/biobakery/Maaslin3>
 
 Nickols W.A. et al. (2026) MaAsLin 3: Refining and extending generalized multivariable linear models for meta-omic association discovery. Nature Methods. https://doi.org/10.1038/s41592-025-02923-9
 
