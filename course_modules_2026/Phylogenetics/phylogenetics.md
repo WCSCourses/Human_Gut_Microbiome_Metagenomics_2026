@@ -16,6 +16,11 @@
 
 
 ## Introduction to phylogenetics
+
+### What is a phylogenetic tree?
+
+A phylogenetic tree is a graph representing evolutionary history and shared ancestry. It depicts the lines of evolutionary descent of different species, lineages or genes from a common ancestor. A phylogenetic tree is made of nodes and edges, with one edge connecting two nodes.
+
 If we take molecular data coming from sequencing projects we see our organisms have specific sequence. During this time the organims are evolving and mutations are accumulating in these organisms. These mutations are inherited from one generation to another and the accumulation of mutations essentially leads to speciation events (i.e. branching leading to infection of multiple hosts). One problem is that we don't really see what is happening in the intermediate steps. we don't really know what was the ancestor of each of these species.
 
 **Sequence evolution**: mutations alter the genomes being passed on from generation to generation.
@@ -27,11 +32,6 @@ Understanding the genetic diversity, genome plasticity, and recombination patter
 ---
 ## Phylogenetic Tree Inference
 ---
-
-### What is a phylogenetic tree?
-
-A phylogenetic tree is a graph representing evolutionary history and shared ancestry. It depicts the lines of evolutionary descent of different species, lineages or genes from a common ancestor. A phylogenetic tree is made of nodes and edges, with one edge connecting two nodes.
-The topology describes how taxa are connected, independent of branch lengths.
 
 ### Terminologies
 - **Leaves** (tips) - Represent actual observed data
@@ -75,7 +75,7 @@ The topology describes how taxa are connected, independent of branch lengths.
 
 
 ## Tree topology
-
+- The topology describes how taxa are connected, independent of branch lengths.
 - **A clade** - Is a set of all sequences/species (terminal nodes) descending from a node/ancestor.
 
 ![clade definition](images/clade_definition.png)
