@@ -127,18 +127,22 @@ Publication: Seemann T. (2014). Prokka: rapid prokaryotic genome
 annotation. Bioinformatics, 30(14), 2068–2069.
 <https://doi.org/10.1093/bioinformatics/btu153>
 
-## MaAsLin2
+## MaAsLin3
 
-MaAsLin2 (Multivariable Association with Linear Models 2) is a statistical framework used to identify associations between microbial features (such as taxa or functional pathways) and metadata variables. It is commonly applied to microbiome data to detect differentially abundant features across experimental conditions.
+MaAsLin3 (Multivariable Association with Linear Models 3) is an advanced statistical framework for identifying associations between microbial features (such as taxa, genes, or pathways) and metadata variables. It is widely used in microbiome studies to detect differentially abundant features across experimental conditions.
 
-The tool fits generalized linear models while accounting for multiple covariates, enabling robust analysis of complex datasets. It supports normalization, transformation, and multiple testing correction, helping to control for confounding factors and reduce false discoveries.
+The method refines and extends generalized multivariable linear models for meta-omic association discovery. It is specifically designed to address key challenges in microbiome data, including sparsity and compositionality, and can model both feature abundance and feature prevalence simultaneously.
 
-In simple terms, MaAsLin2 helps answer the question: which microbes or functions are significantly associated with a condition or phenotype?. 
+MaAsLin3 supports complex study designs (e.g., multiple covariates, repeated measures) and provides flexible options for normalization, transformation, and multiple testing correction. 
 
-### References:
+In simple terms, MaAsLin3 helps answer the question: which microbes or functions are significantly associated with a condition or phenotype, and in what direction?
+
+### References
 Website: https://huttenhower.sph.harvard.edu/maaslin/
 
-Publication: Mallick H. et al. (2021) Multivariable Association Discovery in Population-scale Meta-omics Studies. PLoS Computational Biology. https://doi.org/10.1371/journal.pcbi.1009442
+GitHub: https://github.com/biobakery/Maaslin3
+
+Nickols W.A. et al. (2026) MaAsLin 3: Refining and extending generalized multivariable linear models for meta-omic association discovery. Nature Methods. https://doi.org/10.1038/s41592-025-02923-9
 
 
 ## When to use either HUMAnN or Prokka
