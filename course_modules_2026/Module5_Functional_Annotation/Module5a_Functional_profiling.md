@@ -137,7 +137,7 @@ MaAsLin3 supports complex study designs (e.g., multiple covariates, repeated mea
 In simple terms, MaAsLin3 helps answer the question: which microbes or functions are significantly associated with a condition or phenotype, and in what direction?
 
 ### References
-Website: https://huttenhower.sph.harvard.edu/maaslin/>
+Website: <https://huttenhower.sph.harvard.edu/maaslin/>
 
 GitHub: <https://github.com/biobakery/Maaslin3>
 
