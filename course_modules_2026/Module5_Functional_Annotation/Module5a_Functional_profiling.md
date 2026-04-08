@@ -6,7 +6,7 @@ editor_options:
     wrap: 72
 ---
 
-## Introduction
+## Introduction 
 
 Functional prediction and annotation from shotgun metagenomic data are
 essential because they shift microbiome research from describing which
@@ -38,28 +38,38 @@ mindmap](images/Functional_Annotation_Mind_Map.png)
 
 ## Goal of this module:
 
-This module aims to provide participants with the knowledge and
-practical skills to predict functional potential from shotgun
-metagenomic data. Participants will learn how to infer functional
-capacity and genome-resolved metabolic potential using complementary
-approaches based on quality controlled reads and metagenome-assembled
-genomes.
+This module aims to provide participants with the knowledge and practical skills to characterize 
+microbiome community composition and infer their functional potential from shotgun metagenomic data. 
+Participants will learn how to assess community-level structure, functional capacity, and genome-resolved 
+metabolic potential using complementary approaches based on quality-controlled reads and metagenome-assembled genomes (MAGs).
 
 ## Learning outcomes
 
 By the end of this module, participants will be able to
 
--   Explain the principles of functional prediction from shotgun
-    metagenomic data, including the distinction between community-level
-    functional capacity and genome-resolved metabolic potential.
+-   Explain the principles underlying microbiome analysis from shotgun metagenomics data
+    including the distinction between taxonomic composition, community-level functional capacity and genome-resolved metabolic potential.
 
--   Apply computational tools (e.g., HUMAnN and Prokka) to
-    quality-controlled metagenomic reads and metagenome-assembled
-    genomes (MAGs) in order to generate functional annotation outputs.
+-   Perform alpha and beta diversity analyses using phyloseq to characterise microbial community structure.
+  
+-   Apply computational tools (e.g., HUMAnN and Prokka) to quality-controlled metagenomic reads and MAGs to generate functional annotation outputs.
 
--   Interpret and compare community-level functional profiles and
-    genome-resolved annotations to infer biologically meaningful
-    insights about metabolic potential within microbial communities.
+-   Conduct differential abundance analysis of taxa and functional features using statistical tools such as MaAsLin2.
+
+-   Integrate and interpret taxonomic, functional, and genome-resolved results to derive biologically meaningful insights into microbial communities
+
+## Phyloseq
+
+Phyloseq is an R package designed for the analysis and visualization of microbiome data. It integrates taxonomic abundance tables, sample metadata, and phylogenetic information into a unified framework, making it easier to explore and interpret microbial community structure.
+
+The package enables calculation of alpha diversity (within-sample diversity) and beta diversity (between-sample differences), as well as ordination methods such as PCA, PCoA, and NMDS. These analyses help researchers understand how microbial communities vary across samples and conditions.
+
+In simple terms, phyloseq helps answer the question: who is there, and how do communities differ?. 
+
+### References:
+GitHub: <https://joey711.github.io/phyloseq/>
+
+Publication: McMurdie P.J. & Holmes S. (2013) phyloseq: An R Package for Reproducible Interactive Analysis and Graphics of Microbiome Census Data. PLoS ONE. https://doi.org/10.1371/journal.pone.0061217
 
 ## HUMAnN
 
@@ -110,12 +120,29 @@ and integration with other functional databases.
 
 ### References:
 
-Prokka GitHub repository (software and documentation):
-<https://github.com/tseemann/prokka>
+GitHub: <https://github.com/tseemann/prokka>
 
 Publication: Seemann T. (2014). Prokka: rapid prokaryotic genome
 annotation. Bioinformatics, 30(14), 2068–2069.
 <https://doi.org/10.1093/bioinformatics/btu153>
+
+## MaAsLin3
+
+MaAsLin3 (Multivariable Association with Linear Models 3) is an advanced statistical framework for identifying associations between microbial features (such as taxa, genes, or pathways) and metadata variables. It is widely used in microbiome studies to detect differentially abundant features across experimental conditions or phenotypes.
+
+The method refines and extends generalized multivariable linear models for meta-omic association discovery. It is specifically designed to address key challenges in microbiome data, including sparsity and compositionality, and can model both feature abundance and feature prevalence simultaneously.
+
+MaAsLin3 supports complex study designs (e.g., multiple covariates, repeated measures) and provides flexible options for normalization, transformation, and multiple testing correction. 
+
+In simple terms, MaAsLin3 helps answer the question: which microbes or functions are significantly associated with a condition or phenotype, and in what direction?
+
+### References
+Website: <https://huttenhower.sph.harvard.edu/maaslin/>
+
+GitHub: <https://github.com/biobakery/Maaslin3>
+
+Nickols W.A. et al. (2026) MaAsLin 3: Refining and extending generalized multivariable linear models for meta-omic association discovery. Nature Methods. https://doi.org/10.1038/s41592-025-02923-9
+
 
 ## When to use either HUMAnN or Prokka
 
