@@ -237,7 +237,7 @@ Ask:
 - Do certain taxa carry higher AMR burden?
 
 ---
-#Note: AMR analysis has already been performed on all MAGs for you; participants can access the results in course_data_2026/module5b/output/Complete_all_mags_Amr_Analysis.xlsx.
+#Note: AMR analysis has already been performed on all MAGs for you; participants can access the results in course_data_2026/module5b/output/rgi_main_all_HGM_April26.tsv
 
 # Generating a Heatmap from RGI Results
 
@@ -283,7 +283,7 @@ Analysis can be performed:
 
 ### Input for R:
 
-- `combined_rgi_results.tsv`
+- Refer to `Module5b_AMR_analysis_R_studio.Rmd`
 
 This merged file contains:
 - MAG_ID
