@@ -375,7 +375,7 @@ cleaned_SRR30598619_bin.21.orig_filtered_kept_contigs #984ea3
 5. From the rooted tree, we can see we have distinct clades within the tree. These are major clades we identified in our dataset. 
 Visualise `gtdbtk_fullalign_bacteria.nwk` in iToL and add metadata
 
-  ![tree file](images/tree.pdf)
+  ![tree file](images/phylum_level_tree.pdf)
 
 ## Exporting the tree to your local computer
 
