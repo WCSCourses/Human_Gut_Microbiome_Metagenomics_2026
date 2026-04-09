@@ -1,0 +1,368 @@
+---
+title: "AMR_analysis_HGT"
+author: "RahmaGolicha"
+date: "`r Sys.Date()`"
+output: html_document
+---
+#Human Gut Microbiome course: AMR analysis April 2026
+```{r}
+#load pacakages and libraries
+install.packages("ggplot2")
+install.packages("dplyr")
+install.packages("treeio")
+install.packages("ggnewscale")
+install.packages("Select")
+library(ggnewscale)
+library(treeio)
+library(dbplyr)
+library(ggplot2)
+library(tidyr)
+install.packages("melt")
+library(melt)
+library(readr)
+library(RColorBrewer)
+library(ggtree)
+library(tidyverse)
+library(reshape2)
+library(readxl)
+#library(ape)
+#library(phylotools)
+#library(Select)
+#library(fastbaps)
+#library(rhierbaps)
+#library(TDbook)
+install.packages("readxl")
+library(readxl)
+```
+
+#Start analysing your data
+```{r}
+#upload the complete amr data frame
+
+RGI_main_HGM.df <- read_tsv("~/Desktop/Metagenomic_Course_Notes/rgi_main_all_HGM_April26.tsv")
+
+head(RGI_main_HGM.df)
+
+
+# filter only those with "Strict" matches subset to some few columns of interest
+library(dplyr)
+
+rgi_clean <- RGI_main_HGM.df %>%
+  filter(Cut_Off == "Strict") %>%
+  select(
+    Sample,
+    ORF_ID,
+    Best_Hit_ARO,
+    `Drug Class`,
+    `Resistance Mechanism`,
+    `AMR Gene Family`,
+    Antibiotic,
+    Best_Hit_Bitscore,
+    Best_Identities
+  )
+
+#AMR gene counts per sample
+amr_counts <- rgi_clean %>%
+  distinct(Sample, Best_Hit_ARO) %>%   # avoid ORF inflation
+  count(Sample, name = "n_AROs")
+
+#Drug class composition per sample
+
+drug_class_profile <- rgi_clean %>%
+  distinct(Sample, Best_Hit_ARO, `Drug Class`) %>%
+  count(Sample, `Drug Class`) %>%
+  group_by(Sample) %>%
+  mutate(rel_abundance = n / sum(n))
+
+#distinct/unique  drug classes
+
+unique_drug_classes <- rgi_clean %>%
+  separate_rows(`Drug Class`, sep = ";") %>%
+  filter(!is.na(`Drug Class`)) %>%
+  distinct(`Drug Class`) %>%
+  nrow()
+
+unique_drug_classes
+#50 drug classes
+
+#Unique Best Hit ARO (the resistant genes)
+
+unique_best_hit_ARO <- rgi_clean %>%
+  distinct(Best_Hit_ARO) %>%
+  nrow()
+
+unique_best_hit_ARO
+##242 resistant genes
+
+#how many samples
+# How many samples?
+
+n_distinct(rgi_clean$Sample)
+##710 
+
+
+##Samples * ARO Matrix
+
+aro_matrix <- rgi_clean %>%
+  distinct(Sample, Best_Hit_ARO) %>%   # collapse ORFs
+  mutate(present = 1) %>%
+  pivot_wider(
+    names_from = Best_Hit_ARO,
+    values_from = present,
+    values_fill = 0
+  )
+
+dim(aro_matrix)
+
+##Drug class plots: Drug class plots (per sample)
+drug_class_summary <- rgi_clean %>%
+  separate_rows(`Drug Class`, sep = ";") %>%
+  distinct(Sample, Best_Hit_ARO, `Drug Class`) %>%
+  count(Sample, `Drug Class`)
+
+
+
+#Now we add add the metadata for species ID
+
+#load the gtdbtk metadata
+
+taxonomy_df <-  read_excel("~/Downloads/Taxonomy_Id_data (1).xlsx")
+
+head(taxonomy_df)
+
+##splitting the taxonomy into genus species
+taxonomy_parsed <- taxonomy_df %>%
+  separate(
+    gtdbtk_classification,
+    into = c("Domain", "Phylum", "Class", "Order",
+             "Family", "Genus", "Species"),
+    sep = ";",
+    fill = "right"
+  )
+
+#remove the __
+taxonomy_parsed <- taxonomy_parsed %>%
+  mutate(
+    across(
+      Domain:Species,
+      ~ gsub("^[a-z]__", "", .x)
+    )
+  )
+
+#Strip .fa from taxonomy Sample names
+taxonomy_parsed <- taxonomy_parsed %>%
+  mutate(
+    Sample = sub("\\.fa$", "", Sample)
+  )
+
+#you can download this to your local PC
+write_csv(taxonomy_parsed, "~/Downloads/taxonomy_split.csv")
+
+
+##join the taxonomy data to your RGI  data
+
+rgi_taxonomy <- rgi_clean %>%
+  left_join(
+    taxonomy_parsed,
+    by = "Sample"
+  )
+
+## Any AMR hits without taxonomy?confirm that your merge has worked. this should return 0
+sum(is.na(rgi_taxonomy$Phylum))
+
+
+#Now to make our analysis more interesting, let's add the metadata to our rgi+taxonomy data
+
+#upload metadata
+
+metadata.df <- read_excel("~/Downloads/Bednarski_2025_cleaned_metadata_final.xlsx")
+head(metadata.df)
+
+
+#check the columns in your metadata to subset it to your column of interest for easy merging 
+
+colnames(metadata.df)
+
+#we can subset to metagm_id and sick column
+
+#remember our rgi+taxonomy data is rgi_taxonomy
+
+metadat_subset <- metadata.df %>% select(metagm_id, sick)
+
+#ensure that the columns match you want to join match
+metadat_subset$metagm_id <- as.character(metadat_subset$metagm_id)
+rgi_taxonomy$SRR_name <- as.character(rgi_taxonomy$SRR_name)
+
+#now join
+
+library(dplyr)
+
+rgi_taxonomy_metadata <- rgi_taxonomy %>%
+  left_join(metadat_subset, by = c("SRR_name" = "metagm_id"))
+
+#since some Species are blanks, we replace them with unclassified
+
+rgi_taxonomy_metadata <- rgi_taxonomy_metadata %>%
+  mutate(Species = ifelse(
+    is.na(Species) | Species == "",
+    paste(Genus, "unclassified"),
+    Species
+  ))
+
+
+
+#Step1: Which taxa carry the most AMR genes?
+
+#ARG richness by species (no.of unique ARGs per species)
+amr_by_species <- rgi_taxonomy_metadata %>%
+  filter(!is.na(Species)) %>%
+  distinct(Sample, Best_Hit_ARO, Species) %>%
+  count(Species, name = "n_AMR_genes") %>%
+  arrange(desc(n_AMR_genes))
+
+amr_by_genera <- rgi_taxonomy_metadata %>%
+  filter(!is.na(Genus)) %>%
+  distinct(Sample, Best_Hit_ARO, Genus) %>%
+  count(Genus, name = "n_AMR_genes") %>%
+  arrange(desc(n_AMR_genes))
+
+
+
+##plot top species
+
+library(ggplot2)
+
+top_amr_species <- amr_by_species %>% slice_head(n = 20)
+
+top_amr_spp.p <- ggplot(top_amr_species,
+       aes(x = reorder(Species, n_AMR_genes),
+           y = n_AMR_genes)) +
+  geom_col(fill = "#d95f02") +
+  coord_flip() +
+  labs(
+    x = "Species",
+    y = "Number of AMR genes (unique AROs)",
+    title = "Top species carrying AMR genes"
+  ) +
+  theme_bw()
+
+#download your plot
+
+ggsave("~/Desktop/Metagenomic_Course_Notes/top_amr_spp_bar.png", top_amr_spp.p, width = 12, height = 6)
+
+
+#Exercise 1: Plot ARG richness by Genus(no.of unique ARGs per Genus) and download it 
+
+
+#Step 2: : ARG richness by Species, faceted by sick status : Question- Do AMR richness differs between the two groups?
+
+#prepare your data 
+amr_by_species_sick <- rgi_taxonomy_metadata %>%
+  filter(!is.na(Species)) %>%
+  distinct(Sample, Best_Hit_ARO, Species, sick) %>%
+  count(Species, sick, name = "n_AMR_genes")
+#plot
+
+top_species <- amr_by_species_sick %>%
+  group_by(Species) %>%
+  summarise(total = sum(n_AMR_genes)) %>%
+  slice_max(total, n = 20) %>%
+  pull(Species)
+
+top_amr_spp_facet.p <- ggplot(filter(amr_by_species_sick, Species %in% top_species),
+       aes(x = reorder(Species, n_AMR_genes),
+           y = n_AMR_genes)) +
+  geom_col() +
+  facet_wrap(~ sick) +
+  coord_flip() +
+  labs(
+    x = "Species",
+    y = "ARG richness (unique AROs)",
+    title = "ARG richness by species stratified by health status"
+  ) +
+  theme_bw()
+
+ggsave("~/Desktop/Metagenomic_Course_Notes/top_amr_spp_facet.png", top_amr_spp_facet.p, width = 12, height = 6)
+
+
+
+#Exercise 2: Plot ARG richness by Genus, faceted by sick status : Question- Do AMR richness differs between the two groups?
+
+
+#Step 3: Show Distribution: ARG richness per sample: 
+
+amr_per_sample <- rgi_taxonomy_metadata %>%
+  distinct(Sample, Best_Hit_ARO, sick) %>%
+  count(Sample, sick, name = "n_AMR_genes")
+
+amr_persample_boxplot.p <- ggplot(amr_per_sample, aes(x = sick, y = n_AMR_genes)) +
+  geom_boxplot() +
+  geom_jitter(width = 0.2, alpha = 0.5) +
+  labs(
+    x = "Health status",
+    y = "ARG richness per sample",
+    title = "Distribution of AMR richness across groups"
+  ) +
+  theme_bw()
+
+
+ggsave("~/Desktop/Metagenomic_Course_Notes/amr_persample_boxplot.png", amr_persample_boxplot.p, width = 12, height = 6)
+
+
+
+#Test statistically : We applied a Wilcoxon rank-sum test to compare ARG richness per sample between the two health groups (sick vs control).
+#The Wilcoxon test is a non-parametric test, meaning it does not assume the data is normally distributed. This makes it appropriate for microbiome and AMR data, which are often skewed and contain outliers.
+
+wilcox.test(n_AMR_genes ~ sick, data = amr_per_sample) #Discuss the answer
+
+
+
+#Step 3: Hetamap Visualisation: Prepare data
+
+heatmap_data <- rgi_taxonomy_metadata %>%
+  distinct(Sample, Best_Hit_ARO) %>%
+  mutate(presence = 1) %>%
+  pivot_wider(names_from = Best_Hit_ARO,
+              values_from = presence,
+              values_fill = 0)
+
+
+
+#Step 2: Convert to long format (for ggplot)
+
+heatmap_long <- heatmap_data %>%
+  pivot_longer(-Sample,
+               names_to = "ARO",
+               values_to = "presence")
+
+
+#Plot heatmap (white = absent, red = present)
+
+AMR_heatmap.p <- ggplot(heatmap_long, aes(x = ARO, y = Sample, fill = factor(presence))) +
+  geom_tile() +
+  scale_fill_manual(
+    values = c("0" = "white", "1" = "red"),
+    labels = c("Absent", "Present"),
+    name = "ARG"
+  ) +
+  labs(
+    x = "ARG (ARO)",
+    y = "Sample",
+    title = "Presence/Absence Heatmap of AMR Genes"
+  ) +
+  theme_bw() +
+  theme(
+    axis.text.x = element_blank(),   # <- this turns off ARO labels
+    axis.ticks.x = element_blank(),  # <- also removes tick marks
+    axis.text.y = element_blank(),
+    axis.ticks = element_blank()
+  )
+
+
+#download the heatmap
+
+ggsave("~/Desktop/Metagenomic_Course_Notes/AMR_heatmap.png", AMR_heatmap.p, width = 12, height = 8)
+
+
+```
+
