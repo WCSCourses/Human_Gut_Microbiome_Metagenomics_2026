@@ -62,7 +62,7 @@ Input data
 
 This module uses the high-quality MAGs generated in Module 2.
 
-Example input: CheckM2 report and files path to the 745 high quality MAGs:
+Example input: CheckM2 statistics (checkm2_postqc_Completeness and checkm2_postqc_Contamination) and file path to the 745 high quality MAGs:
 
 ---
 ### Step 1 — Run MAGmax dereplication
@@ -79,7 +79,9 @@ Example input: CheckM2 report and files path to the 745 high quality MAGs:
         -f fa
 ```
 
-**This generates a folder mags_90comp_95purity/ containing 349 non-redudant species-level representative genomes. 
+**By default, an output directory named mags_<x>comp_<y>purity will be created, where x and y correspond to the user-specified completeness and purity thresholds used to select final bins. If unspecified, MAGmax sets 50% for completeness and 95% for purity. With -o option, user can specify the output directory.
+
+The output directory contains dereplicated bins, a text file listing the completeness and contamination scores for each bin as calculated by CheckM2 (similar to genome_quality.tsv), and memberships file (memberships.tsv) listing members for each selected representative.
 
 ---
 ## Part III — Custom microbiome reference database
