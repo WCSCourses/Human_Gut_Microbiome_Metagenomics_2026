@@ -1,9 +1,11 @@
 # Module 5a: Functional prediction and annotation from shotgun metagenomic data
 
 ---
-editor_options: 
-  markdown: 
-    wrap: 72
+
+## Module leads
+Bonface Gichuki      
+Luicer Anne Ingasia Olubayo
+
 ---
 
 ## Introduction 
