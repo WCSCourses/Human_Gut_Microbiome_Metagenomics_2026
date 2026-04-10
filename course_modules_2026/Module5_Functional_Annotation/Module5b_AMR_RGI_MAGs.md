@@ -241,7 +241,7 @@ Ask:
 - Do certain taxa carry higher AMR burden?
 
 ---
-#Note: AMR analysis has already been performed on all MAGs for you; participants can access the results in course_data_2026/module5b/output/rgi_main_all_HGM_April26.tsv
+#Note: AMR analysis has already been performed on all MAGs for you; participants can access the results in course_data_2026/module5b/output/rgi_main_all_HGM_April26.tsv 
 
 # Generating a Heatmap from RGI Results
 
@@ -277,27 +277,49 @@ Ensure that the input directory contains only valid RGI JSON output files.
 The .csv file can be used for custom visualisation in R (e.g., using ggplot2 or pheatmap).
 
 
-# 📈 Downstream Analysis In R-Studio
-
+# 📈 Downstream Analysis In R-Studio: Practical Session
 
 Analysis can be performed:
 
 - On the HPC (if R is installed), OR
 - Locally in RStudio after downloading results
 
-### Input for R:
+For this session, we will work directly from the prepared R Markdown script available in the course repository:
+Refer to `/course_modules_2026/Module5_Functional_Annotation/Module5b_AMR_analysis_R_studio.Rmd`
+This script contains the full workflow for the AMR analysis.
+Participants are encouraged to open it in RStudio and follow along step by step, running each section as we go through the session.
 
-- Refer to `Module5b_AMR_analysis_R_studio.Rmd`
+What the input data includes:
 
-This merged file contains:
-- MAG_ID
-- AMR gene annotations
+The dataset used in this script is a merged and pre-processed file, which contains:
+
+MAG_ID – identifiers for metagenome-assembled genomes
+
+AMR gene annotations – derived from RGI/CARD outputs
+
+Taxonomic classification – from domain to species level
+
+Health status metadata:
+
+SM = Severe Malaria
+
+CC = Community Controls
+
+During the practical, we will:
+
+- Load and explore the dataset within R
+
+- Walk through each section of the R Markdown file
+
+- Execute the code together to reproduce the analysis
+
+- Interpret the outputs as a group
 
 #The aim here is to 
-- Compare AMR load per MAG
-- Compare AMR diversity across samples
+
+- Compare AMR diversity across samples/Species
 - Stratify by taxonomic identity
-- Visualize resistome profiles using heatmaps
+- Visualize resistome profiles using boxplots, facted bar plots and  heatmaps
 - Identify multidrug-resistant genomes
 
 ---
