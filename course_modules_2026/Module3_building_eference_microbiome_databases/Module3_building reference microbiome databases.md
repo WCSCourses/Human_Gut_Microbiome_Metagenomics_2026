@@ -35,7 +35,8 @@ By the end of this module, participants will be able to:
 5. Understand the concept of custom microbiome reference databases
 
 ---
-### Big picture: The workflow covered in this training course can be summarized as:
+### Big picture: How MAGmax performs genome dereplication
+The workflow for clustering genomes and selecting species-level representatives using MAGmax can be summarized as shown below. 
 ![building_eference_microbiome_databases](images/magmax_workflow.png)
 
 ---
