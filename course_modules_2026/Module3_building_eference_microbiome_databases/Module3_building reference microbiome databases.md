@@ -112,7 +112,8 @@ While this course uses GTDB r220 for taxonomic profiling, this module highlights
 
 ---
 
-**Important reference:** Arangasamy Yazhini, Johannes Söding, Enhancing genome recovery across metagenomic samples using MAGmax, Bioinformatics (2025), https://doi.org/10.1093/bioinformatics/btaf538.
+**Important references:** 
+Arangasamy Yazhini, Johannes Söding, Enhancing genome recovery across metagenomic samples using MAGmax, Bioinformatics (2025), https://doi.org/10.1093/bioinformatics/btaf538.
 
 GitHub: https://github.com/soedinglab/MAGmax
 
