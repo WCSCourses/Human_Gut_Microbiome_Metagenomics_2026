@@ -368,18 +368,42 @@ cleaned_SRR30598619_bin.21.orig_filtered_kept_contigs #984ea3
 
   ![open files](images/open.png)
 
-4. The tip labels are still the European Nuclotide Accessions we used to download the FASTQ files. Let’s change the tip labels to the phylum names using `species_category.txt` annotation file.
+4. The tip labels are still the European Nuclotide Accessions we used to download the FASTQ files. Let’s change the tip labels to the phylum names using `Phylum_category.txt` annotation file.
 
   ![add annotation files](images/species_category.png)
 
-5. From the rooted tree, we can see we have distinct clades within the tree. These are major clades we identified in our dataset. 
+5. In ```Basic``` control panel go to ```Labels```, click ```Display``` to show tip labels or ```Hide``` to hide to remove them. To adjust the branch and leaf thickness, use the upward arrow under ```Line style```.
+
+  ![tree file](images/hide_tip_labels_and_increase_line_style_size.png)
+
+6. Open the ```Datasets``` control panel click a Label field next to the dataset enter a name and click ```✅``` to save
+
+To display and adjust the Label
+- Edit dataset ```label``` and give it a name
+- Set ```Display dataset label``` to Yes
+- increase the ```Dataset label size factor``` using the upward button
+
+  ![tree file](images/label_rings.png)
+
+7. To display the legend vertically:
+
+- Navigate to ```Editing functions``` at the bottom left corner
+- Click ```Legend``` in the bottom left corner
+- Click ```Advanced options```
+- Choose ```Vertical``` for the legend layout
+- Then click ```Update dataset legend```
+- Lastly remember to ```save dataset parameters```
+
+  ![tree file](images/display_legend_vertically.png)
+
+7. From the rooted tree, we can see we have distinct clades within the tree. These are major clades we identified in our dataset. 
 Visualise `gtdbtk_fullalign_bacteria.nwk` in iToL and add metadata
 
-  ![tree file](images/phylum_level_tree.pdf)
+  ![tree file](gtdb_phylogenetic_tree/VeeZdwo4sKjrh5rcnJ0X6A.pdf)
 
 ## Exporting the tree to your local computer
 
-- Once your tree has been fully annotated, adjust any export settings if needed (e.g., resolution, labels, scaling) and click “Export” option in the top menu and select your preferred output format to download the file to your local machine.
+- Once your tree has been fully annotated, adjust any export settings if needed (e.g., resolution, labels, scaling) and click “Export” option in the top menu, then ```Screen``` and select your preferred output format to download the file to your local machine.
 
   ![export files](images/export.png)
 
