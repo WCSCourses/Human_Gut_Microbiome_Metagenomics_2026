@@ -35,8 +35,7 @@ By the end of this module, participants will be able to:
 5. Understand the concept of custom microbiome reference databases
 
 ---
-### Big picture: Where dereplication fits in the pipeline
-The workflow covered in this training course can be summarized as:
+### Big picture: The workflow covered in this training course can be summarized as:
 ![building_eference_microbiome_databases](images/magmax_workflow.png)
 
 ---
