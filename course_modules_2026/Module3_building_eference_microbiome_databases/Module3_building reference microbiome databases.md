@@ -117,9 +117,7 @@ Starting from 745 high-quality MAGs, we obtained 349 species-level representativ
 
 While this course uses GTDB r220 for taxonomic profiling, this module highlights how custom, study-specific genome databases can be constructed as an alternative approach for higher-resolution microbiome analysis.
 
----
+**Important reference:** Arangasamy Yazhini, Johannes Söding, Enhancing genome recovery across metagenomic samples using MAGmax, Bioinformatics (2025), https://doi.org/10.1093/bioinformatics/btaf538.
 
-> **Important reference:** Arangasamy Yazhini, Johannes Söding, Enhancing genome recovery across metagenomic samples using MAGmax, Bioinformatics (2025), https://doi.org/10.1093/bioinformatics/btaf538.
-**GitHub: https://github.com/soedinglab/MAGmax
+GitHub: https://github.com/soedinglab/MAGmax
 
----
