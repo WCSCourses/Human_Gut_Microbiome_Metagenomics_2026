@@ -8,8 +8,6 @@ Luicer Anne Ingasia Olubayo
 ---
 
 ## Introduction
-Introduction
-
 After generating high-quality metagenome-assembled genomes (MAGs) in **Module 2**, the next major task in genome-resolved metagenomics is to remove redundancy and construct a non-redundant genome set.
 
 Metagenomic binning often produces multiple MAGs that represent the same or highly similar microbial species across samples. 
