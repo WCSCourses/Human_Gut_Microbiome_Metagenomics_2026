@@ -3,7 +3,6 @@
 
 ## Module leads
 Bonface Gichuki      
-Luicer Anne Ingasia Olubayo
 
 ---
 
