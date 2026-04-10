@@ -71,7 +71,7 @@ This module uses the high-quality MAGs generated in Module 2.
 Example input: CheckM2 report and files path to the 745 high quality MAGs:
 
 ---
-## Step 1 — Run MAGmax dereplication
+### Step 1 — Run MAGmax dereplication
 
 ```bash
     magmax \
@@ -88,7 +88,7 @@ Example input: CheckM2 report and files path to the 745 high quality MAGs:
 **This generates a folder mags_90comp_95purity/ containing 349 non-redudant species-level representative genomes. 
 
 ---
-#### Part III — Custom microbiome reference databases
+## Part III — Custom microbiome reference databases
 The 349 representative genomes generated after dereplication form a custom microbiome reference genome database, specific to this dataset.
 
 In this training course, read-based taxonomic profiling will be performed using the GTDB r220 reference database with Sylph. 
