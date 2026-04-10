@@ -86,9 +86,7 @@ The output directory contains dereplicated bins, a text file listing the complet
 ## Part III — Custom microbiome reference database
 The 349 representative genomes generated after dereplication form a custom microbiome reference genome database, specific to this dataset.
 
-In this training course, read-based taxonomic profiling will be performed using the GTDB r220 reference database with Sylph. 
-
-However, an alternative approach would be to use a custom, study-specific database such as this one.
+In this training course, taxonomic profiling will be performed using the GTDB r220 reference database with Sylph. However, an alternative approach would be to use a custom, study-specific database such as this one.
 
 Such databases can provide:
 
