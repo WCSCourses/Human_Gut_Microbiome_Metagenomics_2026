@@ -14,7 +14,6 @@ After generating high-quality MAGs in **Module 2**, the next major task in genom
 
 ## Goal of this module
 The goal of this module is to demonstrate how custom microbiome reference databases are constructed through genome dereplication.
-
 In this module, participants will learn how dereplication is performed using MAGmax, and how to interpret the resulting set of species-level representative genomes.
 
 ---
