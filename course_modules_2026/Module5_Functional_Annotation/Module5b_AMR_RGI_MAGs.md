@@ -277,7 +277,7 @@ Ensure that the input directory contains only valid RGI JSON output files.
 The .csv file can be used for custom visualisation in R (e.g., using ggplot2 or pheatmap).
 
 
-# 📈 Downstream Analysis In R-Studio: Practical Session
+# Exercise 5: 📈 Downstream Analysis In R-Studio: Practical Session
 
 Analysis can be performed:
 
@@ -289,17 +289,29 @@ Refer to `/course_modules_2026/Module5_Functional_Annotation/Module5b_AMR_analys
 This script contains the full workflow for the AMR analysis.
 Participants are encouraged to open it in RStudio and follow along step by step, running each section as we go through the session.
 
-What the input data includes:
+# Datasets used in this analysis
 
-The dataset used in this script is a merged and pre-processed file, which contains:
+In this RMarkdown, we will work with three datasets:
+1. AMR data for all MAGs
+course_data_2026/Module5b/output/rgi_main_all_HGM_April26.tsv
+2. Taxonomy data
+course_data_2026/Module5b/output/Taxonomy_Id_data (1).xlsx
+3. Participant metadata
+course_data_2026/Module5b/output/Bednarski_2025_cleaned_metadata_final.xlsx
 
-MAG_ID – identifiers for metagenome-assembled genomes
+These datasets will be loaded, cleaned, and merged within the script to create a unified dataset for downstream analysis.
 
-AMR gene annotations – derived from RGI/CARD outputs
+# What the merged dataset contains
 
-Taxonomic classification – from domain to species level
+After processing, the final dataset will include:
 
-Health status metadata:
+- MAG_ID – identifiers for metagenome-assembled genomes
+
+- AMR gene annotations – derived from RGI/CARD outputs
+
+- Taxonomic classification – from domain to species level
+
+- Health status metadata:
 
 SM = Severe Malaria
 
