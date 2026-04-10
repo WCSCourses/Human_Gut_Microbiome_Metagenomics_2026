@@ -92,7 +92,7 @@ Such databases can provide:
 
 - Improved resolution of closely related microbial species
 - Better representation of study-specific species
-- Increased sensitivity for detecting low-abundance organisms
+- Increased sensitivity for detecting low-abundance species
 
 Note: Profiling metagenomic reads against this custom database is beyond the scope of this module, which focuses on demonstrating genome dereplication and database construction.
 
@@ -108,7 +108,7 @@ Using MAGmax, we showed how to:
 
 Starting from 745 high-quality MAGs, we obtained 349 species-level representative genomes, which together form a custom microbiome reference database.
 
-While this course uses GTDB r220 for taxonomic profiling, this module highlights how custom, study-specific genome databases can be constructed as an alternative approach for higher-resolution microbiome analysis.
+While this course uses GTDB r220 for taxonomic profiling, this module highlights how custom, study-specific genome databases can be constructed as an alternative approach for higher-resolution microbiome profiling.
 
 ---
 
