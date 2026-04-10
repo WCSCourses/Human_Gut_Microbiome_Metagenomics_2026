@@ -1,9 +1,13 @@
 # Module 5b 
 ## AMR Gene Profiling in Human Gut Microbiome MAGs
 
-#Module Lead
-Rahma Golicha   
-Caroline Tigoi  
+---
+
+## Module leads
+Rahma Golicha    
+Caroline Tigoi 
+
+---
 
 ## Module Overview
 
