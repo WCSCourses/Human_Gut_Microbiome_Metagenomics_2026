@@ -387,7 +387,7 @@ To display and adjust the Label
 
 7. To display the legend vertically:
 
-- Navigate to ```Editing functions``` at the bottom left corner
+- Navigate to **Editing functions** at the bottom left corner
 - Click ```Legend``` in the bottom left corner
 - Click ```Advanced options```
 - Choose ```Vertical``` for the legend layout
@@ -396,7 +396,7 @@ To display and adjust the Label
 
   ![tree file](images/display_legend_vertically.png)
 
-7. From the rooted tree, we can see we have distinct clades within the tree. These are major clades we identified in our dataset. 
+8. From the rooted tree, we can see we have distinct clades within the tree. These are major clades we identified in our dataset. 
 Visualise `gtdbtk_fullalign_bacteria.nwk` in iToL and add metadata
 
   ![tree file](gtdb_phylogenetic_tree/VeeZdwo4sKjrh5rcnJ0X6A.pdf)
