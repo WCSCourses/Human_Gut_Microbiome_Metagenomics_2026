@@ -78,7 +78,7 @@ Example input: CheckM2 statistics (checkm2_postqc_Completeness and checkm2_postq
         -f fa
 ```
 
-By default, an output directory named mags_90comp_95purity will be created, where 90 and 95 correspond to the user-specified completeness and purity thresholds used to select final bins. User can also specify the output directory with the -o option.
+By default, an output directory named mags_90comp_95purity/ will be created, where 90 and 95 correspond to the user-specified completeness and purity thresholds used to select final bins. User can also specify the output directory with the -o option.
 
 The output directory contains dereplicated bins, a text file listing the completeness and contamination scores for each bin as calculated by CheckM2 (similar to genome_quality.tsv), and memberships file (memberships.tsv) listing members for each selected representative.
 
