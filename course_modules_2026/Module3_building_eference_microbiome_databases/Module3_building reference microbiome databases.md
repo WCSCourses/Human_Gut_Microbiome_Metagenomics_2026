@@ -58,7 +58,7 @@ In this section we demonstrate genome dereplication using MAGmax, a tool designe
 MAGmax clusters genomes based on similarity and selects high-quality representatives for each species-level cluster.
 
 ---
-Input data
+# Input data
 
 This module uses the high-quality MAGs generated in Module 2.
 
