@@ -1,0 +1,464 @@
+---
+title: "Microbial Community Profiling with Differential Analysis"
+author: "Bonface Gichuki"
+date: "`r Sys.Date()`"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+## Overview
+
+This practical introduces students to taxonomic microbiome analysis using sequencing-derived abundance tables 
+-(e.g., from Sylph, focusing on:
+  - Community structure
+  - Diversity metrics
+  - Differential abundance and prevalence
+
+The workflow uses:
+- Phyloseq for data handling and diversity analysis
+- MaAsLin3 for statistical modelling
+
+## Questions addressed in this session
+
+1. How does alpha diversity differ between children with severe malaria (SM) and Community Controls (CC)?
+2. Do samples cluster by clinical group in beta diversity (ordination space)?
+3. Which taxa dominate the microbial community at different taxonomic levels?
+4. Are there community-wide shifts associated with disease status?
+5. Which bacterial taxa are differentially abundant between SM and CC?
+6. Do results highlight biologically relevant taxa (e.g. Enterobacteriaceae species)?
+
+## Expected learning points
+- Taxonomic profiles describe who is present, not just function
+- Alpha diversity reflects within-sample diversity
+- Beta diversity reflects between-sample differences
+- Ordination methods (MDS (Multidimensional Scaling) ) reveal clustering patterns
+- Differential prevalence and abundance requires careful statistical modelling
+- Compositionality must be considered (e.g. Centered Log-Ratio (CLR) transformation)
+
+## Prerequisites
+
+This module assumes:
+
+- Basic familiarity with R / RStudio
+- A phyloseq object (ps) already constructed
+- Data derived from tools such Sylph
+- Sample metadata
+
+```{r}
+# ============================================
+# LIBRARIES AND WORKING DIRECTORY
+# ============================================
+library(readr)
+library(tidyverse)
+library(stringr)
+library(tibble)
+library(data.table)
+
+# Set working directory
+wk_path="/Users/bg7/Library/CloudStorage/GoogleDrive-bg7@sanger.ac.uk/My Drive/CHAIN Culture Collection/r_scripts/"
+setwd(wk_path)
+
+# ============================================
+# Create a sylph relative abundance matrix
+# ============================================
+# List all Sylph output files
+files <- list.files(path = wk_path, pattern = "\\.sylphmpa$", full.names = TRUE)
+
+# Extract sample ID from filename
+get_sample_id <- function(path) {
+  fname <- basename(path)
+  # first drop extension:
+  core <- fname %>% str_remove("_clean_1.fastq.gz.sylphmpa") %>% 
+    str_remove("prefix_")
+  return(core)
+}
+
+# Read and stack all Sylph tables
+all_sylph <- purrr::map_dfr(
+  files,
+  function(f) {
+    # try skipping comment/meta lines starting with '#'
+    df <- fread(f,skip = 1,data.table = F)
+    sample_id <- get_sample_id(f)
+    df %>%
+      # keep only the columns we need
+      select(clade_name,relative_abundance) %>%
+      mutate(sample = sample_id)})
+
+# Get abundance matrix
+abund_mat <- all_sylph %>%
+  pivot_wider(id_cols = clade_name, names_from = sample,
+    values_from =relative_abundance,
+    values_fill = 0         # missing taxa → 0 abundance
+  ) %>% arrange(clade_name)
+
+# Save the matrix
+write_tsv(abund_mat, "Bednarski_2025_sylph_clade_relative_abundance_matrix.tsv")
+
+```
+
+
+```{r}
+# ============================================
+# Create a phyloseq object
+# ============================================
+library(phyloseq)
+library(ggpubr) 
+library(microViz)
+library(corncob)
+library(ggthemes)
+library(tidyverse)
+
+# Load sylph abundance matrix and participant metadata
+abundance_data <- read.delim("Bednarski_20025_sylph_clade_relative_abundance_matrix.tsv")
+metadata <- read.csv("Bednarski_2025_cleaned_metadata_final.csv") %>%
+  column_to_rownames("metagm_id")
+
+# Prepare OTU table (rows are taxonomic ranks and columns are samples)
+otu_tab <- abundance_data %>%
+  column_to_rownames("clade_name")
+
+# Convert otu table into a matrix
+otu_mat <- as.matrix(otu_tab)
+
+# only include species level taxonomic ranks
+otu_mat_new <- otu_mat[grepl("\\|s__[^|]+$", rownames(otu_mat)), ]
+rownames(otu_mat_new)
+
+# Align samples to metadata
+common_samples <- intersect(colnames(otu_mat_new), rownames(metadata))
+otu_mat_new <- otu_mat_new[, common_samples]
+metadata_sub <- metadata[common_samples, ]
+
+# Sanity check
+stopifnot(all(colnames(otu_mat_new) == rownames(metadata_sub)))
+
+# Build taxonomy table
+tax_split <- strsplit(rownames(otu_mat_new), "\\|")
+max_len <- max(lengths(tax_split))
+tax_mat <- do.call(rbind, lapply(tax_split, function(x) {
+  c(x, rep(NA, max_len - length(x)))
+}))
+
+colnames(tax_mat) <- c("Kingdom","Phylum","Class","Order","Family","Genus","Species","Strain")[1:max_len]
+rownames(tax_mat) <- rownames(otu_mat_new)
+
+# Create a phyloseq object (includes otu_table, sample metadata and taxonomy table)
+ps <- phyloseq(
+  otu_table(otu_mat_new, taxa_are_rows = TRUE),
+  sample_data(metadata_sub),
+  tax_table(as.matrix(tax_mat)))
+
+# Clean metadata (important)
+# remove NA in key variable
+ps <- subset_samples(ps, !is.na(sick))
+
+# Ensure the grouping variable is a factor
+sample_data(ps)$sick <- factor(sample_data(ps)$sick)
+
+
+# Inspect contents of the phyloseq object (sanity check)
+ps
+head(otu_table(ps))
+head(sample_data(ps))
+head(tax_table(ps))
+nsamples(ps)
+sample_variables(ps)
+sample_sums(ps)[1:10] 
+
+```
+
+```{r}
+# ============================================
+# Community composition (sample-level summary)
+# ============================================
+library(remotes)
+library(devtools)
+library(gghalves)
+library(microbiomeutilities)
+
+# Clean Family names (remove "f__" prefix for readability in plots)
+tax_table(ps)[, "Family"] <- sub("^f__", "", tax_table(ps)[, "Family"])
+
+# Convert phyloseq object to long format for manipulation
+df <- psmelt(ps)
+
+# Clean Family names again in melted data (ensures consistency)
+df$Family <- sub("^f__", "", df$Family)
+
+# Identify top 8 most abundant families across all samples
+top_families <- df %>%
+  group_by(Family) %>%
+  summarise(total_abundance = sum(Abundance)) %>%
+  arrange(desc(total_abundance)) %>%
+  slice_head(n = 8) %>%
+  pull(Family)
+
+# (Optional) Manually specify top families to control ordering/consistency
+top_families <- c("Enterobacteriaceae", "Enterococcaceae", "Bacteroidaceae",
+                  "Oscillospiraceae", "Lachnospiraceae", "Coriobacteriaceae",
+                  "Bifidobacteriaceae", "Ruminococcaceae")
+
+# Define color palette for top families and "Other"
+families_colors <- c("#a6cee3","#1f78b4","#b2df8a","#33a02c","#fb9a99",
+                  "#e31a1c","#fdbf6f","#ff7f00","grey") 
+
+# Map colors to taxa names
+families_colors <- setNames(families_colors, c(top_families, "Other"))
+
+# Create stacked barplot of relative abundance per sample
+rel_ab_plot <- ps %>%
+  microbiomeutilities::aggregate_top_taxa2(top = 8, level = "Family") %>%
+  microbiome::plot_composition(otu.sort = "abundance",           # sort taxa by abundance
+                               sample.sort = "Bacteroidaceae",   # order samples by one taxon
+                               group_by ="sick") +               # group samples by disease status
+  scale_fill_manual(values = families_colors, 
+                    name = "Family",
+                    breaks = c(top_families, "Other")) +
+  theme(panel.background = element_blank(),
+        axis.text.x = element_text(size = 6, vjust = 1, hjust = 1, angle = 70,  colour = "black"),
+        axis.text.y = element_text(size = 9, colour = "black"),
+        axis.title.y = element_text(size = 9, colour = "black", vjust = +1),
+        axis.title.x = element_text(size = 9, colour = "black", vjust = -1),
+        axis.ticks.length.y = unit(.125, "cm"),
+        axis.ticks.x = element_blank()) +
+  theme(legend.position = "bottom", legend.box = "horizontal",legend.justification = "centre",
+        legend.text = element_text(colour = "black", size = 7)) +
+  theme(legend.title = element_text(colour = "black", size = 7, face = "bold")) +
+  theme(panel.border = element_blank(), axis.line = element_line(colour = "black")) +
+  labs(x = "Participant", y = "Relative abundance (%)") +
+  theme(plot.margin = margin(1.2, 1.2, 1.2, 1.2, "cm"))+
+  theme(strip.text = element_text(angle = 0, size = 10, face = "bold", hjust = 0.5))+
+  theme(strip.background = element_blank())  
+
+rel_ab_plot
+
+# Save the plot
+ggsave(rel_ab_plot, file = "sample_rel_ab_plot.png",width = 20, height = 13, units = "cm", dpi = 300)
+```
+
+
+```{r}
+# ============================================
+# Community composition (group-level summary)
+# ============================================
+# Aggregate to Family level
+ps_family <- ps %>%
+  tax_glom(taxrank = "Family")
+
+# Convert phyloseq object to long format
+df <- psmelt(ps_family)
+
+# Clean Family names (remove "f__" prefix for readability)
+df$Family <- sub("^f__", "", df$Family)
+
+# Keep only top families; group all others as "Other"
+df$Family <- ifelse(df$Family %in% top_families, df$Family, "Other")
+
+# Calculate mean relative abundance per group (SM vs CC)
+df_summary <- df %>%
+  group_by(sick, Family) %>%
+  summarise(mean_abundance = mean(Abundance), .groups = "drop")
+
+# Create stacked barplot showing average community composition per group
+rel_ab_group_plot <- ggplot(df_summary, aes(x = sick, y = mean_abundance, fill = Family)) +
+  geom_bar(stat = "identity", position = "stack") +
+  scale_fill_manual(values = families_colors) +
+  labs(x = "Group", y = "Relative abundance (%)") +
+  theme_classic() +
+  theme(
+    legend.position = "right",
+    legend.text = element_text(size = 8),
+    legend.title = element_text(size = 9, face = "bold"))
+
+rel_ab_group_plot
+
+# Save the plot
+ggsave(rel_ab_group_plot, file = "group_rel_ab_plot.png",width = 8, height = 9, units = "cm", dpi = 300)
+
+```
+
+
+```{r}
+# ============================================
+# Alpha diversity (within-sample diversity)
+# ============================================
+# Fix taxonomy labels (ensures consistent naming across ranks)
+ps_fixed <- ps %>%
+  tax_fix()
+
+# Calculate alpha diversity metrics (Shannon = diversity, Observed = richness)
+alpha_stat_met <-  ps_fixed %>%
+  ps_calc_diversity(rank = "Species", index = 'shannon') %>%
+  ps_calc_richness(rank = "Species", index = 'observed') %>%
+  samdat_tbl() # merge diversity metrics with sample metadata
+
+# Define group comparison (Severe Malaria vs Community Controls)
+my_comparisons <- list(c("SM", "CC"))
+
+# Ensure correct ordering of groups on x-axis
+alpha_stat_met$sick <- factor(alpha_stat_met$sick, levels = c("SM", "CC"))
+
+# Plot Shannon diversity by group with statistical (Wilcoxon) comparison
+alpha_div_plot <- ggplot(alpha_stat_met, aes(x = sick, y = shannon_Species, fill = sick)) +
+  geom_boxplot(outlier.shape = NA, alpha = 0.7) +
+  geom_jitter(width = 0.2, size = 1.5, alpha = 0.8) +
+  theme_classic(base_size = 12) +
+  labs(x = "Group", y = "Shannon index") +
+  scale_fill_manual(name = "Group",values = c("SM" = "#00BFC4","CC" = "#F8766D")) +
+  stat_compare_means(comparisons = my_comparisons,
+                     method = "wilcox.test",
+                     label = "p.format",   # shows actual p-value
+                     paired = FALSE)
+
+alpha_div_plot
+
+# Save plot
+ggsave("alpha_diversity_plot.png",alpha_div_plot,width = 5,height = 5,dpi = 600)
+
+```
+
+
+```{r}
+# ============================================
+# BETA DIVERSITY (between-sample differences)
+# ============================================
+# Fix taxonomy labels for consistency
+ps_fixed <- ps %>%
+  tax_fix()
+
+# Filter low-prevalence taxa and aggregate to Species level
+ps_species <- ps %>%
+  tax_fix() %>%                        # fix missing taxonomy
+  tax_filter(min_prevalence = 1/100, use_counts = FALSE, verbose = FALSE) %>%
+  tax_agg(rank = "Species") # can use Genus
+
+# Apply CLR transformation (accounts for compositional data structure)
+ps_clr <- ps_species %>%
+  tax_transform("clr", zero_replace = "halfmin")
+
+# Perform beta diversity analysis:
+# - Euclidean distance on CLR data = Aitchison distance
+# - PCoA visualises differences between samples
+beta_2 <- ps_clr %>%
+  dist_calc("euclidean") %>%
+  ord_calc(method = "PCoA") %>%
+  ord_plot(color = "sick", alpha = 0.6, size = 2) +
+  theme_bw() +
+  coord_fixed(0.7) +
+  scale_color_manual(
+    name = "Group",
+    values = c("SM" = "#00BFC4", "CC" = "#F8766D"))
+beta_2
+
+# PERMANOVA test: 
+# assesses whether community composition differs by group (and other covariates)
+perm_res <- ps_clr %>% dist_calc("euclidean") %>%
+  dist_permanova(variables = c("sick", "site", "age", "stool_day"),
+  n_perms = 999, seed = 123) %>%
+  perm_get()
+perm_res
+
+# Extract PERMANOVA results (p-value and R² ) for 'sick'
+pval <- perm_res["sick", "Pr(>F)"]
+r2    <- perm_res["sick", "R2"]
+
+# Format annotation text for plot
+label_text <- paste0("PERMANOVA\nR² = ", round(r2,3), "\np = ", signif(pval,3))
+
+# Add PERMANOVA results to plot (bottom-right corner)
+beta_div_plot <- beta_2 +
+  annotate("text",
+           x = Inf, y = -Inf,
+           label = label_text,
+           hjust = 1.1, vjust = -0.5,
+           size = 2) +
+  labs(caption = NULL)
+beta_div_plot
+
+# Save plot
+ggsave("beta_diversity_plot.png",beta_div_plot,width = 5,height = 5,dpi = 600)
+
+```
+
+
+```{r}
+# ==========================================================
+# Differential abundance and prevalence analysis (MaAsLin3)
+# ==========================================================
+library(tidyverse)
+library(maaslin3)
+
+# Load Sylph relative abundance data and sample metadata
+sylph_data <- read.delim("Bednarski_20025_sylph_clade_relative_abundance_matrix.tsv",
+                         header = TRUE,check.names = FALSE,stringsAsFactors = FALSE)
+study_metadata <- read.csv("Bednarski_2025_cleaned_metadata_final.csv",stringsAsFactors = F, sep=",")
+
+# Extract taxa names and abundance matrix
+taxa <- sylph_data$clade_name # taxonomic labels
+abund <- sylph_data[, -1] # abundance values (samples as columns)
+
+# Transpose matrix so rows = samples, columns = taxa (required for MaAsLin3)
+abund_t <- as.data.frame(t(abund))
+colnames(abund_t) <- taxa
+
+# Check for duplicated taxa names (can cause model issues)
+sum(duplicated(taxa))
+taxa[duplicated(taxa)]
+
+# Identify shared sample IDs between abundance data and metadata
+common_ids <- intersect(study_metadata$metagm_id, rownames(abund_t))
+
+# Subset both datasets to matching samples
+metadata_sub <- study_metadata[study_metadata$metagm_id %in% common_ids, ]
+features <- abund_t[common_ids, ]
+
+# Assign rownames to metadata and ensure matching order
+rownames(metadata_sub) <- metadata_sub$metagm_id
+metadata_sub <- metadata_sub[common_ids, ]
+
+# Final check: ensure sample order matches between datasets
+all(rownames(features) == rownames(metadata_sub))
+
+# Inspect feature names (taxonomic strings)
+colnames(features)
+
+# Subset to species-level features (recommended for interpretation)
+features_species <- features[, grepl("\\|s__[^|]+$", colnames(features))]
+colnames(features_species)
+
+# (Optional) subset to genus level for comparison
+# features_genus <- features[, grepl("\\|g__[^|]+$", colnames(features))]
+
+# Fit MaAsLin3 model
+# Tests association between microbial features and disease status (sick)
+fit_out <- maaslin3(
+  input_data = features_species,
+  input_metadata = metadata_sub,
+  output = "maaslin3_output",
+  fixed_effects = c("sick"), # variable of interest (SM vs CC)
+  normalization = "CLR", # accounts for compositional data
+  transform = "NONE", # required when using CLR
+  min_abundance = 0.001, # filter very low-abundance features
+  min_prevalence = 0.1, # keep features present in ≥10% samples
+  warn_prevalence = FALSE,
+  cores = 1)
+
+# Load significant results
+# Contains features significantly associated with 'sick' (FDR-adjusted)
+signif_res <- read.delim("maaslin3_output/all_results.tsv") %>% 
+   filter(qval_individual < 0.25)
+
+```
+
+## Reproducibility
+
+To run this module:
+
+1. Clone the repository
+2. Place input files in you working directory
+3. Open the `.Rmd` file in RStudio
+4. Click **Knit → PDF**
+
+Note: MaAsLin3 outputs are precomputed.
