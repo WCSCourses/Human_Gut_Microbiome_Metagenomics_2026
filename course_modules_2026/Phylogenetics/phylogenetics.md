@@ -290,7 +290,7 @@ You will:
 - Open your GTDB metadata file in excel
 
 ```
-/Human_Gut_Microbiome_Metagenomics_2026/course_data_2026/Phylogenetics/gtdb_phylogenetic_tree/Bednarski_2025_qcmags_hqMAGs_report_and_metadata.xlsx
+/Human_Gut_Microbiome_Metagenomics_2026/course_data_2026/Phylogenetics/gtdb_phylogenetic_tree/Bednarski_2025_qcmags_hqMAGs_report.xlsx
 ```
 
 - Insert a new empty column next to the classification column.
@@ -329,7 +329,7 @@ You will:
  - Open the iTOL annotation file
 
 ```
-/Human_Gut_Microbiome_Metagenomics_2026/course_data_2026/Phylogenetics/gtdb_phylogenetic_tree/species_category.txt
+/Human_Gut_Microbiome_Metagenomics_2026/course_data_2026/Phylogenetics/gtdb_phylogenetic_tree/Phylum_category.txt
 ```
 - Locate the line:
 
