@@ -40,7 +40,7 @@ By the end of this module, participants will be able to:
 
 ---
 
-## Part I — Genome dereplication in metagenomics
+## Part I - Genome dereplication in metagenomics
 
 As introduced above, genome collections generated from metagenomic assembly often contain redundant genomes, arising from:
 
