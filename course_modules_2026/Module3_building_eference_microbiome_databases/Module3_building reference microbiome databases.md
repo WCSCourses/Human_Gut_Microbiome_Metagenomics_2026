@@ -1,4 +1,4 @@
-# Module 4: Building A Custom Microbiome Database 
+# Module 4: Building a Custom Microbiome Database 
 ---
 
 ## Module leads
