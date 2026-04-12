@@ -8,7 +8,7 @@
 - Visualise the tree in iTOL
 
 ## Contents
-- [Introduction to phylogenetics](#introduction to phylogenetics)
+- [Introduction to phylogenetics](#introduction-to-phylogenetics)
 - [Phylogenetic Tree Inference](#phylogenetic-tree-inference)
 - [Multiple Sequence Alignments](#multiple-sequence-alignments)
 - [Building a Phylogenetic Tree](#building-a-phylogenetic-tree)
