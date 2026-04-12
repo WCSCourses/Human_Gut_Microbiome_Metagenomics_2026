@@ -46,7 +46,7 @@ More often than not, samples are collected at the same time, and it might be ass
 For instance, the terminal nodes of this tree - A, B, C and D - represent sampled organisms. The internal nodes - E and F - are inferred from the data.  In this case, there is also a multifurcation: nodes A, B and E all coalesce to the base of the tree. This can happen due to poor resolution in the data. A well resolved tree only contain a binary split. You can trick different softwares to interpret these kind of multifurcating trees to make them think that they're bifurcating trees.
 It is assumed that a given ancestor can diverge into two descendants but in practice, due to oversampling and undersampling, phylogenies can show three or more  descendants derived from the same ancestor.
 
-  ![multifurcated tree](images/multifurcated_tree.png)
+  ![multifurcated tree](images/multifurcated_tree.png){width=50%}
 
   multifurcated tree.
 
