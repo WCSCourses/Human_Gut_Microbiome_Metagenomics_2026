@@ -292,6 +292,10 @@ You will:
 ```
 /Human_Gut_Microbiome_Metagenomics_2026/course_data_2026/Phylogenetics/gtdb_phylogenetic_tree/Bednarski_2025_qcmags_hqMAGs_report.xlsx
 ```
+This file is also on Github: 
+
+[https://github.com/WCSCourses/Human_Gut_Microbiome_Metagenomics_2026/blob/main/course_data_2026/Phylogenetics/gtdb_phylogenetic_tree/Bednarski_2025_qcmags_hqMAGs_report.xlsx](https://github.com/WCSCourses/Human_Gut_Microbiome_Metagenomics_2026/blob/main/course_data_2026/Phylogenetics/gtdb_phylogenetic_tree/Bednarski_2025_qcmags_hqMAGs_report.xlsx)
+
 
 - Insert a new empty column next to the classification column.
 
@@ -331,6 +335,10 @@ You will:
 ```
 /Human_Gut_Microbiome_Metagenomics_2026/course_data_2026/Phylogenetics/gtdb_phylogenetic_tree/Phylum_category.txt
 ```
+
+This file is also stored on the Github:
+[https://github.com/WCSCourses/Human_Gut_Microbiome_Metagenomics_2026/blob/main/course_data_2026/Phylogenetics/gtdb_phylogenetic_tree/Phylum_category.txt](https://github.com/WCSCourses/Human_Gut_Microbiome_Metagenomics_2026/blob/main/course_data_2026/Phylogenetics/gtdb_phylogenetic_tree/Phylum_category.txt)
+
 - Locate the line:
 
 ```
@@ -354,7 +362,10 @@ cleaned_SRR30598619_bin.21.orig_filtered_kept_contigs #984ea3
 - Save the file as plain text before uploading to iTOL
 
 ## Uploading tree files and metadata
-- Once you’ve logged into iTOL, you can upload `gtdbtk_fullalign_bacteria.nwk` tree file and annotate it with the metadata 
+- Once you’ve logged into iTOL, you can upload `gtdbtk_fullalign_bacteria.nwk` tree file and annotate it with the metadata
+
+The gtdbtk_fullalign_bacteria.nwk can be also found on Github: 
+[https://github.com/WCSCourses/Human_Gut_Microbiome_Metagenomics_2026/blob/main/course_data_2026/Phylogenetics/gtdb_phylogenetic_tree/gtdbtk_fullalign_bacteria.nwk](https://github.com/WCSCourses/Human_Gut_Microbiome_Metagenomics_2026/blob/main/course_data_2026/Phylogenetics/gtdb_phylogenetic_tree/gtdbtk_fullalign_bacteria.nwk)
 
 1. Click on the UPLOAD link in the bottom-right corner of the page:
 
