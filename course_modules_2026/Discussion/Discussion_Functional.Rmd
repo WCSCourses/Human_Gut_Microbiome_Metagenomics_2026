@@ -45,7 +45,7 @@ Required R packages:
 - tidyverse
 - pheatmap
 - vegan
-- Maaslin2
+- Maaslin3
 
 ## Input data structure
 
@@ -78,13 +78,13 @@ library(tidyverse)
 library(pheatmap)
 library(vegan)
 
-if (!requireNamespace("Maaslin2", quietly = TRUE)) {
+if (!requireNamespace("maaslin3", quietly = TRUE)) {
   if (!requireNamespace("BiocManager", quietly = TRUE)) {
     install.packages("BiocManager")
   }
-  BiocManager::install("Maaslin2")
+  BiocManager::install("maaslin3")
 }
-library(Maaslin2)
+library(maaslin3)
 ```
 
 ```{r helper-functions}
@@ -133,25 +133,25 @@ remove_zero_variance_features <- function(mat) {
 # ============================================
 
 path_abun <- read.delim(
-  "/Users/bg7/Library/CloudStorage/GoogleDrive-bg7@sanger.ac.uk/My Drive/CHAIN Culture Collection/r_scripts/humann3_pathabundance_merged_normalised_UG.tsv",
+  "/Users/LuicerAnneIngasia/Desktop/wcs/humman/humann3_pathabundance_merged_normalised_UG.tsv",
   sep = "\t",
   check.names = FALSE
 )
 
 path_cov <- read.delim(
-  "/Users/bg7/Library/CloudStorage/GoogleDrive-bg7@sanger.ac.uk/My Drive/CHAIN Culture Collection/r_scripts/humann3_pathcoverage_merged_UG.tsv",
+  "/Users/LuicerAnneIngasia/Desktop/wcs/humman/humann3_pathcoverage_merged_UG.tsv",
   sep = "\t",
   check.names = FALSE
 )
 
 genefam <- read.delim(
-  "/Users/bg7/Library/CloudStorage/GoogleDrive-bg7@sanger.ac.uk/My Drive/CHAIN Culture Collection/r_scripts/humann3_genefamilies_merged_normalised_UG.tsv",
+  "/Users/LuicerAnneIngasia/Desktop/wcs/humman/humann3_genefamilies_merged_normalised_UG.tsv",
   sep = "\t",
   check.names = FALSE
 )
 
 meta <- read.csv(
-  "/Users/bg7/Library/CloudStorage/GoogleDrive-bg7@sanger.ac.uk/My Drive/CHAIN Culture Collection/r_scripts/Bednarski_2025_cleaned_metadata_final.csv",
+  "/Users/LuicerAnneIngasia/Desktop/wcs/Bednarski_2025_cleaned_metadata_final.csv",
   check.names = FALSE
 )
 
@@ -321,7 +321,9 @@ table(meta$sick)
 
 **Interpretation prompt:**  
 Do samples separate clearly by group, or is the clustering partial?
-If separation is incomplete, that suggests the functional shifts are subtle rather than absolute.
+The PCA plot shows partial separation by outcome along PC1 (35.7% variance explained), with some clustering of the CC group, but there is substantial overlap between groups. PC2 (11.4%) captures additional variability but does not clearly distinguish groups.
+Incomplete separation suggests the functional shifts are subtle rather than absolute.
+
 
 ```{r top-pathway-heatmap}
 # ============================================
@@ -344,6 +346,12 @@ ann_colors <- list(
   )
 )
 
+# Create annotation for columns (samples)
+annotation_col <- data.frame(
+  Sick = meta$sick
+)
+rownames(annotation_col) <- meta$sample_name  # must match target_log columns
+
 pheatmap(
   heat_path_scaled,
   show_rownames = TRUE,
@@ -356,7 +364,12 @@ pheatmap(
 ```
 
 **Interpretation prompt:**  
-These pathways usually reflect core metabolism and microbial growth rather than group-specific biology.
+**These pathways usually reflect core metabolism and microbial growth rather than group-specific biology*.
+The heatmap of the top 30 most abundant pathways shows that microbial functional profiles are dominated by core metabolic processes, including amino acid biosynthesis (e.g., branched-chain amino acids), nucleotide biosynthesis, glycolysis, and cell wall (peptidoglycan) synthesis. These pathways are consistently abundant across samples, reflecting essential functions required for microbial growth and maintenance.
+
+While there is variation in intensity across samples, these differences are not strictly group-specific, indicating that these core pathways are broadly shared across both groups. Some samples in the sick group (CC) show localized increases or decreases in specific pathways, but these patterns are not uniformly consistent across all individuals.
+
+This suggests that while there are some group-associated differences in pathway abundance, the overall functional landscape of the microbiome is largely conserved, and differences between groups are subtle rather than driven by major shifts in dominant functions.
 
 ## Question 2: How consistently are pathways detected across samples?
 
@@ -389,6 +402,12 @@ head(coverage_summary, 20)
 Pathway abundance asks how much of a pathway is present.
 Pathway coverage asks how consistently a pathway is represented across samples.
 
+Pathway coverage analysis shows that a subset of pathways is consistently detected across a large proportion of samples, indicating the presence of a shared core functional repertoire. These highly prevalent pathways likely correspond to essential microbial functions that are maintained across individuals.
+
+At the same time, many pathways show lower prevalence and are only detected in a subset of samples, reflecting functional variability within the cohort. This suggests that while core metabolic functions are stable, additional pathways may be condition-specific or influenced by host or environmental factors.
+
+Importantly, pathway coverage complements pathway abundance: abundance reflects how much of a function is present, whereas coverage indicates how consistently that function is observed across samples.
+
 ## Question 3: Which broad biological systems dominate the microbiome?
 
 ```{r functional-categories}
@@ -417,6 +436,8 @@ ggplot(cat_df, aes(x = category)) +
 **Interpretation prompt:**  
 This plot shows how many pathways fall into each broad biological category.
 It helps move from pathway IDs to interpretable biology.
+
+Functional categorisation shows that the microbiome is dominated by pathways related to metabolism, particularly energy metabolism, carbohydrate metabolism, and amino acid metabolism. These categories contain the largest number of pathways, as seen in the category distribution plot, indicating that microbial communities are primarily structured around nutrient processing and energy production.
 
 ```{r category-mean-heatmap}
 # ============================================
@@ -468,6 +489,10 @@ pheatmap(
 **Interpretation prompt:**  
 This aggregation is more interpretable than individual features and makes it easier to discuss pathways in terms of metabolism, cell wall processes, and nucleotide or energy functions.
 
+The heatmap of mean category abundance further supports this, showing that these metabolic categories consistently exhibit higher abundance across samples compared to other functional groups. In contrast, categories such as cell wall processes and cofactor-related pathways are present but contribute less overall to the functional landscape.
+
+When the broad “Other” category is excluded, the remaining categories become more interpretable, highlighting that core metabolic processes are the dominant functional components of the microbiome.
+
 ## Question 4: Do broad biological categories differ across groups?
 
 ```{r category-boxplot}
@@ -496,6 +521,14 @@ ggplot(cat_long, aes(x = sick, y = log10(abundance + 1e-6), fill = sick)) +
 Do certain groups show relatively higher energy metabolism, nucleotide metabolism, or cell-wall-associated pathways?
 These plots summarize broad biology before moving into feature-level testing.
 
+Boxplots comparing functional categories across groups show that differences between SM and CC are generally modest and category-specific rather than global. Most categories exhibit substantial overlap between groups, indicating that overall functional composition remains broadly similar.
+
+Some categories, particularly those related to metabolism (e.g., energy, carbohydrate, or amino acid metabolism), show slight shifts in distribution between groups. However, these differences are not consistent across all samples and do not indicate a uniform increase or decrease within a group.
+
+Because each category is plotted on a different y-axis scale, the apparent differences should be interpreted cautiously. The results suggest that group-associated functional changes are subtle and likely confined to specific pathways rather than broad functional classes.
+
+These patterns indicate that functional differences between groups are likely driven by specific pathways rather than broad shifts in entire biological systems.
+
 ## Question 5: Do we see paper-relevant functional themes?
 
 The paper highlights metabolism, respiration, iron/heme handling, and nutrient utilization. We can inspect those themes directly.
@@ -517,11 +550,6 @@ target_mat <- path_mat[target_idx, , drop = FALSE]
 rownames(target_mat) <- clean_names(rownames(target_mat))
 target_log <- log10(target_mat + 1e-6)
 
-# Create annotation for columns (samples)
-annotation_col <- data.frame(
-  Sick = meta$sick
-)
-rownames(annotation_col) <- meta$sample_name  # must match target_log columns
 
 if (nrow(target_log) > 1) {
   pheatmap(
@@ -539,6 +567,15 @@ if (nrow(target_log) > 1) {
 **Interpretation prompt:**  
 Are these functions consistently elevated in some groups?
 Do they suggest microbial communities adapted to altered nutrient availability, host-derived substrates, or stressed gut environments?
+Focusing on pathways highlighted in the paper—such as respiration, iron/heme acquisition, and host-derived nutrient utilisation—reveals targeted variation across samples and between groups.
+
+The heatmap shows that these pathways are not uniformly distributed across all samples but instead exhibit sample-specific patterns of abundance. Certain pathways, particularly those related to respiration and iron/cofactor metabolism, display localized increases in subsets of samples, suggesting functional adaptation to specific host or environmental conditions.
+
+Group-level patterns are present but not uniform: while some CC samples appear to show elevated abundance in pathways related to respiration or nutrient utilisation, there is substantial overlap with SM samples. This indicates that these functions are not exclusive to one group but may be enriched in certain individuals within a group.
+
+Overall, these results suggest that biologically relevant functional shifts—particularly in energy metabolism, iron handling, and host-derived nutrient use—are present but are heterogeneous across the cohort. This supports the idea that microbiome adaptation occurs in a context-dependent manner rather than as a consistent group-wide signature.
+
+These patterns are consistent with microbial communities responding to altered host environments, such as changes in oxygen availability, inflammation, or nutrient accessibility.
 
 ## Question 6: What happens at the gene-family level?
 
@@ -596,6 +633,17 @@ pheatmap(
 **Interpretation prompt:**  
 Gene families offer higher resolution, but they are harder to interpret biologically without annotation or targeted grouping.
 
+Gene-family analysis reveals a much higher level of complexity compared to pathway-level results, reflecting the fine-grained nature of these features. After applying prevalence and abundance filtering, a reduced subset of gene families was retained for analysis, indicating that a large proportion of features are either rare or low-abundance.
+
+The heatmap of the most variable gene families shows heterogeneous patterns across samples, with no clear or consistent clustering by group. Instead, variation appears to be driven primarily by individual samples rather than group-level structure.
+
+This contrasts with pathway-level analysis, where broader functional trends were more apparent. The gene-family level captures detailed functional potential, but this increased resolution comes with increased noise and reduced interpretability.
+
+Overall, these results highlight that gene-family data provide high-resolution insights but require aggregation or targeted grouping to extract clear biological meaning.
+
+This demonstrates a common feature of microbiome data: increasing resolution improves detail but often reduces interpretability without additional aggregation.
+
+
 ## Question 7: Are total pathway or gene-family loads different across groups?
 
 ```{r global-load-boxplots}
@@ -631,11 +679,17 @@ p2
 **Interpretation prompt:**  
 These plots ask whether groups differ in the overall amount of annotated functional signal, before focusing on individual features.
 
+Boxplots of total pathway abundance and total gene-family abundance show substantial overlap between SM and CC groups, with no clear or consistent difference in overall functional load.
+
+While there may be minor variation in median values between groups, the distributions largely overlap, indicating that the total amount of functional signal is broadly similar across samples regardless of group.
+
+This suggests that differences observed in earlier analyses are unlikely to be driven by a global increase or decrease in microbiome functional capacity. Instead, any group-associated differences are more likely due to changes in specific pathways or functions rather than overall abundance.
+
 ## Question 8: Which pathways are significantly associated with group?
 
 ```{r prepare-maaslin}
 # ============================================
-# PREPARE INPUTS FOR MaAsLin2
+# PREPARE INPUTS FOR MaAsLin3
 # ============================================
 
 path_mat_maaslin <- remove_zero_variance_features(path_mat)
@@ -663,6 +717,7 @@ table(meta_maaslin$sick)
 # ============================================
 # MaAsLin3: PATHWAYS
 # ============================================
+# Precomputed externally; shown here for reproducibility only
 library(maaslin3)
 fit_path <- maaslin3(
   input_data = path_maaslin,
@@ -680,7 +735,7 @@ fit_path <- maaslin3(
 # ============================================
 # MaAsLin3: GENE FAMILIES
 # ============================================
-
+# Precomputed externally; shown here for reproducibility only
 fit_gene <- maaslin3(
   input_data = gene_maaslin,
   input_metadata = meta_maaslin,
@@ -690,7 +745,7 @@ fit_gene <- maaslin3(
   transform = "LOG"
 )
 ```
-
+## Question 8a: Are there functional differences at the pathway level between the group?
 ```{r pathway-volcanos}
 # ============================================
 # VOLCANO PLOT: PATHWAYS
@@ -709,6 +764,7 @@ ggplot(res_path, aes(x = coef, y = -log10(qval_individual))) +
     y = "-log10(q-value)"
   )
 ```
+## Question 8a: Are there functional differences at gene level between the group?
 
 ```{r genefamilies-volcano}
 # ============================================
@@ -728,8 +784,10 @@ ggplot(res_gene, aes(x = coef, y = -log10(qval_individual))) +
     y = "-log10(q-value)"
   )
 ```
+**Interpretation prompt:**  
 
-## Question 9: Which significant pathway results are easiest to interpret biologically?
+
+## Question 9: Which biologically interpretable pathways appear among the top-ranked (low q-value) results?
 
 
 ```{r significant-pathways-tables}
@@ -766,44 +824,36 @@ knitr::kable(
 )
 
 ```
-
+**Interpretation prompt:**  
+From summary: q < 0.25: some features and q < 0.10 / 0.05: likely none
+Therefore:there are no strongly statistically significant pathways, only suggestive associations under a relaxed threshold.
 
 
 ```{r top-significant-pathways-heatmaps}
 # ============================================
 # HEATMAP OF TOP DIFFERENTIAL PATHWAYS
 # ============================================
-
-# Map MaAsLin3 feature names back to original HUMAnN names
-feature_map <- data.frame(
-  original = rownames(path_mat),
-  maaslin = make.names(rownames(path_mat)),
-  stringsAsFactors = FALSE
-)
-
-top_maaslin <- sig_path %>%
+top_features <- sig_path %>%
   slice_head(n = 20) %>%
   pull(feature)
 
-top_original <- feature_map$original[
-  match(top_maaslin, feature_map$maaslin)
-]
-
-top_original <- na.omit(top_original)
+# Try direct matching first (most robust)
+top_original <- intersect(top_features, rownames(path_mat))
 
 cat("Mapped features:", length(top_original), "\n")
 
 if (length(top_original) >= 2) {
-
+  
   abund_top <- path_mat[top_original, , drop = FALSE]
   rownames(abund_top) <- clean_names(rownames(abund_top))
-
+  
   anno <- meta %>%
-  select(sample_name, sick, country) %>%
-  as.data.frame()
-rownames(anno) <- anno$sample_name
-anno$sample_name <- NULL
-
+    dplyr::select(sample_name, sick, country) %>%
+    as.data.frame()
+  
+  rownames(anno) <- anno$sample_name
+  anno$sample_name <- NULL
+  
   pheatmap(
     log10(abund_top + 1e-6),
     annotation_col = anno,
@@ -811,30 +861,23 @@ anno$sample_name <- NULL
     fontsize_row = 8,
     main = "Top Differential Pathways"
   )
-
+  
 } else {
-  cat("Not enough features for heatmap\n")
+  cat("No matching features found — check naming consistency\n")
 }
-
-###
-feature_map <- data.frame(
-  original = rownames(path_mat),
-  clean = clean_names(rownames(path_mat)),
-  stringsAsFactors = FALSE
-)
-
-top_clean <- clean_names(top_maaslin)
-
-top_original <- feature_map$original[
-  match(top_clean, feature_map$clean)
-]
-
-top_original <- na.omit(top_original)
-
 ```
 
 **Interpretation prompt:**  
 Do the significant features point to broad metabolic shifts, or to specific processes such as respiration, iron handling, or nutrient scavenging?
+
+The top-ranked pathways identified by MaAsLin3, although not statistically significant after multiple testing correction, fall into several biologically interpretable categories. These include amino acid biosynthesis (e.g. branched-chain and aromatic amino acids), central carbon metabolism (glycolysis), nucleotide metabolism (purine and pyrimidine salvage), and cell wall biosynthesis (peptidoglycan pathways).
+
+These functions represent core microbial processes required for growth, replication, and energy production. Their presence among the top-ranked features suggests that variation between groups may primarily involve shifts in fundamental metabolic activity rather than specialised or niche functions.
+
+The heatmap of the top pathways shows modest differences in abundance patterns across samples, with some clustering by group. However, there is substantial overlap, indicating that these pathways are widely shared across the cohort and vary in degree rather than presence or absence.
+
+Importantly, these pathways were selected using a relaxed threshold (q < 0.25), and none remain significant under stricter criteria (e.g. q < 0.05). Therefore, while these results are biologically interpretable and consistent with known microbial functions, they should be considered exploratory rather than definitive.
+
 
 ## Question 10: Can we collapse gene families into targeted biological modules?
 
@@ -897,13 +940,18 @@ ggplot(target_long, aes(x = sick, y = log10(abundance + 1e-6), fill = sick)) +
 **Interpretation prompt:**  
 Do these targeted functional modules recapitulate the biology emphasized in the paper?
 
+Among the modules that were detected, iron acquisition appears relatively higher in the SM group than in the CC group. This suggests that microbiome communities in SM may have a greater representation of genes involved in iron scavenging or heme-related acquisition, which is biologically plausible in malaria, where host iron balance, hemolysis, and heme handling are major features of disease.
+
+The respiration/oxidative stress module shows overlapping distributions between groups, with only modest differences. This indicates that genes linked to oxidative stress handling and respiratory processes may vary across samples, but there is no strong or clear separation between SM and CC in this dataset.
+
+
 ## Reproducibility
 
 To run this module:
 
 1. Clone the repository
 2. Place input files in the `data/` directory
-3. Open the `.Rmd` file in RStudio
+3. Generate the PDF by opening the `.Rmd` file in RStudio
 4. Click **Knit → PDF**
 
 Note: MaAsLin3 outputs are precomputed.

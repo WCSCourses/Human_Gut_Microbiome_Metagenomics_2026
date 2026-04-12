@@ -1,811 +1,903 @@
-2026-04-10 08:22:13.041376 INFO::Writing function arguments to log file
-2026-04-10 08:22:13.04364 DEBUG::Function arguments
-2026-04-10 08:22:13.043965 DEBUG::Output folder: maaslin_genefamilies_group
-2026-04-10 08:22:13.044228 DEBUG::Formula:
-2026-04-10 08:22:13.044475 DEBUG::Fixed effects: sick
-2026-04-10 08:22:13.044729 DEBUG::Reference:
-2026-04-10 08:22:13.04494 DEBUG::Random effects:
-2026-04-10 08:22:13.0452 DEBUG::Group effects:
-2026-04-10 08:22:13.045448 DEBUG::Ordered effects:
-2026-04-10 08:22:13.045667 DEBUG::Strata effects:
-2026-04-10 08:22:13.04589 DEBUG::Min Abundance: 0.000000
-2026-04-10 08:22:13.046107 DEBUG::Min Prevalence: 0.000000
-2026-04-10 08:22:13.046324 DEBUG::Max Prevalence: 1.010000
-2026-04-10 08:22:13.046543 DEBUG::Zero Threshold: 0.000000
-2026-04-10 08:22:13.046749 DEBUG::Min variance: 0.000000
-2026-04-10 08:22:13.046973 DEBUG::Max significance: 0.100000
-2026-04-10 08:22:13.047199 DEBUG::Normalization: NONE
-2026-04-10 08:22:13.047418 DEBUG::Transform: LOG
-2026-04-10 08:22:13.047639 DEBUG::Correction method: BH
-2026-04-10 08:22:13.047836 DEBUG::Standardize: TRUE
-2026-04-10 08:22:13.048043 DEBUG::Abundance median comparison: TRUE
-2026-04-10 08:22:13.048396 DEBUG::Prevalence median comparison: FALSE
-2026-04-10 08:22:13.048739 DEBUG::Abundance median comparison threshold: 0
-2026-04-10 08:22:13.049018 DEBUG::Prevalence median comparison threshold: 0
-2026-04-10 08:22:13.049216 DEBUG::Subtract median: FALSE
-2026-04-10 08:22:13.049436 DEBUG::Warn prevalence: TRUE
-2026-04-10 08:22:13.049669 DEBUG::Small random effects: FALSE
-2026-04-10 08:22:13.049881 DEBUG::Augment: TRUE
-2026-04-10 08:22:13.050098 DEBUG::Evaluate only:
-2026-04-10 08:22:13.050307 DEBUG::Cores: 1
-2026-04-10 08:22:13.050521 DEBUG::Balanced Summary plot: FALSE
-2026-04-10 08:22:13.050752 INFO::Verifying options selected are valid
-2026-04-10 08:22:13.05183 INFO::Determining format of input files
-2026-04-10 08:22:13.052425 INFO::Input format is data samples as rows and metadata samples as rows
-2026-04-10 08:22:13.053038 DEBUG::A total of 37 samples were found in both the data and metadata
-2026-04-10 08:22:13.053735 DEBUG::Reordering data/metadata to use same sample ordering
-2026-04-10 08:22:13.05682 INFO::Formula for fixed effects: expr ~  sick
-2026-04-10 08:22:13.05769 INFO::Running selected normalization method: NONE
-2026-04-10 08:22:13.061027 INFO::Creating output feature tables folder
-2026-04-10 08:22:13.061927 INFO::Writing normalized data to file maaslin_genefamilies_group/features/data_norm.tsv
-2026-04-10 08:22:13.067223 INFO::Filter data based on min abundance, min prevalence, and max prevalence
-2026-04-10 08:22:13.067924 INFO::Total samples in data: 37
-2026-04-10 08:22:13.068464 INFO::Min samples required with min abundance for a feature not to be filtered: 0.000000
-2026-04-10 08:22:13.069009 INFO::Max samples allowed with min abundance for a feature not to be filtered: 37.370000
-2026-04-10 08:22:13.08524 INFO::Total filtered features: 0
-2026-04-10 08:22:13.086016 INFO::Filtered feature names from abundance, min prevalence, and max prevalence filtering:
-2026-04-10 08:22:13.088448 INFO::Total features filtered by non-zero variance filtering: 0
-2026-04-10 08:22:13.089038 INFO::Filtered feature names from variance filtering:
-2026-04-10 08:22:13.089565 INFO::Writing filtered data to file maaslin_genefamilies_group/features/filtered_data.tsv
-2026-04-10 08:22:13.093351 INFO::Running selected transform method: LOG
-2026-04-10 08:22:13.095561 INFO::Writing normalized, filtered, transformed data to file maaslin_genefamilies_group/features/data_transformed.tsv
-2026-04-10 08:22:13.099583 INFO::Factor detected for categorial metadata 'sick'. Using as-is.
-2026-04-10 08:22:13.100188 INFO::Applying z-score to standardize continuous metadata
-2026-04-10 08:22:13.116551 INFO::Running the linear model component
-2026-04-10 08:22:13.118321 DEBUG::Object: augment, Size: 56
-2026-04-10 08:22:13.118555 DEBUG::Object: cluster, Size: 0
-2026-04-10 08:22:13.118766 DEBUG::Object: cores, Size: 56
-2026-04-10 08:22:13.118953 DEBUG::Object: correction, Size: 112
-2026-04-10 08:22:13.119158 DEBUG::Object: extract_out, Size: 1136
-2026-04-10 08:22:13.119374 DEBUG::Object: feature_specific_covariate, Size: 0
-2026-04-10 08:22:13.119533 DEBUG::Object: feature_specific_covariate_name, Size: 0
-2026-04-10 08:22:13.119704 DEBUG::Object: feature_specific_covariate_record, Size: 0
-2026-04-10 08:22:13.119901 DEBUG::Object: features, Size: 93856
-2026-04-10 08:22:13.120087 DEBUG::Object: formula, Size: 728
-2026-04-10 08:22:13.1203 DEBUG::Object: fun_list, Size: 58768
-2026-04-10 08:22:13.120766 DEBUG::Object: func_to_run, Size: 435336
-2026-04-10 08:22:13.121046 DEBUG::Object: groups, Size: 48
-2026-04-10 08:22:13.121264 DEBUG::Object: median_comparison, Size: 56
-2026-04-10 08:22:13.121462 DEBUG::Object: median_comparison_threshold, Size: 56
-2026-04-10 08:22:13.121694 DEBUG::Object: metadata, Size: 76872
-2026-04-10 08:22:13.121896 DEBUG::Object: model, Size: 112
-2026-04-10 08:22:13.122183 DEBUG::Object: model_function, Size: 8864
-2026-04-10 08:22:13.122956 DEBUG::Object: ordereds, Size: 48
-2026-04-10 08:22:13.124016 DEBUG::Object: random_effects_formula, Size: 0
-2026-04-10 08:22:13.124595 DEBUG::Object: ranef_function, Size: 0
-2026-04-10 08:22:13.125026 DEBUG::Object: save_models, Size: 56
-2026-04-10 08:22:13.125448 DEBUG::Object: small_random_effects, Size: 56
-2026-04-10 08:22:13.126007 DEBUG::Object: strata, Size: 48
-2026-04-10 08:22:13.126426 DEBUG::Object: subtract_median, Size: 56
-2026-04-10 08:22:13.126837 DEBUG::Object: summary_function, Size: 49424
-2026-04-10 08:22:13.127637 DEBUG::Object: func_to_run, Size: 435336
-2026-04-10 08:22:13.129249 INFO::Fitting model to feature number 1, UniRef90_A0A174IWH6
-2026-04-10 08:22:13.133607 INFO::Fitting model to feature number 2, UniRef90_A0A174IWH6|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:13.136214 INFO::Fitting model to feature number 3, UniRef90_A0T3C6
-2026-04-10 08:22:13.138498 INFO::Fitting model to feature number 4, UniRef90_A0A174PA28
-2026-04-10 08:22:13.140801 INFO::Fitting model to feature number 5, UniRef90_A0A174PA28|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:13.849085 INFO::Fitting model to feature number 6, UniRef90_A0A1A7TBY5
-2026-04-10 08:22:13.851551 INFO::Fitting model to feature number 7, UniRef90_A0A192CAU6
-2026-04-10 08:22:13.855493 INFO::Fitting model to feature number 8, UniRef90_A0A192CAU6|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:13.858298 INFO::Fitting model to feature number 9, UniRef90_A7LQG9
-2026-04-10 08:22:13.860879 INFO::Fitting model to feature number 10, UniRef90_A7LQG9|g__Bacteroides.s__Bacteroides_ovatus
-2026-04-10 08:22:13.863583 INFO::Fitting model to feature number 11, UniRef90_A0T3C6|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:13.865785 INFO::Fitting model to feature number 12, UniRef90_V8M0W9
-2026-04-10 08:22:13.868163 INFO::Fitting model to feature number 13, UniRef90_V8M0W9|g__Streptococcus.s__Streptococcus_salivarius
-2026-04-10 08:22:13.870162 INFO::Fitting model to feature number 14, UniRef90_A0T3C6|g__Klebsiella.s__Klebsiella_quasipneumoniae
-2026-04-10 08:22:13.871749 INFO::Fitting model to feature number 15, UniRef90_D7K7P3
-2026-04-10 08:22:13.874392 INFO::Fitting model to feature number 16, UniRef90_D7K7P3|g__Bacteroides.s__Bacteroides_ovatus
-2026-04-10 08:22:13.877251 INFO::Fitting model to feature number 17, UniRef90_A0A1S8IMK6
-2026-04-10 08:22:13.881664 INFO::Fitting model to feature number 18, UniRef90_A0A1A7TBY5|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:13.884333 INFO::Fitting model to feature number 19, UniRef90_A0A1A7TBY5|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:13.886049 INFO::Fitting model to feature number 20, UniRef90_D1PAK7
-2026-04-10 08:22:13.888157 INFO::Fitting model to feature number 21, UniRef90_D1PAK7|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:13.889879 INFO::Fitting model to feature number 22, UniRef90_A0A366U7P8
-2026-04-10 08:22:13.892181 INFO::Fitting model to feature number 23, UniRef90_A0A366U7P8|g__Enterococcus.s__Enterococcus_gallinarum
-2026-04-10 08:22:13.894407 INFO::Fitting model to feature number 24, UniRef90_T4C1L2
-2026-04-10 08:22:13.896737 INFO::Fitting model to feature number 25, UniRef90_T4C1L2|g__Bacteroides.s__Bacteroides_fragilis
-2026-04-10 08:22:13.898601 INFO::Fitting model to feature number 26, UniRef90_A0A174Y3E0
-2026-04-10 08:22:13.901138 INFO::Fitting model to feature number 27, UniRef90_A0A174Y3E0|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:13.903105 INFO::Fitting model to feature number 28, UniRef90_A7LQH0
-2026-04-10 08:22:13.905538 INFO::Fitting model to feature number 29, UniRef90_A7LQH0|g__Bacteroides.s__Bacteroides_ovatus
-2026-04-10 08:22:13.907302 INFO::Fitting model to feature number 30, UniRef90_V5XUZ1
-2026-04-10 08:22:13.908634 INFO::Fitting model to feature number 31, UniRef90_E1IVY0
-2026-04-10 08:22:13.910284 INFO::Fitting model to feature number 32, UniRef90_E1IVY0|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:13.912157 INFO::Fitting model to feature number 33, UniRef90_A5ZYV3
-2026-04-10 08:22:13.913935 INFO::Fitting model to feature number 34, UniRef90_A5ZYV3|g__Blautia.s__Blautia_obeum
-2026-04-10 08:22:13.91622 INFO::Fitting model to feature number 35, UniRef90_V5XUZ1|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:13.917443 INFO::Fitting model to feature number 36, UniRef90_A0A1V2STI7|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:13.919657 INFO::Fitting model to feature number 37, UniRef90_A0A1V2STI7
-2026-04-10 08:22:13.921529 INFO::Fitting model to feature number 38, UniRef90_UPI0004A57A81
-2026-04-10 08:22:13.922966 INFO::Fitting model to feature number 39, UniRef90_UPI0004A57A81|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:13.924247 INFO::Fitting model to feature number 40, UniRef90_G2SRQ4
-2026-04-10 08:22:13.926297 INFO::Fitting model to feature number 41, UniRef90_G2SRQ4|g__Lactobacillus.s__Lactobacillus_ruminis
-2026-04-10 08:22:13.928392 INFO::Fitting model to feature number 42, UniRef90_Q1WUH8|g__Lactobacillus.s__Lactobacillus_ruminis
-2026-04-10 08:22:13.93058 INFO::Fitting model to feature number 43, UniRef90_Q1WUH8
-2026-04-10 08:22:13.932707 INFO::Fitting model to feature number 44, UniRef90_A0A1B2H845
-2026-04-10 08:22:13.934809 INFO::Fitting model to feature number 45, UniRef90_Q9LBQ4|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:13.936547 INFO::Fitting model to feature number 46, UniRef90_Q9LBQ4
-2026-04-10 08:22:13.938454 INFO::Fitting model to feature number 47, UniRef90_F2NAL9|g__Collinsella.s__Collinsella_aerofaciens
-2026-04-10 08:22:13.94006 INFO::Fitting model to feature number 48, UniRef90_F2NAL9
-2026-04-10 08:22:13.941931 INFO::Fitting model to feature number 49, UniRef90_A0A0E9FRS3
-2026-04-10 08:22:13.944085 INFO::Fitting model to feature number 50, UniRef90_A6XA87
-2026-04-10 08:22:13.946209 INFO::Fitting model to feature number 51, UniRef90_A7AJP8
-2026-04-10 08:22:13.947992 INFO::Fitting model to feature number 52, UniRef90_A7AJP8|g__Parabacteroides.s__Parabacteroides_merdae
-2026-04-10 08:22:13.949917 INFO::Fitting model to feature number 53, UniRef90_A0A1S8IMK6|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:13.951783 INFO::Fitting model to feature number 54, UniRef90_A0A2W4HXJ9
-2026-04-10 08:22:13.953365 INFO::Fitting model to feature number 55, UniRef90_A0A2W4HXJ9|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:13.954923 INFO::Fitting model to feature number 56, UniRef90_A0A1S8IMK6|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:13.956252 INFO::Fitting model to feature number 57, UniRef90_A0A1X4JA18
-2026-04-10 08:22:13.957349 INFO::Fitting model to feature number 58, UniRef90_A0A1X4JA18|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:13.958609 INFO::Fitting model to feature number 59, UniRef90_A0A1D7PS63
-2026-04-10 08:22:13.960207 INFO::Fitting model to feature number 60, UniRef90_A0A1D7PS63|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:13.961952 INFO::Fitting model to feature number 61, UniRef90_Q9LBQ5
-2026-04-10 08:22:13.963021 INFO::Fitting model to feature number 62, UniRef90_E7FSA1
-2026-04-10 08:22:13.96535 INFO::Fitting model to feature number 63, UniRef90_E7FSA1|g__Lactobacillus.s__Lactobacillus_ruminis
-2026-04-10 08:22:13.96765 INFO::Fitting model to feature number 64, UniRef90_A0A0E1X896|g__Blautia.s__Blautia_obeum
-2026-04-10 08:22:13.969587 INFO::Fitting model to feature number 65, UniRef90_A0A0E9FRS3|g__Tyzzerella.s__Tyzzerella_nexilis
-2026-04-10 08:22:13.971321 INFO::Fitting model to feature number 66, UniRef90_C0FSN2
-2026-04-10 08:22:13.973263 INFO::Fitting model to feature number 67, UniRef90_C0FSN2|g__Roseburia.s__Roseburia_inulinivorans
-2026-04-10 08:22:13.974938 INFO::Fitting model to feature number 68, UniRef90_A0A3E4MCK9
-2026-04-10 08:22:13.976744 INFO::Fitting model to feature number 69, UniRef90_A0A3E4MCK9|g__Lactobacillus.s__Lactobacillus_ruminis
-2026-04-10 08:22:13.978379 INFO::Fitting model to feature number 70, UniRef90_A0A0E1X896
-2026-04-10 08:22:13.980131 INFO::Fitting model to feature number 71, UniRef90_UPI000763F496
-2026-04-10 08:22:13.981253 INFO::Fitting model to feature number 72, UniRef90_UPI000763F496|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:13.982516 INFO::Fitting model to feature number 73, UniRef90_A0A1A7TBG8
-2026-04-10 08:22:13.983812 INFO::Fitting model to feature number 74, UniRef90_A7V4G2
-2026-04-10 08:22:13.98568 INFO::Fitting model to feature number 75, UniRef90_A7V4G2|g__Bacteroides.s__Bacteroides_uniformis
-2026-04-10 08:22:13.98744 INFO::Fitting model to feature number 76, UniRef90_A0A1S8JJQ1
-2026-04-10 08:22:13.989273 INFO::Fitting model to feature number 77, UniRef90_A7LS50
-2026-04-10 08:22:13.991441 INFO::Fitting model to feature number 78, UniRef90_A7LS50|g__Bacteroides.s__Bacteroides_ovatus
-2026-04-10 08:22:13.993979 INFO::Fitting model to feature number 79, UniRef90_A0A0M2B020
-2026-04-10 08:22:13.996357 INFO::Fitting model to feature number 80, UniRef90_A0A0M2B020|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:14.029643 INFO::Fitting model to feature number 81, UniRef90_J6XYB2
-2026-04-10 08:22:14.030939 INFO::Fitting model to feature number 82, UniRef90_J6XYB2|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:14.032394 INFO::Fitting model to feature number 83, UniRef90_G2SNS8
-2026-04-10 08:22:14.034588 INFO::Fitting model to feature number 84, UniRef90_G2SNS8|g__Lactobacillus.s__Lactobacillus_ruminis
-2026-04-10 08:22:14.036796 INFO::Fitting model to feature number 85, UniRef90_S4EDF6
-2026-04-10 08:22:14.038508 INFO::Fitting model to feature number 86, UniRef90_I0PYL5|g__Bacteroides.s__Bacteroides_ovatus
-2026-04-10 08:22:14.040406 INFO::Fitting model to feature number 87, UniRef90_I0PYL5
-2026-04-10 08:22:14.042117 INFO::Fitting model to feature number 88, UniRef90_A0A0H2VC20
-2026-04-10 08:22:14.044107 INFO::Fitting model to feature number 89, UniRef90_A0A0H2VC20|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:14.045782 INFO::Fitting model to feature number 90, UniRef90_A6XA87|g__Bacteroides.s__Bacteroides_uniformis
-2026-04-10 08:22:14.047619 INFO::Fitting model to feature number 91, UniRef90_J6QDP1
-2026-04-10 08:22:14.04874 INFO::Fitting model to feature number 92, UniRef90_J6QDP1|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:14.050601 INFO::Fitting model to feature number 93, UniRef90_A0A1A7TA94
-2026-04-10 08:22:14.052012 INFO::Fitting model to feature number 94, UniRef90_R6Q8L0
-2026-04-10 08:22:14.054903 INFO::Fitting model to feature number 95, UniRef90_D1PG33
-2026-04-10 08:22:14.057123 INFO::Fitting model to feature number 96, UniRef90_D1PG33|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:14.059292 INFO::Fitting model to feature number 97, UniRef90_A0A174UKK8
-2026-04-10 08:22:14.061125 INFO::Fitting model to feature number 98, UniRef90_A0A174UKK8|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:14.063161 INFO::Fitting model to feature number 99, UniRef90_A0A0T7A674
-2026-04-10 08:22:14.064917 INFO::Fitting model to feature number 100, UniRef90_A0A0T7A674|g__Bacteroides.s__Bacteroides_uniformis
-2026-04-10 08:22:14.066914 INFO::Fitting model to feature number 101, UniRef90_UPI000B358E33
-2026-04-10 08:22:14.068385 INFO::Fitting model to feature number 102, UniRef90_UPI000B358E33|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:14.070077 INFO::Fitting model to feature number 103, UniRef90_A0A2H4TTX9
-2026-04-10 08:22:14.071827 INFO::Fitting model to feature number 104, UniRef90_A0A2H4TTX9|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:14.073732 INFO::Fitting model to feature number 105, UniRef90_A0A2R3NGS3
-2026-04-10 08:22:14.075445 INFO::Fitting model to feature number 106, UniRef90_A0A1A7TBG8|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:14.076826 INFO::Fitting model to feature number 107, UniRef90_A0A0J2B3T8
-2026-04-10 08:22:14.078757 INFO::Fitting model to feature number 108, UniRef90_A0A395VRV3
-2026-04-10 08:22:14.080943 INFO::Fitting model to feature number 109, UniRef90_J7SHX6
-2026-04-10 08:22:14.083006 INFO::Fitting model to feature number 110, UniRef90_J7SHX6|g__Streptococcus.s__Streptococcus_salivarius
-2026-04-10 08:22:14.085501 INFO::Fitting model to feature number 111, UniRef90_A0T3C6|g__Klebsiella.s__Klebsiella_pneumoniae
-2026-04-10 08:22:14.086697 INFO::Fitting model to feature number 112, UniRef90_E1IJ03
-2026-04-10 08:22:14.088692 INFO::Fitting model to feature number 113, UniRef90_E1IJ03|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:14.090516 INFO::Fitting model to feature number 114, UniRef90_P59628
-2026-04-10 08:22:14.092528 INFO::Fitting model to feature number 115, UniRef90_R6Q8L0|g__Faecalibacterium.s__Faecalibacterium_prausnitzii
-2026-04-10 08:22:14.094322 INFO::Fitting model to feature number 116, UniRef90_F7LS08
-2026-04-10 08:22:14.096376 INFO::Fitting model to feature number 117, UniRef90_F7LS08|g__Bacteroides.s__Bacteroides_fragilis
-2026-04-10 08:22:14.098121 INFO::Fitting model to feature number 118, UniRef90_UPI000C03D4E6
-2026-04-10 08:22:14.10051 INFO::Fitting model to feature number 119, UniRef90_UPI000C03D4E6|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:14.101894 INFO::Fitting model to feature number 120, UniRef90_A0A133MZE1
-2026-04-10 08:22:14.103303 INFO::Fitting model to feature number 121, UniRef90_A0A174Y4P3
-2026-04-10 08:22:14.105008 INFO::Fitting model to feature number 122, UniRef90_A0A174Y4P3|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:14.10689 INFO::Fitting model to feature number 123, UniRef90_A0A174Q4J4
-2026-04-10 08:22:14.108586 INFO::Fitting model to feature number 124, UniRef90_A0A174Q4J4|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:14.110444 INFO::Fitting model to feature number 125, UniRef90_A0A133MZE1|g__Clostridioides.s__Clostridioides_difficile
-2026-04-10 08:22:14.111588 INFO::Fitting model to feature number 126, UniRef90_A0A069RZ42
-2026-04-10 08:22:14.113872 INFO::Fitting model to feature number 127, UniRef90_A0A069RZ42|g__Parabacteroides.s__Parabacteroides_distasonis
-2026-04-10 08:22:14.115623 INFO::Fitting model to feature number 128, UniRef90_A0A174IYG9
-2026-04-10 08:22:14.117561 INFO::Fitting model to feature number 129, UniRef90_A0A174IYG9|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:14.119547 INFO::Fitting model to feature number 130, UniRef90_U9YPG6
-2026-04-10 08:22:14.121545 INFO::Fitting model to feature number 131, UniRef90_U9YPG6|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:14.123311 INFO::Fitting model to feature number 132, UniRef90_U2Z4S8
-2026-04-10 08:22:14.125247 INFO::Fitting model to feature number 133, UniRef90_U2Z4S8|g__Streptococcus.s__Streptococcus_salivarius
-2026-04-10 08:22:14.127122 INFO::Fitting model to feature number 134, UniRef90_A0A1B2H845|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:14.12914 INFO::Fitting model to feature number 135, UniRef90_F4NKV9
-2026-04-10 08:22:14.131304 INFO::Fitting model to feature number 136, UniRef90_F4NKV9|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:14.1335 INFO::Fitting model to feature number 137, UniRef90_U9YLK3
-2026-04-10 08:22:14.135456 INFO::Fitting model to feature number 138, UniRef90_U9YLK3|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:14.137403 INFO::Fitting model to feature number 139, UniRef90_A0A0E9FRS3|g__Dorea.s__Dorea_longicatena
-2026-04-10 08:22:14.139276 INFO::Fitting model to feature number 140, UniRef90_J7TUV6
-2026-04-10 08:22:14.141471 INFO::Fitting model to feature number 141, UniRef90_J7TUV6|g__Streptococcus.s__Streptococcus_salivarius
-2026-04-10 08:22:14.143115 INFO::Fitting model to feature number 142, UniRef90_A0A2R3NGS3|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:14.144917 INFO::Fitting model to feature number 143, UniRef90_I3U631
-2026-04-10 08:22:14.146021 INFO::Fitting model to feature number 144, UniRef90_A0A174XX49
-2026-04-10 08:22:14.147879 INFO::Fitting model to feature number 145, UniRef90_A0A174XX49|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:14.150037 INFO::Fitting model to feature number 146, UniRef90_A0A174WHN0
-2026-04-10 08:22:14.152172 INFO::Fitting model to feature number 147, UniRef90_A0A0E1LDK4
-2026-04-10 08:22:14.153981 INFO::Fitting model to feature number 148, UniRef90_A0A0E1LDK4|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:14.155849 INFO::Fitting model to feature number 149, UniRef90_A7V7B8
-2026-04-10 08:22:14.157486 INFO::Fitting model to feature number 150, UniRef90_A7V7B8|g__Bacteroides.s__Bacteroides_uniformis
-2026-04-10 08:22:14.159261 INFO::Fitting model to feature number 151, UniRef90_A0A1B2H845|g__Klebsiella.s__Klebsiella_pneumoniae
-2026-04-10 08:22:14.160393 INFO::Fitting model to feature number 152, UniRef90_A0A0E9ESU1
-2026-04-10 08:22:14.162346 INFO::Fitting model to feature number 153, UniRef90_E7FTM0
-2026-04-10 08:22:14.165272 INFO::Fitting model to feature number 154, UniRef90_E7FTM0|g__Lactobacillus.s__Lactobacillus_ruminis
-2026-04-10 08:22:14.167377 INFO::Fitting model to feature number 155, UniRef90_A0A2H4TVT9
-2026-04-10 08:22:14.169083 INFO::Fitting model to feature number 156, UniRef90_A0A2H4TVT9|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:14.1709 INFO::Fitting model to feature number 157, UniRef90_P59628|g__Clostridioides.s__Clostridioides_difficile
-2026-04-10 08:22:14.172045 INFO::Fitting model to feature number 158, UniRef90_A0A0E9ESU1|g__Klebsiella.s__Klebsiella_pneumoniae
-2026-04-10 08:22:14.173305 INFO::Fitting model to feature number 159, UniRef90_A0A174VAI6
-2026-04-10 08:22:14.174908 INFO::Fitting model to feature number 160, UniRef90_A0A174VAI6|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:14.176739 INFO::Fitting model to feature number 161, UniRef90_D4RG23
-2026-04-10 08:22:14.178635 INFO::Fitting model to feature number 162, UniRef90_D4RG23|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:14.180953 INFO::Fitting model to feature number 163, UniRef90_A0A174LQ87
-2026-04-10 08:22:14.182818 INFO::Fitting model to feature number 164, UniRef90_A0A174LQ87|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:14.184739 INFO::Fitting model to feature number 165, UniRef90_I3U631|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:14.185883 INFO::Fitting model to feature number 166, UniRef90_A0A0I1DLX7
-2026-04-10 08:22:14.187643 INFO::Fitting model to feature number 167, UniRef90_A0A0I1DLX7|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:14.189371 INFO::Fitting model to feature number 168, UniRef90_A0A1S8JJQ1|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:14.19066 INFO::Fitting model to feature number 169, UniRef90_A0A286V1L3
-2026-04-10 08:22:14.191761 INFO::Fitting model to feature number 170, UniRef90_V0SIR0
-2026-04-10 08:22:14.193544 INFO::Fitting model to feature number 171, UniRef90_V0SIR0|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:14.195279 INFO::Fitting model to feature number 172, UniRef90_A0A174KXX9
-2026-04-10 08:22:14.197153 INFO::Fitting model to feature number 173, UniRef90_A0A174KXX9|g__Collinsella.s__Collinsella_aerofaciens
-2026-04-10 08:22:14.200126 INFO::Fitting model to feature number 174, UniRef90_I2WAU1
-2026-04-10 08:22:14.202465 INFO::Fitting model to feature number 175, UniRef90_I2WAU1|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:14.204342 INFO::Fitting model to feature number 176, UniRef90_A7B6Q1
-2026-04-10 08:22:14.20745 INFO::Fitting model to feature number 177, UniRef90_A7B6Q1|g__Blautia.s__Ruminococcus_gnavus
-2026-04-10 08:22:14.209393 INFO::Fitting model to feature number 178, UniRef90_A0A1A7TA94|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:14.211083 INFO::Fitting model to feature number 179, UniRef90_A0A174VLZ6
-2026-04-10 08:22:14.21273 INFO::Fitting model to feature number 180, UniRef90_A0A174VLZ6|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:14.214841 INFO::Fitting model to feature number 181, UniRef90_A0A0M1X7H2
-2026-04-10 08:22:14.216147 INFO::Fitting model to feature number 182, UniRef90_A0A0M1X7H2|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:14.217546 INFO::Fitting model to feature number 183, UniRef90_A0A174HS30
-2026-04-10 08:22:14.219284 INFO::Fitting model to feature number 184, UniRef90_A0A174HS30|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:14.221137 INFO::Fitting model to feature number 185, UniRef90_S4EDF6|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:14.222289 INFO::Fitting model to feature number 186, UniRef90_C9BZL5
-2026-04-10 08:22:14.223596 INFO::Fitting model to feature number 187, UniRef90_A0A174JTA1
-2026-04-10 08:22:14.225284 INFO::Fitting model to feature number 188, UniRef90_A0A174JTA1|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:14.227434 INFO::Fitting model to feature number 189, UniRef90_W1ESP1
-2026-04-10 08:22:14.229265 INFO::Fitting model to feature number 190, UniRef90_W1ESP1|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:14.231287 INFO::Fitting model to feature number 191, UniRef90_A0A174RM08
-2026-04-10 08:22:14.233079 INFO::Fitting model to feature number 192, UniRef90_A0A174RM08|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:14.23528 INFO::Fitting model to feature number 193, UniRef90_UPI000CDE3CF2
-2026-04-10 08:22:14.237205 INFO::Fitting model to feature number 194, UniRef90_UPI000CDE3CF2|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:14.239527 INFO::Fitting model to feature number 195, UniRef90_A0A174NRF1
-2026-04-10 08:22:14.241309 INFO::Fitting model to feature number 196, UniRef90_A0A174NRF1|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:14.243214 INFO::Fitting model to feature number 197, UniRef90_S4DMT8
-2026-04-10 08:22:14.245013 INFO::Fitting model to feature number 198, UniRef90_A0A286V1L3|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:14.246441 INFO::Fitting model to feature number 199, UniRef90_A0A174WHN0|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:14.248247 INFO::Fitting model to feature number 200, UniRef90_D1PCG7
-2026-04-10 08:22:14.256206 INFO::Performing tests against medians
-2026-04-10 08:22:14.572437 INFO::Counting total values for each feature
-2026-04-10 08:22:14.576209 INFO::Running the logistic model component
-2026-04-10 08:22:14.578306 DEBUG::Object: augment, Size: 56
-2026-04-10 08:22:14.57855 DEBUG::Object: cluster, Size: 0
-2026-04-10 08:22:14.578746 DEBUG::Object: cores, Size: 56
-2026-04-10 08:22:14.57893 DEBUG::Object: correction, Size: 112
-2026-04-10 08:22:14.579096 DEBUG::Object: extract_out, Size: 1136
-2026-04-10 08:22:14.579264 DEBUG::Object: feature_specific_covariate, Size: 0
-2026-04-10 08:22:14.579438 DEBUG::Object: feature_specific_covariate_name, Size: 0
-2026-04-10 08:22:14.579598 DEBUG::Object: feature_specific_covariate_record, Size: 0
-2026-04-10 08:22:14.579766 DEBUG::Object: features, Size: 82544
-2026-04-10 08:22:14.579933 DEBUG::Object: formula, Size: 728
-2026-04-10 08:22:14.580107 DEBUG::Object: fun_list, Size: 70920
-2026-04-10 08:22:14.580315 DEBUG::Object: func_to_run, Size: 435336
-2026-04-10 08:22:14.580479 DEBUG::Object: groups, Size: 48
-2026-04-10 08:22:14.58063 DEBUG::Object: median_comparison, Size: 56
-2026-04-10 08:22:14.580776 DEBUG::Object: median_comparison_threshold, Size: 56
-2026-04-10 08:22:14.580971 DEBUG::Object: metadata, Size: 76872
-2026-04-10 08:22:14.581118 DEBUG::Object: model, Size: 120
-2026-04-10 08:22:14.581273 DEBUG::Object: model_function, Size: 21016
-2026-04-10 08:22:14.581414 DEBUG::Object: ordereds, Size: 48
-2026-04-10 08:22:14.581564 DEBUG::Object: random_effects_formula, Size: 0
-2026-04-10 08:22:14.581705 DEBUG::Object: ranef_function, Size: 0
-2026-04-10 08:22:14.581842 DEBUG::Object: save_models, Size: 56
-2026-04-10 08:22:14.581986 DEBUG::Object: small_random_effects, Size: 56
-2026-04-10 08:22:14.582177 DEBUG::Object: strata, Size: 48
-2026-04-10 08:22:14.582322 DEBUG::Object: subtract_median, Size: 56
-2026-04-10 08:22:14.582475 DEBUG::Object: summary_function, Size: 49424
-2026-04-10 08:22:14.582664 DEBUG::Object: func_to_run, Size: 435336
-2026-04-10 08:22:14.583193 INFO::Fitting model to feature number 1, UniRef90_A0A174IWH6
-2026-04-10 08:22:14.587099 INFO::Fitting model to feature number 2, UniRef90_A0A174IWH6|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:14.590818 INFO::Fitting model to feature number 3, UniRef90_A0T3C6
-2026-04-10 08:22:14.594291 INFO::Fitting model to feature number 4, UniRef90_A0A174PA28
-2026-04-10 08:22:14.597922 INFO::Fitting model to feature number 5, UniRef90_A0A174PA28|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:14.601246 INFO::Fitting model to feature number 6, UniRef90_A0A1A7TBY5
-2026-04-10 08:22:14.605435 INFO::Fitting model to feature number 7, UniRef90_A0A192CAU6
-2026-04-10 08:22:14.609285 INFO::Fitting model to feature number 8, UniRef90_A0A192CAU6|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:14.614879 INFO::Fitting model to feature number 9, UniRef90_A7LQG9
-2026-04-10 08:22:14.618874 INFO::Fitting model to feature number 10, UniRef90_A7LQG9|g__Bacteroides.s__Bacteroides_ovatus
-2026-04-10 08:22:14.62265 INFO::Fitting model to feature number 11, UniRef90_A0T3C6|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:14.62611 INFO::Fitting model to feature number 12, UniRef90_V8M0W9
-2026-04-10 08:22:14.629986 INFO::Fitting model to feature number 13, UniRef90_V8M0W9|g__Streptococcus.s__Streptococcus_salivarius
-2026-04-10 08:22:14.633468 INFO::Fitting model to feature number 14, UniRef90_A0T3C6|g__Klebsiella.s__Klebsiella_quasipneumoniae
-2026-04-10 08:22:14.637419 INFO::Fitting model to feature number 15, UniRef90_D7K7P3
-2026-04-10 08:22:14.641477 INFO::Fitting model to feature number 16, UniRef90_D7K7P3|g__Bacteroides.s__Bacteroides_ovatus
-2026-04-10 08:22:14.645353 INFO::Fitting model to feature number 17, UniRef90_A0A1S8IMK6
-2026-04-10 08:22:14.649499 INFO::Fitting model to feature number 18, UniRef90_A0A1A7TBY5|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:14.653486 INFO::Fitting model to feature number 19, UniRef90_A0A1A7TBY5|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:14.656949 INFO::Fitting model to feature number 20, UniRef90_D1PAK7
-2026-04-10 08:22:14.660647 INFO::Fitting model to feature number 21, UniRef90_D1PAK7|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:14.664431 INFO::Fitting model to feature number 22, UniRef90_A0A366U7P8
-2026-04-10 08:22:14.668576 INFO::Fitting model to feature number 23, UniRef90_A0A366U7P8|g__Enterococcus.s__Enterococcus_gallinarum
-2026-04-10 08:22:14.672039 INFO::Fitting model to feature number 24, UniRef90_T4C1L2
-2026-04-10 08:22:14.675879 INFO::Fitting model to feature number 25, UniRef90_T4C1L2|g__Bacteroides.s__Bacteroides_fragilis
-2026-04-10 08:22:14.679613 INFO::Fitting model to feature number 26, UniRef90_A0A174Y3E0
-2026-04-10 08:22:14.683204 INFO::Fitting model to feature number 27, UniRef90_A0A174Y3E0|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:14.686592 INFO::Fitting model to feature number 28, UniRef90_A7LQH0
-2026-04-10 08:22:14.698961 INFO::Fitting model to feature number 29, UniRef90_A7LQH0|g__Bacteroides.s__Bacteroides_ovatus
-2026-04-10 08:22:14.7131 INFO::Fitting model to feature number 30, UniRef90_V5XUZ1
-2026-04-10 08:22:14.729432 INFO::Fitting model to feature number 31, UniRef90_E1IVY0
-2026-04-10 08:22:14.749608 INFO::Fitting model to feature number 32, UniRef90_E1IVY0|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:14.787291 INFO::Fitting model to feature number 33, UniRef90_A5ZYV3
-2026-04-10 08:22:14.800316 INFO::Fitting model to feature number 34, UniRef90_A5ZYV3|g__Blautia.s__Blautia_obeum
-2026-04-10 08:22:14.805172 INFO::Fitting model to feature number 35, UniRef90_V5XUZ1|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:14.809395 INFO::Fitting model to feature number 36, UniRef90_A0A1V2STI7|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:14.813616 INFO::Fitting model to feature number 37, UniRef90_A0A1V2STI7
-2026-04-10 08:22:14.821418 INFO::Fitting model to feature number 38, UniRef90_UPI0004A57A81
-2026-04-10 08:22:14.832267 INFO::Fitting model to feature number 39, UniRef90_UPI0004A57A81|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:14.850786 INFO::Fitting model to feature number 40, UniRef90_G2SRQ4
-2026-04-10 08:22:14.86743 INFO::Fitting model to feature number 41, UniRef90_G2SRQ4|g__Lactobacillus.s__Lactobacillus_ruminis
-2026-04-10 08:22:15.024808 INFO::Fitting model to feature number 42, UniRef90_Q1WUH8|g__Lactobacillus.s__Lactobacillus_ruminis
-2026-04-10 08:22:15.031527 INFO::Fitting model to feature number 43, UniRef90_Q1WUH8
-2026-04-10 08:22:15.07526 INFO::Fitting model to feature number 44, UniRef90_A0A1B2H845
-2026-04-10 08:22:15.080701 INFO::Fitting model to feature number 45, UniRef90_Q9LBQ4|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:15.085545 INFO::Fitting model to feature number 46, UniRef90_Q9LBQ4
-2026-04-10 08:22:15.092087 INFO::Fitting model to feature number 47, UniRef90_F2NAL9|g__Collinsella.s__Collinsella_aerofaciens
-2026-04-10 08:22:15.096903 INFO::Fitting model to feature number 48, UniRef90_F2NAL9
-2026-04-10 08:22:15.100473 INFO::Fitting model to feature number 49, UniRef90_A0A0E9FRS3
-2026-04-10 08:22:15.103687 INFO::Fitting model to feature number 50, UniRef90_A6XA87
-2026-04-10 08:22:15.107911 INFO::Fitting model to feature number 51, UniRef90_A7AJP8
-2026-04-10 08:22:15.111543 INFO::Fitting model to feature number 52, UniRef90_A7AJP8|g__Parabacteroides.s__Parabacteroides_merdae
-2026-04-10 08:22:15.115225 INFO::Fitting model to feature number 53, UniRef90_A0A1S8IMK6|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:15.118461 INFO::Fitting model to feature number 54, UniRef90_A0A2W4HXJ9
-2026-04-10 08:22:15.121965 INFO::Fitting model to feature number 55, UniRef90_A0A2W4HXJ9|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:15.125407 INFO::Fitting model to feature number 56, UniRef90_A0A1S8IMK6|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:15.129298 INFO::Fitting model to feature number 57, UniRef90_A0A1X4JA18
-2026-04-10 08:22:15.132616 INFO::Fitting model to feature number 58, UniRef90_A0A1X4JA18|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:15.13634 INFO::Fitting model to feature number 59, UniRef90_A0A1D7PS63
-2026-04-10 08:22:15.139734 INFO::Fitting model to feature number 60, UniRef90_A0A1D7PS63|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:15.143221 INFO::Fitting model to feature number 61, UniRef90_Q9LBQ5
-2026-04-10 08:22:15.147094 INFO::Fitting model to feature number 62, UniRef90_E7FSA1
-2026-04-10 08:22:15.151425 INFO::Fitting model to feature number 63, UniRef90_E7FSA1|g__Lactobacillus.s__Lactobacillus_ruminis
-2026-04-10 08:22:15.154712 INFO::Fitting model to feature number 64, UniRef90_A0A0E1X896|g__Blautia.s__Blautia_obeum
-2026-04-10 08:22:15.15871 INFO::Fitting model to feature number 65, UniRef90_A0A0E9FRS3|g__Tyzzerella.s__Tyzzerella_nexilis
-2026-04-10 08:22:15.162108 INFO::Fitting model to feature number 66, UniRef90_C0FSN2
-2026-04-10 08:22:15.165841 INFO::Fitting model to feature number 67, UniRef90_C0FSN2|g__Roseburia.s__Roseburia_inulinivorans
-2026-04-10 08:22:15.169611 INFO::Fitting model to feature number 68, UniRef90_A0A3E4MCK9
-2026-04-10 08:22:15.173225 INFO::Fitting model to feature number 69, UniRef90_A0A3E4MCK9|g__Lactobacillus.s__Lactobacillus_ruminis
-2026-04-10 08:22:15.176706 INFO::Fitting model to feature number 70, UniRef90_A0A0E1X896
-2026-04-10 08:22:15.180539 INFO::Fitting model to feature number 71, UniRef90_UPI000763F496
-2026-04-10 08:22:15.183898 INFO::Fitting model to feature number 72, UniRef90_UPI000763F496|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:15.187698 INFO::Fitting model to feature number 73, UniRef90_A0A1A7TBG8
-2026-04-10 08:22:15.191256 INFO::Fitting model to feature number 74, UniRef90_A7V4G2
-2026-04-10 08:22:15.19474 INFO::Fitting model to feature number 75, UniRef90_A7V4G2|g__Bacteroides.s__Bacteroides_uniformis
-2026-04-10 08:22:15.198484 INFO::Fitting model to feature number 76, UniRef90_A0A1S8JJQ1
-2026-04-10 08:22:15.201992 INFO::Fitting model to feature number 77, UniRef90_A7LS50
-2026-04-10 08:22:15.205258 INFO::Fitting model to feature number 78, UniRef90_A7LS50|g__Bacteroides.s__Bacteroides_ovatus
-2026-04-10 08:22:15.20915 INFO::Fitting model to feature number 79, UniRef90_A0A0M2B020
-2026-04-10 08:22:15.212868 INFO::Fitting model to feature number 80, UniRef90_A0A0M2B020|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:15.217081 INFO::Fitting model to feature number 81, UniRef90_J6XYB2
-2026-04-10 08:22:15.221089 INFO::Fitting model to feature number 82, UniRef90_J6XYB2|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:15.224868 INFO::Fitting model to feature number 83, UniRef90_G2SNS8
-2026-04-10 08:22:15.230161 INFO::Fitting model to feature number 84, UniRef90_G2SNS8|g__Lactobacillus.s__Lactobacillus_ruminis
-2026-04-10 08:22:15.234429 INFO::Fitting model to feature number 85, UniRef90_S4EDF6
-2026-04-10 08:22:15.238473 INFO::Fitting model to feature number 86, UniRef90_I0PYL5|g__Bacteroides.s__Bacteroides_ovatus
-2026-04-10 08:22:15.242641 INFO::Fitting model to feature number 87, UniRef90_I0PYL5
-2026-04-10 08:22:15.246033 INFO::Fitting model to feature number 88, UniRef90_A0A0H2VC20
-2026-04-10 08:22:15.250119 INFO::Fitting model to feature number 89, UniRef90_A0A0H2VC20|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:15.25386 INFO::Fitting model to feature number 90, UniRef90_A6XA87|g__Bacteroides.s__Bacteroides_uniformis
-2026-04-10 08:22:15.257495 INFO::Fitting model to feature number 91, UniRef90_J6QDP1
-2026-04-10 08:22:15.261022 INFO::Fitting model to feature number 92, UniRef90_J6QDP1|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:15.264531 INFO::Fitting model to feature number 93, UniRef90_A0A1A7TA94
-2026-04-10 08:22:15.26815 INFO::Fitting model to feature number 94, UniRef90_R6Q8L0
-2026-04-10 08:22:15.272436 INFO::Fitting model to feature number 95, UniRef90_D1PG33
-2026-04-10 08:22:15.27653 INFO::Fitting model to feature number 96, UniRef90_D1PG33|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:15.280664 INFO::Fitting model to feature number 97, UniRef90_A0A174UKK8
-2026-04-10 08:22:15.284066 INFO::Fitting model to feature number 98, UniRef90_A0A174UKK8|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:15.287692 INFO::Fitting model to feature number 99, UniRef90_A0A0T7A674
-2026-04-10 08:22:15.291113 INFO::Fitting model to feature number 100, UniRef90_A0A0T7A674|g__Bacteroides.s__Bacteroides_uniformis
-2026-04-10 08:22:15.294619 INFO::Fitting model to feature number 101, UniRef90_UPI000B358E33
-2026-04-10 08:22:15.298459 INFO::Fitting model to feature number 102, UniRef90_UPI000B358E33|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:15.30263 INFO::Fitting model to feature number 103, UniRef90_A0A2H4TTX9
-2026-04-10 08:22:15.306001 INFO::Fitting model to feature number 104, UniRef90_A0A2H4TTX9|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:15.309643 INFO::Fitting model to feature number 105, UniRef90_A0A2R3NGS3
-2026-04-10 08:22:15.312965 INFO::Fitting model to feature number 106, UniRef90_A0A1A7TBG8|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:15.316587 INFO::Fitting model to feature number 107, UniRef90_A0A0J2B3T8
-2026-04-10 08:22:15.32072 INFO::Fitting model to feature number 108, UniRef90_A0A395VRV3
-2026-04-10 08:22:15.3244 INFO::Fitting model to feature number 109, UniRef90_J7SHX6
-2026-04-10 08:22:15.327849 INFO::Fitting model to feature number 110, UniRef90_J7SHX6|g__Streptococcus.s__Streptococcus_salivarius
-2026-04-10 08:22:15.331514 INFO::Fitting model to feature number 111, UniRef90_A0T3C6|g__Klebsiella.s__Klebsiella_pneumoniae
-2026-04-10 08:22:15.33481 INFO::Fitting model to feature number 112, UniRef90_E1IJ03
-2026-04-10 08:22:15.338591 INFO::Fitting model to feature number 113, UniRef90_E1IJ03|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:15.342765 INFO::Fitting model to feature number 114, UniRef90_P59628
-2026-04-10 08:22:15.347041 INFO::Fitting model to feature number 115, UniRef90_R6Q8L0|g__Faecalibacterium.s__Faecalibacterium_prausnitzii
-2026-04-10 08:22:15.350843 INFO::Fitting model to feature number 116, UniRef90_F7LS08
-2026-04-10 08:22:15.354627 INFO::Fitting model to feature number 117, UniRef90_F7LS08|g__Bacteroides.s__Bacteroides_fragilis
-2026-04-10 08:22:15.358577 INFO::Fitting model to feature number 118, UniRef90_UPI000C03D4E6
-2026-04-10 08:22:15.36249 INFO::Fitting model to feature number 119, UniRef90_UPI000C03D4E6|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:15.365755 INFO::Fitting model to feature number 120, UniRef90_A0A133MZE1
-2026-04-10 08:22:15.370014 INFO::Fitting model to feature number 121, UniRef90_A0A174Y4P3
-2026-04-10 08:22:15.37356 INFO::Fitting model to feature number 122, UniRef90_A0A174Y4P3|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:15.37731 INFO::Fitting model to feature number 123, UniRef90_A0A174Q4J4
-2026-04-10 08:22:15.380737 INFO::Fitting model to feature number 124, UniRef90_A0A174Q4J4|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:15.384442 INFO::Fitting model to feature number 125, UniRef90_A0A133MZE1|g__Clostridioides.s__Clostridioides_difficile
-2026-04-10 08:22:15.388025 INFO::Fitting model to feature number 126, UniRef90_A0A069RZ42
-2026-04-10 08:22:15.391863 INFO::Fitting model to feature number 127, UniRef90_A0A069RZ42|g__Parabacteroides.s__Parabacteroides_distasonis
-2026-04-10 08:22:15.396205 INFO::Fitting model to feature number 128, UniRef90_A0A174IYG9
-2026-04-10 08:22:15.400446 INFO::Fitting model to feature number 129, UniRef90_A0A174IYG9|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:15.403802 INFO::Fitting model to feature number 130, UniRef90_U9YPG6
-2026-04-10 08:22:15.407769 INFO::Fitting model to feature number 131, UniRef90_U9YPG6|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:15.411427 INFO::Fitting model to feature number 132, UniRef90_U2Z4S8
-2026-04-10 08:22:15.414839 INFO::Fitting model to feature number 133, UniRef90_U2Z4S8|g__Streptococcus.s__Streptococcus_salivarius
-2026-04-10 08:22:15.418328 INFO::Fitting model to feature number 134, UniRef90_A0A1B2H845|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:15.421748 INFO::Fitting model to feature number 135, UniRef90_F4NKV9
-2026-04-10 08:22:15.425079 INFO::Fitting model to feature number 136, UniRef90_F4NKV9|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:15.429308 INFO::Fitting model to feature number 137, UniRef90_U9YLK3
-2026-04-10 08:22:15.433034 INFO::Fitting model to feature number 138, UniRef90_U9YLK3|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:15.436873 INFO::Fitting model to feature number 139, UniRef90_A0A0E9FRS3|g__Dorea.s__Dorea_longicatena
-2026-04-10 08:22:15.441017 INFO::Fitting model to feature number 140, UniRef90_J7TUV6
-2026-04-10 08:22:15.444693 INFO::Fitting model to feature number 141, UniRef90_J7TUV6|g__Streptococcus.s__Streptococcus_salivarius
-2026-04-10 08:22:15.448713 INFO::Fitting model to feature number 142, UniRef90_A0A2R3NGS3|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:15.453028 INFO::Fitting model to feature number 143, UniRef90_I3U631
-2026-04-10 08:22:15.457226 INFO::Fitting model to feature number 144, UniRef90_A0A174XX49
-2026-04-10 08:22:15.46101 INFO::Fitting model to feature number 145, UniRef90_A0A174XX49|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:15.464262 INFO::Fitting model to feature number 146, UniRef90_A0A174WHN0
-2026-04-10 08:22:15.467737 INFO::Fitting model to feature number 147, UniRef90_A0A0E1LDK4
-2026-04-10 08:22:15.471239 INFO::Fitting model to feature number 148, UniRef90_A0A0E1LDK4|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:15.474841 INFO::Fitting model to feature number 149, UniRef90_A7V7B8
-2026-04-10 08:22:15.478068 INFO::Fitting model to feature number 150, UniRef90_A7V7B8|g__Bacteroides.s__Bacteroides_uniformis
-2026-04-10 08:22:15.481814 INFO::Fitting model to feature number 151, UniRef90_A0A1B2H845|g__Klebsiella.s__Klebsiella_pneumoniae
-2026-04-10 08:22:15.485232 INFO::Fitting model to feature number 152, UniRef90_A0A0E9ESU1
-2026-04-10 08:22:15.489846 INFO::Fitting model to feature number 153, UniRef90_E7FTM0
-2026-04-10 08:22:15.493857 INFO::Fitting model to feature number 154, UniRef90_E7FTM0|g__Lactobacillus.s__Lactobacillus_ruminis
-2026-04-10 08:22:15.497738 INFO::Fitting model to feature number 155, UniRef90_A0A2H4TVT9
-2026-04-10 08:22:15.501647 INFO::Fitting model to feature number 156, UniRef90_A0A2H4TVT9|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:15.520907 INFO::Fitting model to feature number 157, UniRef90_P59628|g__Clostridioides.s__Clostridioides_difficile
-2026-04-10 08:22:15.545271 INFO::Fitting model to feature number 158, UniRef90_A0A0E9ESU1|g__Klebsiella.s__Klebsiella_pneumoniae
-2026-04-10 08:22:15.578011 INFO::Fitting model to feature number 159, UniRef90_A0A174VAI6
-2026-04-10 08:22:15.583303 INFO::Fitting model to feature number 160, UniRef90_A0A174VAI6|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:15.588494 INFO::Fitting model to feature number 161, UniRef90_D4RG23
-2026-04-10 08:22:15.592838 INFO::Fitting model to feature number 162, UniRef90_D4RG23|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:15.596861 INFO::Fitting model to feature number 163, UniRef90_A0A174LQ87
-2026-04-10 08:22:15.600348 INFO::Fitting model to feature number 164, UniRef90_A0A174LQ87|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:15.603892 INFO::Fitting model to feature number 165, UniRef90_I3U631|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:15.60752 INFO::Fitting model to feature number 166, UniRef90_A0A0I1DLX7
-2026-04-10 08:22:15.615483 INFO::Fitting model to feature number 167, UniRef90_A0A0I1DLX7|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:15.62091 INFO::Fitting model to feature number 168, UniRef90_A0A1S8JJQ1|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:15.625648 INFO::Fitting model to feature number 169, UniRef90_A0A286V1L3
-2026-04-10 08:22:15.629416 INFO::Fitting model to feature number 170, UniRef90_V0SIR0
-2026-04-10 08:22:15.633226 INFO::Fitting model to feature number 171, UniRef90_V0SIR0|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:15.637207 INFO::Fitting model to feature number 172, UniRef90_A0A174KXX9
-2026-04-10 08:22:15.642654 INFO::Fitting model to feature number 173, UniRef90_A0A174KXX9|g__Collinsella.s__Collinsella_aerofaciens
-2026-04-10 08:22:15.646637 INFO::Fitting model to feature number 174, UniRef90_I2WAU1
-2026-04-10 08:22:15.65091 INFO::Fitting model to feature number 175, UniRef90_I2WAU1|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:15.654943 INFO::Fitting model to feature number 176, UniRef90_A7B6Q1
-2026-04-10 08:22:15.658992 INFO::Fitting model to feature number 177, UniRef90_A7B6Q1|g__Blautia.s__Ruminococcus_gnavus
-2026-04-10 08:22:15.663037 INFO::Fitting model to feature number 178, UniRef90_A0A1A7TA94|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:15.66714 INFO::Fitting model to feature number 179, UniRef90_A0A174VLZ6
-2026-04-10 08:22:15.670954 INFO::Fitting model to feature number 180, UniRef90_A0A174VLZ6|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:15.675414 INFO::Fitting model to feature number 181, UniRef90_A0A0M1X7H2
-2026-04-10 08:22:15.679488 INFO::Fitting model to feature number 182, UniRef90_A0A0M1X7H2|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:15.683609 INFO::Fitting model to feature number 183, UniRef90_A0A174HS30
-2026-04-10 08:22:15.687434 INFO::Fitting model to feature number 184, UniRef90_A0A174HS30|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:15.69117 INFO::Fitting model to feature number 185, UniRef90_S4EDF6|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:15.695185 INFO::Fitting model to feature number 186, UniRef90_C9BZL5
-2026-04-10 08:22:15.700434 INFO::Fitting model to feature number 187, UniRef90_A0A174JTA1
-2026-04-10 08:22:15.706052 INFO::Fitting model to feature number 188, UniRef90_A0A174JTA1|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:15.710561 INFO::Fitting model to feature number 189, UniRef90_W1ESP1
-2026-04-10 08:22:15.714519 INFO::Fitting model to feature number 190, UniRef90_W1ESP1|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:15.718486 INFO::Fitting model to feature number 191, UniRef90_A0A174RM08
-2026-04-10 08:22:15.723578 INFO::Fitting model to feature number 192, UniRef90_A0A174RM08|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:15.728929 INFO::Fitting model to feature number 193, UniRef90_UPI000CDE3CF2
-2026-04-10 08:22:15.732926 INFO::Fitting model to feature number 194, UniRef90_UPI000CDE3CF2|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:15.736648 INFO::Fitting model to feature number 195, UniRef90_A0A174NRF1
-2026-04-10 08:22:15.740142 INFO::Fitting model to feature number 196, UniRef90_A0A174NRF1|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:15.744002 INFO::Fitting model to feature number 197, UniRef90_S4DMT8
-2026-04-10 08:22:15.748003 INFO::Fitting model to feature number 198, UniRef90_A0A286V1L3|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:15.752336 INFO::Fitting model to feature number 199, UniRef90_A0A174WHN0|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:15.755786 INFO::Fitting model to feature number 200, UniRef90_D1PCG7
-2026-04-10 08:22:15.784133 INFO::Counting total values for each feature
-2026-04-10 08:22:15.787863 INFO::Re-running abundances for warn_prevalence
-2026-04-10 08:22:15.788513 INFO::Running selected normalization method: TSS
-2026-04-10 08:22:15.792045 INFO::Running selected transform method: LOG
-2026-04-10 08:22:15.794538 DEBUG::Object: augment, Size: 56
-2026-04-10 08:22:15.794754 DEBUG::Object: cluster, Size: 0
-2026-04-10 08:22:15.794923 DEBUG::Object: cores, Size: 56
-2026-04-10 08:22:15.795097 DEBUG::Object: correction, Size: 112
-2026-04-10 08:22:15.795256 DEBUG::Object: extract_out, Size: 1136
-2026-04-10 08:22:15.795412 DEBUG::Object: feature_specific_covariate, Size: 0
-2026-04-10 08:22:15.79558 DEBUG::Object: feature_specific_covariate_name, Size: 0
-2026-04-10 08:22:15.795725 DEBUG::Object: feature_specific_covariate_record, Size: 0
-2026-04-10 08:22:15.795878 DEBUG::Object: features, Size: 93856
-2026-04-10 08:22:15.796023 DEBUG::Object: formula, Size: 728
-2026-04-10 08:22:15.796187 DEBUG::Object: fun_list, Size: 58768
-2026-04-10 08:22:15.796402 DEBUG::Object: func_to_run, Size: 435336
-2026-04-10 08:22:15.796674 DEBUG::Object: groups, Size: 48
-2026-04-10 08:22:15.796967 DEBUG::Object: median_comparison, Size: 56
-2026-04-10 08:22:15.797191 DEBUG::Object: median_comparison_threshold, Size: 56
-2026-04-10 08:22:15.797409 DEBUG::Object: metadata, Size: 76872
-2026-04-10 08:22:15.797585 DEBUG::Object: model, Size: 112
-2026-04-10 08:22:15.797758 DEBUG::Object: model_function, Size: 8864
-2026-04-10 08:22:15.797918 DEBUG::Object: ordereds, Size: 48
-2026-04-10 08:22:15.798075 DEBUG::Object: random_effects_formula, Size: 0
-2026-04-10 08:22:15.798243 DEBUG::Object: ranef_function, Size: 0
-2026-04-10 08:22:15.798419 DEBUG::Object: save_models, Size: 56
-2026-04-10 08:22:15.798567 DEBUG::Object: small_random_effects, Size: 56
-2026-04-10 08:22:15.798749 DEBUG::Object: strata, Size: 48
-2026-04-10 08:22:15.798905 DEBUG::Object: subtract_median, Size: 56
-2026-04-10 08:22:15.799108 DEBUG::Object: summary_function, Size: 49424
-2026-04-10 08:22:15.799323 DEBUG::Object: func_to_run, Size: 435336
-2026-04-10 08:22:15.79994 INFO::Fitting model to feature number 1, UniRef90_A0A174IWH6
-2026-04-10 08:22:15.802699 INFO::Fitting model to feature number 2, UniRef90_A0A174IWH6|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:15.805683 INFO::Fitting model to feature number 3, UniRef90_A0T3C6
-2026-04-10 08:22:15.807609 INFO::Fitting model to feature number 4, UniRef90_A0A174PA28
-2026-04-10 08:22:15.809625 INFO::Fitting model to feature number 5, UniRef90_A0A174PA28|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:15.811447 INFO::Fitting model to feature number 6, UniRef90_A0A1A7TBY5
-2026-04-10 08:22:15.812864 INFO::Fitting model to feature number 7, UniRef90_A0A192CAU6
-2026-04-10 08:22:15.814663 INFO::Fitting model to feature number 8, UniRef90_A0A192CAU6|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:15.817201 INFO::Fitting model to feature number 9, UniRef90_A7LQG9
-2026-04-10 08:22:15.819114 INFO::Fitting model to feature number 10, UniRef90_A7LQG9|g__Bacteroides.s__Bacteroides_ovatus
-2026-04-10 08:22:15.821131 INFO::Fitting model to feature number 11, UniRef90_A0T3C6|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:15.822819 INFO::Fitting model to feature number 12, UniRef90_V8M0W9
-2026-04-10 08:22:15.824978 INFO::Fitting model to feature number 13, UniRef90_V8M0W9|g__Streptococcus.s__Streptococcus_salivarius
-2026-04-10 08:22:15.826763 INFO::Fitting model to feature number 14, UniRef90_A0T3C6|g__Klebsiella.s__Klebsiella_quasipneumoniae
-2026-04-10 08:22:15.828238 INFO::Fitting model to feature number 15, UniRef90_D7K7P3
-2026-04-10 08:22:15.830132 INFO::Fitting model to feature number 16, UniRef90_D7K7P3|g__Bacteroides.s__Bacteroides_ovatus
-2026-04-10 08:22:15.832138 INFO::Fitting model to feature number 17, UniRef90_A0A1S8IMK6
-2026-04-10 08:22:15.834373 INFO::Fitting model to feature number 18, UniRef90_A0A1A7TBY5|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:15.838702 INFO::Fitting model to feature number 19, UniRef90_A0A1A7TBY5|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:15.840222 INFO::Fitting model to feature number 20, UniRef90_D1PAK7
-2026-04-10 08:22:15.842448 INFO::Fitting model to feature number 21, UniRef90_D1PAK7|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:15.844243 INFO::Fitting model to feature number 22, UniRef90_A0A366U7P8
-2026-04-10 08:22:15.846173 INFO::Fitting model to feature number 23, UniRef90_A0A366U7P8|g__Enterococcus.s__Enterococcus_gallinarum
-2026-04-10 08:22:15.847938 INFO::Fitting model to feature number 24, UniRef90_T4C1L2
-2026-04-10 08:22:15.850351 INFO::Fitting model to feature number 25, UniRef90_T4C1L2|g__Bacteroides.s__Bacteroides_fragilis
-2026-04-10 08:22:15.852255 INFO::Fitting model to feature number 26, UniRef90_A0A174Y3E0
-2026-04-10 08:22:15.854202 INFO::Fitting model to feature number 27, UniRef90_A0A174Y3E0|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:15.855869 INFO::Fitting model to feature number 28, UniRef90_A7LQH0
-2026-04-10 08:22:15.857737 INFO::Fitting model to feature number 29, UniRef90_A7LQH0|g__Bacteroides.s__Bacteroides_ovatus
-2026-04-10 08:22:15.859571 INFO::Fitting model to feature number 30, UniRef90_V5XUZ1
-2026-04-10 08:22:15.861166 INFO::Fitting model to feature number 31, UniRef90_E1IVY0
-2026-04-10 08:22:15.862837 INFO::Fitting model to feature number 32, UniRef90_E1IVY0|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:15.864669 INFO::Fitting model to feature number 33, UniRef90_A5ZYV3
-2026-04-10 08:22:15.866317 INFO::Fitting model to feature number 34, UniRef90_A5ZYV3|g__Blautia.s__Blautia_obeum
-2026-04-10 08:22:15.868179 INFO::Fitting model to feature number 35, UniRef90_V5XUZ1|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:15.869391 INFO::Fitting model to feature number 36, UniRef90_A0A1V2STI7|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:15.871465 INFO::Fitting model to feature number 37, UniRef90_A0A1V2STI7
-2026-04-10 08:22:15.873155 INFO::Fitting model to feature number 38, UniRef90_UPI0004A57A81
-2026-04-10 08:22:15.874528 INFO::Fitting model to feature number 39, UniRef90_UPI0004A57A81|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:15.875678 INFO::Fitting model to feature number 40, UniRef90_G2SRQ4
-2026-04-10 08:22:15.877853 INFO::Fitting model to feature number 41, UniRef90_G2SRQ4|g__Lactobacillus.s__Lactobacillus_ruminis
-2026-04-10 08:22:15.879843 INFO::Fitting model to feature number 42, UniRef90_Q1WUH8|g__Lactobacillus.s__Lactobacillus_ruminis
-2026-04-10 08:22:15.882108 INFO::Fitting model to feature number 43, UniRef90_Q1WUH8
-2026-04-10 08:22:15.88374 INFO::Fitting model to feature number 44, UniRef90_A0A1B2H845
-2026-04-10 08:22:15.885527 INFO::Fitting model to feature number 45, UniRef90_Q9LBQ4|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:15.887245 INFO::Fitting model to feature number 46, UniRef90_Q9LBQ4
-2026-04-10 08:22:15.889163 INFO::Fitting model to feature number 47, UniRef90_F2NAL9|g__Collinsella.s__Collinsella_aerofaciens
-2026-04-10 08:22:15.891046 INFO::Fitting model to feature number 48, UniRef90_F2NAL9
-2026-04-10 08:22:15.893352 INFO::Fitting model to feature number 49, UniRef90_A0A0E9FRS3
-2026-04-10 08:22:15.895344 INFO::Fitting model to feature number 50, UniRef90_A6XA87
-2026-04-10 08:22:15.897686 INFO::Fitting model to feature number 51, UniRef90_A7AJP8
-2026-04-10 08:22:15.899622 INFO::Fitting model to feature number 52, UniRef90_A7AJP8|g__Parabacteroides.s__Parabacteroides_merdae
-2026-04-10 08:22:15.901615 INFO::Fitting model to feature number 53, UniRef90_A0A1S8IMK6|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:15.903346 INFO::Fitting model to feature number 54, UniRef90_A0A2W4HXJ9
-2026-04-10 08:22:15.90478 INFO::Fitting model to feature number 55, UniRef90_A0A2W4HXJ9|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:15.905961 INFO::Fitting model to feature number 56, UniRef90_A0A1S8IMK6|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:15.907349 INFO::Fitting model to feature number 57, UniRef90_A0A1X4JA18
-2026-04-10 08:22:15.908515 INFO::Fitting model to feature number 58, UniRef90_A0A1X4JA18|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:15.910479 INFO::Fitting model to feature number 59, UniRef90_A0A1D7PS63
-2026-04-10 08:22:15.912624 INFO::Fitting model to feature number 60, UniRef90_A0A1D7PS63|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:15.915698 INFO::Fitting model to feature number 61, UniRef90_Q9LBQ5
-2026-04-10 08:22:15.917 INFO::Fitting model to feature number 62, UniRef90_E7FSA1
-2026-04-10 08:22:15.918972 INFO::Fitting model to feature number 63, UniRef90_E7FSA1|g__Lactobacillus.s__Lactobacillus_ruminis
-2026-04-10 08:22:15.920678 INFO::Fitting model to feature number 64, UniRef90_A0A0E1X896|g__Blautia.s__Blautia_obeum
-2026-04-10 08:22:15.922631 INFO::Fitting model to feature number 65, UniRef90_A0A0E9FRS3|g__Tyzzerella.s__Tyzzerella_nexilis
-2026-04-10 08:22:16.265615 INFO::Fitting model to feature number 66, UniRef90_C0FSN2
-2026-04-10 08:22:16.27032 INFO::Fitting model to feature number 67, UniRef90_C0FSN2|g__Roseburia.s__Roseburia_inulinivorans
-2026-04-10 08:22:16.273471 INFO::Fitting model to feature number 68, UniRef90_A0A3E4MCK9
-2026-04-10 08:22:16.276171 INFO::Fitting model to feature number 69, UniRef90_A0A3E4MCK9|g__Lactobacillus.s__Lactobacillus_ruminis
-2026-04-10 08:22:16.27871 INFO::Fitting model to feature number 70, UniRef90_A0A0E1X896
-2026-04-10 08:22:16.281858 INFO::Fitting model to feature number 71, UniRef90_UPI000763F496
-2026-04-10 08:22:16.283793 INFO::Fitting model to feature number 72, UniRef90_UPI000763F496|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:16.285726 INFO::Fitting model to feature number 73, UniRef90_A0A1A7TBG8
-2026-04-10 08:22:16.287159 INFO::Fitting model to feature number 74, UniRef90_A7V4G2
-2026-04-10 08:22:16.289315 INFO::Fitting model to feature number 75, UniRef90_A7V4G2|g__Bacteroides.s__Bacteroides_uniformis
-2026-04-10 08:22:16.291811 INFO::Fitting model to feature number 76, UniRef90_A0A1S8JJQ1
-2026-04-10 08:22:16.294 INFO::Fitting model to feature number 77, UniRef90_A7LS50
-2026-04-10 08:22:16.297122 INFO::Fitting model to feature number 78, UniRef90_A7LS50|g__Bacteroides.s__Bacteroides_ovatus
-2026-04-10 08:22:16.300693 INFO::Fitting model to feature number 79, UniRef90_A0A0M2B020
-2026-04-10 08:22:16.30517 INFO::Fitting model to feature number 80, UniRef90_A0A0M2B020|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:16.30866 INFO::Fitting model to feature number 81, UniRef90_J6XYB2
-2026-04-10 08:22:16.312604 INFO::Fitting model to feature number 82, UniRef90_J6XYB2|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:16.314352 INFO::Fitting model to feature number 83, UniRef90_G2SNS8
-2026-04-10 08:22:16.316273 INFO::Fitting model to feature number 84, UniRef90_G2SNS8|g__Lactobacillus.s__Lactobacillus_ruminis
-2026-04-10 08:22:16.318193 INFO::Fitting model to feature number 85, UniRef90_S4EDF6
-2026-04-10 08:22:16.319948 INFO::Fitting model to feature number 86, UniRef90_I0PYL5|g__Bacteroides.s__Bacteroides_ovatus
-2026-04-10 08:22:16.322295 INFO::Fitting model to feature number 87, UniRef90_I0PYL5
-2026-04-10 08:22:16.324214 INFO::Fitting model to feature number 88, UniRef90_A0A0H2VC20
-2026-04-10 08:22:16.326222 INFO::Fitting model to feature number 89, UniRef90_A0A0H2VC20|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:16.330702 INFO::Fitting model to feature number 90, UniRef90_A6XA87|g__Bacteroides.s__Bacteroides_uniformis
-2026-04-10 08:22:16.33376 INFO::Fitting model to feature number 91, UniRef90_J6QDP1
-2026-04-10 08:22:16.335808 INFO::Fitting model to feature number 92, UniRef90_J6QDP1|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:16.337944 INFO::Fitting model to feature number 93, UniRef90_A0A1A7TA94
-2026-04-10 08:22:16.339383 INFO::Fitting model to feature number 94, UniRef90_R6Q8L0
-2026-04-10 08:22:16.341551 INFO::Fitting model to feature number 95, UniRef90_D1PG33
-2026-04-10 08:22:16.343729 INFO::Fitting model to feature number 96, UniRef90_D1PG33|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:16.345722 INFO::Fitting model to feature number 97, UniRef90_A0A174UKK8
-2026-04-10 08:22:16.347444 INFO::Fitting model to feature number 98, UniRef90_A0A174UKK8|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:16.349251 INFO::Fitting model to feature number 99, UniRef90_A0A0T7A674
-2026-04-10 08:22:16.350865 INFO::Fitting model to feature number 100, UniRef90_A0A0T7A674|g__Bacteroides.s__Bacteroides_uniformis
-2026-04-10 08:22:16.353022 INFO::Fitting model to feature number 101, UniRef90_UPI000B358E33
-2026-04-10 08:22:16.35428 INFO::Fitting model to feature number 102, UniRef90_UPI000B358E33|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:16.35562 INFO::Fitting model to feature number 103, UniRef90_A0A2H4TTX9
-2026-04-10 08:22:16.357257 INFO::Fitting model to feature number 104, UniRef90_A0A2H4TTX9|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:16.359037 INFO::Fitting model to feature number 105, UniRef90_A0A2R3NGS3
-2026-04-10 08:22:16.360882 INFO::Fitting model to feature number 106, UniRef90_A0A1A7TBG8|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:16.362438 INFO::Fitting model to feature number 107, UniRef90_A0A0J2B3T8
-2026-04-10 08:22:16.364222 INFO::Fitting model to feature number 108, UniRef90_A0A395VRV3
-2026-04-10 08:22:16.366104 INFO::Fitting model to feature number 109, UniRef90_J7SHX6
-2026-04-10 08:22:16.368146 INFO::Fitting model to feature number 110, UniRef90_J7SHX6|g__Streptococcus.s__Streptococcus_salivarius
-2026-04-10 08:22:16.370303 INFO::Fitting model to feature number 111, UniRef90_A0T3C6|g__Klebsiella.s__Klebsiella_pneumoniae
-2026-04-10 08:22:16.371568 INFO::Fitting model to feature number 112, UniRef90_E1IJ03
-2026-04-10 08:22:16.374196 INFO::Fitting model to feature number 113, UniRef90_E1IJ03|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:16.377802 INFO::Fitting model to feature number 114, UniRef90_P59628
-2026-04-10 08:22:16.381757 INFO::Fitting model to feature number 115, UniRef90_R6Q8L0|g__Faecalibacterium.s__Faecalibacterium_prausnitzii
-2026-04-10 08:22:16.38366 INFO::Fitting model to feature number 116, UniRef90_F7LS08
-2026-04-10 08:22:16.386058 INFO::Fitting model to feature number 117, UniRef90_F7LS08|g__Bacteroides.s__Bacteroides_fragilis
-2026-04-10 08:22:16.387901 INFO::Fitting model to feature number 118, UniRef90_UPI000C03D4E6
-2026-04-10 08:22:16.389983 INFO::Fitting model to feature number 119, UniRef90_UPI000C03D4E6|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:16.391632 INFO::Fitting model to feature number 120, UniRef90_A0A133MZE1
-2026-04-10 08:22:16.393902 INFO::Fitting model to feature number 121, UniRef90_A0A174Y4P3
-2026-04-10 08:22:16.395787 INFO::Fitting model to feature number 122, UniRef90_A0A174Y4P3|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:16.398134 INFO::Fitting model to feature number 123, UniRef90_A0A174Q4J4
-2026-04-10 08:22:16.40018 INFO::Fitting model to feature number 124, UniRef90_A0A174Q4J4|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:16.403067 INFO::Fitting model to feature number 125, UniRef90_A0A133MZE1|g__Clostridioides.s__Clostridioides_difficile
-2026-04-10 08:22:16.404626 INFO::Fitting model to feature number 126, UniRef90_A0A069RZ42
-2026-04-10 08:22:16.406552 INFO::Fitting model to feature number 127, UniRef90_A0A069RZ42|g__Parabacteroides.s__Parabacteroides_distasonis
-2026-04-10 08:22:16.408221 INFO::Fitting model to feature number 128, UniRef90_A0A174IYG9
-2026-04-10 08:22:16.410159 INFO::Fitting model to feature number 129, UniRef90_A0A174IYG9|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:16.411814 INFO::Fitting model to feature number 130, UniRef90_U9YPG6
-2026-04-10 08:22:16.413605 INFO::Fitting model to feature number 131, UniRef90_U9YPG6|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:16.415926 INFO::Fitting model to feature number 132, UniRef90_U2Z4S8
-2026-04-10 08:22:16.41862 INFO::Fitting model to feature number 133, UniRef90_U2Z4S8|g__Streptococcus.s__Streptococcus_salivarius
-2026-04-10 08:22:16.420901 INFO::Fitting model to feature number 134, UniRef90_A0A1B2H845|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:16.423512 INFO::Fitting model to feature number 135, UniRef90_F4NKV9
-2026-04-10 08:22:16.42697 INFO::Fitting model to feature number 136, UniRef90_F4NKV9|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:16.429798 INFO::Fitting model to feature number 137, UniRef90_U9YLK3
-2026-04-10 08:22:16.432387 INFO::Fitting model to feature number 138, UniRef90_U9YLK3|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:16.436617 INFO::Fitting model to feature number 139, UniRef90_A0A0E9FRS3|g__Dorea.s__Dorea_longicatena
-2026-04-10 08:22:16.439457 INFO::Fitting model to feature number 140, UniRef90_J7TUV6
-2026-04-10 08:22:16.441955 INFO::Fitting model to feature number 141, UniRef90_J7TUV6|g__Streptococcus.s__Streptococcus_salivarius
-2026-04-10 08:22:16.446564 INFO::Fitting model to feature number 142, UniRef90_A0A2R3NGS3|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:16.450075 INFO::Fitting model to feature number 143, UniRef90_I3U631
-2026-04-10 08:22:16.452348 INFO::Fitting model to feature number 144, UniRef90_A0A174XX49
-2026-04-10 08:22:16.45486 INFO::Fitting model to feature number 145, UniRef90_A0A174XX49|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:16.456661 INFO::Fitting model to feature number 146, UniRef90_A0A174WHN0
-2026-04-10 08:22:16.458569 INFO::Fitting model to feature number 147, UniRef90_A0A0E1LDK4
-2026-04-10 08:22:16.460511 INFO::Fitting model to feature number 148, UniRef90_A0A0E1LDK4|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:16.462646 INFO::Fitting model to feature number 149, UniRef90_A7V7B8
-2026-04-10 08:22:16.464454 INFO::Fitting model to feature number 150, UniRef90_A7V7B8|g__Bacteroides.s__Bacteroides_uniformis
-2026-04-10 08:22:16.466408 INFO::Fitting model to feature number 151, UniRef90_A0A1B2H845|g__Klebsiella.s__Klebsiella_pneumoniae
-2026-04-10 08:22:16.467878 INFO::Fitting model to feature number 152, UniRef90_A0A0E9ESU1
-2026-04-10 08:22:16.469944 INFO::Fitting model to feature number 153, UniRef90_E7FTM0
-2026-04-10 08:22:16.47166 INFO::Fitting model to feature number 154, UniRef90_E7FTM0|g__Lactobacillus.s__Lactobacillus_ruminis
-2026-04-10 08:22:16.473531 INFO::Fitting model to feature number 155, UniRef90_A0A2H4TVT9
-2026-04-10 08:22:16.475156 INFO::Fitting model to feature number 156, UniRef90_A0A2H4TVT9|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:16.477233 INFO::Fitting model to feature number 157, UniRef90_P59628|g__Clostridioides.s__Clostridioides_difficile
-2026-04-10 08:22:16.478363 INFO::Fitting model to feature number 158, UniRef90_A0A0E9ESU1|g__Klebsiella.s__Klebsiella_pneumoniae
-2026-04-10 08:22:16.479682 INFO::Fitting model to feature number 159, UniRef90_A0A174VAI6
-2026-04-10 08:22:16.481354 INFO::Fitting model to feature number 160, UniRef90_A0A174VAI6|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:16.483212 INFO::Fitting model to feature number 161, UniRef90_D4RG23
-2026-04-10 08:22:16.485455 INFO::Fitting model to feature number 162, UniRef90_D4RG23|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:16.488687 INFO::Fitting model to feature number 163, UniRef90_A0A174LQ87
-2026-04-10 08:22:16.491255 INFO::Fitting model to feature number 164, UniRef90_A0A174LQ87|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:16.493732 INFO::Fitting model to feature number 165, UniRef90_I3U631|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:16.494927 INFO::Fitting model to feature number 166, UniRef90_A0A0I1DLX7
-2026-04-10 08:22:16.496854 INFO::Fitting model to feature number 167, UniRef90_A0A0I1DLX7|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:16.498485 INFO::Fitting model to feature number 168, UniRef90_A0A1S8JJQ1|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:16.499831 INFO::Fitting model to feature number 169, UniRef90_A0A286V1L3
-2026-04-10 08:22:16.501339 INFO::Fitting model to feature number 170, UniRef90_V0SIR0
-2026-04-10 08:22:16.503469 INFO::Fitting model to feature number 171, UniRef90_V0SIR0|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:16.505268 INFO::Fitting model to feature number 172, UniRef90_A0A174KXX9
-2026-04-10 08:22:16.507219 INFO::Fitting model to feature number 173, UniRef90_A0A174KXX9|g__Collinsella.s__Collinsella_aerofaciens
-2026-04-10 08:22:16.509423 INFO::Fitting model to feature number 174, UniRef90_I2WAU1
-2026-04-10 08:22:16.511717 INFO::Fitting model to feature number 175, UniRef90_I2WAU1|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:16.513461 INFO::Fitting model to feature number 176, UniRef90_A7B6Q1
-2026-04-10 08:22:16.515893 INFO::Fitting model to feature number 177, UniRef90_A7B6Q1|g__Blautia.s__Ruminococcus_gnavus
-2026-04-10 08:22:16.517857 INFO::Fitting model to feature number 178, UniRef90_A0A1A7TA94|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:16.519489 INFO::Fitting model to feature number 179, UniRef90_A0A174VLZ6
-2026-04-10 08:22:16.521476 INFO::Fitting model to feature number 180, UniRef90_A0A174VLZ6|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:16.523348 INFO::Fitting model to feature number 181, UniRef90_A0A0M1X7H2
-2026-04-10 08:22:16.5245 INFO::Fitting model to feature number 182, UniRef90_A0A0M1X7H2|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:16.527386 INFO::Fitting model to feature number 183, UniRef90_A0A174HS30
-2026-04-10 08:22:16.529381 INFO::Fitting model to feature number 184, UniRef90_A0A174HS30|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:16.531287 INFO::Fitting model to feature number 185, UniRef90_S4EDF6|g__Enterococcus.s__Enterococcus_faecium
-2026-04-10 08:22:16.532417 INFO::Fitting model to feature number 186, UniRef90_C9BZL5
-2026-04-10 08:22:16.534054 INFO::Fitting model to feature number 187, UniRef90_A0A174JTA1
-2026-04-10 08:22:16.535783 INFO::Fitting model to feature number 188, UniRef90_A0A174JTA1|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:16.537701 INFO::Fitting model to feature number 189, UniRef90_W1ESP1
-2026-04-10 08:22:16.5395 INFO::Fitting model to feature number 190, UniRef90_W1ESP1|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:16.542007 INFO::Fitting model to feature number 191, UniRef90_A0A174RM08
-2026-04-10 08:22:16.543801 INFO::Fitting model to feature number 192, UniRef90_A0A174RM08|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:16.545656 INFO::Fitting model to feature number 193, UniRef90_UPI000CDE3CF2
-2026-04-10 08:22:16.547326 INFO::Fitting model to feature number 194, UniRef90_UPI000CDE3CF2|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:16.549102 INFO::Fitting model to feature number 195, UniRef90_A0A174NRF1
-2026-04-10 08:22:16.550796 INFO::Fitting model to feature number 196, UniRef90_A0A174NRF1|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:16.552593 INFO::Fitting model to feature number 197, UniRef90_S4DMT8
-2026-04-10 08:22:16.554204 INFO::Fitting model to feature number 198, UniRef90_A0A286V1L3|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:16.55551 INFO::Fitting model to feature number 199, UniRef90_A0A174WHN0|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:16.55714 INFO::Fitting model to feature number 200, UniRef90_D1PCG7
-2026-04-10 08:22:16.593234 INFO::Creating fits folder
-2026-04-10 08:22:16.594217 INFO::Writing residuals to file maaslin_genefamilies_group/fits/residuals_linear.rds
-2026-04-10 08:22:16.596894 INFO::Writing fitted values to file maaslin_genefamilies_group/fits/fitted_linear.rds
-2026-04-10 08:22:16.59844 INFO::Writing residuals to file maaslin_genefamilies_group/fits/residuals_logistic.rds
-2026-04-10 08:22:16.601456 INFO::Writing fitted values to file maaslin_genefamilies_group/fits/fitted_logistic.rds
-2026-04-10 08:22:16.604399 INFO::Writing all the results to file (ordered 
+2026-04-11 20:53:43.71 INFO::Writing function arguments to log file
+2026-04-11 20:53:43.71 DEBUG::Function arguments
+2026-04-11 20:53:43.71 DEBUG::Output folder: maaslin_genefamilies_group
+2026-04-11 20:53:43.71 DEBUG::Formula:
+2026-04-11 20:53:43.72 DEBUG::Fixed effects: sick
+2026-04-11 20:53:43.72 DEBUG::Reference:
+2026-04-11 20:53:43.72 DEBUG::Random effects:
+2026-04-11 20:53:43.72 DEBUG::Group effects:
+2026-04-11 20:53:43.72 DEBUG::Ordered effects:
+2026-04-11 20:53:43.72 DEBUG::Strata effects:
+2026-04-11 20:53:43.72 DEBUG::Min Abundance: 0.000000
+2026-04-11 20:53:43.72 DEBUG::Min Prevalence: 0.000000
+2026-04-11 20:53:43.72 DEBUG::Max Prevalence: 1.010000
+2026-04-11 20:53:43.72 DEBUG::Zero Threshold: 0.000000
+2026-04-11 20:53:43.72 DEBUG::Min variance: 0.000000
+2026-04-11 20:53:43.72 DEBUG::Max significance: 0.100000
+2026-04-11 20:53:43.72 DEBUG::Normalization: NONE
+2026-04-11 20:53:43.72 DEBUG::Transform: LOG
+2026-04-11 20:53:43.72 DEBUG::Correction method: BH
+2026-04-11 20:53:43.72 DEBUG::Standardize: TRUE
+2026-04-11 20:53:43.72 DEBUG::Abundance median comparison: TRUE
+2026-04-11 20:53:43.72 DEBUG::Prevalence median comparison: FALSE
+2026-04-11 20:53:43.72 DEBUG::Abundance median comparison threshold: 0
+2026-04-11 20:53:43.72 DEBUG::Prevalence median comparison threshold: 0
+2026-04-11 20:53:43.72 DEBUG::Subtract median: FALSE
+2026-04-11 20:53:43.72 DEBUG::Warn prevalence: TRUE
+2026-04-11 20:53:43.72 DEBUG::Small random effects: FALSE
+2026-04-11 20:53:43.72 DEBUG::Bypass small group warning: FALSE
+2026-04-11 20:53:43.72 DEBUG::Augment: TRUE
+2026-04-11 20:53:43.72 DEBUG::Evaluate only:
+2026-04-11 20:53:43.72 DEBUG::Number of mirai daemons: 0
+2026-04-11 20:53:43.72 DEBUG::Balanced Summary plot: FALSE
+2026-04-11 20:53:43.72 INFO::Verifying options selected are valid
+2026-04-11 20:53:43.73 INFO::Determining format of input files
+2026-04-11 20:53:43.73 INFO::Input format is data samples as rows and metadata samples as rows
+2026-04-11 20:53:43.73 DEBUG::A total of 37 samples were found in both the data and metadata
+2026-04-11 20:53:43.73 DEBUG::Reordering data/metadata to use same sample ordering
+2026-04-11 20:53:43.73 INFO::Formula for fixed effects: expr ~  sick
+2026-04-11 20:53:43.73 INFO::Running selected normalization method: NONE
+2026-04-11 20:53:43.73 INFO::Creating output feature tables folder
+2026-04-11 20:53:43.73 INFO::Writing normalized data to file maaslin_genefamilies_group/features/data_norm.tsv
+2026-04-11 20:53:43.74 INFO::Filter data based on min abundance, min prevalence, and max prevalence
+2026-04-11 20:53:43.74 INFO::Total samples in data: 37
+2026-04-11 20:53:43.74 INFO::Min samples required with min abundance for a feature not to be filtered: 0.000000
+2026-04-11 20:53:43.74 INFO::Max samples allowed with min abundance for a feature not to be filtered: 37.370000
+2026-04-11 20:53:43.98 INFO::Total filtered features: 0
+2026-04-11 20:53:43.99 INFO::Filtered feature names from abundance, min prevalence, and max prevalence filtering:
+2026-04-11 20:53:43.99 INFO::Total features filtered by non-zero variance filtering: 0
+2026-04-11 20:53:43.99 INFO::Filtered feature names from variance filtering:
+2026-04-11 20:53:43.99 INFO::Writing filtered data to file maaslin_genefamilies_group/features/filtered_data.tsv
+2026-04-11 20:53:44.00 INFO::Running selected transform method: LOG
+2026-04-11 20:53:44.00 INFO::Writing normalized, filtered, transformed data to file maaslin_genefamilies_group/features/data_transformed.tsv
+2026-04-11 20:53:44.01 INFO::Factor detected for categorial metadata 'sick'. Using as-is.
+2026-04-11 20:53:44.01 INFO::Applying z-score to standardize continuous metadata
+2026-04-11 20:53:44.01 INFO::Running the linear model component
+2026-04-11 20:53:44.01 DEBUG::Object: augment, Size: 56
+2026-04-11 20:53:44.01 DEBUG::Object: cores, Size: 56
+2026-04-11 20:53:44.01 DEBUG::Object: correction, Size: 112
+2026-04-11 20:53:44.01 DEBUG::Object: extract_out, Size: 1136
+2026-04-11 20:53:44.01 DEBUG::Object: feature_specific_covariate, Size: 0
+2026-04-11 20:53:44.01 DEBUG::Object: feature_specific_covariate_name, Size: 0
+2026-04-11 20:53:44.01 DEBUG::Object: feature_specific_covariate_record, Size: 0
+2026-04-11 20:53:44.01 DEBUG::Object: features, Size: 93856
+2026-04-11 20:53:44.01 DEBUG::Object: fit_vars, Size: 112
+2026-04-11 20:53:44.01 DEBUG::Object: formula, Size: 728
+2026-04-11 20:53:44.01 DEBUG::Object: fun_list, Size: 71080
+2026-04-11 20:53:44.01 DEBUG::Object: func_to_run, Size: 433144
+2026-04-11 20:53:44.01 DEBUG::Object: groups, Size: 48
+2026-04-11 20:53:44.01 DEBUG::Object: median_comparison, Size: 56
+2026-04-11 20:53:44.01 DEBUG::Object: median_comparison_threshold, Size: 56
+2026-04-11 20:53:44.02 DEBUG::Object: metadata, Size: 49152
+2026-04-11 20:53:44.02 DEBUG::Object: model, Size: 112
+2026-04-11 20:53:44.02 DEBUG::Object: model_function, Size: 13592
+2026-04-11 20:53:44.02 DEBUG::Object: ordereds, Size: 48
+2026-04-11 20:53:44.02 DEBUG::Object: random_effects_formula, Size: 0
+2026-04-11 20:53:44.02 DEBUG::Object: ranef_function, Size: 0
+2026-04-11 20:53:44.02 DEBUG::Object: save_models, Size: 56
+2026-04-11 20:53:44.02 DEBUG::Object: small_meta, Size: 4048
+2026-04-11 20:53:44.02 DEBUG::Object: small_random_effects, Size: 56
+2026-04-11 20:53:44.02 DEBUG::Object: strata, Size: 48
+2026-04-11 20:53:44.02 DEBUG::Object: subtract_median, Size: 56
+2026-04-11 20:53:44.02 DEBUG::Object: summary_function, Size: 57008
+2026-04-11 20:53:44.02 DEBUG::Object: func_to_run, Size: 433144
+2026-04-11 20:53:44.02 INFO::Fitting model to feature number 1, UniRef90_A0A174IWH6
+2026-04-11 20:53:44.03 INFO::Fitting model to feature number 2, UniRef90_A0A174IWH6|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:44.03 INFO::Fitting model to feature number 3, UniRef90_A0T3C6
+2026-04-11 20:53:44.03 INFO::Fitting model to feature number 4, UniRef90_A0A174PA28
+2026-04-11 20:53:44.04 INFO::Fitting model to feature number 5, UniRef90_A0A174PA28|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:44.04 INFO::Fitting model to feature number 6, UniRef90_A0A1A7TBY5
+2026-04-11 20:53:44.04 WARNING::Fitting problem for feature 6 returning NA
+2026-04-11 20:53:44.04 INFO::Fitting model to feature number 7, UniRef90_A0A192CAU6
+2026-04-11 20:53:44.05 INFO::Fitting model to feature number 8, UniRef90_A0A192CAU6|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:44.05 INFO::Fitting model to feature number 9, UniRef90_A7LQG9
+2026-04-11 20:53:44.06 INFO::Fitting model to feature number 10, UniRef90_A7LQG9|g__Bacteroides.s__Bacteroides_ovatus
+2026-04-11 20:53:44.06 INFO::Fitting model to feature number 11, UniRef90_A0T3C6|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:44.07 INFO::Fitting model to feature number 12, UniRef90_V8M0W9
+2026-04-11 20:53:44.07 INFO::Fitting model to feature number 13, UniRef90_V8M0W9|g__Streptococcus.s__Streptococcus_salivarius
+2026-04-11 20:53:44.07 INFO::Fitting model to feature number 14, UniRef90_A0T3C6|g__Klebsiella.s__Klebsiella_quasipneumoniae
+2026-04-11 20:53:44.08 WARNING::Fitting problem for feature 14 returning NA
+2026-04-11 20:53:44.08 INFO::Fitting model to feature number 15, UniRef90_D7K7P3
+2026-04-11 20:53:44.08 INFO::Fitting model to feature number 16, UniRef90_D7K7P3|g__Bacteroides.s__Bacteroides_ovatus
+2026-04-11 20:53:44.09 INFO::Fitting model to feature number 17, UniRef90_A0A1S8IMK6
+2026-04-11 20:53:44.09 INFO::Fitting model to feature number 18, UniRef90_A0A1A7TBY5|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:44.09 WARNING::Fitting problem for feature 18 returning NA
+2026-04-11 20:53:44.09 INFO::Fitting model to feature number 19, UniRef90_A0A1A7TBY5|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:44.10 WARNING::Fitting problem for feature 19 returning NA
+2026-04-11 20:53:44.10 INFO::Fitting model to feature number 20, UniRef90_D1PAK7
+2026-04-11 20:53:44.10 INFO::Fitting model to feature number 21, UniRef90_D1PAK7|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:44.11 INFO::Fitting model to feature number 22, UniRef90_A0A366U7P8
+2026-04-11 20:53:44.11 INFO::Fitting model to feature number 23, UniRef90_A0A366U7P8|g__Enterococcus.s__Enterococcus_gallinarum
+2026-04-11 20:53:44.11 INFO::Fitting model to feature number 24, UniRef90_T4C1L2
+2026-04-11 20:53:44.12 INFO::Fitting model to feature number 25, UniRef90_T4C1L2|g__Bacteroides.s__Bacteroides_fragilis
+2026-04-11 20:53:44.12 INFO::Fitting model to feature number 26, UniRef90_A0A174Y3E0
+2026-04-11 20:53:44.12 INFO::Fitting model to feature number 27, UniRef90_A0A174Y3E0|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:44.16 INFO::Fitting model to feature number 28, UniRef90_A7LQH0
+2026-04-11 20:53:44.16 INFO::Fitting model to feature number 29, UniRef90_A7LQH0|g__Bacteroides.s__Bacteroides_ovatus
+2026-04-11 20:53:44.17 INFO::Fitting model to feature number 30, UniRef90_V5XUZ1
+2026-04-11 20:53:44.17 WARNING::Fitting problem for feature 30 returning NA
+2026-04-11 20:53:44.17 INFO::Fitting model to feature number 31, UniRef90_E1IVY0
+2026-04-11 20:53:44.17 INFO::Fitting model to feature number 32, UniRef90_E1IVY0|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:44.18 INFO::Fitting model to feature number 33, UniRef90_A5ZYV3
+2026-04-11 20:53:44.18 INFO::Fitting model to feature number 34, UniRef90_A5ZYV3|g__Blautia.s__Blautia_obeum
+2026-04-11 20:53:44.19 INFO::Fitting model to feature number 35, UniRef90_V5XUZ1|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:44.19 WARNING::Fitting problem for feature 35 returning NA
+2026-04-11 20:53:44.19 INFO::Fitting model to feature number 36, UniRef90_A0A1V2STI7|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:44.19 INFO::Fitting model to feature number 37, UniRef90_A0A1V2STI7
+2026-04-11 20:53:44.20 INFO::Fitting model to feature number 38, UniRef90_UPI0004A57A81
+2026-04-11 20:53:44.20 WARNING::Fitting problem for feature 38 returning NA
+2026-04-11 20:53:44.20 INFO::Fitting model to feature number 39, UniRef90_UPI0004A57A81|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:44.20 WARNING::Fitting problem for feature 39 returning NA
+2026-04-11 20:53:44.21 INFO::Fitting model to feature number 40, UniRef90_G2SRQ4
+2026-04-11 20:53:44.21 INFO::Fitting model to feature number 41, UniRef90_G2SRQ4|g__Lactobacillus.s__Lactobacillus_ruminis
+2026-04-11 20:53:44.21 INFO::Fitting model to feature number 42, UniRef90_Q1WUH8|g__Lactobacillus.s__Lactobacillus_ruminis
+2026-04-11 20:53:44.22 INFO::Fitting model to feature number 43, UniRef90_Q1WUH8
+2026-04-11 20:53:44.22 INFO::Fitting model to feature number 44, UniRef90_A0A1B2H845
+2026-04-11 20:53:44.22 INFO::Fitting model to feature number 45, UniRef90_Q9LBQ4|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:44.23 INFO::Fitting model to feature number 46, UniRef90_Q9LBQ4
+2026-04-11 20:53:44.23 INFO::Fitting model to feature number 47, UniRef90_F2NAL9|g__Collinsella.s__Collinsella_aerofaciens
+2026-04-11 20:53:44.23 INFO::Fitting model to feature number 48, UniRef90_F2NAL9
+2026-04-11 20:53:44.24 INFO::Fitting model to feature number 49, UniRef90_A0A0E9FRS3
+2026-04-11 20:53:44.24 INFO::Fitting model to feature number 50, UniRef90_A6XA87
+2026-04-11 20:53:44.25 INFO::Fitting model to feature number 51, UniRef90_A7AJP8
+2026-04-11 20:53:44.25 INFO::Fitting model to feature number 52, UniRef90_A7AJP8|g__Parabacteroides.s__Parabacteroides_merdae
+2026-04-11 20:53:44.26 INFO::Fitting model to feature number 53, UniRef90_A0A1S8IMK6|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:44.26 INFO::Fitting model to feature number 54, UniRef90_A0A2W4HXJ9
+2026-04-11 20:53:44.26 WARNING::Fitting problem for feature 54 returning NA
+2026-04-11 20:53:44.27 INFO::Fitting model to feature number 55, UniRef90_A0A2W4HXJ9|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:44.27 WARNING::Fitting problem for feature 55 returning NA
+2026-04-11 20:53:44.27 INFO::Fitting model to feature number 56, UniRef90_A0A1S8IMK6|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:44.27 WARNING::Fitting problem for feature 56 returning NA
+2026-04-11 20:53:44.27 INFO::Fitting model to feature number 57, UniRef90_A0A1X4JA18
+2026-04-11 20:53:44.27 WARNING::Fitting problem for feature 57 returning NA
+2026-04-11 20:53:44.28 INFO::Fitting model to feature number 58, UniRef90_A0A1X4JA18|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:44.29 WARNING::Fitting problem for feature 58 returning NA
+2026-04-11 20:53:44.31 INFO::Fitting model to feature number 59, UniRef90_A0A1D7PS63
+2026-04-11 20:53:44.31 INFO::Fitting model to feature number 60, UniRef90_A0A1D7PS63|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:44.32 INFO::Fitting model to feature number 61, UniRef90_Q9LBQ5
+2026-04-11 20:53:44.32 WARNING::Fitting problem for feature 61 returning NA
+2026-04-11 20:53:44.32 INFO::Fitting model to feature number 62, UniRef90_E7FSA1
+2026-04-11 20:53:44.33 INFO::Fitting model to feature number 63, UniRef90_E7FSA1|g__Lactobacillus.s__Lactobacillus_ruminis
+2026-04-11 20:53:44.34 INFO::Fitting model to feature number 64, UniRef90_A0A0E1X896|g__Blautia.s__Blautia_obeum
+2026-04-11 20:53:44.34 INFO::Fitting model to feature number 65, UniRef90_A0A0E9FRS3|g__Tyzzerella.s__Tyzzerella_nexilis
+2026-04-11 20:53:44.34 INFO::Fitting model to feature number 66, UniRef90_C0FSN2
+2026-04-11 20:53:44.35 INFO::Fitting model to feature number 67, UniRef90_C0FSN2|g__Roseburia.s__Roseburia_inulinivorans
+2026-04-11 20:53:44.35 INFO::Fitting model to feature number 68, UniRef90_A0A3E4MCK9
+2026-04-11 20:53:44.35 INFO::Fitting model to feature number 69, UniRef90_A0A3E4MCK9|g__Lactobacillus.s__Lactobacillus_ruminis
+2026-04-11 20:53:44.36 INFO::Fitting model to feature number 70, UniRef90_A0A0E1X896
+2026-04-11 20:53:44.36 INFO::Fitting model to feature number 71, UniRef90_UPI000763F496
+2026-04-11 20:53:44.37 WARNING::Fitting problem for feature 71 returning NA
+2026-04-11 20:53:44.37 INFO::Fitting model to feature number 72, UniRef90_UPI000763F496|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:44.37 WARNING::Fitting problem for feature 72 returning NA
+2026-04-11 20:53:44.37 INFO::Fitting model to feature number 73, UniRef90_A0A1A7TBG8
+2026-04-11 20:53:44.37 WARNING::Fitting problem for feature 73 returning NA
+2026-04-11 20:53:44.38 INFO::Fitting model to feature number 74, UniRef90_A7V4G2
+2026-04-11 20:53:44.38 INFO::Fitting model to feature number 75, UniRef90_A7V4G2|g__Bacteroides.s__Bacteroides_uniformis
+2026-04-11 20:53:44.38 INFO::Fitting model to feature number 76, UniRef90_A0A1S8JJQ1
+2026-04-11 20:53:44.39 WARNING::Fitting problem for feature 76 returning NA
+2026-04-11 20:53:44.39 INFO::Fitting model to feature number 77, UniRef90_A7LS50
+2026-04-11 20:53:44.39 INFO::Fitting model to feature number 78, UniRef90_A7LS50|g__Bacteroides.s__Bacteroides_ovatus
+2026-04-11 20:53:44.40 INFO::Fitting model to feature number 79, UniRef90_A0A0M2B020
+2026-04-11 20:53:44.40 INFO::Fitting model to feature number 80, UniRef90_A0A0M2B020|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:44.40 INFO::Fitting model to feature number 81, UniRef90_J6XYB2
+2026-04-11 20:53:44.41 WARNING::Fitting problem for feature 81 returning NA
+2026-04-11 20:53:44.41 INFO::Fitting model to feature number 82, UniRef90_J6XYB2|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:44.41 WARNING::Fitting problem for feature 82 returning NA
+2026-04-11 20:53:44.41 INFO::Fitting model to feature number 83, UniRef90_G2SNS8
+2026-04-11 20:53:44.42 INFO::Fitting model to feature number 84, UniRef90_G2SNS8|g__Lactobacillus.s__Lactobacillus_ruminis
+2026-04-11 20:53:44.42 INFO::Fitting model to feature number 85, UniRef90_S4EDF6
+2026-04-11 20:53:44.42 INFO::Fitting model to feature number 86, UniRef90_I0PYL5|g__Bacteroides.s__Bacteroides_ovatus
+2026-04-11 20:53:44.43 INFO::Fitting model to feature number 87, UniRef90_I0PYL5
+2026-04-11 20:53:44.43 INFO::Fitting model to feature number 88, UniRef90_A0A0H2VC20
+2026-04-11 20:53:44.44 INFO::Fitting model to feature number 89, UniRef90_A0A0H2VC20|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:44.44 INFO::Fitting model to feature number 90, UniRef90_A6XA87|g__Bacteroides.s__Bacteroides_uniformis
+2026-04-11 20:53:44.44 INFO::Fitting model to feature number 91, UniRef90_J6QDP1
+2026-04-11 20:53:44.44 WARNING::Fitting problem for feature 91 returning NA
+2026-04-11 20:53:44.45 INFO::Fitting model to feature number 92, UniRef90_J6QDP1|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:44.45 WARNING::Fitting problem for feature 92 returning NA
+2026-04-11 20:53:44.45 INFO::Fitting model to feature number 93, UniRef90_A0A1A7TA94
+2026-04-11 20:53:44.45 WARNING::Fitting problem for feature 93 returning NA
+2026-04-11 20:53:44.45 INFO::Fitting model to feature number 94, UniRef90_R6Q8L0
+2026-04-11 20:53:44.46 INFO::Fitting model to feature number 95, UniRef90_D1PG33
+2026-04-11 20:53:44.46 INFO::Fitting model to feature number 96, UniRef90_D1PG33|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:44.47 INFO::Fitting model to feature number 97, UniRef90_A0A174UKK8
+2026-04-11 20:53:44.47 INFO::Fitting model to feature number 98, UniRef90_A0A174UKK8|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:44.47 INFO::Fitting model to feature number 99, UniRef90_A0A0T7A674
+2026-04-11 20:53:44.48 INFO::Fitting model to feature number 100, UniRef90_A0A0T7A674|g__Bacteroides.s__Bacteroides_uniformis
+2026-04-11 20:53:44.48 INFO::Fitting model to feature number 101, UniRef90_UPI000B358E33
+2026-04-11 20:53:44.48 WARNING::Fitting problem for feature 101 returning NA
+2026-04-11 20:53:44.49 INFO::Fitting model to feature number 102, UniRef90_UPI000B358E33|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:44.49 WARNING::Fitting problem for feature 102 returning NA
+2026-04-11 20:53:44.49 INFO::Fitting model to feature number 103, UniRef90_A0A2H4TTX9
+2026-04-11 20:53:44.49 INFO::Fitting model to feature number 104, UniRef90_A0A2H4TTX9|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:44.50 INFO::Fitting model to feature number 105, UniRef90_A0A2R3NGS3
+2026-04-11 20:53:44.50 INFO::Fitting model to feature number 106, UniRef90_A0A1A7TBG8|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:44.51 WARNING::Fitting problem for feature 106 returning NA
+2026-04-11 20:53:44.51 INFO::Fitting model to feature number 107, UniRef90_A0A0J2B3T8
+2026-04-11 20:53:44.51 INFO::Fitting model to feature number 108, UniRef90_A0A395VRV3
+2026-04-11 20:53:44.52 INFO::Fitting model to feature number 109, UniRef90_J7SHX6
+2026-04-11 20:53:44.52 INFO::Fitting model to feature number 110, UniRef90_J7SHX6|g__Streptococcus.s__Streptococcus_salivarius
+2026-04-11 20:53:44.53 INFO::Fitting model to feature number 111, UniRef90_A0T3C6|g__Klebsiella.s__Klebsiella_pneumoniae
+2026-04-11 20:53:44.53 WARNING::Fitting problem for feature 111 returning NA
+2026-04-11 20:53:44.53 INFO::Fitting model to feature number 112, UniRef90_E1IJ03
+2026-04-11 20:53:44.53 INFO::Fitting model to feature number 113, UniRef90_E1IJ03|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:44.54 INFO::Fitting model to feature number 114, UniRef90_P59628
+2026-04-11 20:53:44.54 INFO::Fitting model to feature number 115, UniRef90_R6Q8L0|g__Faecalibacterium.s__Faecalibacterium_prausnitzii
+2026-04-11 20:53:44.55 INFO::Fitting model to feature number 116, UniRef90_F7LS08
+2026-04-11 20:53:44.55 INFO::Fitting model to feature number 117, UniRef90_F7LS08|g__Bacteroides.s__Bacteroides_fragilis
+2026-04-11 20:53:44.56 INFO::Fitting model to feature number 118, UniRef90_UPI000C03D4E6
+2026-04-11 20:53:44.56 WARNING::Fitting problem for feature 118 returning NA
+2026-04-11 20:53:44.56 INFO::Fitting model to feature number 119, UniRef90_UPI000C03D4E6|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:44.56 WARNING::Fitting problem for feature 119 returning NA
+2026-04-11 20:53:44.57 INFO::Fitting model to feature number 120, UniRef90_A0A133MZE1
+2026-04-11 20:53:44.57 WARNING::Fitting problem for feature 120 returning NA
+2026-04-11 20:53:44.57 INFO::Fitting model to feature number 121, UniRef90_A0A174Y4P3
+2026-04-11 20:53:44.58 INFO::Fitting model to feature number 122, UniRef90_A0A174Y4P3|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:44.58 INFO::Fitting model to feature number 123, UniRef90_A0A174Q4J4
+2026-04-11 20:53:44.59 INFO::Fitting model to feature number 124, UniRef90_A0A174Q4J4|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:44.59 INFO::Fitting model to feature number 125, UniRef90_A0A133MZE1|g__Clostridioides.s__Clostridioides_difficile
+2026-04-11 20:53:44.59 WARNING::Fitting problem for feature 125 returning NA
+2026-04-11 20:53:44.59 INFO::Fitting model to feature number 126, UniRef90_A0A069RZ42
+2026-04-11 20:53:44.60 INFO::Fitting model to feature number 127, UniRef90_A0A069RZ42|g__Parabacteroides.s__Parabacteroides_distasonis
+2026-04-11 20:53:44.60 INFO::Fitting model to feature number 128, UniRef90_A0A174IYG9
+2026-04-11 20:53:44.61 INFO::Fitting model to feature number 129, UniRef90_A0A174IYG9|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:44.61 INFO::Fitting model to feature number 130, UniRef90_U9YPG6
+2026-04-11 20:53:44.62 INFO::Fitting model to feature number 131, UniRef90_U9YPG6|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:44.62 INFO::Fitting model to feature number 132, UniRef90_U2Z4S8
+2026-04-11 20:53:44.63 INFO::Fitting model to feature number 133, UniRef90_U2Z4S8|g__Streptococcus.s__Streptococcus_salivarius
+2026-04-11 20:53:44.63 INFO::Fitting model to feature number 134, UniRef90_A0A1B2H845|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:44.64 INFO::Fitting model to feature number 135, UniRef90_F4NKV9
+2026-04-11 20:53:44.64 INFO::Fitting model to feature number 136, UniRef90_F4NKV9|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:44.64 INFO::Fitting model to feature number 137, UniRef90_U9YLK3
+2026-04-11 20:53:44.67 INFO::Fitting model to feature number 138, UniRef90_U9YLK3|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:44.68 INFO::Fitting model to feature number 139, UniRef90_A0A0E9FRS3|g__Dorea.s__Dorea_longicatena
+2026-04-11 20:53:44.69 INFO::Fitting model to feature number 140, UniRef90_J7TUV6
+2026-04-11 20:53:44.69 INFO::Fitting model to feature number 141, UniRef90_J7TUV6|g__Streptococcus.s__Streptococcus_salivarius
+2026-04-11 20:53:44.70 INFO::Fitting model to feature number 142, UniRef90_A0A2R3NGS3|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:44.70 INFO::Fitting model to feature number 143, UniRef90_I3U631
+2026-04-11 20:53:44.71 WARNING::Fitting problem for feature 143 returning NA
+2026-04-11 20:53:44.71 INFO::Fitting model to feature number 144, UniRef90_A0A174XX49
+2026-04-11 20:53:44.71 INFO::Fitting model to feature number 145, UniRef90_A0A174XX49|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:44.72 INFO::Fitting model to feature number 146, UniRef90_A0A174WHN0
+2026-04-11 20:53:44.73 INFO::Fitting model to feature number 147, UniRef90_A0A0E1LDK4
+2026-04-11 20:53:44.73 INFO::Fitting model to feature number 148, UniRef90_A0A0E1LDK4|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:44.74 INFO::Fitting model to feature number 149, UniRef90_A7V7B8
+2026-04-11 20:53:44.75 INFO::Fitting model to feature number 150, UniRef90_A7V7B8|g__Bacteroides.s__Bacteroides_uniformis
+2026-04-11 20:53:44.76 INFO::Fitting model to feature number 151, UniRef90_A0A1B2H845|g__Klebsiella.s__Klebsiella_pneumoniae
+2026-04-11 20:53:44.76 WARNING::Fitting problem for feature 151 returning NA
+2026-04-11 20:53:44.76 INFO::Fitting model to feature number 152, UniRef90_A0A0E9ESU1
+2026-04-11 20:53:44.77 INFO::Fitting model to feature number 153, UniRef90_E7FTM0
+2026-04-11 20:53:44.77 INFO::Fitting model to feature number 154, UniRef90_E7FTM0|g__Lactobacillus.s__Lactobacillus_ruminis
+2026-04-11 20:53:44.78 INFO::Fitting model to feature number 155, UniRef90_A0A2H4TVT9
+2026-04-11 20:53:44.78 INFO::Fitting model to feature number 156, UniRef90_A0A2H4TVT9|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:44.79 INFO::Fitting model to feature number 157, UniRef90_P59628|g__Clostridioides.s__Clostridioides_difficile
+2026-04-11 20:53:44.79 WARNING::Fitting problem for feature 157 returning NA
+2026-04-11 20:53:44.79 INFO::Fitting model to feature number 158, UniRef90_A0A0E9ESU1|g__Klebsiella.s__Klebsiella_pneumoniae
+2026-04-11 20:53:44.80 WARNING::Fitting problem for feature 158 returning NA
+2026-04-11 20:53:44.80 INFO::Fitting model to feature number 159, UniRef90_A0A174VAI6
+2026-04-11 20:53:44.80 INFO::Fitting model to feature number 160, UniRef90_A0A174VAI6|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:44.81 INFO::Fitting model to feature number 161, UniRef90_D4RG23
+2026-04-11 20:53:44.81 INFO::Fitting model to feature number 162, UniRef90_D4RG23|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:44.82 INFO::Fitting model to feature number 163, UniRef90_A0A174LQ87
+2026-04-11 20:53:44.82 INFO::Fitting model to feature number 164, UniRef90_A0A174LQ87|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:44.82 INFO::Fitting model to feature number 165, UniRef90_I3U631|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:44.83 WARNING::Fitting problem for feature 165 returning NA
+2026-04-11 20:53:44.83 INFO::Fitting model to feature number 166, UniRef90_A0A0I1DLX7
+2026-04-11 20:53:44.83 INFO::Fitting model to feature number 167, UniRef90_A0A0I1DLX7|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:44.84 INFO::Fitting model to feature number 168, UniRef90_A0A1S8JJQ1|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:44.84 WARNING::Fitting problem for feature 168 returning NA
+2026-04-11 20:53:44.84 INFO::Fitting model to feature number 169, UniRef90_A0A286V1L3
+2026-04-11 20:53:44.85 WARNING::Fitting problem for feature 169 returning NA
+2026-04-11 20:53:44.85 INFO::Fitting model to feature number 170, UniRef90_V0SIR0
+2026-04-11 20:53:44.85 INFO::Fitting model to feature number 171, UniRef90_V0SIR0|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:44.86 INFO::Fitting model to feature number 172, UniRef90_A0A174KXX9
+2026-04-11 20:53:44.86 INFO::Fitting model to feature number 173, UniRef90_A0A174KXX9|g__Collinsella.s__Collinsella_aerofaciens
+2026-04-11 20:53:44.87 INFO::Fitting model to feature number 174, UniRef90_I2WAU1
+2026-04-11 20:53:44.87 INFO::Fitting model to feature number 175, UniRef90_I2WAU1|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:44.88 INFO::Fitting model to feature number 176, UniRef90_A7B6Q1
+2026-04-11 20:53:44.88 INFO::Fitting model to feature number 177, UniRef90_A7B6Q1|g__Blautia.s__Ruminococcus_gnavus
+2026-04-11 20:53:44.88 INFO::Fitting model to feature number 178, UniRef90_A0A1A7TA94|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:44.89 WARNING::Fitting problem for feature 178 returning NA
+2026-04-11 20:53:44.89 INFO::Fitting model to feature number 179, UniRef90_A0A174VLZ6
+2026-04-11 20:53:44.89 INFO::Fitting model to feature number 180, UniRef90_A0A174VLZ6|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:44.90 INFO::Fitting model to feature number 181, UniRef90_A0A0M1X7H2
+2026-04-11 20:53:44.90 WARNING::Fitting problem for feature 181 returning NA
+2026-04-11 20:53:44.90 INFO::Fitting model to feature number 182, UniRef90_A0A0M1X7H2|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:44.90 WARNING::Fitting problem for feature 182 returning NA
+2026-04-11 20:53:44.90 INFO::Fitting model to feature number 183, UniRef90_A0A174HS30
+2026-04-11 20:53:44.91 INFO::Fitting model to feature number 184, UniRef90_A0A174HS30|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:44.91 INFO::Fitting model to feature number 185, UniRef90_S4EDF6|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:44.91 WARNING::Fitting problem for feature 185 returning NA
+2026-04-11 20:53:44.92 INFO::Fitting model to feature number 186, UniRef90_C9BZL5
+2026-04-11 20:53:45.05 WARNING::Fitting problem for feature 186 returning NA
+2026-04-11 20:53:45.06 INFO::Fitting model to feature number 187, UniRef90_A0A174JTA1
+2026-04-11 20:53:45.06 INFO::Fitting model to feature number 188, UniRef90_A0A174JTA1|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:45.06 INFO::Fitting model to feature number 189, UniRef90_W1ESP1
+2026-04-11 20:53:45.07 INFO::Fitting model to feature number 190, UniRef90_W1ESP1|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:45.07 INFO::Fitting model to feature number 191, UniRef90_A0A174RM08
+2026-04-11 20:53:45.07 INFO::Fitting model to feature number 192, UniRef90_A0A174RM08|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:45.08 INFO::Fitting model to feature number 193, UniRef90_UPI000CDE3CF2
+2026-04-11 20:53:45.08 INFO::Fitting model to feature number 194, UniRef90_UPI000CDE3CF2|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:45.08 INFO::Fitting model to feature number 195, UniRef90_A0A174NRF1
+2026-04-11 20:53:45.09 INFO::Fitting model to feature number 196, UniRef90_A0A174NRF1|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:45.09 INFO::Fitting model to feature number 197, UniRef90_S4DMT8
+2026-04-11 20:53:45.10 INFO::Fitting model to feature number 198, UniRef90_A0A286V1L3|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:45.10 WARNING::Fitting problem for feature 198 returning NA
+2026-04-11 20:53:45.10 INFO::Fitting model to feature number 199, UniRef90_A0A174WHN0|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:45.10 INFO::Fitting model to feature number 200, UniRef90_D1PCG7
+2026-04-11 20:53:45.11 INFO::Performing tests against medians
+2026-04-11 20:53:45.58 INFO::Counting total values for each feature
+2026-04-11 20:53:45.58 INFO::Running the logistic model component
+2026-04-11 20:53:45.59 DEBUG::Object: augment, Size: 56
+2026-04-11 20:53:45.59 DEBUG::Object: cores, Size: 56
+2026-04-11 20:53:45.59 DEBUG::Object: correction, Size: 112
+2026-04-11 20:53:45.59 DEBUG::Object: extract_out, Size: 1136
+2026-04-11 20:53:45.59 DEBUG::Object: feature_specific_covariate, Size: 0
+2026-04-11 20:53:45.59 DEBUG::Object: feature_specific_covariate_name, Size: 0
+2026-04-11 20:53:45.59 DEBUG::Object: feature_specific_covariate_record, Size: 0
+2026-04-11 20:53:45.59 DEBUG::Object: features, Size: 82544
+2026-04-11 20:53:45.59 DEBUG::Object: fit_vars, Size: 112
+2026-04-11 20:53:45.59 DEBUG::Object: formula, Size: 728
+2026-04-11 20:53:45.59 DEBUG::Object: fun_list, Size: 81432
+2026-04-11 20:53:45.59 DEBUG::Object: func_to_run, Size: 433144
+2026-04-11 20:53:45.59 DEBUG::Object: groups, Size: 48
+2026-04-11 20:53:45.59 DEBUG::Object: median_comparison, Size: 56
+2026-04-11 20:53:45.59 DEBUG::Object: median_comparison_threshold, Size: 56
+2026-04-11 20:53:45.59 DEBUG::Object: metadata, Size: 49152
+2026-04-11 20:53:45.59 DEBUG::Object: model, Size: 120
+2026-04-11 20:53:45.59 DEBUG::Object: model_function, Size: 23944
+2026-04-11 20:53:45.59 DEBUG::Object: ordereds, Size: 48
+2026-04-11 20:53:45.59 DEBUG::Object: random_effects_formula, Size: 0
+2026-04-11 20:53:45.59 DEBUG::Object: ranef_function, Size: 0
+2026-04-11 20:53:45.59 DEBUG::Object: save_models, Size: 56
+2026-04-11 20:53:45.59 DEBUG::Object: small_meta, Size: 4048
+2026-04-11 20:53:45.59 DEBUG::Object: small_random_effects, Size: 56
+2026-04-11 20:53:45.59 DEBUG::Object: strata, Size: 48
+2026-04-11 20:53:45.59 DEBUG::Object: subtract_median, Size: 56
+2026-04-11 20:53:45.59 DEBUG::Object: summary_function, Size: 57008
+2026-04-11 20:53:45.59 DEBUG::Object: func_to_run, Size: 433144
+2026-04-11 20:53:45.60 INFO::Fitting model to feature number 1, UniRef90_A0A174IWH6
+2026-04-11 20:53:45.60 INFO::Fitting model to feature number 2, UniRef90_A0A174IWH6|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:45.60 INFO::Fitting model to feature number 3, UniRef90_A0T3C6
+2026-04-11 20:53:45.61 INFO::Fitting model to feature number 4, UniRef90_A0A174PA28
+2026-04-11 20:53:45.61 INFO::Fitting model to feature number 5, UniRef90_A0A174PA28|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:45.62 INFO::Fitting model to feature number 6, UniRef90_A0A1A7TBY5
+2026-04-11 20:53:45.62 INFO::Fitting model to feature number 7, UniRef90_A0A192CAU6
+2026-04-11 20:53:45.63 INFO::Fitting model to feature number 8, UniRef90_A0A192CAU6|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:45.63 INFO::Fitting model to feature number 9, UniRef90_A7LQG9
+2026-04-11 20:53:45.64 INFO::Fitting model to feature number 10, UniRef90_A7LQG9|g__Bacteroides.s__Bacteroides_ovatus
+2026-04-11 20:53:45.64 INFO::Fitting model to feature number 11, UniRef90_A0T3C6|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:45.64 INFO::Fitting model to feature number 12, UniRef90_V8M0W9
+2026-04-11 20:53:45.65 INFO::Fitting model to feature number 13, UniRef90_V8M0W9|g__Streptococcus.s__Streptococcus_salivarius
+2026-04-11 20:53:45.65 INFO::Fitting model to feature number 14, UniRef90_A0T3C6|g__Klebsiella.s__Klebsiella_quasipneumoniae
+2026-04-11 20:53:45.66 INFO::Fitting model to feature number 15, UniRef90_D7K7P3
+2026-04-11 20:53:45.66 INFO::Fitting model to feature number 16, UniRef90_D7K7P3|g__Bacteroides.s__Bacteroides_ovatus
+2026-04-11 20:53:45.66 INFO::Fitting model to feature number 17, UniRef90_A0A1S8IMK6
+2026-04-11 20:53:45.67 INFO::Fitting model to feature number 18, UniRef90_A0A1A7TBY5|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:45.67 INFO::Fitting model to feature number 19, UniRef90_A0A1A7TBY5|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:45.68 INFO::Fitting model to feature number 20, UniRef90_D1PAK7
+2026-04-11 20:53:45.68 INFO::Fitting model to feature number 21, UniRef90_D1PAK7|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:45.69 INFO::Fitting model to feature number 22, UniRef90_A0A366U7P8
+2026-04-11 20:53:45.69 INFO::Fitting model to feature number 23, UniRef90_A0A366U7P8|g__Enterococcus.s__Enterococcus_gallinarum
+2026-04-11 20:53:45.69 INFO::Fitting model to feature number 24, UniRef90_T4C1L2
+2026-04-11 20:53:45.70 INFO::Fitting model to feature number 25, UniRef90_T4C1L2|g__Bacteroides.s__Bacteroides_fragilis
+2026-04-11 20:53:45.70 INFO::Fitting model to feature number 26, UniRef90_A0A174Y3E0
+2026-04-11 20:53:45.71 INFO::Fitting model to feature number 27, UniRef90_A0A174Y3E0|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:45.71 INFO::Fitting model to feature number 28, UniRef90_A7LQH0
+2026-04-11 20:53:45.72 INFO::Fitting model to feature number 29, UniRef90_A7LQH0|g__Bacteroides.s__Bacteroides_ovatus
+2026-04-11 20:53:45.72 INFO::Fitting model to feature number 30, UniRef90_V5XUZ1
+2026-04-11 20:53:45.72 INFO::Fitting model to feature number 31, UniRef90_E1IVY0
+2026-04-11 20:53:45.73 INFO::Fitting model to feature number 32, UniRef90_E1IVY0|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:45.73 INFO::Fitting model to feature number 33, UniRef90_A5ZYV3
+2026-04-11 20:53:45.74 INFO::Fitting model to feature number 34, UniRef90_A5ZYV3|g__Blautia.s__Blautia_obeum
+2026-04-11 20:53:45.74 INFO::Fitting model to feature number 35, UniRef90_V5XUZ1|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:45.75 INFO::Fitting model to feature number 36, UniRef90_A0A1V2STI7|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:45.89 INFO::Fitting model to feature number 37, UniRef90_A0A1V2STI7
+2026-04-11 20:53:45.89 INFO::Fitting model to feature number 38, UniRef90_UPI0004A57A81
+2026-04-11 20:53:45.90 INFO::Fitting model to feature number 39, UniRef90_UPI0004A57A81|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:45.90 INFO::Fitting model to feature number 40, UniRef90_G2SRQ4
+2026-04-11 20:53:45.91 INFO::Fitting model to feature number 41, UniRef90_G2SRQ4|g__Lactobacillus.s__Lactobacillus_ruminis
+2026-04-11 20:53:45.91 INFO::Fitting model to feature number 42, UniRef90_Q1WUH8|g__Lactobacillus.s__Lactobacillus_ruminis
+2026-04-11 20:53:45.91 INFO::Fitting model to feature number 43, UniRef90_Q1WUH8
+2026-04-11 20:53:45.92 INFO::Fitting model to feature number 44, UniRef90_A0A1B2H845
+2026-04-11 20:53:45.92 INFO::Fitting model to feature number 45, UniRef90_Q9LBQ4|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:45.93 INFO::Fitting model to feature number 46, UniRef90_Q9LBQ4
+2026-04-11 20:53:45.93 INFO::Fitting model to feature number 47, UniRef90_F2NAL9|g__Collinsella.s__Collinsella_aerofaciens
+2026-04-11 20:53:45.95 INFO::Fitting model to feature number 48, UniRef90_F2NAL9
+2026-04-11 20:53:45.96 INFO::Fitting model to feature number 49, UniRef90_A0A0E9FRS3
+2026-04-11 20:53:45.97 INFO::Fitting model to feature number 50, UniRef90_A6XA87
+2026-04-11 20:53:45.97 INFO::Fitting model to feature number 51, UniRef90_A7AJP8
+2026-04-11 20:53:45.98 INFO::Fitting model to feature number 52, UniRef90_A7AJP8|g__Parabacteroides.s__Parabacteroides_merdae
+2026-04-11 20:53:45.98 INFO::Fitting model to feature number 53, UniRef90_A0A1S8IMK6|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:45.99 INFO::Fitting model to feature number 54, UniRef90_A0A2W4HXJ9
+2026-04-11 20:53:45.99 INFO::Fitting model to feature number 55, UniRef90_A0A2W4HXJ9|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:46.00 INFO::Fitting model to feature number 56, UniRef90_A0A1S8IMK6|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:46.00 INFO::Fitting model to feature number 57, UniRef90_A0A1X4JA18
+2026-04-11 20:53:46.01 INFO::Fitting model to feature number 58, UniRef90_A0A1X4JA18|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:46.01 INFO::Fitting model to feature number 59, UniRef90_A0A1D7PS63
+2026-04-11 20:53:46.02 INFO::Fitting model to feature number 60, UniRef90_A0A1D7PS63|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:46.02 INFO::Fitting model to feature number 61, UniRef90_Q9LBQ5
+2026-04-11 20:53:46.03 INFO::Fitting model to feature number 62, UniRef90_E7FSA1
+2026-04-11 20:53:46.03 INFO::Fitting model to feature number 63, UniRef90_E7FSA1|g__Lactobacillus.s__Lactobacillus_ruminis
+2026-04-11 20:53:46.04 INFO::Fitting model to feature number 64, UniRef90_A0A0E1X896|g__Blautia.s__Blautia_obeum
+2026-04-11 20:53:46.04 INFO::Fitting model to feature number 65, UniRef90_A0A0E9FRS3|g__Tyzzerella.s__Tyzzerella_nexilis
+2026-04-11 20:53:46.04 INFO::Fitting model to feature number 66, UniRef90_C0FSN2
+2026-04-11 20:53:46.05 INFO::Fitting model to feature number 67, UniRef90_C0FSN2|g__Roseburia.s__Roseburia_inulinivorans
+2026-04-11 20:53:46.05 INFO::Fitting model to feature number 68, UniRef90_A0A3E4MCK9
+2026-04-11 20:53:46.06 INFO::Fitting model to feature number 69, UniRef90_A0A3E4MCK9|g__Lactobacillus.s__Lactobacillus_ruminis
+2026-04-11 20:53:46.06 INFO::Fitting model to feature number 70, UniRef90_A0A0E1X896
+2026-04-11 20:53:46.06 INFO::Fitting model to feature number 71, UniRef90_UPI000763F496
+2026-04-11 20:53:46.07 INFO::Fitting model to feature number 72, UniRef90_UPI000763F496|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:46.07 INFO::Fitting model to feature number 73, UniRef90_A0A1A7TBG8
+2026-04-11 20:53:46.08 INFO::Fitting model to feature number 74, UniRef90_A7V4G2
+2026-04-11 20:53:46.08 INFO::Fitting model to feature number 75, UniRef90_A7V4G2|g__Bacteroides.s__Bacteroides_uniformis
+2026-04-11 20:53:46.09 INFO::Fitting model to feature number 76, UniRef90_A0A1S8JJQ1
+2026-04-11 20:53:46.09 INFO::Fitting model to feature number 77, UniRef90_A7LS50
+2026-04-11 20:53:46.09 INFO::Fitting model to feature number 78, UniRef90_A7LS50|g__Bacteroides.s__Bacteroides_ovatus
+2026-04-11 20:53:46.10 INFO::Fitting model to feature number 79, UniRef90_A0A0M2B020
+2026-04-11 20:53:46.10 INFO::Fitting model to feature number 80, UniRef90_A0A0M2B020|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:46.11 INFO::Fitting model to feature number 81, UniRef90_J6XYB2
+2026-04-11 20:53:46.11 INFO::Fitting model to feature number 82, UniRef90_J6XYB2|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:46.11 INFO::Fitting model to feature number 83, UniRef90_G2SNS8
+2026-04-11 20:53:46.12 INFO::Fitting model to feature number 84, UniRef90_G2SNS8|g__Lactobacillus.s__Lactobacillus_ruminis
+2026-04-11 20:53:46.12 INFO::Fitting model to feature number 85, UniRef90_S4EDF6
+2026-04-11 20:53:46.13 INFO::Fitting model to feature number 86, UniRef90_I0PYL5|g__Bacteroides.s__Bacteroides_ovatus
+2026-04-11 20:53:46.13 INFO::Fitting model to feature number 87, UniRef90_I0PYL5
+2026-04-11 20:53:46.14 INFO::Fitting model to feature number 88, UniRef90_A0A0H2VC20
+2026-04-11 20:53:46.14 INFO::Fitting model to feature number 89, UniRef90_A0A0H2VC20|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:46.14 INFO::Fitting model to feature number 90, UniRef90_A6XA87|g__Bacteroides.s__Bacteroides_uniformis
+2026-04-11 20:53:46.15 INFO::Fitting model to feature number 91, UniRef90_J6QDP1
+2026-04-11 20:53:46.15 INFO::Fitting model to feature number 92, UniRef90_J6QDP1|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:46.16 INFO::Fitting model to feature number 93, UniRef90_A0A1A7TA94
+2026-04-11 20:53:46.16 INFO::Fitting model to feature number 94, UniRef90_R6Q8L0
+2026-04-11 20:53:46.16 INFO::Fitting model to feature number 95, UniRef90_D1PG33
+2026-04-11 20:53:46.17 INFO::Fitting model to feature number 96, UniRef90_D1PG33|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:46.17 INFO::Fitting model to feature number 97, UniRef90_A0A174UKK8
+2026-04-11 20:53:46.18 INFO::Fitting model to feature number 98, UniRef90_A0A174UKK8|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:46.18 INFO::Fitting model to feature number 99, UniRef90_A0A0T7A674
+2026-04-11 20:53:46.19 INFO::Fitting model to feature number 100, UniRef90_A0A0T7A674|g__Bacteroides.s__Bacteroides_uniformis
+2026-04-11 20:53:46.19 INFO::Fitting model to feature number 101, UniRef90_UPI000B358E33
+2026-04-11 20:53:46.19 INFO::Fitting model to feature number 102, UniRef90_UPI000B358E33|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:46.20 INFO::Fitting model to feature number 103, UniRef90_A0A2H4TTX9
+2026-04-11 20:53:46.20 INFO::Fitting model to feature number 104, UniRef90_A0A2H4TTX9|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:46.21 INFO::Fitting model to feature number 105, UniRef90_A0A2R3NGS3
+2026-04-11 20:53:46.21 INFO::Fitting model to feature number 106, UniRef90_A0A1A7TBG8|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:46.21 INFO::Fitting model to feature number 107, UniRef90_A0A0J2B3T8
+2026-04-11 20:53:46.22 INFO::Fitting model to feature number 108, UniRef90_A0A395VRV3
+2026-04-11 20:53:46.22 INFO::Fitting model to feature number 109, UniRef90_J7SHX6
+2026-04-11 20:53:46.23 INFO::Fitting model to feature number 110, UniRef90_J7SHX6|g__Streptococcus.s__Streptococcus_salivarius
+2026-04-11 20:53:46.23 INFO::Fitting model to feature number 111, UniRef90_A0T3C6|g__Klebsiella.s__Klebsiella_pneumoniae
+2026-04-11 20:53:46.24 INFO::Fitting model to feature number 112, UniRef90_E1IJ03
+2026-04-11 20:53:46.24 INFO::Fitting model to feature number 113, UniRef90_E1IJ03|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:46.24 INFO::Fitting model to feature number 114, UniRef90_P59628
+2026-04-11 20:53:46.25 INFO::Fitting model to feature number 115, UniRef90_R6Q8L0|g__Faecalibacterium.s__Faecalibacterium_prausnitzii
+2026-04-11 20:53:46.25 INFO::Fitting model to feature number 116, UniRef90_F7LS08
+2026-04-11 20:53:46.26 INFO::Fitting model to feature number 117, UniRef90_F7LS08|g__Bacteroides.s__Bacteroides_fragilis
+2026-04-11 20:53:46.26 INFO::Fitting model to feature number 118, UniRef90_UPI000C03D4E6
+2026-04-11 20:53:46.26 INFO::Fitting model to feature number 119, UniRef90_UPI000C03D4E6|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:46.29 INFO::Fitting model to feature number 120, UniRef90_A0A133MZE1
+2026-04-11 20:53:46.30 INFO::Fitting model to feature number 121, UniRef90_A0A174Y4P3
+2026-04-11 20:53:46.30 INFO::Fitting model to feature number 122, UniRef90_A0A174Y4P3|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:46.31 INFO::Fitting model to feature number 123, UniRef90_A0A174Q4J4
+2026-04-11 20:53:46.32 INFO::Fitting model to feature number 124, UniRef90_A0A174Q4J4|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:46.32 INFO::Fitting model to feature number 125, UniRef90_A0A133MZE1|g__Clostridioides.s__Clostridioides_difficile
+2026-04-11 20:53:46.32 INFO::Fitting model to feature number 126, UniRef90_A0A069RZ42
+2026-04-11 20:53:46.33 INFO::Fitting model to feature number 127, UniRef90_A0A069RZ42|g__Parabacteroides.s__Parabacteroides_distasonis
+2026-04-11 20:53:46.33 INFO::Fitting model to feature number 128, UniRef90_A0A174IYG9
+2026-04-11 20:53:46.34 INFO::Fitting model to feature number 129, UniRef90_A0A174IYG9|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:46.34 INFO::Fitting model to feature number 130, UniRef90_U9YPG6
+2026-04-11 20:53:46.35 INFO::Fitting model to feature number 131, UniRef90_U9YPG6|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:46.35 INFO::Fitting model to feature number 132, UniRef90_U2Z4S8
+2026-04-11 20:53:46.36 INFO::Fitting model to feature number 133, UniRef90_U2Z4S8|g__Streptococcus.s__Streptococcus_salivarius
+2026-04-11 20:53:46.36 INFO::Fitting model to feature number 134, UniRef90_A0A1B2H845|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:46.37 INFO::Fitting model to feature number 135, UniRef90_F4NKV9
+2026-04-11 20:53:46.37 INFO::Fitting model to feature number 136, UniRef90_F4NKV9|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:46.38 INFO::Fitting model to feature number 137, UniRef90_U9YLK3
+2026-04-11 20:53:46.38 INFO::Fitting model to feature number 138, UniRef90_U9YLK3|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:46.39 INFO::Fitting model to feature number 139, UniRef90_A0A0E9FRS3|g__Dorea.s__Dorea_longicatena
+2026-04-11 20:53:46.39 INFO::Fitting model to feature number 140, UniRef90_J7TUV6
+2026-04-11 20:53:46.39 INFO::Fitting model to feature number 141, UniRef90_J7TUV6|g__Streptococcus.s__Streptococcus_salivarius
+2026-04-11 20:53:46.40 INFO::Fitting model to feature number 142, UniRef90_A0A2R3NGS3|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:46.40 INFO::Fitting model to feature number 143, UniRef90_I3U631
+2026-04-11 20:53:46.41 INFO::Fitting model to feature number 144, UniRef90_A0A174XX49
+2026-04-11 20:53:46.41 INFO::Fitting model to feature number 145, UniRef90_A0A174XX49|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:46.42 INFO::Fitting model to feature number 146, UniRef90_A0A174WHN0
+2026-04-11 20:53:46.42 INFO::Fitting model to feature number 147, UniRef90_A0A0E1LDK4
+2026-04-11 20:53:46.43 INFO::Fitting model to feature number 148, UniRef90_A0A0E1LDK4|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:46.43 INFO::Fitting model to feature number 149, UniRef90_A7V7B8
+2026-04-11 20:53:46.44 INFO::Fitting model to feature number 150, UniRef90_A7V7B8|g__Bacteroides.s__Bacteroides_uniformis
+2026-04-11 20:53:46.44 INFO::Fitting model to feature number 151, UniRef90_A0A1B2H845|g__Klebsiella.s__Klebsiella_pneumoniae
+2026-04-11 20:53:46.45 INFO::Fitting model to feature number 152, UniRef90_A0A0E9ESU1
+2026-04-11 20:53:46.45 INFO::Fitting model to feature number 153, UniRef90_E7FTM0
+2026-04-11 20:53:46.46 INFO::Fitting model to feature number 154, UniRef90_E7FTM0|g__Lactobacillus.s__Lactobacillus_ruminis
+2026-04-11 20:53:46.46 INFO::Fitting model to feature number 155, UniRef90_A0A2H4TVT9
+2026-04-11 20:53:46.47 INFO::Fitting model to feature number 156, UniRef90_A0A2H4TVT9|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:46.47 INFO::Fitting model to feature number 157, UniRef90_P59628|g__Clostridioides.s__Clostridioides_difficile
+2026-04-11 20:53:46.48 INFO::Fitting model to feature number 158, UniRef90_A0A0E9ESU1|g__Klebsiella.s__Klebsiella_pneumoniae
+2026-04-11 20:53:46.48 INFO::Fitting model to feature number 159, UniRef90_A0A174VAI6
+2026-04-11 20:53:46.49 INFO::Fitting model to feature number 160, UniRef90_A0A174VAI6|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:46.49 INFO::Fitting model to feature number 161, UniRef90_D4RG23
+2026-04-11 20:53:46.50 INFO::Fitting model to feature number 162, UniRef90_D4RG23|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:46.50 INFO::Fitting model to feature number 163, UniRef90_A0A174LQ87
+2026-04-11 20:53:46.51 INFO::Fitting model to feature number 164, UniRef90_A0A174LQ87|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:46.51 INFO::Fitting model to feature number 165, UniRef90_I3U631|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:46.51 INFO::Fitting model to feature number 166, UniRef90_A0A0I1DLX7
+2026-04-11 20:53:46.52 INFO::Fitting model to feature number 167, UniRef90_A0A0I1DLX7|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:46.52 INFO::Fitting model to feature number 168, UniRef90_A0A1S8JJQ1|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:46.53 INFO::Fitting model to feature number 169, UniRef90_A0A286V1L3
+2026-04-11 20:53:46.53 INFO::Fitting model to feature number 170, UniRef90_V0SIR0
+2026-04-11 20:53:46.54 INFO::Fitting model to feature number 171, UniRef90_V0SIR0|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:46.54 INFO::Fitting model to feature number 172, UniRef90_A0A174KXX9
+2026-04-11 20:53:46.54 INFO::Fitting model to feature number 173, UniRef90_A0A174KXX9|g__Collinsella.s__Collinsella_aerofaciens
+2026-04-11 20:53:46.55 INFO::Fitting model to feature number 174, UniRef90_I2WAU1
+2026-04-11 20:53:46.57 INFO::Fitting model to feature number 175, UniRef90_I2WAU1|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:46.58 INFO::Fitting model to feature number 176, UniRef90_A7B6Q1
+2026-04-11 20:53:46.59 INFO::Fitting model to feature number 177, UniRef90_A7B6Q1|g__Blautia.s__Ruminococcus_gnavus
+2026-04-11 20:53:46.60 INFO::Fitting model to feature number 178, UniRef90_A0A1A7TA94|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:46.60 INFO::Fitting model to feature number 179, UniRef90_A0A174VLZ6
+2026-04-11 20:53:46.61 INFO::Fitting model to feature number 180, UniRef90_A0A174VLZ6|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:46.61 INFO::Fitting model to feature number 181, UniRef90_A0A0M1X7H2
+2026-04-11 20:53:46.62 INFO::Fitting model to feature number 182, UniRef90_A0A0M1X7H2|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:46.62 INFO::Fitting model to feature number 183, UniRef90_A0A174HS30
+2026-04-11 20:53:46.63 INFO::Fitting model to feature number 184, UniRef90_A0A174HS30|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:46.63 INFO::Fitting model to feature number 185, UniRef90_S4EDF6|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:46.64 INFO::Fitting model to feature number 186, UniRef90_C9BZL5
+2026-04-11 20:53:46.64 INFO::Fitting model to feature number 187, UniRef90_A0A174JTA1
+2026-04-11 20:53:46.65 INFO::Fitting model to feature number 188, UniRef90_A0A174JTA1|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:46.65 INFO::Fitting model to feature number 189, UniRef90_W1ESP1
+2026-04-11 20:53:46.66 INFO::Fitting model to feature number 190, UniRef90_W1ESP1|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:46.81 INFO::Fitting model to feature number 191, UniRef90_A0A174RM08
+2026-04-11 20:53:46.81 INFO::Fitting model to feature number 192, UniRef90_A0A174RM08|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:46.82 INFO::Fitting model to feature number 193, UniRef90_UPI000CDE3CF2
+2026-04-11 20:53:46.82 INFO::Fitting model to feature number 194, UniRef90_UPI000CDE3CF2|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:46.83 INFO::Fitting model to feature number 195, UniRef90_A0A174NRF1
+2026-04-11 20:53:46.83 INFO::Fitting model to feature number 196, UniRef90_A0A174NRF1|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:46.83 INFO::Fitting model to feature number 197, UniRef90_S4DMT8
+2026-04-11 20:53:46.84 INFO::Fitting model to feature number 198, UniRef90_A0A286V1L3|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:46.84 INFO::Fitting model to feature number 199, UniRef90_A0A174WHN0|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:46.85 INFO::Fitting model to feature number 200, UniRef90_D1PCG7
+2026-04-11 20:53:46.87 INFO::Counting total values for each feature
+2026-04-11 20:53:46.88 INFO::Re-running abundances for warn_prevalence
+2026-04-11 20:53:46.88 INFO::Running selected normalization method: TSS
+2026-04-11 20:53:46.88 INFO::Running selected transform method: LOG
+2026-04-11 20:53:46.88 DEBUG::Object: augment, Size: 56
+2026-04-11 20:53:46.88 DEBUG::Object: cores, Size: 56
+2026-04-11 20:53:46.89 DEBUG::Object: correction, Size: 112
+2026-04-11 20:53:46.89 DEBUG::Object: extract_out, Size: 1136
+2026-04-11 20:53:46.89 DEBUG::Object: feature_specific_covariate, Size: 0
+2026-04-11 20:53:46.89 DEBUG::Object: feature_specific_covariate_name, Size: 0
+2026-04-11 20:53:46.89 DEBUG::Object: feature_specific_covariate_record, Size: 0
+2026-04-11 20:53:46.89 DEBUG::Object: features, Size: 93856
+2026-04-11 20:53:46.89 DEBUG::Object: fit_vars, Size: 112
+2026-04-11 20:53:46.89 DEBUG::Object: formula, Size: 728
+2026-04-11 20:53:46.89 DEBUG::Object: fun_list, Size: 71080
+2026-04-11 20:53:46.89 DEBUG::Object: func_to_run, Size: 433144
+2026-04-11 20:53:46.89 DEBUG::Object: groups, Size: 48
+2026-04-11 20:53:46.89 DEBUG::Object: median_comparison, Size: 56
+2026-04-11 20:53:46.89 DEBUG::Object: median_comparison_threshold, Size: 56
+2026-04-11 20:53:46.89 DEBUG::Object: metadata, Size: 49152
+2026-04-11 20:53:46.89 DEBUG::Object: model, Size: 112
+2026-04-11 20:53:46.89 DEBUG::Object: model_function, Size: 13592
+2026-04-11 20:53:46.89 DEBUG::Object: ordereds, Size: 48
+2026-04-11 20:53:46.89 DEBUG::Object: random_effects_formula, Size: 0
+2026-04-11 20:53:46.89 DEBUG::Object: ranef_function, Size: 0
+2026-04-11 20:53:46.89 DEBUG::Object: save_models, Size: 56
+2026-04-11 20:53:46.89 DEBUG::Object: small_meta, Size: 4048
+2026-04-11 20:53:46.89 DEBUG::Object: small_random_effects, Size: 56
+2026-04-11 20:53:46.89 DEBUG::Object: strata, Size: 48
+2026-04-11 20:53:46.89 DEBUG::Object: subtract_median, Size: 56
+2026-04-11 20:53:46.89 DEBUG::Object: summary_function, Size: 57008
+2026-04-11 20:53:46.89 DEBUG::Object: func_to_run, Size: 433144
+2026-04-11 20:53:46.89 INFO::Fitting model to feature number 1, UniRef90_A0A174IWH6
+2026-04-11 20:53:46.90 INFO::Fitting model to feature number 2, UniRef90_A0A174IWH6|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:46.90 INFO::Fitting model to feature number 3, UniRef90_A0T3C6
+2026-04-11 20:53:46.90 INFO::Fitting model to feature number 4, UniRef90_A0A174PA28
+2026-04-11 20:53:46.91 INFO::Fitting model to feature number 5, UniRef90_A0A174PA28|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:46.91 INFO::Fitting model to feature number 6, UniRef90_A0A1A7TBY5
+2026-04-11 20:53:46.91 WARNING::Fitting problem for feature 6 returning NA
+2026-04-11 20:53:46.91 INFO::Fitting model to feature number 7, UniRef90_A0A192CAU6
+2026-04-11 20:53:46.92 INFO::Fitting model to feature number 8, UniRef90_A0A192CAU6|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:46.92 INFO::Fitting model to feature number 9, UniRef90_A7LQG9
+2026-04-11 20:53:46.92 INFO::Fitting model to feature number 10, UniRef90_A7LQG9|g__Bacteroides.s__Bacteroides_ovatus
+2026-04-11 20:53:46.93 INFO::Fitting model to feature number 11, UniRef90_A0T3C6|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:46.93 INFO::Fitting model to feature number 12, UniRef90_V8M0W9
+2026-04-11 20:53:46.93 INFO::Fitting model to feature number 13, UniRef90_V8M0W9|g__Streptococcus.s__Streptococcus_salivarius
+2026-04-11 20:53:46.94 INFO::Fitting model to feature number 14, UniRef90_A0T3C6|g__Klebsiella.s__Klebsiella_quasipneumoniae
+2026-04-11 20:53:46.94 WARNING::Fitting problem for feature 14 returning NA
+2026-04-11 20:53:46.94 INFO::Fitting model to feature number 15, UniRef90_D7K7P3
+2026-04-11 20:53:46.94 INFO::Fitting model to feature number 16, UniRef90_D7K7P3|g__Bacteroides.s__Bacteroides_ovatus
+2026-04-11 20:53:46.95 INFO::Fitting model to feature number 17, UniRef90_A0A1S8IMK6
+2026-04-11 20:53:46.95 INFO::Fitting model to feature number 18, UniRef90_A0A1A7TBY5|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:46.95 WARNING::Fitting problem for feature 18 returning NA
+2026-04-11 20:53:46.95 INFO::Fitting model to feature number 19, UniRef90_A0A1A7TBY5|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:46.95 WARNING::Fitting problem for feature 19 returning NA
+2026-04-11 20:53:46.95 INFO::Fitting model to feature number 20, UniRef90_D1PAK7
+2026-04-11 20:53:46.96 INFO::Fitting model to feature number 21, UniRef90_D1PAK7|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:46.97 INFO::Fitting model to feature number 22, UniRef90_A0A366U7P8
+2026-04-11 20:53:46.99 INFO::Fitting model to feature number 23, UniRef90_A0A366U7P8|g__Enterococcus.s__Enterococcus_gallinarum
+2026-04-11 20:53:46.99 INFO::Fitting model to feature number 24, UniRef90_T4C1L2
+2026-04-11 20:53:47.00 INFO::Fitting model to feature number 25, UniRef90_T4C1L2|g__Bacteroides.s__Bacteroides_fragilis
+2026-04-11 20:53:47.00 INFO::Fitting model to feature number 26, UniRef90_A0A174Y3E0
+2026-04-11 20:53:47.01 INFO::Fitting model to feature number 27, UniRef90_A0A174Y3E0|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:47.01 INFO::Fitting model to feature number 28, UniRef90_A7LQH0
+2026-04-11 20:53:47.02 INFO::Fitting model to feature number 29, UniRef90_A7LQH0|g__Bacteroides.s__Bacteroides_ovatus
+2026-04-11 20:53:47.02 INFO::Fitting model to feature number 30, UniRef90_V5XUZ1
+2026-04-11 20:53:47.02 WARNING::Fitting problem for feature 30 returning NA
+2026-04-11 20:53:47.02 INFO::Fitting model to feature number 31, UniRef90_E1IVY0
+2026-04-11 20:53:47.03 INFO::Fitting model to feature number 32, UniRef90_E1IVY0|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:47.03 INFO::Fitting model to feature number 33, UniRef90_A5ZYV3
+2026-04-11 20:53:47.03 INFO::Fitting model to feature number 34, UniRef90_A5ZYV3|g__Blautia.s__Blautia_obeum
+2026-04-11 20:53:47.04 INFO::Fitting model to feature number 35, UniRef90_V5XUZ1|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:47.04 WARNING::Fitting problem for feature 35 returning NA
+2026-04-11 20:53:47.04 INFO::Fitting model to feature number 36, UniRef90_A0A1V2STI7|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:47.05 INFO::Fitting model to feature number 37, UniRef90_A0A1V2STI7
+2026-04-11 20:53:47.05 INFO::Fitting model to feature number 38, UniRef90_UPI0004A57A81
+2026-04-11 20:53:47.06 WARNING::Fitting problem for feature 38 returning NA
+2026-04-11 20:53:47.06 INFO::Fitting model to feature number 39, UniRef90_UPI0004A57A81|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:47.06 WARNING::Fitting problem for feature 39 returning NA
+2026-04-11 20:53:47.06 INFO::Fitting model to feature number 40, UniRef90_G2SRQ4
+2026-04-11 20:53:47.07 INFO::Fitting model to feature number 41, UniRef90_G2SRQ4|g__Lactobacillus.s__Lactobacillus_ruminis
+2026-04-11 20:53:47.07 INFO::Fitting model to feature number 42, UniRef90_Q1WUH8|g__Lactobacillus.s__Lactobacillus_ruminis
+2026-04-11 20:53:47.07 INFO::Fitting model to feature number 43, UniRef90_Q1WUH8
+2026-04-11 20:53:47.08 INFO::Fitting model to feature number 44, UniRef90_A0A1B2H845
+2026-04-11 20:53:47.08 INFO::Fitting model to feature number 45, UniRef90_Q9LBQ4|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:47.08 INFO::Fitting model to feature number 46, UniRef90_Q9LBQ4
+2026-04-11 20:53:47.09 INFO::Fitting model to feature number 47, UniRef90_F2NAL9|g__Collinsella.s__Collinsella_aerofaciens
+2026-04-11 20:53:47.09 INFO::Fitting model to feature number 48, UniRef90_F2NAL9
+2026-04-11 20:53:47.09 INFO::Fitting model to feature number 49, UniRef90_A0A0E9FRS3
+2026-04-11 20:53:47.10 INFO::Fitting model to feature number 50, UniRef90_A6XA87
+2026-04-11 20:53:47.10 INFO::Fitting model to feature number 51, UniRef90_A7AJP8
+2026-04-11 20:53:47.11 INFO::Fitting model to feature number 52, UniRef90_A7AJP8|g__Parabacteroides.s__Parabacteroides_merdae
+2026-04-11 20:53:47.11 INFO::Fitting model to feature number 53, UniRef90_A0A1S8IMK6|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:47.11 INFO::Fitting model to feature number 54, UniRef90_A0A2W4HXJ9
+2026-04-11 20:53:47.12 WARNING::Fitting problem for feature 54 returning NA
+2026-04-11 20:53:47.12 INFO::Fitting model to feature number 55, UniRef90_A0A2W4HXJ9|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:47.12 WARNING::Fitting problem for feature 55 returning NA
+2026-04-11 20:53:47.12 INFO::Fitting model to feature number 56, UniRef90_A0A1S8IMK6|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:47.12 WARNING::Fitting problem for feature 56 returning NA
+2026-04-11 20:53:47.12 INFO::Fitting model to feature number 57, UniRef90_A0A1X4JA18
+2026-04-11 20:53:47.13 WARNING::Fitting problem for feature 57 returning NA
+2026-04-11 20:53:47.13 INFO::Fitting model to feature number 58, UniRef90_A0A1X4JA18|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:47.13 WARNING::Fitting problem for feature 58 returning NA
+2026-04-11 20:53:47.13 INFO::Fitting model to feature number 59, UniRef90_A0A1D7PS63
+2026-04-11 20:53:47.14 INFO::Fitting model to feature number 60, UniRef90_A0A1D7PS63|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:47.14 INFO::Fitting model to feature number 61, UniRef90_Q9LBQ5
+2026-04-11 20:53:47.14 WARNING::Fitting problem for feature 61 returning NA
+2026-04-11 20:53:47.15 INFO::Fitting model to feature number 62, UniRef90_E7FSA1
+2026-04-11 20:53:47.15 INFO::Fitting model to feature number 63, UniRef90_E7FSA1|g__Lactobacillus.s__Lactobacillus_ruminis
+2026-04-11 20:53:47.15 INFO::Fitting model to feature number 64, UniRef90_A0A0E1X896|g__Blautia.s__Blautia_obeum
+2026-04-11 20:53:47.16 INFO::Fitting model to feature number 65, UniRef90_A0A0E9FRS3|g__Tyzzerella.s__Tyzzerella_nexilis
+2026-04-11 20:53:47.16 INFO::Fitting model to feature number 66, UniRef90_C0FSN2
+2026-04-11 20:53:47.16 INFO::Fitting model to feature number 67, UniRef90_C0FSN2|g__Roseburia.s__Roseburia_inulinivorans
+2026-04-11 20:53:47.17 INFO::Fitting model to feature number 68, UniRef90_A0A3E4MCK9
+2026-04-11 20:53:47.17 INFO::Fitting model to feature number 69, UniRef90_A0A3E4MCK9|g__Lactobacillus.s__Lactobacillus_ruminis
+2026-04-11 20:53:47.17 INFO::Fitting model to feature number 70, UniRef90_A0A0E1X896
+2026-04-11 20:53:47.18 INFO::Fitting model to feature number 71, UniRef90_UPI000763F496
+2026-04-11 20:53:47.18 WARNING::Fitting problem for feature 71 returning NA
+2026-04-11 20:53:47.18 INFO::Fitting model to feature number 72, UniRef90_UPI000763F496|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:47.19 WARNING::Fitting problem for feature 72 returning NA
+2026-04-11 20:53:47.19 INFO::Fitting model to feature number 73, UniRef90_A0A1A7TBG8
+2026-04-11 20:53:47.19 WARNING::Fitting problem for feature 73 returning NA
+2026-04-11 20:53:47.19 INFO::Fitting model to feature number 74, UniRef90_A7V4G2
+2026-04-11 20:53:47.20 INFO::Fitting model to feature number 75, UniRef90_A7V4G2|g__Bacteroides.s__Bacteroides_uniformis
+2026-04-11 20:53:47.20 INFO::Fitting model to feature number 76, UniRef90_A0A1S8JJQ1
+2026-04-11 20:53:47.20 WARNING::Fitting problem for feature 76 returning NA
+2026-04-11 20:53:47.20 INFO::Fitting model to feature number 77, UniRef90_A7LS50
+2026-04-11 20:53:47.21 INFO::Fitting model to feature number 78, UniRef90_A7LS50|g__Bacteroides.s__Bacteroides_ovatus
+2026-04-11 20:53:47.21 INFO::Fitting model to feature number 79, UniRef90_A0A0M2B020
+2026-04-11 20:53:47.21 INFO::Fitting model to feature number 80, UniRef90_A0A0M2B020|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:47.22 INFO::Fitting model to feature number 81, UniRef90_J6XYB2
+2026-04-11 20:53:47.22 WARNING::Fitting problem for feature 81 returning NA
+2026-04-11 20:53:47.22 INFO::Fitting model to feature number 82, UniRef90_J6XYB2|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:47.22 WARNING::Fitting problem for feature 82 returning NA
+2026-04-11 20:53:47.23 INFO::Fitting model to feature number 83, UniRef90_G2SNS8
+2026-04-11 20:53:47.23 INFO::Fitting model to feature number 84, UniRef90_G2SNS8|g__Lactobacillus.s__Lactobacillus_ruminis
+2026-04-11 20:53:47.23 INFO::Fitting model to feature number 85, UniRef90_S4EDF6
+2026-04-11 20:53:47.24 INFO::Fitting model to feature number 86, UniRef90_I0PYL5|g__Bacteroides.s__Bacteroides_ovatus
+2026-04-11 20:53:47.24 INFO::Fitting model to feature number 87, UniRef90_I0PYL5
+2026-04-11 20:53:47.24 INFO::Fitting model to feature number 88, UniRef90_A0A0H2VC20
+2026-04-11 20:53:47.25 INFO::Fitting model to feature number 89, UniRef90_A0A0H2VC20|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:47.25 INFO::Fitting model to feature number 90, UniRef90_A6XA87|g__Bacteroides.s__Bacteroides_uniformis
+2026-04-11 20:53:47.26 INFO::Fitting model to feature number 91, UniRef90_J6QDP1
+2026-04-11 20:53:47.26 WARNING::Fitting problem for feature 91 returning NA
+2026-04-11 20:53:47.26 INFO::Fitting model to feature number 92, UniRef90_J6QDP1|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:47.26 WARNING::Fitting problem for feature 92 returning NA
+2026-04-11 20:53:47.28 INFO::Fitting model to feature number 93, UniRef90_A0A1A7TA94
+2026-04-11 20:53:47.29 WARNING::Fitting problem for feature 93 returning NA
+2026-04-11 20:53:47.30 INFO::Fitting model to feature number 94, UniRef90_R6Q8L0
+2026-04-11 20:53:47.30 INFO::Fitting model to feature number 95, UniRef90_D1PG33
+2026-04-11 20:53:47.31 INFO::Fitting model to feature number 96, UniRef90_D1PG33|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:47.31 INFO::Fitting model to feature number 97, UniRef90_A0A174UKK8
+2026-04-11 20:53:47.32 INFO::Fitting model to feature number 98, UniRef90_A0A174UKK8|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:47.32 INFO::Fitting model to feature number 99, UniRef90_A0A0T7A674
+2026-04-11 20:53:47.32 INFO::Fitting model to feature number 100, UniRef90_A0A0T7A674|g__Bacteroides.s__Bacteroides_uniformis
+2026-04-11 20:53:47.33 INFO::Fitting model to feature number 101, UniRef90_UPI000B358E33
+2026-04-11 20:53:47.33 WARNING::Fitting problem for feature 101 returning NA
+2026-04-11 20:53:47.34 INFO::Fitting model to feature number 102, UniRef90_UPI000B358E33|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:47.34 WARNING::Fitting problem for feature 102 returning NA
+2026-04-11 20:53:47.35 INFO::Fitting model to feature number 103, UniRef90_A0A2H4TTX9
+2026-04-11 20:53:47.35 INFO::Fitting model to feature number 104, UniRef90_A0A2H4TTX9|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:47.36 INFO::Fitting model to feature number 105, UniRef90_A0A2R3NGS3
+2026-04-11 20:53:47.36 INFO::Fitting model to feature number 106, UniRef90_A0A1A7TBG8|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:47.36 WARNING::Fitting problem for feature 106 returning NA
+2026-04-11 20:53:47.37 INFO::Fitting model to feature number 107, UniRef90_A0A0J2B3T8
+2026-04-11 20:53:47.37 INFO::Fitting model to feature number 108, UniRef90_A0A395VRV3
+2026-04-11 20:53:47.38 INFO::Fitting model to feature number 109, UniRef90_J7SHX6
+2026-04-11 20:53:47.38 INFO::Fitting model to feature number 110, UniRef90_J7SHX6|g__Streptococcus.s__Streptococcus_salivarius
+2026-04-11 20:53:47.39 INFO::Fitting model to feature number 111, UniRef90_A0T3C6|g__Klebsiella.s__Klebsiella_pneumoniae
+2026-04-11 20:53:47.39 WARNING::Fitting problem for feature 111 returning NA
+2026-04-11 20:53:47.39 INFO::Fitting model to feature number 112, UniRef90_E1IJ03
+2026-04-11 20:53:47.40 INFO::Fitting model to feature number 113, UniRef90_E1IJ03|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:47.40 INFO::Fitting model to feature number 114, UniRef90_P59628
+2026-04-11 20:53:47.41 INFO::Fitting model to feature number 115, UniRef90_R6Q8L0|g__Faecalibacterium.s__Faecalibacterium_prausnitzii
+2026-04-11 20:53:47.41 INFO::Fitting model to feature number 116, UniRef90_F7LS08
+2026-04-11 20:53:47.42 INFO::Fitting model to feature number 117, UniRef90_F7LS08|g__Bacteroides.s__Bacteroides_fragilis
+2026-04-11 20:53:47.42 INFO::Fitting model to feature number 118, UniRef90_UPI000C03D4E6
+2026-04-11 20:53:47.43 WARNING::Fitting problem for feature 118 returning NA
+2026-04-11 20:53:47.43 INFO::Fitting model to feature number 119, UniRef90_UPI000C03D4E6|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:47.43 WARNING::Fitting problem for feature 119 returning NA
+2026-04-11 20:53:47.43 INFO::Fitting model to feature number 120, UniRef90_A0A133MZE1
+2026-04-11 20:53:47.44 WARNING::Fitting problem for feature 120 returning NA
+2026-04-11 20:53:47.44 INFO::Fitting model to feature number 121, UniRef90_A0A174Y4P3
+2026-04-11 20:53:47.44 INFO::Fitting model to feature number 122, UniRef90_A0A174Y4P3|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:47.45 INFO::Fitting model to feature number 123, UniRef90_A0A174Q4J4
+2026-04-11 20:53:47.45 INFO::Fitting model to feature number 124, UniRef90_A0A174Q4J4|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:47.45 INFO::Fitting model to feature number 125, UniRef90_A0A133MZE1|g__Clostridioides.s__Clostridioides_difficile
+2026-04-11 20:53:47.46 WARNING::Fitting problem for feature 125 returning NA
+2026-04-11 20:53:47.46 INFO::Fitting model to feature number 126, UniRef90_A0A069RZ42
+2026-04-11 20:53:47.46 INFO::Fitting model to feature number 127, UniRef90_A0A069RZ42|g__Parabacteroides.s__Parabacteroides_distasonis
+2026-04-11 20:53:47.47 INFO::Fitting model to feature number 128, UniRef90_A0A174IYG9
+2026-04-11 20:53:47.47 INFO::Fitting model to feature number 129, UniRef90_A0A174IYG9|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:47.48 INFO::Fitting model to feature number 130, UniRef90_U9YPG6
+2026-04-11 20:53:47.48 INFO::Fitting model to feature number 131, UniRef90_U9YPG6|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:47.49 INFO::Fitting model to feature number 132, UniRef90_U2Z4S8
+2026-04-11 20:53:47.49 INFO::Fitting model to feature number 133, UniRef90_U2Z4S8|g__Streptococcus.s__Streptococcus_salivarius
+2026-04-11 20:53:47.49 INFO::Fitting model to feature number 134, UniRef90_A0A1B2H845|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:47.50 INFO::Fitting model to feature number 135, UniRef90_F4NKV9
+2026-04-11 20:53:47.50 INFO::Fitting model to feature number 136, UniRef90_F4NKV9|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:47.51 INFO::Fitting model to feature number 137, UniRef90_U9YLK3
+2026-04-11 20:53:47.51 INFO::Fitting model to feature number 138, UniRef90_U9YLK3|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:47.51 INFO::Fitting model to feature number 139, UniRef90_A0A0E9FRS3|g__Dorea.s__Dorea_longicatena
+2026-04-11 20:53:47.52 INFO::Fitting model to feature number 140, UniRef90_J7TUV6
+2026-04-11 20:53:47.52 INFO::Fitting model to feature number 141, UniRef90_J7TUV6|g__Streptococcus.s__Streptococcus_salivarius
+2026-04-11 20:53:47.53 INFO::Fitting model to feature number 142, UniRef90_A0A2R3NGS3|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:47.53 INFO::Fitting model to feature number 143, UniRef90_I3U631
+2026-04-11 20:53:47.53 WARNING::Fitting problem for feature 143 returning NA
+2026-04-11 20:53:47.53 INFO::Fitting model to feature number 144, UniRef90_A0A174XX49
+2026-04-11 20:53:47.54 INFO::Fitting model to feature number 145, UniRef90_A0A174XX49|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:47.54 INFO::Fitting model to feature number 146, UniRef90_A0A174WHN0
+2026-04-11 20:53:47.55 INFO::Fitting model to feature number 147, UniRef90_A0A0E1LDK4
+2026-04-11 20:53:47.55 INFO::Fitting model to feature number 148, UniRef90_A0A0E1LDK4|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:47.55 INFO::Fitting model to feature number 149, UniRef90_A7V7B8
+2026-04-11 20:53:47.56 INFO::Fitting model to feature number 150, UniRef90_A7V7B8|g__Bacteroides.s__Bacteroides_uniformis
+2026-04-11 20:53:47.56 INFO::Fitting model to feature number 151, UniRef90_A0A1B2H845|g__Klebsiella.s__Klebsiella_pneumoniae
+2026-04-11 20:53:47.56 WARNING::Fitting problem for feature 151 returning NA
+2026-04-11 20:53:47.57 INFO::Fitting model to feature number 152, UniRef90_A0A0E9ESU1
+2026-04-11 20:53:47.57 INFO::Fitting model to feature number 153, UniRef90_E7FTM0
+2026-04-11 20:53:47.57 INFO::Fitting model to feature number 154, UniRef90_E7FTM0|g__Lactobacillus.s__Lactobacillus_ruminis
+2026-04-11 20:53:47.58 INFO::Fitting model to feature number 155, UniRef90_A0A2H4TVT9
+2026-04-11 20:53:47.58 INFO::Fitting model to feature number 156, UniRef90_A0A2H4TVT9|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:47.58 INFO::Fitting model to feature number 157, UniRef90_P59628|g__Clostridioides.s__Clostridioides_difficile
+2026-04-11 20:53:47.59 WARNING::Fitting problem for feature 157 returning NA
+2026-04-11 20:53:47.59 INFO::Fitting model to feature number 158, UniRef90_A0A0E9ESU1|g__Klebsiella.s__Klebsiella_pneumoniae
+2026-04-11 20:53:47.59 WARNING::Fitting problem for feature 158 returning NA
+2026-04-11 20:53:47.59 INFO::Fitting model to feature number 159, UniRef90_A0A174VAI6
+2026-04-11 20:53:47.60 INFO::Fitting model to feature number 160, UniRef90_A0A174VAI6|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:47.60 INFO::Fitting model to feature number 161, UniRef90_D4RG23
+2026-04-11 20:53:47.61 INFO::Fitting model to feature number 162, UniRef90_D4RG23|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:47.61 INFO::Fitting model to feature number 163, UniRef90_A0A174LQ87
+2026-04-11 20:53:47.61 INFO::Fitting model to feature number 164, UniRef90_A0A174LQ87|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:47.80 INFO::Fitting model to feature number 165, UniRef90_I3U631|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:47.81 WARNING::Fitting problem for feature 165 returning NA
+2026-04-11 20:53:47.81 INFO::Fitting model to feature number 166, UniRef90_A0A0I1DLX7
+2026-04-11 20:53:47.81 INFO::Fitting model to feature number 167, UniRef90_A0A0I1DLX7|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:47.81 INFO::Fitting model to feature number 168, UniRef90_A0A1S8JJQ1|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:47.82 WARNING::Fitting problem for feature 168 returning NA
+2026-04-11 20:53:47.82 INFO::Fitting model to feature number 169, UniRef90_A0A286V1L3
+2026-04-11 20:53:47.82 WARNING::Fitting problem for feature 169 returning NA
+2026-04-11 20:53:47.82 INFO::Fitting model to feature number 170, UniRef90_V0SIR0
+2026-04-11 20:53:47.83 INFO::Fitting model to feature number 171, UniRef90_V0SIR0|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:47.83 INFO::Fitting model to feature number 172, UniRef90_A0A174KXX9
+2026-04-11 20:53:47.83 INFO::Fitting model to feature number 173, UniRef90_A0A174KXX9|g__Collinsella.s__Collinsella_aerofaciens
+2026-04-11 20:53:47.84 INFO::Fitting model to feature number 174, UniRef90_I2WAU1
+2026-04-11 20:53:47.84 INFO::Fitting model to feature number 175, UniRef90_I2WAU1|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:47.84 INFO::Fitting model to feature number 176, UniRef90_A7B6Q1
+2026-04-11 20:53:47.85 INFO::Fitting model to feature number 177, UniRef90_A7B6Q1|g__Blautia.s__Ruminococcus_gnavus
+2026-04-11 20:53:47.85 INFO::Fitting model to feature number 178, UniRef90_A0A1A7TA94|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:47.85 WARNING::Fitting problem for feature 178 returning NA
+2026-04-11 20:53:47.86 INFO::Fitting model to feature number 179, UniRef90_A0A174VLZ6
+2026-04-11 20:53:47.86 INFO::Fitting model to feature number 180, UniRef90_A0A174VLZ6|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:47.86 INFO::Fitting model to feature number 181, UniRef90_A0A0M1X7H2
+2026-04-11 20:53:47.86 WARNING::Fitting problem for feature 181 returning NA
+2026-04-11 20:53:47.87 INFO::Fitting model to feature number 182, UniRef90_A0A0M1X7H2|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:47.87 WARNING::Fitting problem for feature 182 returning NA
+2026-04-11 20:53:47.87 INFO::Fitting model to feature number 183, UniRef90_A0A174HS30
+2026-04-11 20:53:47.87 INFO::Fitting model to feature number 184, UniRef90_A0A174HS30|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:47.88 INFO::Fitting model to feature number 185, UniRef90_S4EDF6|g__Enterococcus.s__Enterococcus_faecium
+2026-04-11 20:53:47.88 WARNING::Fitting problem for feature 185 returning NA
+2026-04-11 20:53:47.88 INFO::Fitting model to feature number 186, UniRef90_C9BZL5
+2026-04-11 20:53:47.88 WARNING::Fitting problem for feature 186 returning NA
+2026-04-11 20:53:47.89 INFO::Fitting model to feature number 187, UniRef90_A0A174JTA1
+2026-04-11 20:53:47.89 INFO::Fitting model to feature number 188, UniRef90_A0A174JTA1|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:47.89 INFO::Fitting model to feature number 189, UniRef90_W1ESP1
+2026-04-11 20:53:47.90 INFO::Fitting model to feature number 190, UniRef90_W1ESP1|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:47.90 INFO::Fitting model to feature number 191, UniRef90_A0A174RM08
+2026-04-11 20:53:47.90 INFO::Fitting model to feature number 192, UniRef90_A0A174RM08|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:47.91 INFO::Fitting model to feature number 193, UniRef90_UPI000CDE3CF2
+2026-04-11 20:53:47.91 INFO::Fitting model to feature number 194, UniRef90_UPI000CDE3CF2|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:47.91 INFO::Fitting model to feature number 195, UniRef90_A0A174NRF1
+2026-04-11 20:53:47.92 INFO::Fitting model to feature number 196, UniRef90_A0A174NRF1|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:47.92 INFO::Fitting model to feature number 197, UniRef90_S4DMT8
+2026-04-11 20:53:47.93 INFO::Fitting model to feature number 198, UniRef90_A0A286V1L3|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:47.93 WARNING::Fitting problem for feature 198 returning NA
+2026-04-11 20:53:47.93 INFO::Fitting model to feature number 199, UniRef90_A0A174WHN0|g__Prevotella.s__Prevotella_copri
+2026-04-11 20:53:47.93 INFO::Fitting model to feature number 200, UniRef90_D1PCG7
+2026-04-11 20:53:47.97 INFO::Creating fits folder
+2026-04-11 20:53:47.97 INFO::Writing residuals to file maaslin_genefamilies_group/fits/residuals_linear.rds
+2026-04-11 20:53:47.97 INFO::Writing fitted values to file maaslin_genefamilies_group/fits/fitted_linear.rds
+2026-04-11 20:53:47.97 INFO::Writing residuals to file maaslin_genefamilies_group/fits/residuals_logistic.rds
+2026-04-11 20:53:47.98 INFO::Writing fitted values to file maaslin_genefamilies_group/fits/fitted_logistic.rds
+2026-04-11 20:53:47.98 INFO::Writing all the results to file (ordered 
             by increasing individual q-values): maaslin_genefamilies_group/all_results.tsv
-2026-04-10 08:22:16.607077 INFO::Writing the significant results without errors (those which have joint q-values less than or equal to the threshold of 0.100000 ) to file (ordered by increasing individual q-values): maaslin_genefamilies_group/significant_results.tsv
-2026-04-10 08:22:16.608332 INFO::Creating output figures folder
-2026-04-10 08:22:16.609295 INFO::Writing summary plot of significant
+2026-04-11 20:53:47.99 INFO::Writing the significant results without errors (those which have joint q-values less than or equal to the threshold of 0.100000 ) to file (ordered by increasing individual q-values): maaslin_genefamilies_group/significant_results.tsv
+2026-04-11 20:53:47.99 INFO::Creating output figures folder
+2026-04-11 20:53:48.00 INFO::Writing summary plot of significant
                         results to file: maaslin_genefamilies_group/figures/summary_plot.pdf
-2026-04-10 08:22:17.242861 INFO::Writing association plots (one for each significant association) to output folder: maaslin_genefamilies_group/figures
-2026-04-10 08:22:17.244239 INFO::Plotting associations from most to least significant, grouped by metadata
-2026-04-10 08:22:17.246399 INFO::Creating box plot for categorical data (linear), 
+2026-04-11 20:53:49.17 INFO::Writing association plots (one for each significant association) to output folder: maaslin_genefamilies_group/figures
+2026-04-11 20:53:49.17 INFO::Plotting associations from most to least significant, grouped by metadata
+2026-04-11 20:53:49.18 INFO::Creating box plot for categorical data (linear), 
                         sick vs UniRef90_A0A0E1X896
-2026-04-10 08:22:17.36795 INFO::Creating box plot for categorical data (linear), 
+2026-04-11 20:53:49.52 INFO::Creating box plot for categorical data (linear), 
                         sick vs UniRef90_A0A0E1X896|g__Blautia.s__Blautia_obeum
-2026-04-10 08:22:17.576976 INFO::Creating box plot for categorical data (linear), 
+2026-04-11 20:53:49.95 INFO::Creating box plot for categorical data (linear), 
                         sick vs UniRef90_A5ZYV3
-2026-04-10 08:22:17.61278 INFO::Creating box plot for categorical data (linear), 
+2026-04-11 20:53:50.26 INFO::Creating box plot for categorical data (linear), 
                         sick vs UniRef90_A5ZYV3|g__Blautia.s__Blautia_obeum
-2026-04-10 08:22:17.646593 INFO::Creating box plot for categorical data (linear), 
+2026-04-11 20:53:50.62 INFO::Creating box plot for categorical data (linear), 
                         sick vs UniRef90_A0A174WHN0
-2026-04-10 08:22:17.678635 INFO::Creating box plot for categorical data (linear), 
+2026-04-11 20:53:51.05 INFO::Creating box plot for categorical data (linear), 
                         sick vs UniRef90_A0A174IWH6
-2026-04-10 08:22:17.708797 INFO::Creating box plot for categorical data (linear), 
+2026-04-11 20:53:51.35 INFO::Creating box plot for categorical data (linear), 
                         sick vs UniRef90_A0A174IWH6|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:17.741414 INFO::Creating box plot for categorical data (linear), 
+2026-04-11 20:53:51.66 INFO::Creating box plot for categorical data (linear), 
                         sick vs UniRef90_R6Q8L0|g__Faecalibacterium.s__Faecalibacterium_prausnitzii
-2026-04-10 08:22:17.773338 INFO::Creating box plot for categorical data (linear), 
-                        sick vs UniRef90_R6Q8L0
-2026-04-10 08:22:17.803042 INFO::Creating box plot for categorical data (linear), 
+2026-04-11 20:53:52.12 INFO::Creating box plot for categorical data (linear), 
                         sick vs UniRef90_A0A174VAI6
-2026-04-10 08:22:17.833178 INFO::Creating box plot for categorical data (linear), 
+2026-04-11 20:53:52.43 INFO::Creating box plot for categorical data (linear), 
                         sick vs UniRef90_A0A174VAI6|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:17.86289 INFO::Creating box plot for categorical data (linear), 
+2026-04-11 20:53:52.86 INFO::Creating box plot for categorical data (linear), 
                         sick vs UniRef90_A0A174Y3E0
-2026-04-10 08:22:17.896125 INFO::Creating box plot for categorical data (linear), 
+2026-04-11 20:53:53.16 INFO::Creating box plot for categorical data (linear), 
                         sick vs UniRef90_A0A174Y3E0|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:17.927353 INFO::Creating box plot for categorical data (linear), 
+2026-04-11 20:53:53.47 INFO::Creating box plot for categorical data (linear), 
+                        sick vs UniRef90_R6Q8L0
+2026-04-11 20:53:53.92 INFO::Creating box plot for categorical data (linear), 
                         sick vs UniRef90_A0A174IYG9
-2026-04-10 08:22:17.967433 INFO::Creating box plot for categorical data (linear), 
+2026-04-11 20:53:54.24 INFO::Creating box plot for categorical data (linear), 
                         sick vs UniRef90_A0A174IYG9|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:18.003941 INFO::Creating box plot for categorical data (linear), 
+2026-04-11 20:53:54.55 INFO::Creating box plot for categorical data (linear), 
                         sick vs UniRef90_A0A174WHN0|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:18.037257 INFO::Creating box plot for categorical data (linear), 
+2026-04-11 20:53:54.97 INFO::Creating box plot for categorical data (linear), 
                         sick vs UniRef90_D1PAK7
-2026-04-10 08:22:18.084677 INFO::Creating box plot for categorical data (linear), 
+2026-04-11 20:53:55.28 INFO::Creating box plot for categorical data (linear), 
                         sick vs UniRef90_D1PAK7|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:18.121258 INFO::Creating box plot for categorical data (linear), 
-                        sick vs UniRef90_A0A174JTA1
-2026-04-10 08:22:18.289436 INFO::Creating box plot for categorical data (linear), 
+2026-04-11 20:53:55.59 INFO::Creating box plot for categorical data (linear), 
                         sick vs UniRef90_A0A174JTA1|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:18.335701 INFO::Creating box plot for categorical data (linear), 
+2026-04-11 20:53:56.01 INFO::Creating box plot for categorical data (linear), 
+                        sick vs UniRef90_A0A174JTA1
+2026-04-11 20:53:56.31 INFO::Creating box plot for categorical data (linear), 
                         sick vs UniRef90_A0A174PA28
-2026-04-10 08:22:18.779948 INFO::Creating box plot for categorical data (linear), 
+2026-04-11 20:53:56.74 INFO::Creating box plot for categorical data (linear), 
                         sick vs UniRef90_A0A174PA28|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:18.832302 INFO::Creating box plot for categorical data (linear), 
+2026-04-11 20:53:57.05 INFO::Creating box plot for categorical data (linear), 
                         sick vs UniRef90_A0A174RM08
-2026-04-10 08:22:18.882425 INFO::Creating box plot for categorical data (linear), 
+2026-04-11 20:53:57.38 INFO::Creating box plot for categorical data (linear), 
                         sick vs UniRef90_A0A174RM08|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:18.921767 INFO::Creating tile plot for categorical data (logistic), sick vs UniRef90_A0A0H2VC20
-2026-04-10 08:22:18.965297 INFO::Creating tile plot for categorical data (logistic), sick vs UniRef90_A0A0H2VC20|g__Escherichia.s__Escherichia_coli
-2026-04-10 08:22:19.015038 INFO::Creating box plot for categorical data (linear), 
+2026-04-11 20:53:57.81 INFO::Creating tile plot for categorical data (logistic), sick vs UniRef90_A0A0H2VC20
+2026-04-11 20:53:58.11 INFO::Creating tile plot for categorical data (logistic), sick vs UniRef90_A0A0H2VC20|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:58.41 INFO::Creating box plot for categorical data (linear), 
                         sick vs UniRef90_A0A174LQ87
-2026-04-10 08:22:19.061111 INFO::Creating box plot for categorical data (linear), 
+2026-04-11 20:53:58.83 INFO::Creating box plot for categorical data (linear), 
                         sick vs UniRef90_A0A174LQ87|g__Prevotella.s__Prevotella_copri
-2026-04-10 08:22:19.097597 INFO::Creating tile plot for categorical data (logistic), sick vs UniRef90_V0SIR0
-2026-04-10 08:22:19.136939 INFO::Creating tile plot for categorical data (logistic), sick vs UniRef90_V0SIR0|g__Escherichia.s__Escherichia_coli
+2026-04-11 20:53:59.13 INFO::Creating tile plot for categorical data (logistic), sick vs UniRef90_V0SIR0
+2026-04-11 20:53:59.42 INFO::Creating tile plot for categorical data (logistic), sick vs UniRef90_V0SIR0|g__Escherichia.s__Escherichia_coli
