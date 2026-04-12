@@ -61,7 +61,7 @@ It is assumed that a given ancestor can diverge into two descendants but in prac
  - **Outgroup rooting**: uses a distantly related taxon to define the direction of evolution.
  - **Time-based rooting**: incorporates sampling dates or molecular clock models.
 
-  ![time-rooted tree](images/time-rooted_tree.png)
+  ![time-rooted tree](images/time-rooted_tree.png){width=50%}
 
   Using sampling time to root the tree.
 
@@ -79,14 +79,14 @@ Overall, the placement of the root determines the direction of evolution and can
 - Root this tree by making it ultrametric (a tree in which every species or sample has the same distance to the root)
 - Hint: All tips must have the same distance from the root (assumes all the data was collected in the present day) i.e. same divergence time from the ancestral state(root)
 
-  ![First exercise](images/exercise1.png)
+  ![First exercise](images/exercise1.png){width=50%}
 
 
 ## Tree topology
 - The topology describes how taxa are connected, independent of branch lengths.
 - **A clade** - Is a set of all sequences/species (terminal nodes) descending from a node/ancestor.
 
-  ![clade definition](images/clade_definition.png)
+  ![clade definition](images/clade_definition.png){width=50%}
   
   ```S1``` is a clade because it descends from itself. ```S3```, ```S4``` and ```S5``` represent a clade because they share a common ancestor.
 
