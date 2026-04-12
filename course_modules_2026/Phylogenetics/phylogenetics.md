@@ -37,7 +37,7 @@ Understanding the genetic diversity, genome plasticity, and recombination patter
 - **Branches** - In a tree, branches can represent multiple meanings. in order to fully understand the meaning of the tree you need to understand how the tree was built. A branch can mean the divergence time between current species and its hypothetical ancestor (i.e. if you know when the samples were collected, it is possible to reconstruct a timed tree where the nodes are placed in their corresponding times), it can also mean the number of substitutions per site or number of changes between the hypothetical ancestors and the current sampled organism.
 More often than not, samples are collected at the same time, and it might be assumed that their divergence time from their common ancestor is the same. An **ultrametric tree** shows exactly that, where the distance between the root and the tips is the same for all samples.
 
-  ![ultrametric tree](images/ultrametric_tree.png)
+  ![ultrametric tree](images/ultrametric_tree.png){width=70%}
 
 - **Terminal nodes** - Are nodes in the tree connected to only one edge and are usually associated with the data that we have, such as a genome sequence. A node can represent an extinct species or a sampled pathogen. it's also called **tips** or **leaves**.
 
