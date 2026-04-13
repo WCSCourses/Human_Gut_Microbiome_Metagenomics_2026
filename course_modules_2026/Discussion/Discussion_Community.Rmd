@@ -293,8 +293,6 @@ alpha_div_plot_shannon <- ggplot(alpha_stat_met, aes(x = sick, y = shannon_Speci
     paired = FALSE
   )
 
-alpha_div_plot_shannon
-
 # Observed richness plot
 alpha_div_plot_richness <- ggplot(alpha_stat_met, aes(x = sick, y = observed_Species, fill = sick)) +
   geom_boxplot(outlier.shape = NA, alpha = 0.7) +
@@ -308,18 +306,14 @@ alpha_div_plot_richness <- ggplot(alpha_stat_met, aes(x = sick, y = observed_Spe
     label = "p.format",
     paired = FALSE
   )
-
-alpha_div_plot_richness
+# Combined figure only
+ggpubr::ggarrange(alpha_div_plot_shannon, alpha_div_plot_richness, ncol = 2, nrow = 1)
 ```
 
 
 ```{r save-alpha-diversity, eval=FALSE}
 ggsave("alpha_diversity_shannon_plot.png", alpha_div_plot_shannon, width = 5, height = 5, dpi = 600)
 ggsave("alpha_diversity_richness_plot.png", alpha_div_plot_richness, width = 5, height = 5, dpi = 600)
-```
-
-```{r alpha-diversity-combined, fig.width=10, fig.height=5}
-ggpubr::ggarrange(alpha_div_plot_shannon, alpha_div_plot_richness, ncol = 2, nrow = 1)
 ```
 
 **Interpretation**
