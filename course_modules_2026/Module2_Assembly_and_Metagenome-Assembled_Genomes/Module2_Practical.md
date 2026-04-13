@@ -20,30 +20,9 @@ This practical session will help participants understand how MAGs are generated 
 ## Dataset Structure
 The dataset provided for this exercise contains the results of a completed **metaWRAP workflow**.
 
-Example directory structure:
-```text
-MAG_practical/
-│
-├── assembly/
-│   └── final_assembly.fasta
-│
-├── binning/
-│   ├── metabat2_bins/
-│   ├── maxbin2_bins/
-│   └── concoct_bins/
-│
-├── refinement/
-│   ├── metawrap_bins/
-│   └── metawrap_bins.stats
-│
-└── reads/
-    ├── sample_R1.fastq.gz
-    └── sample_R2.fastq.gz
-```
-
 ## Input data
 
-For this exercise we will use **quality-controlled paired-end reads** generated during **Module 1**.
+For this exercise we have used pregenerated **quality-controlled paired-end reads** in **Module 1** to assemble metagenome assembled genomes (MAGs).
 
 ## Exercise 1 – Inspect the Assembly
 First, we examine the assembly output.
