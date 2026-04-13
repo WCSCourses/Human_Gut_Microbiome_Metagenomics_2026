@@ -14,8 +14,6 @@ Participants will use publicly available human gut microbiome datasets downloade
 Run accession numbers:
 ```text
 SRR30598619
-SRR30598621
-SRR30598622
 ```
 These represent paired-end Illumina shotgun metagenomic reads.
 
