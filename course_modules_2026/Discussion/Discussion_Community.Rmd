@@ -45,10 +45,10 @@ This module assumes:
 - Sample metadata
 - Required packages installed
 
-# If needed, install missing packages first:
-# install.packages("BiocManager")
-# BiocManager::install("phyloseq")
-# .libPaths("~/R/library")
+If needed, install missing packages first:
+- install.packages("BiocManager")
+- BiocManager::install("phyloseq")
+- .libPaths("~/R/library")
 
 ```{r setup, message=FALSE, warning=FALSE}
 # ============================================
