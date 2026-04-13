@@ -289,7 +289,9 @@ In host-associated microbiome datasets, a proportion of sequencing reads may ori
 In the **metaWRAP pipeline**, host filtering is performed using BMTagger, an alignment-based tool designed to identify and remove host-derived reads. Here we demonstrate the same principle using Bowtie2, which aligns reads to a host reference genome and retains only unmapped reads.
 
 ### Step 2 — Build the host genome index
-If you do not already have an index for the host genome, build one using Bowtie2. The human genome build 38 can be found at. Alternatively the field is advancing and some of the reesrachers are moving to the pangenomes and Telomere2Telomere (T2T) builds 
+If you do not already have an index for the host genome, build one using Bowtie2. The human genome build 38 can be found at. Alternatively the field is advancing and some of the reesrachers are moving to the Telomere2Telomere (T2T-CHM13) builds found in th below link. 
+
+**>https://hgdownload.soe.ucsc.edu/downloads.html**
 
 ``` bash
 bowtie2-build hg38.fa hg38_index
