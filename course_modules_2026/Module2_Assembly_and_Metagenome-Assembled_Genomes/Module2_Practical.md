@@ -117,9 +117,9 @@ Example output:
 
 ```code
 Bin_ID      Completeness    Contamination
-bin.1       95.3            3.2
-bin.2       88.7            4.5
-bin.3       72.1            6.4
+bin.10.orig       61.76         0.892
+bin.11.orig       92.00       	1.582
+bin.12.orig       95.30       	2.873
 ```
 
 ## Interpreting the Results
@@ -142,7 +142,7 @@ Use the following guidelines:
 To see how many contigs make up each MAG:
 
 ```bash
-grep -c ">" metawrap_bins/bin.1.fa
+grep -c ">" metawrap_bins/SRR30598619_bin.10.orig.fa
 ```
 
 MAGs usually consist of multiple contigs rather than a single continuous sequence.
