@@ -35,9 +35,9 @@ cd assembly
 Check the number of contigs (FASTA sequences):
 
 ```bash
-grep -c ">" final_assembly.fasta
+grep -c ">" SRR30598619_final_assembly.fasta
 or
-grep ">" final_assembly.fasta | wc -l
+grep ">" SRR30598619_final_assembly.fasta | wc -l
 
 ```
 This command counts the number of contigs produced during assembly.
@@ -45,7 +45,7 @@ This command counts the number of contigs produced during assembly.
 ### Inspect contig lengths
 To view the first few contigs:
 ```bash
-head final_assembly.fasta
+head SRR30598619_final_assembly.fasta
 ```
 #### Questions
 1. How many contigs were produced?
