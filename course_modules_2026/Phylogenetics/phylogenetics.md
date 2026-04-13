@@ -225,15 +225,15 @@ In this section, you will learn how to:
 
 ```
 # load modules
-mamba activate gtdbtk
-mamba activate fasttreemp
+conda activate gtdbtk
+conda activate fasttreemp
 ```
 
 #### Identify Marker Genes
 GTDB-Tk identifies conserved marker genes that are shared across bacteria.
 
 ```
-gtdbtk identify --genome_dir . -x fa --cpus 24 --out_dir gtdbtk_identify_outdir
+gtdbtk identify --genome_dir /data/microbiome_course2026/Module3/MAGs/cleaned_fasta/ -x fa --cpus 24 --out_dir gtdbtk_identify_outdir
 ```
 
 #### Align Marker genes
@@ -246,11 +246,8 @@ gtdbtk align --identify_dir ./gtdbtk_identify_outdir --skip_trimming --skip_gtdb
 #### Unzip the alignment file before building the tree
 
 ```
-# change directory
-cd gtdbtk_align_outdir/align/
+gunzip gtdbtk_align_outdir/align/gtdbtk.bac120.user_msa.fasta.gz
 
-# unzip
-gunzip *.gz
 ```
 
 #### Build the phylogenetic tree
@@ -261,7 +258,6 @@ We will NOT run this command in the classroom, because it takes a long time to r
 
 ```
 fasttree \
-FastTreeMP \
 -wag \
 -out gtdbtk_fullalign_bacteria.nwk \
 gtdbtk_align_outdir/align/gtdbtk.bac120.user_msa.fasta
