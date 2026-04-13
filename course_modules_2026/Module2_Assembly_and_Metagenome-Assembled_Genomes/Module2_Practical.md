@@ -116,7 +116,7 @@ cat metawrap_bins.stats
 Example output:
 
 ```code
-Bin_ID      Completeness    Contamination
+bin      completeness    contamination
 bin.10.orig       61.76         0.892
 bin.11.orig       92.00       	1.582
 bin.12.orig       95.30       	2.873
