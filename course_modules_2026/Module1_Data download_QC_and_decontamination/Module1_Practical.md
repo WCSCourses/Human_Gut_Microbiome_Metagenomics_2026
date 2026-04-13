@@ -74,14 +74,14 @@ Run FastQC on the raw reads using fastQC and simultaneously using metaWRAP pipel
 
 Using stand alone software
 ```bash
-fastqc /data/microbiome_course2026/course_data2026/Module1/raw_reads/SRR30598619_1.fastq-001.gz /data/microbiome_course2026/course_data2026/Module1/raw_reads/SRR30598619_2.fastq-002.gz -o QC/fastqc_raw
+fastqc SRR30598619_1.fastq-001.gz SRR30598619_2.fastq-002.gz -o QC/fastqc_raw
 ```
 
 Using metaWRAP pipeline:
 ```bash
 metawrap read_qc \
--1 /data/microbiome_course2026/course_data2026/Module1/raw_reads/SRR30598619_1.fastq-001.gz \
--2 /data/microbiome_course2026/course_data2026/Module1/raw_reads/SRR30598619_2.fastq-002.gz \
+-1 SRR30598619_1.fastq-001.gz \
+-2 SRR30598619_2.fastq-002.gz \
 -t 24 \
 -o /scratch/home/train24/READ_QC/ \
 -x hg38
