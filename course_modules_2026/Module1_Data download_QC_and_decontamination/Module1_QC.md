@@ -41,9 +41,7 @@ ___
 ## Key tools used in this module
 
 > **Tools introduced in this module**
->
-> **FastQC** – sequencing quality assessment for individual sequencing files  
-> **MultiQC** – aggregation of quality control reports across multiple samples  
+> 
 > **TrimGalore** – adapter trimming and read quality filtering  
 > **Bowtie2** – alignment-based host DNA removal  
 > **metaWRAP** – workflow automation for metagenomic preprocessing
@@ -100,7 +98,7 @@ A well-known example of reagent contamination affecting microbiome studies is de
 
 
 ### Prepare directories
-Before beginning the analysis, create a structured directory layout to organize raw data, quality reports, and processed reads.
+Organizing your directories for raw data, quality reports, and processed reads is important. Below is an example of the directories one may need when running similar analyses.
 ```bash
 mkdir -p RAW_READS \
          QC/fastqc_raw QC/multiqc_raw \
@@ -108,7 +106,7 @@ mkdir -p RAW_READS \
          QC/fastqc_dehosted QC/multiqc_dehosted \
          TRIMMED_READS DEHOSTED_READS HOST_REMOVAL
 ```
-The project structure should look like this:
+The project structure would look like this:
 ```bash
 project/
     ├── RAW_READS/
@@ -134,12 +132,12 @@ The International Nucleotide Sequence Database Collaboration (INSDC) consists of
 
 These repositories mirror each other’s data, allowing sequencing datasets to be downloaded from any of them.
 
-In this training, we will download shotgun metagenomic sequencing reads from ENA.
+In this training, we will download one paired end shotgun metagenomic sequencing reads from ENA.
  
  ## Step 1a — Download a single sample using wget
 Example command for downloading paired-end reads:
  ```bash
- cd /path_to_your_folder
+ cd RAW_READS
  wget -c ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR305/019/SRR30598619/SRR30598619_1.fastq.gz
  wget -c ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR305/019/SRR30598619/SRR30598619_2.fastq.gz
  ```
@@ -159,9 +157,9 @@ ls RAW_READS
 ```
 
  ## Step 1b — Download multiple samples using ENA downloader
- If many samples need to be downloaded, an automated downloader can be used.
+ If many samples need to be downloaded, an automated downloader can be used. An example is here **https://github.com/sanger-pathogens/enadownloader**
 
-Create a text file containing one run accession per line:
+The steps involve creating a text file which contains one run accession per line:
  ```text
  run_accession_list.txt
  ```
@@ -172,15 +170,15 @@ SRR30598621
 SRR30598622
 ```
 
-Load the ENA downloader module:
+The process begins with loading the ENA downloader module:
  ```bash
  module load enadownloader/v2.3.5-4ac05c8f
  ```
-Run the downloader:
+Running the downloader:
  ```bash
  enadownloader -t run -i run_accession_list.txt -o RAW_READS -d
 ```
- This generates:
+ Which generates:
  ```code
 RAW_READS/
      ├── SRR30598619_1.fastq.gz
@@ -196,9 +194,9 @@ The downloaded FASTQ files are written directly to the `RAW_READS` directory, wh
 ---
 
 # Part III — Initial quality control
-In this section, we apply the tools introduced earlier to perform the key preprocessing steps required before downstream metagenomic analysis.
+In this section, we apply the some of the tools introduced earlier to perform the key preprocessing steps required before downstream metagenomic analysis.
 
-The major preprocessing steps in shotgun metagenomic analysis are illustrated below. 
+The major preprocessing steps in any shotgun metagenomic analysis are illustrated below. 
 ![preprocessing](images/preprocessing.png)
 
 ## Step 1 — Run FastQC
@@ -251,7 +249,9 @@ During library preparation, short adapter sequences are attached to DNA fragment
 
 
 ### Step 1 — Run TrimGalore
-TrimGalore performs adapter removal and quality trimming.
+TrimGalore which is incorporated into the **metaWRAP pipeline** which we will be used in this training performs adapter removal and quality trimming at once.
+
+If you need to run this step separately outside the pipeline, below is the command you would use
 ```bash
 trim_galore --paired RAW_READS/SRR30598619_1.fastq.gz RAW_READS/SRR30598619_2.fastq.gz --output_dir TRIMMED_READS
   ```
@@ -263,16 +263,18 @@ Typical output files:
 	TRIMMED_READS/SRR30598619_2_trimming_report.txt
 ```
 
-These trimmed reads will be used for host removal.
+These trimmed reads are then used for host removal step.
 
 ## 2. Post-trimming quality validation
 Quality correction should always be verified.
+
+An example would be using a tool such as fastqc. The command to run independently this step is as shown below.
 
 ```bash
 fastqc TRIMMED_READS/SRR30598619_1_val_1.fq.gz TRIMMED_READS/SRR30598619_2_val_2.fq.gz -o QC/fastqc_trimmed
 multiqc QC/fastqc_trimmed -o QC/multiqc_trimmed
 ```
-Compare the pre-QC and post-QC reports to confirm improvements such as:
+Good practice dictates that we compare the pre-QC and post-QC reports to confirm improvements such as:
 - higher base quality scores
 - reduced adapter contamination
 - fewer overrepresented sequences
@@ -284,10 +286,10 @@ Example post-QC report:
 ## 3. Host DNA removal
 In host-associated microbiome datasets, a proportion of sequencing reads may originate from host cells rather than microbes. Removing host DNA is therefore necessary to ensure that downstream analyses focus on microbial sequences.
 
-In the metaWRAP pipeline, host filtering is performed using BMTagger, an alignment-based tool designed to identify and remove host-derived reads. Here we demonstrate the same principle using Bowtie2, which aligns reads to a host reference genome and retains only unmapped reads.
+In the **metaWRAP pipeline**, host filtering is performed using BMTagger, an alignment-based tool designed to identify and remove host-derived reads. Here we demonstrate the same principle using Bowtie2, which aligns reads to a host reference genome and retains only unmapped reads.
 
 ### Step 2 — Build the host genome index
-If you do not already have an index for the host genome, build one using Bowtie2.
+If you do not already have an index for the host genome, build one using Bowtie2. The human genome build 38 can be found at. Alternatively the field is advancing and some of the reesrachers are moving to the pangenomes and Telomere2Telomere (T2T) builds 
 
 ``` bash
 bowtie2-build hg38.fa hg38_index
@@ -296,6 +298,7 @@ This step generates several index files required for alignment.
 
 ### Step 3 — Align reads to the host genome
 ```bash
+
 bowtie2 \
   -x hg38_index \
   -1 TRIMMED_READS/SRR30598619_1_val_1.fq.gz \
@@ -366,12 +369,12 @@ These cleaned reads are used for downstream analyses such as:
 # Using a workflow:
 For a small number of samples, running preprocessing steps manually helps users understand each stage of the workflow. However, in large metagenomic projects containing hundreds of samples, manual execution becomes inefficient.
 
-Workflow systems automate these tasks and ensure reproducibility.
+Workflow systems such as Netflow and Snakemake automate these tasks in containerised environments and ensure reproducibility.
 
-metaWRAP is a flexible pipeline designed for genome-resolved metagenomic analysis. It integrates multiple tools into modular workflows for read preprocessing, assembly, taxonomic profiling, binning, and functional annotation.
+**metaWRAP** is a flexible pipeline designed for genome-resolved metagenomic analysis. It integrates multiple tools into modular workflows for read preprocessing, assembly, taxonomic profiling, binning, and functional annotation.
 
 ```
-The following schematic illustrates the preprocessing workflow required to generate high-quality microbial reads.
+The following schematic illustrates the entire workflow required to generate high-quality microbial data.
 ```
 ![metaWRAP](images/metaWRAP.png)
 
@@ -384,8 +387,8 @@ To run the preprocessing using the metaWRAP pipeline
 
 ```bash
 metawrap read_qc \
--1 SRR30598619_1.fastq.gz \
--2 SRR30598619_2.fastq.gz \
+-1 /SRR30598619_1.fastq.001.gz \
+-2 /SRR30598619_2.fastq.002.gz \
 -t 24 \
 -o READ_QC/SRR30598619 \
 -x hg38
