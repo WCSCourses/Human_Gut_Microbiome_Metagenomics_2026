@@ -8,9 +8,7 @@ Note: you will need the bmtagger hg38 index to remove the human reads - see the 
 Individually process each sample
 ```text
 mkdir READ_QC
-metawrap read_qc -1 RAW_READS/SRR30598619_1.fastq -2 RAW_READS/SRR30598619_2.fastq -t 24 -o READ_QC/SRR30598619
-metawrap read_qc -1 RAW_READS/SRR30598621_1.fastq -2 RAW_READS/SRR30598621_2.fastq -t 24 -o READ_QC/SRR30598621
-metawrap read_qc -1 RAW_READS/SRR30598622_1.fastq -2 RAW_READS/SRR30598622_2.fastq -t 24 -o READ_QC/SRR30598622
+metawrap read_qc -1 /data/microbiome_course2026/course_data2026/Module1/raw_reads/SRR30598619_1.fastq -2 /data/microbiome_course2026/course_data2026/Module1/raw_reads/SRR30598619_2.fastq -t 24 -o READ_QC/SRR30598619
 ```
 
 Alternatively, process all samples at the same time with a parallel for loop (especially if you have many samples):
