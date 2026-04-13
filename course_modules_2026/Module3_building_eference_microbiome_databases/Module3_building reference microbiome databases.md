@@ -68,11 +68,11 @@ Example input: CheckM2 statistics (checkm2_postqc_Completeness and checkm2_postq
 
 ```bash
     magmax \
-        -b course_data_2026/Module3/MAGs/cleaned_fasta/cleaned_fasta \
+        -b /data/microbiome_course2026/course_data_2026/Module3/MAGs/cleaned_fasta \
         -i 95 \
         -c 90 \
         -p 95 \
-        -q course_data_2026/Module3/MAGs/checkm2_results/checkm2/genome_quality.tsv \
+        -q /data/microbiome_course2026/course_data_2026/Module3/MAGs/checkm2_results/genome_quality.tsv \
         --no-reassembly \
         -t 24 \
         -f fa
