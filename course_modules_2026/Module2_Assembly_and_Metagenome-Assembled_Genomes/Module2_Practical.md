@@ -22,7 +22,7 @@ The dataset provided for this exercise contains the results of a completed **met
 
 ## Input data
 
-For this exercise we have used pregenerated **quality-controlled paired-end reads** in **Module 1** to assemble metagenome assembled genomes (MAGs).
+For this exercise we have used pregenerated **quality-controlled paired-end reads** in **Module 1** to assemble raw metagenome assembled genomes (MAGs).
 
 ## Exercise 1 – Inspect the Assembly
 First, we examine the assembly output.
