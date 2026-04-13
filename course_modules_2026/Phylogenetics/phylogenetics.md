@@ -225,8 +225,9 @@ In this section, you will learn how to:
 
 ```
 # load modules
-conda activate gtdbtk
-conda activate fasttreemp
+# Navigate to your working directory
+cd scratch/home/train..
+conda activate gtdbtk_env
 ```
 
 #### Identify Marker Genes
