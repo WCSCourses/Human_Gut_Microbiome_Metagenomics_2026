@@ -2,7 +2,7 @@
 
 ---
 ## Module leads
-Boniface Gichuki   
+Bonface Gichuki   
 Luicer Anne Ingasia Olubayo
 
 ----
