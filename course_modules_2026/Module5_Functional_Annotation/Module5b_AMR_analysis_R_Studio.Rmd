@@ -39,7 +39,7 @@ library(readxl)
 ```{r}
 #upload the complete amr data frame
 
-RGI_main_HGM.df <- read_tsv("~/Desktop/Metagenomic_Course_Notes/rgi_main_all_HGM_April26.tsv")
+RGI_main_HGM.df <- read_tsv("C:\Users\Technician\Downloads\rgi_main_all_HGM_April26.tsv")
 
 head(RGI_main_HGM.df)
 
@@ -126,7 +126,7 @@ drug_class_summary <- rgi_clean %>%
 
 #load the gtdbtk metadata
 
-taxonomy_df <-  read_excel("~/Downloads/Taxonomy_Id_data (1).xlsx")
+taxonomy_df <-  read_excel("C:\Users\Technician\Downloads\Taxonomy_Id_data (1).xlsx")
 
 head(taxonomy_df)
 
@@ -156,7 +156,7 @@ taxonomy_parsed <- taxonomy_parsed %>%
   )
 
 #you can download this to your local PC
-write_csv(taxonomy_parsed, "~/Downloads/taxonomy_split.csv")
+write_csv(taxonomy_parsed, "C:\Users\Technician\Downloads\taxonomy_split.csv")
 
 
 ##join the taxonomy data to your RGI  data
@@ -175,7 +175,7 @@ sum(is.na(rgi_taxonomy$Phylum))
 
 #upload metadata
 
-metadata.df <- read_excel("~/Downloads/Bednarski_2025_cleaned_metadata_final.xlsx")
+metadata.df <- read_excel("C:\Users\Technician\Downloads\Bednarski_2025_cleaned_metadata_final.xlsx")
 head(metadata.df)
 
 
@@ -248,7 +248,7 @@ top_amr_spp.p <- ggplot(top_amr_species,
 
 #download your plot
 
-ggsave("~/Desktop/Metagenomic_Course_Notes/top_amr_spp_bar.png", top_amr_spp.p, width = 12, height = 6)
+ggsave("C:\Users\Technician\Downloads\top_amr_spp_bar.png", top_amr_spp.p, width = 12, height = 6)
 
 
 #Exercise 1: Plot ARG richness by Genus(no.of unique ARGs per Genus) and download it 
@@ -282,7 +282,7 @@ top_amr_spp_facet.p <- ggplot(filter(amr_by_species_sick, Species %in% top_speci
   ) +
   theme_bw()
 
-ggsave("~/Desktop/Metagenomic_Course_Notes/top_amr_spp_facet.png", top_amr_spp_facet.p, width = 12, height = 6)
+ggsave("C:\Users\Technician\Downloads\top_amr_spp_facet.png", top_amr_spp_facet.p, width = 12, height = 6)
 
 
 
@@ -306,7 +306,7 @@ amr_persample_boxplot.p <- ggplot(amr_per_sample, aes(x = sick, y = n_AMR_genes)
   theme_bw()
 
 
-ggsave("~/Desktop/Metagenomic_Course_Notes/amr_persample_boxplot.png", amr_persample_boxplot.p, width = 12, height = 6)
+ggsave("C:\Users\Technician\Downloads\amr_persample_boxplot.png", amr_persample_boxplot.p, width = 12, height = 6)
 
 
 
@@ -361,7 +361,7 @@ AMR_heatmap.p <- ggplot(heatmap_long, aes(x = ARO, y = Sample, fill = factor(pre
 
 #download the heatmap
 
-ggsave("~/Desktop/Metagenomic_Course_Notes/AMR_heatmap.png", AMR_heatmap.p, width = 12, height = 8)
+ggsave("C:\Users\Technician\Downloads\AMR_heatmap.png", AMR_heatmap.p, width = 12, height = 8)
 
 
 ```
