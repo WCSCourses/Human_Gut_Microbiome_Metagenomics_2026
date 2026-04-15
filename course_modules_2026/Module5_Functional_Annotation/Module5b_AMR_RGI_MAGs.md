@@ -129,7 +129,7 @@ tar -xvf data
 ## Load Database into RGI. This is quite slow.
 
 ```bash
-rgi load --card_json card.json --local
+rgi load --card_json /data/microbiome_course2026/localDB/card.json --local
 rgi database --version
 ```
 ---
