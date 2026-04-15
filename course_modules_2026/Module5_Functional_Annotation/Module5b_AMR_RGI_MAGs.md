@@ -161,7 +161,7 @@ rgi main \
 
 ```bash
 rgi main \
-  --input_sequence /data/microbiome_course2026/course_data_2026/Module3/MAGs/cleaned_fasta/SRR30598619_bin.8.orig_filtered_kept_contigs.fa \
+  --input_sequence /data/microbiome_course2026/course_data_2026/Module3/MAGs/cleaned_fasta/cleaned_SRR30598619_bin.8.orig_filtered_kept_contigs.fa \
   --output_file ./mag8_test_amr_out \
   --local \
   --clean \
