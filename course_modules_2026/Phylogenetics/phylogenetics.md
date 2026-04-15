@@ -111,6 +111,12 @@ For example the groupings in these trees are the same
 
   ![exercise two](images/exercise2.png)
 
+## Discussion
+
+1. What is a phylogenetic tree and why do we do them?
+2. What do the tips (leaves) and internal nodes represent?
+3. What is the difference between a rooted and unrooted tree?
+4. What does branch length indicate?
 
 ## Phenomenon impacting phylogenetic reconstruction
 
@@ -180,7 +186,7 @@ Maximum parsimony method assume that the best phylogenetic tree requires the few
 Maximum parsimony is simple method and is very fast to run. However, because its always the shortest tree, compared to the hypothetical “true” tree it will often underestimate the actual evolutionary change that may have occurred.
 
 #### Maximum likelihood methods
-Maximum likelihood is the most commonly used phylogentic method in bacterial genomics. It evaluates alternative tree topologies using probabilistic models of genome evolution.
+Maximum likelihood is the most commonly used phylogenetic method in bacterial genomics. It evaluates alternative tree topologies using probabilistic models of genome evolution.
 Compared with maximum parsimony, it offers greater statistical flexibility by permitting varying rates of evolution across different lineages and sites. However, this improved modelling approach comes with substantial computational demands than distance-based and Parsimony approaches.  
 
 Common nucleotide substitution models include **Jukes-Cantor** model (JC69), which assumes only a single mutation rate across all nucleotides, and **Hasegawa-Kishino-Yano** model (HKY85), which assumes different mutation rates and accounts for unequal base frequencies. The simplest models to use such as **General time reversible (GTR)** allow different substitution rates for each nucleotide pair.
@@ -402,12 +408,24 @@ To display and adjust the Label
 - Then click ```Update dataset legend```
 - Lastly remember to ```save dataset parameters```
 
-  ![tree file](images/display_legend_vertically.png)
+  ![display the legend vertically](images/display_legend_vertically.png)
 
-8. From the rooted tree, we can see we have distinct clades within the tree. These are major clades we identified in our dataset. 
-Visualise `gtdbtk_fullalign_bacteria.nwk` in iToL and add metadata
+
+```course_data_2026/Phylogenetics/gtdb_phylogenetic_tree/VeeZdwo4sKjrh5rcnJ0X6A.pdf```
 
   ![tree file](gtdb_phylogenetic_tree/VeeZdwo4sKjrh5rcnJ0X6A.pdf)
+
+## Exercise
+
+1. How many major clades can you identify in this tree? and how are they defined?
+2. Which samples are most closely related? How can you tell?
+3. What does the outer coloured ring represent?
+4. How do you interpret the tree? is there a specific clade associated with severe malaria?
+5. Which taxa cluster closely together, and what might this indicate about their evolutionary relationships?
+6. Do any branches appear unusually long or short, and what could that suggest (e.g. rapid evolution, sequencing artefacts)?
+7. How diverse is the microbiome based on the tree structure?
+8. Are certain groups of organisms more dominant or overrepresented?
+9. Do you observe rare or unique lineages?
 
 ## Exporting the tree to your local computer
 
@@ -432,3 +450,4 @@ Visualise `gtdbtk_fullalign_bacteria.nwk` in iToL and add metadata
 - **Maximum likelihood** methods are recommended because they incorporate relevant parameters such as varying substitution rates, invariant sites, and rate heterogeneity across the sequence.
 - Regardless of the method used, phylogenetic inference requires a **multiple sequence alignment** as input. To reduce the computational burden of analyzing whole-genome alignments, we can extract only the **variable sites** using the snp-sites software.
 - **IQ-TREE** is a widely used software for maximum likelihood tree inference and can take as input the variable sites.
+- Here are some iTOL video tutorials that you may find helpful: https://itol.embl.de/video_tutorial.cgi [itol.embl.de]
