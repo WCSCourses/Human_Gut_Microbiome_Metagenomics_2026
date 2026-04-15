@@ -411,9 +411,11 @@ To display and adjust the Label
   ![display the legend vertically](images/display_legend_vertically.png)
 
 
-```course_data_2026/Phylogenetics/gtdb_phylogenetic_tree/VeeZdwo4sKjrh5rcnJ0X6A.pdf```
+The annotated tree can be also found on Github: https://github.com/WCSCourses/Human_Gut_Microbiome_Metagenomics_2026/blob/main/course_data_2026/Phylogenetics/gtdb_phylogenetic_tree/VeeZdwo4sKjrh5rcnJ0X6A.pdf
+
 
   ![tree file](gtdb_phylogenetic_tree/VeeZdwo4sKjrh5rcnJ0X6A.pdf)
+
 
 ## Exercise
 
