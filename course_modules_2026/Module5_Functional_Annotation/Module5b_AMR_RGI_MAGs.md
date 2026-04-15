@@ -258,9 +258,9 @@ rgi heatmap \
   -clus samples
 ```
 Output:
--rgi_heatmap-2.png
--rgi_heatmap-2.eps
--rgi_heatmap-2.csv (underlying matrix)
+- rgi_heatmap-2.png
+- rgi_heatmap-2.eps
+- rgi_heatmap-2.csv (underlying matrix)
 
 ###Downloading the Heatmap to Your Local Computer
 
