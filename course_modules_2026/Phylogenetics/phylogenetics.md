@@ -233,6 +233,7 @@ In this section, you will learn how to:
 # load modules
 # Navigate to your working directory
 cd scratch/home/train..
+module load conda
 conda activate gtdbtk_env
 ```
 
