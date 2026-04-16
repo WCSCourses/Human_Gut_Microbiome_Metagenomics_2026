@@ -240,7 +240,7 @@ conda activate gtdbtk_env
 GTDB-Tk identifies conserved marker genes that are shared across bacteria.
 
 ```
-gtdbtk identify --genome_dir /data/microbiome_course2026/Module3/MAGs/cleaned_fasta/ -x fa --cpus 24 --out_dir gtdbtk_identify_outdir
+gtdbtk identify --genome_dir /data/microbiome_data2026/Module3/MAGs/cleaned_fasta/ -x fa --cpus 24 --out_dir gtdbtk_identify_outdir
 ```
 
 #### Align Marker genes
