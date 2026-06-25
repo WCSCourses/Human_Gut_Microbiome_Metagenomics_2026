@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>module1_practical – Human Gut Microbiome Metagenomics (Kilifi, 12-18 April 2026)</title>
+<title>interpretation_discussion – Human Gut Microbiome Metagenomics (Kilifi, 12-18 April 2026)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -92,7 +92,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
+    <a class="nav-link" href="../../index.qmd"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -143,15 +143,13 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#practical-exercise---quality-control-and-decontamination-of-metagenomic-reads." id="toc-practical-exercise---quality-control-and-decontamination-of-metagenomic-reads." class="nav-link active" data-scroll-target="#practical-exercise---quality-control-and-decontamination-of-metagenomic-reads."><span class="header-section-number">1</span> <strong>Practical exercise - Quality control and decontamination of metagenomic reads.</strong></a></li>
-  <li><a href="#exercise-overview." id="toc-exercise-overview." class="nav-link" data-scroll-target="#exercise-overview."><span class="header-section-number">2</span> <strong>Exercise overview.</strong></a></li>
-  <li><a href="#dataset." id="toc-dataset." class="nav-link" data-scroll-target="#dataset."><span class="header-section-number">3</span> <strong>Dataset.</strong></a>
+  <li><a href="#interpretation-and-discussion-of-the-results" id="toc-interpretation-and-discussion-of-the-results" class="nav-link active" data-scroll-target="#interpretation-and-discussion-of-the-results"><span class="header-section-number">1</span> <strong>Interpretation and discussion of the results</strong></a></li>
+  <li><a href="#dataset" id="toc-dataset" class="nav-link" data-scroll-target="#dataset"><span class="header-section-number">2</span> <strong>Dataset</strong></a>
   <ul class="collapse">
-  <li><a href="#exercise-1-evaluate-raw-sequencing-quality" id="toc-exercise-1-evaluate-raw-sequencing-quality" class="nav-link" data-scroll-target="#exercise-1-evaluate-raw-sequencing-quality"><span class="header-section-number">3.1</span> <strong>Exercise 1 — Evaluate raw sequencing quality</strong></a></li>
-  <li><a href="#alternatively-if-ran-on-nextflow-the-metawrap-pipeline-generates-a-csv-file-with-summarised-qc-statistics." id="toc-alternatively-if-ran-on-nextflow-the-metawrap-pipeline-generates-a-csv-file-with-summarised-qc-statistics." class="nav-link" data-scroll-target="#alternatively-if-ran-on-nextflow-the-metawrap-pipeline-generates-a-csv-file-with-summarised-qc-statistics."><span class="header-section-number">3.2</span> <strong>Alternatively, if ran on nextflow, the metaWRAP pipeline generates a csv file with summarised QC statistics.</strong></a>
+  <li><a href="#exercise-evaluate-raw-sequencing-quality" id="toc-exercise-evaluate-raw-sequencing-quality" class="nav-link" data-scroll-target="#exercise-evaluate-raw-sequencing-quality"><span class="header-section-number">2.1</span> <strong>Exercise: Evaluate raw sequencing quality</strong></a>
   <ul class="collapse">
-  <li><a href="#questions." id="toc-questions." class="nav-link" data-scroll-target="#questions."><span class="header-section-number">3.2.1</span> <strong>Questions.</strong></a></li>
-  <li><a href="#final-discussion-questions." id="toc-final-discussion-questions." class="nav-link" data-scroll-target="#final-discussion-questions."><span class="header-section-number">3.2.2</span> <strong>Final discussion questions.</strong></a></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="header-section-number">2.1.1</span> <strong>Questions</strong></a></li>
+  <li><a href="#final-discussion-questions" id="toc-final-discussion-questions" class="nav-link" data-scroll-target="#final-discussion-questions"><span class="header-section-number">2.1.2</span> <strong>Final discussion questions</strong></a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -163,35 +161,29 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="practical-exercise---quality-control-and-decontamination-of-metagenomic-reads." class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> <strong>Practical exercise - Quality control and decontamination of metagenomic reads.</strong></h1>
+<section id="interpretation-and-discussion-of-the-results" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> <strong>Interpretation and discussion of the results</strong></h1>
 <hr>
-</section>
-<section id="exercise-overview." class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> <strong>Exercise overview.</strong></h1>
-<p>In this practical exercise, participants will use pre-generated QC report from the metaWRAP to understand how you evaluate evaluate sequencing quality for downstream metagenomic analysis.<br>
+<p>In this practical exercise, participants use pre-generated QC report from the metaWRAP to understand how you evaluate evaluate sequencing quality for downstream metagenomic analysis.<br>
 This exercise demonstrates the importance of preprocessing in ensuring accurate genome assembly, taxonomic and functional profiling.</p>
 <hr>
 </section>
-<section id="dataset." class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> <strong>Dataset.</strong></h1>
+<section id="dataset" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> <strong>Dataset</strong></h1>
 <p>Participants will use pre-generated report on the cluster.</p>
 <hr>
-<section id="exercise-1-evaluate-raw-sequencing-quality" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="exercise-1-evaluate-raw-sequencing-quality"><span class="header-section-number">3.1</span> <strong>Exercise 1 — Evaluate raw sequencing quality</strong></h2>
-<p>From the metaWRAP QC output, download the qc_report.html file to your local machine and open it in a web browser.</p>
+<section id="exercise-evaluate-raw-sequencing-quality" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="exercise-evaluate-raw-sequencing-quality"><span class="header-section-number">2.1</span> <strong>Exercise: Evaluate raw sequencing quality</strong></h2>
+<p>From the metaWRAP QC output, download the SRR30598619_multiqc_report.html file to your local machine and open it in a web browser.</p>
 <p>Below is the code that was used to generate the report.</p>
 <pre><code>metawrap read_qc \
 -1 /SRR30598619_1.fastq-001.gz \
 -2 /SRR30598619_2.fastq-002.gz \
 -t 24 \
--o /scratch/home/trainx/READ_QC/ \
+-o /path-to/READ_QC/ \
 -x hg38</code></pre>
-</section>
-<section id="alternatively-if-ran-on-nextflow-the-metawrap-pipeline-generates-a-csv-file-with-summarised-qc-statistics." class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="alternatively-if-ran-on-nextflow-the-metawrap-pipeline-generates-a-csv-file-with-summarised-qc-statistics."><span class="header-section-number">3.2</span> <strong>Alternatively, if ran on nextflow, the metaWRAP pipeline generates a csv file with summarised QC statistics.</strong></h2>
-<section id="questions." class="level3" data-number="3.2.1">
-<h3 data-number="3.2.1" class="anchored" data-anchor-id="questions."><span class="header-section-number">3.2.1</span> <strong>Questions.</strong></h3>
+<section id="questions" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="questions"><span class="header-section-number">2.1.1</span> <strong>Questions</strong></h3>
 <ol type="1">
 <li><p>Are there any overrepresented sequences?</p></li>
 <li><p>What proportion of host reads were removed during trimming?</p></li>
@@ -200,8 +192,8 @@ This exercise demonstrates the importance of preprocessing in ensuring accurate 
 </ol>
 <hr>
 </section>
-<section id="final-discussion-questions." class="level3" data-number="3.2.2">
-<h3 data-number="3.2.2" class="anchored" data-anchor-id="final-discussion-questions."><span class="header-section-number">3.2.2</span> <strong>Final discussion questions.</strong></h3>
+<section id="final-discussion-questions" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="final-discussion-questions"><span class="header-section-number">2.1.2</span> <strong>Final discussion questions</strong></h3>
 <ol type="1">
 <li><p>Why is quality control essential before downstream metagenomic analysis?</p></li>
 <li><p>What types of sequencing artefacts can lead to false microbial detection?</p></li>
@@ -209,8 +201,8 @@ This exercise demonstrates the importance of preprocessing in ensuring accurate 
 <li><p>How could host contamination affect functional annotation results?</p></li>
 <li><p>Why is it useful to summarize QC results across samples using MultiQC?</p></li>
 </ol>
-<section id="transition-to-the-next-module." class="level4" data-number="3.2.2.1">
-<h4 data-number="3.2.2.1" class="anchored" data-anchor-id="transition-to-the-next-module."><span class="header-section-number">3.2.2.1</span> <strong>Transition to the Next Module.</strong></h4>
+<section id="transition-to-the-next-module" class="level4" data-number="2.1.2.1">
+<h4 data-number="2.1.2.1" class="anchored" data-anchor-id="transition-to-the-next-module"><span class="header-section-number">2.1.2.1</span> <strong>Transition to the Next Module</strong></h4>
 <p>The cleaned reads generated in this exercise represent high-quality microbial sequencing data.</p>
 <p>In Module 2, these reads will be used to reconstruct microbial genomes through metagenomic assembly and genome binning, enabling the recovery of metagenome-assembled genomes (MAGs), taxonomic profiling in module 4, community and functional profiling in module 5.</p>
 

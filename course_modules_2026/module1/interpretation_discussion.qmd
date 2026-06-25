@@ -1,23 +1,21 @@
-# **Practical exercise - Quality control and decontamination of metagenomic reads.**
+# **Interpretation and discussion of the results**
 
 ------------------------------------------------------------------------
 
-# **Exercise overview.**
-
-In this practical exercise, participants will use pre-generated QC report from the metaWRAP to understand how you evaluate evaluate sequencing quality for downstream metagenomic analysis.\
+In this practical exercise, participants use pre-generated QC report from the metaWRAP to understand how you evaluate evaluate sequencing quality for downstream metagenomic analysis.\
 This exercise demonstrates the importance of preprocessing in ensuring accurate genome assembly, taxonomic and functional profiling.
 
 ------------------------------------------------------------------------
 
-# **Dataset.**
+# **Dataset**
 
 Participants will use pre-generated report on the cluster.
 
 ------------------------------------------------------------------------
 
-## **Exercise 1 — Evaluate raw sequencing quality**
+## **Exercise: Evaluate raw sequencing quality**
 
-From the metaWRAP QC output, download the qc_report.html file to your local machine and open it in a web browser.
+From the metaWRAP QC output, download the SRR30598619_multiqc_report.html file to your local machine and open it in a web browser.
 
 Below is the code that was used to generate the report.
 
@@ -26,13 +24,11 @@ metawrap read_qc \
 -1 /SRR30598619_1.fastq-001.gz \
 -2 /SRR30598619_2.fastq-002.gz \
 -t 24 \
--o /scratch/home/trainx/READ_QC/ \
+-o /path-to/READ_QC/ \
 -x hg38
 ```
 
-## **Alternatively, if ran on nextflow, the metaWRAP pipeline generates a csv file with summarised QC statistics.**
-
-### **Questions.**
+### **Questions**
 
 1.  Are there any overrepresented sequences?
 
@@ -44,7 +40,7 @@ metawrap read_qc \
 
 ------------------------------------------------------------------------
 
-### **Final discussion questions.**
+### **Final discussion questions**
 
 1.  Why is quality control essential before downstream metagenomic analysis?
 
@@ -56,7 +52,7 @@ metawrap read_qc \
 
 5.  Why is it useful to summarize QC results across samples using MultiQC?
 
-#### **Transition to the Next Module.**
+#### **Transition to the Next Module**
 
 The cleaned reads generated in this exercise represent high-quality microbial sequencing data.
 
