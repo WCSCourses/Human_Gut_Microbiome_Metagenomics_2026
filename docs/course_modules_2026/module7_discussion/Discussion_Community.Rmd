@@ -1,0 +1,505 @@
+---
+title: "Microbial Community Profiling with Differential Analysis"
+author: "Bonface Gichuki"
+date: "`r Sys.Date()`"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+## Overview
+
+This practical introduces students to taxonomic microbiome analysis using sequencing-derived abundance tables (for example from **Sylph**), focusing on:
+  - Community structure
+  - Diversity metrics
+  - Differential abundance and prevalence
+
+The workflow uses:
+- **phyloseq** for data handling and diversity analysis
+- **microViz** for transformation and ordination
+- **MaAsLin3** for statistical modelling
+
+## Questions addressed in this session
+
+1. How does alpha diversity differ between children with severe malaria (SM) and Community Controls (CC)?
+2. Do samples cluster by clinical group in beta diversity (ordination space)?
+3. Which taxa dominate the microbial community at different taxonomic levels?
+4. Are there community-wide shifts associated with disease status?
+5. Which bacterial taxa are differentially abundant between SM and CC?
+6. Do results highlight biologically relevant taxa (e.g. Enterobacteriaceae species)?
+
+## Expected learning points
+- Taxonomic profiles describe who is present, not just function
+- Alpha diversity reflects within-sample diversity
+- Beta diversity reflects between-sample differences
+- Ordination methods (MDS (Multidimensional Scaling) ) reveal clustering patterns
+- Differential prevalence and abundance requires careful statistical modelling
+- Compositionality must be considered (e.g. Centered Log-Ratio (CLR) transformation)
+
+## Prerequisites
+
+This module assumes:
+
+- Basic familiarity with R / RStudio
+- A Sylph-derived abundance table
+- Sample metadata
+- Required packages installed
+
+If needed, install missing packages first:
+- install.packages("BiocManager")
+- BiocManager::install("phyloseq")
+- .libPaths("~/R/library")
+
+```{r setup, message=FALSE, warning=FALSE}
+# ============================================
+# LIBRARIES
+# ============================================
+library(readr)
+library(tidyverse)
+library(stringr)
+library(tibble)
+library(data.table)
+library(phyloseq)
+library(microbiome)
+library(ggpubr)
+library(microViz)
+library(corncob)
+library(ggthemes)
+library(gghalves)
+library(microbiomeutilities)
+library(maaslin3)
+```
+
+
+```{r read_data}
+# ============================================
+# READ DATA
+# ============================================
+abundance_data <- read.csv("/Users/LuicerAnneIngasia/Desktop/wcs/sylph_read_based.csv", check.names = FALSE)
+
+metadata <- read.csv("/Users/LuicerAnneIngasia/Desktop/wcs/Bednarski_2025_cleaned_metadata_final.csv", check.names = FALSE) %>%
+  column_to_rownames("metagm_id")
+
+# Inspect data
+head(abundance_data[, 1:min(6, ncol(abundance_data))])
+head(metadata)
+
+# Check overlap between abundance table samples and metadata row names
+colnames(metadata)
+rownames(metadata)[1:10]
+colnames(abundance_data)[1:10]
+
+common_samples_check <- intersect(colnames(abundance_data)[-1], rownames(metadata))
+length(common_samples_check)
+head(common_samples_check)
+```
+
+```{r make-phyloseq}
+# ============================================
+# CREATE A PHYLOSEQ OBJECT
+# ============================================
+
+# First column contains taxonomic labels
+otu_tab <- abundance_data %>%
+  column_to_rownames("clade_name")
+
+# Convert to matrix
+otu_mat <- as.matrix(otu_tab)
+
+# Keep only species-level taxa
+otu_mat_species <- otu_mat[grepl("\\|s__[^|]+$", rownames(otu_mat)), , drop = FALSE]
+
+# Align samples between abundance matrix and metadata
+common_samples <- intersect(colnames(otu_mat_species), rownames(metadata))
+length(common_samples)
+head(common_samples)
+
+otu_mat_species <- otu_mat_species[, common_samples, drop = FALSE]
+metadata_sub <- metadata[common_samples, , drop = FALSE]
+
+# Sanity check
+stopifnot(all(colnames(otu_mat_species) == rownames(metadata_sub)))
+
+# Build taxonomy table from clade strings
+tax_split <- strsplit(rownames(otu_mat_species), "\\|")
+max_len <- max(lengths(tax_split))
+
+tax_mat <- do.call(rbind, lapply(tax_split, function(x) {
+  c(x, rep(NA, max_len - length(x)))
+}))
+
+colnames(tax_mat) <- c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species", "Strain")[1:max_len]
+rownames(tax_mat) <- rownames(otu_mat_species)
+
+# Create phyloseq object
+ps <- phyloseq(
+  otu_table(otu_mat_species, taxa_are_rows = TRUE),
+  sample_data(metadata_sub),
+  tax_table(as.matrix(tax_mat))
+)
+
+# Remove samples with missing disease label
+ps <- subset_samples(ps, !is.na(sick))
+
+# Ensure disease group is a factor
+sample_data(ps)$sick <- factor(sample_data(ps)$sick, levels = c("CC", "SM"))
+
+# Inspect object
+ps
+nsamples(ps)
+ntaxa(ps)
+sample_variables(ps)
+sample_sums(ps)[1:min(10, nsamples(ps))]
+```
+
+## Community composition: sample-level summary
+
+```{r sample-level-composition, fig.width=10, fig.height=6}
+# ============================================
+# COMMUNITY COMPOSITION (SAMPLE-LEVEL SUMMARY)
+# ============================================
+
+# Clean Family names
+tax_table(ps)[, "Family"] <- sub("^f__", "", tax_table(ps)[, "Family"])
+
+# Melt phyloseq object
+df <- psmelt(ps)
+df$Family <- sub("^f__", "", df$Family)
+
+# Identify top 8 most abundant families
+top_families <- df %>%
+  filter(!is.na(Family), Family != "") %>%
+  group_by(Family) %>%
+  summarise(total_abundance = sum(Abundance), .groups = "drop") %>%
+  arrange(desc(total_abundance)) %>%
+  slice_head(n = 8) %>%
+  pull(Family)
+
+top_families
+
+# Collapse everything else into "Other"
+df_plot <- df %>%
+  mutate(Family_plot = ifelse(Family %in% top_families, Family, "Other"))
+
+# Order samples by sick group
+sample_order <- sample_data(ps) %>%
+  data.frame() %>%
+  rownames_to_column("Sample") %>%
+  arrange(sick) %>%
+  pull(Sample)
+
+df_plot$Sample <- factor(df_plot$Sample, levels = sample_order)
+
+# Define colours
+families_colors <- c("#a6cee3","#1f78b4","#b2df8a","#33a02c",
+                     "#fb9a99","#e31a1c","#fdbf6f","#ff7f00","grey")
+families_colors <- setNames(families_colors, c(top_families, "Other"))
+
+# Plot
+rel_ab_plot <- ggplot(df_plot, aes(x = Sample, y = Abundance, fill = Family_plot)) +
+  geom_bar(stat = "identity", position = "stack") +
+  facet_grid(~ sick, scales = "free_x", space = "free_x") +
+  scale_fill_manual(values = families_colors, name = "Family") +
+  labs(x = "Participant", y = "Relative abundance (%)") +
+  theme_classic() +
+  theme(
+    axis.text.x = element_text(size = 6, angle = 70, hjust = 1, colour = "black"),
+    axis.text.y = element_text(size = 9, colour = "black"),
+    axis.title = element_text(size = 9, colour = "black"),
+    legend.position = "bottom",
+    legend.text = element_text(size = 7),
+    legend.title = element_text(size = 7, face = "bold"),
+    strip.background = element_blank(),
+    strip.text = element_text(size = 10, face = "bold")
+  )
+
+rel_ab_plot
+```
+
+
+
+```{r save-sample-composition, eval=FALSE}
+ggsave("sample_rel_ab_plot.png", rel_ab_plot, width = 20, height = 13, units = "cm", dpi = 300)
+```
+
+**Interpretation**
+The gut microbiome varies substantially between children, but a consistent set of dominant families can be seen across samples. Families such as Bacteroidaceae, Lachnospiraceae, Ruminococcaceae, and Enterobacteriaceae contribute substantially to the community structure.
+
+## Community composition: group-level summary
+
+```{r group-level-composition, fig.width=6, fig.height=5}
+# ============================================
+# COMMUNITY COMPOSITION (GROUP-LEVEL SUMMARY)
+# ============================================
+
+ps_family <- tax_glom(ps, taxrank = "Family")
+df_family <- psmelt(ps_family)
+
+df_family$Family <- sub("^f__", "", df_family$Family)
+df_family$Family <- ifelse(df_family$Family %in% top_families, df_family$Family, "Other")
+
+df_summary <- df_family %>%
+  group_by(sick, Family) %>%
+  summarise(mean_abundance = mean(Abundance), .groups = "drop")
+
+rel_ab_group_plot <- ggplot(df_summary, aes(x = sick, y = mean_abundance, fill = Family)) +
+  geom_bar(stat = "identity", position = "stack") +
+  scale_fill_manual(values = families_colors) +
+  labs(x = "Group", y = "Relative abundance (%)") +
+  theme_classic() +
+  theme(
+    legend.position = "right",
+    legend.text = element_text(size = 8),
+    legend.title = element_text(size = 9, face = "bold")
+  )
+
+rel_ab_group_plot
+```
+
+
+```{r save-group-level-composition, eval=FALSE}
+ggsave("group_rel_ab_plot.png", rel_ab_group_plot, width = 8, height = 9, units = "cm", dpi = 300)
+```
+**Interpretation**
+When samples are averaged by clinical group, the relative contribution of major families differs between SM and CC, suggesting broad community restructuring associated with disease status.
+
+## Alpha diversity
+```{r alpha-diversity, fig.width=10, fig.height=5}
+# ============================================
+# ALPHA DIVERSITY
+# ============================================
+
+ps_fixed <- ps %>% tax_fix()
+
+alpha_stat_met <- ps_fixed %>%
+  ps_calc_diversity(rank = "Species", index = "shannon") %>%
+  ps_calc_richness(rank = "Species", index = "observed") %>%
+  samdat_tbl()
+
+alpha_stat_met$sick <- factor(alpha_stat_met$sick, levels = c("CC", "SM"))
+my_comparisons <- list(c("CC", "SM"))
+
+# Shannon diversity plot
+alpha_div_plot_shannon <- ggplot(alpha_stat_met, aes(x = sick, y = shannon_Species, fill = sick)) +
+  geom_boxplot(outlier.shape = NA, alpha = 0.7) +
+  geom_jitter(width = 0.2, size = 1.5, alpha = 0.8) +
+  theme_classic(base_size = 12) +
+  labs(x = "Group", y = "Shannon index") +
+  scale_fill_manual(values = c("CC" = "#F8766D", "SM" = "#00BFC4")) +
+  stat_compare_means(
+    comparisons = my_comparisons,
+    method = "wilcox.test",
+    label = "p.format",
+    paired = FALSE
+  )
+
+# Observed richness plot
+alpha_div_plot_richness <- ggplot(alpha_stat_met, aes(x = sick, y = observed_Species, fill = sick)) +
+  geom_boxplot(outlier.shape = NA, alpha = 0.7) +
+  geom_jitter(width = 0.2, size = 1.5, alpha = 0.8) +
+  theme_classic(base_size = 12) +
+  labs(x = "Group", y = "Observed richness") +
+  scale_fill_manual(values = c("CC" = "#F8766D", "SM" = "#00BFC4")) +
+  stat_compare_means(
+    comparisons = my_comparisons,
+    method = "wilcox.test",
+    label = "p.format",
+    paired = FALSE
+  )
+# Combined figure only
+ggpubr::ggarrange(alpha_div_plot_shannon, alpha_div_plot_richness, ncol = 2, nrow = 1)
+```
+
+
+```{r save-alpha-diversity, eval=FALSE}
+ggsave("alpha_diversity_shannon_plot.png", alpha_div_plot_shannon, width = 5, height = 5, dpi = 600)
+ggsave("alpha_diversity_richness_plot.png", alpha_div_plot_richness, width = 5, height = 5, dpi = 600)
+```
+
+**Interpretation**
+Both Shannon diversity and observed richness are lower in SM than in CC, indicating that severe malaria is associated with reduced within-sample diversity and fewer detected taxa.
+
+## Beta diversity
+```{r beta-diversity, fig.width=5, fig.height=5}
+# ============================================
+# BETA DIVERSITY + PERMANOVA
+# ============================================
+
+ps_species <- ps %>%
+  tax_fix() %>%
+  tax_filter(min_prevalence = 1/100, use_counts = FALSE, verbose = FALSE) %>%
+  tax_agg(rank = "Species")
+
+ps_clr <- ps_species %>%
+  tax_transform("clr", zero_replace = "halfmin")
+
+# Ordination
+beta_ordination <- ps_clr %>%
+  dist_calc("euclidean") %>%
+  ord_calc(method = "PCoA") %>%
+  ord_plot(color = "sick", alpha = 0.6, size = 2) +
+  theme_bw() +
+  coord_fixed(0.7) +
+  scale_color_manual(values = c("CC" = "#F8766D", "SM" = "#00BFC4")) +
+  labs(color = "Group")
+
+# PERMANOVA
+perm_vars <- c("sick", "site", "age", "stool_day")
+perm_vars <- perm_vars[perm_vars %in% sample_variables(ps_clr)]
+
+perm_res <- ps_clr %>%
+  dist_calc("euclidean") %>%
+  dist_permanova(
+    variables = perm_vars,
+    n_perms = 999,
+    seed = 123
+  ) %>%
+  perm_get()
+
+perm_res
+
+# Annotate plot with PERMANOVA result for sick
+if ("sick" %in% rownames(perm_res)) {
+  pval <- perm_res["sick", "Pr(>F)"]
+  r2   <- perm_res["sick", "R2"]
+
+  label_text <- paste0("PERMANOVA\nR² = ", round(r2, 3), "\np = ", signif(pval, 3))
+
+  beta_div_plot <- beta_ordination +
+    annotate(
+      "text",
+      x = Inf, y = -Inf,
+      label = label_text,
+      hjust = 1.1, vjust = -0.5,
+      size = 3
+    ) +
+    labs(caption = NULL)
+} else {
+  beta_div_plot <- beta_ordination
+}
+
+beta_div_plot
+```
+
+```{r save-beta-diversity, eval=FALSE}
+ggsave("beta_diversity_plot.png", beta_div_plot, width = 5, height = 5, dpi = 600)
+```
+**Interpretation**
+The PCoA suggests separation between SM and CC in ordination space. PERMANOVA confirms that disease status is significantly associated with overall microbiome composition, although the effect size is modest.
+
+## Differential abundance analysis with MaAsLin3
+```{r maaslin3-analysis}
+# ============================================
+# DIFFERENTIAL ABUNDANCE
+# ============================================
+
+# Reuse already loaded objects
+sylph_data <- abundance_data
+study_metadata <- metadata
+
+# Extract taxa and abundance matrix
+taxa <- sylph_data[[1]]
+abund <- sylph_data[, -1, drop = FALSE]
+
+# Transpose so rows = samples, columns = taxa
+abund_t <- as.data.frame(t(abund))
+colnames(abund_t) <- taxa
+
+# Check duplicated taxa names
+sum(duplicated(taxa))
+
+# Match samples
+common_ids <- intersect(rownames(study_metadata), rownames(abund_t))
+length(common_ids)
+head(common_ids)
+
+metadata_sub <- study_metadata[common_ids, , drop = FALSE]
+features <- abund_t[common_ids, , drop = FALSE]
+
+# Check matching order
+all(rownames(features) == rownames(metadata_sub))
+
+# Keep only species-level taxa
+features_species <- features[, grepl("\\|s__[^|]+$", colnames(features)), drop = FALSE]
+
+# Ensure model variable is a factor
+metadata_sub$sick <- factor(metadata_sub$sick, levels = c("CC", "SM"))
+```
+
+```{r maaslin3-fit, eval=FALSE}
+# Fit MaAsLin3
+fit_out <- maaslin3(
+  input_data = features_species,
+  input_metadata = metadata_sub,
+  output = "maaslin3_output",
+  fixed_effects = c("sick"),
+  normalization = "CLR",
+  transform = "NONE",
+  min_abundance = 0.001,
+  min_prevalence = 0.1,
+  warn_prevalence = FALSE,
+  cores = 1
+)
+```
+
+
+```{r maaslin-results}
+# ============================================
+# LOAD AND FILTER RESULTS
+# ============================================
+
+res <- read.delim("maaslin3_output/all_results.tsv")
+
+# Keep only sick comparisons
+res_sick <- res %>%
+  filter(metadata == "sick")
+
+# Significant results
+sig_res <- res_sick %>%
+  filter(qval_individual < 0.25) %>%
+  arrange(qval_individual)
+
+# Clean species names
+sig_res$species <- sub(".*\\|s__", "", sig_res$feature)
+
+# Inspect
+head(sig_res)
+nrow(sig_res)
+```
+Interpretation.
+MaAsLin3 identifies individual species whose abundance or prevalence is associated with disease status after filtering and compositional normalization. Positive coefficients indicate enrichment in SM, while negative coefficients indicate relative depletion in SM.
+
+
+## Visualise effect sizes (this is what you’re missing)
+```{r maaslin-plot, fig.width=6, fig.height=5}
+### Option A: simple effect plot
+ggplot(sig_res, aes(x = reorder(species, coef), y = coef, fill = coef > 0)) +
+  geom_col() +
+  coord_flip() +
+  scale_fill_manual(values = c("TRUE" = "#00BFC4", "FALSE" = "#F8766D")) +
+  labs(
+    x = "Species",
+    y = "Effect size (SM vs CC)",
+    title = "Differentially abundant species"
+  ) +
+  theme_classic()
+```
+**Interpretation**
+The effect-size plot highlights which significant taxa are enriched or depleted in severe malaria. This helps connect statistical output to biological interpretation.
+
+
+### Option B: volcano-style plot (better for teaching)
+```{r volcano-plot, fig.width=6, fig.height=5}
+res_sick$species <- sub(".*\\|s__", "", res_sick$feature)
+
+ggplot(res_sick, aes(x = coef, y = -log10(qval_individual))) +
+  geom_point(alpha = 0.6) +
+  geom_point(data = sig_res, color = "red") +
+  labs(
+    x = "Effect size",
+    y = "-log10(q-value)",
+    title = "MaAsLin3 results"
+  ) +
+  theme_classic()
+
+```

@@ -1,0 +1,29 @@
+site_name: Human Gut Microbiome Metagenomics - Africa 2026
+site_description: Documentation for My Project
+theme:
+  name: readthedocs
+  navigation_depth: 4
+  collapse_navigation: true
+  titles_only: false
+
+nav:
+  - Course modules:
+      - "Module 1: Data download, QC and decontamination":
+          - Introduction: course_modules_2026/module1_qc/module1/
+          - MetaWRAP example: course_modules_2026/module1_qc/module1_metawrap/
+          - Results interpretation: course_modules_2026/module1_qc/module1_practical/
+      - "Module 2: Assembly and MAGs":
+          - Introduction: course_modules_2026/module2_assembly/module2/
+          - MetaWRAP example: course_modules_2026/module2_assembly/module2_metawrap/
+          - Results interpretation: course_modules_2026/module2_assembly/module2_practical/
+      - "Module 3: Custom microbiome database":
+          - Database: course_modules_2026/module3_reference_databases/module3/
+      - "Module 4: Taxonomic profiling":
+          - Taxonomic profiling: course_modules_2026/module4_profiling/module4/
+      - "Module 5a: Functional annotation":
+          - Functional profiling: course_modules_2026/module5_functional_annotation/module5a/
+          - Supplementary HUMAnN Nextflow: course_modules_2026/module5_functional_annotation/module5a_nextflow/
+      - "Module 5b: AMR and RGI":
+          - Functional profiling: course_modules_2026/module5_functional_annotation/module5b/
+      - "Module 6: Phylogenetic trees":
+          - Building phylogenetic trees: course_modules_2026/module6_phylogeny/module6/
